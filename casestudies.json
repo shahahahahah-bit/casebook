@@ -1,0 +1,543 @@
+{
+  "title": "Casebook — projects from my sources",
+  "generated": "2026-10-30",
+  "rules": [
+    "Every fact comes from the linked article or the project's own website; nothing is added from memory.",
+    "Fields the sources don't give are marked 'Not stated' / 'Not named', or null for coordinates.",
+    "Projects are grouped by their main theme. 'themes' lists every theme that applies.",
+    "No Wikipedia links."
+  ],
+  "linkStatusKey": {
+    "working": "Loads and is free to read",
+    "paid": "Loads but needs a subscription",
+    "broken": "Doesn't load, or no longer shows the cited content. See 'replacement'."
+  },
+  "sources": [
+    {
+      "name": "ArchDaily",
+      "url": "https://www.archdaily.com/",
+      "topic": "Architecture projects, worldwide",
+      "status": "working",
+      "checked": "2026-10-30"
+    },
+    {
+      "name": "Dezeen",
+      "url": "https://www.dezeen.com/",
+      "topic": "Architecture and design news, worldwide",
+      "status": "working",
+      "checked": "2026-10-30"
+    },
+    {
+      "name": "Planetizen",
+      "url": "https://www.planetizen.com/",
+      "topic": "Urban planning news, US",
+      "status": "working",
+      "checked": "2026-10-30",
+      "note": "Blocks automated checks; loads normally in a browser."
+    },
+    {
+      "name": "Urbanize Atlanta",
+      "url": "https://atlanta.urbanize.city/",
+      "topic": "Regional development news, Atlanta",
+      "status": "working",
+      "checked": "2026-10-30"
+    },
+    {
+      "name": "Urban Omnibus",
+      "url": "https://urbanomnibus.net/",
+      "topic": "Urban culture journal, New York",
+      "status": "working",
+      "checked": "2026-10-30"
+    }
+  ],
+  "topics": [
+    {
+      "id": "mobility",
+      "label": "Mobility",
+      "count": 3,
+      "projects": [
+        {
+          "id": "murphy-crossing-infill-station",
+          "title": "Murphy Crossing MARTA infill station",
+          "themes": [
+            "mobility"
+          ],
+          "location": "Murphy Crossing, Southwest Atlanta, Georgia, USA (where Adair Park, West End and Oakland City meet), between MARTA's Oakland City and West End stations",
+          "year": "In study: five options revealed October 2026; preferred alternative due by summer 2027 at the latest",
+          "designers": "Atlanta Beltline Inc. (preliminary scoping study; principal engineer Shaun Green)",
+          "scale": "20-acre Murphy Crossing site; 60-ft vertical gap between Beltline transit and MARTA rail; study costs about $800,000–$900,000",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Urbanize Atlanta — news article",
+              "url": "https://atlanta.urbanize.city/post/marta-infill-station-beltline-murphy-crossing-reveals-5-options-connecting-trail-transit-rail",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "Atlanta Beltline — Murphy Crossing infill station virtual open house",
+              "url": "https://beltline.konveio.com/murphy-crossing-infill-station",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "Urbanize Atlanta"
+        },
+        {
+          "id": "beltline-northwest-trail-2a",
+          "title": "Atlanta Beltline Northwest Trail – Segment 2A",
+          "themes": [
+            "mobility",
+            "public-space"
+          ],
+          "location": "Buckhead, Atlanta, Georgia, USA (from Bobby Jones Golf Course toward Peachtree Road; connects Collier Hills North and Colonial Homes)",
+          "year": "Groundbreaking October 2026; completion scheduled for early 2028",
+          "designers": "Heath & Lineback (designers); PATH Foundation (program manager); Hasbun Construction (contractor); Atlanta Beltline Inc.",
+          "scale": "0.3-mile segment of 14-ft-wide multi-use trail, with a pedestrian bridge and an elevated trail structure; the full Northwest Trail will be 4.3 miles",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Urbanize Atlanta — news article",
+              "url": "https://atlanta.urbanize.city/post/atl-beltline-northwest-trail-section-officially-breaks-ground-peachtree-images",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "Urbanize Atlanta"
+        },
+        {
+          "id": "federal-boulevard-brt-denver",
+          "title": "Federal Boulevard BRT",
+          "themes": [
+            "mobility"
+          ],
+          "location": "Federal Boulevard, metro Denver, Colorado, USA",
+          "year": "Funding approved 23 October 2026; final design 2027; phase one (28 stations) starts fall 2027; phase two (46 stations) starts summer 2028",
+          "designers": "Not named by the source; funded by Colorado's Nonattainment Area Air Pollution Mitigation Enterprise",
+          "scale": "Up to 18 miles and 74 stations; $50 million plus $2.7 million a year for maintenance",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Planetizen — news summary",
+              "url": "https://www.planetizen.com/news/2026/10/138756-one-denvers-busiest-corridors-gain-brt",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30",
+              "note": "Blocks automated checks; loads normally in a browser."
+            },
+            {
+              "label": "Transportation Today News — original article",
+              "url": "https://transportationtodaynews.com/news/39099-colorado-approves-funding-for-denver-bus-rapid-transit-project/",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "Planetizen"
+        }
+      ]
+    },
+    {
+      "id": "housing",
+      "label": "Housing",
+      "count": 4,
+      "projects": [
+        {
+          "id": "rotiers-brussels",
+          "title": "Rotiers – Renovation of 46 housing units",
+          "themes": [
+            "housing",
+            "reuse"
+          ],
+          "location": "Brussels, Belgium (edge of the Sonian Forest)",
+          "year": "2025",
+          "designers": "MULTIPLE Architecture & Urbanism; architecture team: FP architecture; structural engineering: GEI",
+          "scale": "3,916 m²; 46 housing units in a 1960s social housing building",
+          "coordinates": {
+            "lat": 50.8477029,
+            "lng": 4.3572001,
+            "source": "ArchDaily map pin. It may mark the city rather than the exact site."
+          },
+          "links": [
+            {
+              "label": "ArchDaily — project page",
+              "url": "https://www.archdaily.com/1187565/rotiers-renovation-of-46-housing-units-in-brussels-multiple-architecture-and-urbanism",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "ArchDaily"
+        },
+        {
+          "id": "noveo-bordeaux",
+          "title": "Novéo",
+          "themes": [
+            "housing"
+          ],
+          "location": "Bassins à Flot mixed-use development zone (ZAC), Bordeaux, France",
+          "year": "2026",
+          "designers": "Taillandier Architectes Associés (lead architect: Marinell Van Wyk; TAA Bordeaux); architecture office: Lanoire & Courrian",
+          "scale": "13,688 m²; 117 housing units (21 affordable homeownership, 37 social rental) in four buildings, a serviced residence and a 128-space shared car park",
+          "coordinates": {
+            "lat": 44.870762,
+            "lng": -0.554939,
+            "source": "ArchDaily map pin. It may mark the city rather than the exact site."
+          },
+          "links": [
+            {
+              "label": "ArchDaily — project page",
+              "url": "https://www.archdaily.com/1187563/noveo-taillandier-architectes-associes",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "ArchDaily"
+        },
+        {
+          "id": "loco-park-tbilisi",
+          "title": "Loco Park masterplan",
+          "themes": [
+            "housing",
+            "reuse",
+            "public-space"
+          ],
+          "location": "Former Soviet-era locomotive factory site, Tbilisi, Georgia",
+          "year": "Competition won; plans revealed October 2026 (proposed)",
+          "designers": "Stefano Boeri Architetti (founder Stefano Boeri; partner Pietro Chiodi)",
+          "scale": "Not stated by the source",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Dezeen — project article",
+              "url": "https://www.dezeen.com/2026/10/26/loco-park-masterplan-stefano-boeri/",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "Stefano Boeri Architetti — architect's website (homepage)",
+              "url": "https://www.stefanoboeriarchitetti.net/en/",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "Dezeen"
+        },
+        {
+          "id": "guildhouse-atlanta",
+          "title": "GuildHouse",
+          "themes": [
+            "housing"
+          ],
+          "location": "2051, 2085 and 2095 Marietta Boulevard, Bolton (Upper Westside), Atlanta, Georgia, USA",
+          "year": "Proposed: financing targeted to close Q4 2026, then about two years of construction",
+          "designers": "Vida Companies (developer); Geheber Lewis Associates (architecture); Dix Hite (landscape); Krywicki (interior design); Kimley-Horn (civil engineering)",
+          "scale": "6.68 acres; about 310 apartments and 39 rental townhomes; 7,200 sq ft retail and coworking; $107.6 million; 15% workforce housing",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Urbanize Atlanta — news article",
+              "url": "https://atlanta.urbanize.city/post/guildhouse-uppper-westside-proposal-scores-develop-fulton-backing",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "Vida Companies — developer's website (homepage)",
+              "url": "https://www.vidacompanies.com/",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "Urbanize Atlanta"
+        }
+      ]
+    },
+    {
+      "id": "public-space",
+      "label": "Public space",
+      "count": 3,
+      "projects": [
+        {
+          "id": "photo-studio-hiroshima",
+          "title": "Photography Studio as Local Infrastructure",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Hiroshima, Japan",
+          "year": "2025",
+          "designers": "ArchTank (lead architect: Yasumasa Hayashi; architect: Nagi Kumagai); construction: Shinwa Kenko",
+          "scale": "269 m²; a flood-damaged neighbourhood photo studio rebuilt with a café, observatory and retail",
+          "coordinates": {
+            "lat": 34.3852894,
+            "lng": 132.4553055,
+            "source": "ArchDaily map pin. It may mark the city rather than the exact site."
+          },
+          "links": [
+            {
+              "label": "ArchDaily — project page",
+              "url": "https://www.archdaily.com/1186440/photography-studio-as-local-infrastructure-archtank",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "ArchDaily"
+        },
+        {
+          "id": "oxford-street-london",
+          "title": "Oxford Street pedestrianisation",
+          "themes": [
+            "public-space",
+            "mobility"
+          ],
+          "location": "Oxford Street, City of Westminster, London, UK (first phase: Orchard Street to Great Portland Street)",
+          "year": "First phase opened 26 October 2026; permanent scheme expected to start construction in 2027 and finish in 2028",
+          "designers": "East (lead) with Gehl, Publica, J&L Gibbons, Etude and NRP; Hawkins\\Brown (long-term vision for the whole street); overseen by the Oxford Street Development Corporation (Mayor of London)",
+          "scale": "Almost 1 km traffic-free in the first phase, of a street about 2 km long; two new squares planned near Holles Street and Duke Street",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "ArchDaily — news article",
+              "url": "https://www.archdaily.com/1187796/londons-oxford-street-opens-its-first-traffic-free-phase",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "Dezeen — news article",
+              "url": "https://www.dezeen.com/2026/10/27/photos-walkable-oxford-street-pedestrianisation-begins/",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "East — designer's website (homepage)",
+              "url": "https://www.east.uk.com/",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "ArchDaily"
+        },
+        {
+          "id": "essen-central-library",
+          "title": "Essen Central Library",
+          "themes": [
+            "public-space",
+            "reuse"
+          ],
+          "location": "Boeckerhaus (former department store), Kennedyplatz, Essen, Germany",
+          "year": "Opened October 2026",
+          "designers": "MVRDV with Meyer Architekten; interiors with Includi",
+          "scale": "11,000 m² across six storeys",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Dezeen — project article",
+              "url": "https://www.dezeen.com/2026/10/27/mvrdv-essen-central-library/",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "MVRDV — architect's website (homepage)",
+              "url": "https://www.mvrdv.com/",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "Meyer Architekten — architect's website (homepage)",
+              "url": "https://www.meyer-architekten.de/",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "Includi — interior collaborator's website (homepage)",
+              "url": "https://www.includi.com/",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "Dezeen"
+        }
+      ]
+    },
+    {
+      "id": "landscape",
+      "label": "Landscape & water",
+      "count": 2,
+      "projects": [
+        {
+          "id": "observatory-toon",
+          "title": "Observatory, Landscapes of Waste",
+          "themes": [
+            "landscape",
+            "reuse"
+          ],
+          "location": "Oono Associates recycling complex, Toon, Ehime Prefecture, Shikoku, Japan",
+          "year": "2026 (Setouchi Art and Industry 2026, 3–31 October)",
+          "designers": "Ryue Nishizawa (observatory); Kazuyo Sejima (supervision); Shingo Masuda + Katsuhisa Otsubo (plaza and bus stop); Suzuko Yamada (bus and visitor wear)",
+          "scale": "Cone 33 m in diameter and 4 m high, overlooking a landfill basin",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Dezeen — project article",
+              "url": "https://www.dezeen.com/2026/10/28/ryue-nishizawa-viewpoint-setouchi-art-industry/",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "Setouchi Art and Industry — festival website",
+              "url": "https://www.sai-art.jp/en",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "Dezeen"
+        },
+        {
+          "id": "jewel-streets-nyc",
+          "title": "Jewel Streets Neighborhood Plan",
+          "themes": [
+            "landscape",
+            "housing"
+          ],
+          "location": "Jewel Streets, straddling East New York, Brooklyn and Lindenwood, Queens, New York City, USA",
+          "year": "Plan released October 2025; public review of rezoning and drainage plan expected to begin early 2028",
+          "designers": "NYC Department of Housing Preservation and Development (HPD) with the Department of Environmental Protection (DEP) and the Mayor's Office of Climate & Environmental Justice; community partners: Justice for the Jewel Streets Coalition (East New York Community Land Trust) and Cypress Hills Local Development Corporation",
+          "scale": "12-block neighbourhood, including a 17-acre City-owned site; nearly $150 million in proposed infrastructure upgrades (per Urban Omnibus)",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Urban Omnibus — “What Water Wants”",
+              "url": "https://urbanomnibus.net/2026/07/what-water-wants-2/",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "NYC HPD — Jewel Streets Neighborhood Plan",
+              "url": "https://www.nyc.gov/site/hpd/services-and-information/jewel-streets-neighborhood-plan.page",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "NYC HPD — Jewel Streets Neighborhood Plan (PDF)",
+              "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/services/jewel-streets-neighborhood-plan.pdf",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30",
+              "note": "Large file (about 197 MB)."
+            },
+            {
+              "label": "NYC Housing Recovery — Resilient Acquisitions",
+              "url": "https://www.nyc.gov/site/housingrecovery/preparedness/resilient-acquisitions.page",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "NYC Mayor's Office of Climate & Environmental Justice — Rainproof NYC",
+              "url": "https://www.nyc.gov/content/climate/pages/reports-and-publications/rainproof-nyc",
+              "kind": "primary",
+              "status": "broken",
+              "checked": "2026-10-30",
+              "note": "Cited by Urban Omnibus. Now shows only the office's homepage, not the Rainproof NYC report.",
+              "replacement": {
+                "label": "NYC HPD — Jewel Streets Neighborhood Plan (PDF)",
+                "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/services/jewel-streets-neighborhood-plan.pdf",
+                "status": "working"
+              }
+            }
+          ],
+          "foundVia": "Urban Omnibus"
+        }
+      ]
+    },
+    {
+      "id": "reuse",
+      "label": "Adaptive reuse",
+      "count": 2,
+      "projects": [
+        {
+          "id": "ms-collection-arouca",
+          "title": "Hotel MS Collection Arouca",
+          "themes": [
+            "reuse"
+          ],
+          "location": "Former Monastery of Santa Maria de Arouca, Arouca, Portugal",
+          "year": "2025",
+          "designers": "MiMool Arquitectura & Design de Interiores (lead architects: Fábio Milhazes, Rui Loureiro, Ana Ferreira, Joana Monteiro)",
+          "scale": "6,698 m²; part of a monastic complex classified as a National Monument since 1910, converted into a five-star hotel",
+          "coordinates": {
+            "lat": 40.9312766,
+            "lng": -8.2377049,
+            "source": "ArchDaily map pin. It may mark the city rather than the exact site."
+          },
+          "links": [
+            {
+              "label": "ArchDaily — project page",
+              "url": "https://www.archdaily.com/1187879/hotel-ms-collection-arouca-mimool-arquitectura-and-design-de-interiores",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "ArchDaily"
+        },
+        {
+          "id": "grove-theatre-atlanta",
+          "title": "Grove Theatre revival",
+          "themes": [
+            "reuse",
+            "public-space"
+          ],
+          "location": "1576 Donald Lee Hollowell Parkway NW, Grove Park, Atlanta, Georgia, USA",
+          "year": "Theatre built circa 1941; groundbreaking scheduled 4 November 2026; completion expected Q4 2027",
+          "designers": "Not named by the source; owner: Grove Park Foundation",
+          "scale": "10,400 sq ft of leasable space; $5.5 million renovation",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Urbanize Atlanta — news article",
+              "url": "https://atlanta.urbanize.city/post/grove-theatre-historic-1940s-atl-movie-house-mixed-use-revival-go",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "Grove Park Foundation — economic development",
+              "url": "https://groveparkfoundation.org/economic-development/",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30",
+              "note": "Owner's page. It does not mention the theatre project itself."
+            }
+          ],
+          "foundVia": "Urbanize Atlanta"
+        }
+      ]
+    },
+    {
+      "id": "regional",
+      "label": "Regional planning",
+      "count": 0,
+      "projects": []
+    }
+  ]
+}

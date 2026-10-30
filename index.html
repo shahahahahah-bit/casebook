@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d3560;
+    --bg-deep: #0a2a4d;
+    --panel: rgba(9, 36, 66, 0.82);
+    --ink: #e4f0ff;
+    --ink-soft: #a9c4e4;
+    --ink-faint: #6f93bd;
+    --line: rgba(196, 222, 255, 0.28);
+    --line-strong: rgba(214, 233, 255, 0.7);
+    --grid-minor: rgba(160, 200, 245, 0.07);
+    --grid-major: rgba(160, 200, 245, 0.14);
+    --accent: #ffd36a;
+    --danger: #ff9b8a;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  }
+  :root[data-theme="vellum"] {
+    --bg: #f2efe6;
+    --bg-deep: #e8e3d6;
+    --panel: rgba(247, 244, 236, 0.92);
+    --ink: #17365f;
+    --ink-soft: #3d5c86;
+    --ink-faint: #7d90ab;
+    --line: rgba(23, 54, 95, 0.22);
+    --line-strong: rgba(23, 54, 95, 0.65);
+    --grid-minor: rgba(23, 54, 95, 0.045);
+    --grid-major: rgba(23, 54, 95, 0.09);
+    --accent: #c8452c;
+    --danger: #b3321c;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(var(--grid-major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(var(--grid-minor) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    min-height: 100vh;
+    transition: background-color .3s, color .3s;
+  }
+  ::selection { background: var(--accent); color: var(--bg-deep); }
+  a { color: inherit; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+
+  .sheet {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 28px 24px 80px;
+  }
+  .frame {
+    border: 1px solid var(--line-strong);
+    outline: 1px solid var(--line);
+    outline-offset: 6px;
+    position: relative;
+  }
+
+  /* ---------- Title block ---------- */
+  .masthead {
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 380px);
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .masthead-title {
+    padding: 34px 32px 30px;
+    border-right: 1px solid var(--line-strong);
+    position: relative;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(54px, 9vw, 112px);
+    line-height: .86;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    margin: 14px 0 16px;
+  }
+  h1 span { color: var(--accent); }
+  .lede {
+    max-width: 46ch;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .north {
+    position: absolute;
+    right: 28px;
+    top: 28px;
+    width: 54px;
+    height: 54px;
+    color: var(--ink-soft);
+  }
+  .titleblock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .tb-cell {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    min-width: 0;
+  }
+  .tb-cell:nth-child(2n) { border-right: 0; }
+  .tb-cell.wide { grid-column: 1 / -1; border-right: 0; }
+  .tb-cell:last-child, .tb-cell.last { border-bottom: 0; }
+  .tb-label {
+    display: block;
+    font-size: 9.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2px;
+  }
+  .tb-value { font-size: 13px; overflow-wrap: anywhere; }
+  .tb-value.big {
+    font-family: var(--display);
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: .02em;
+  }
+
+  /* ---------- Toolbar ---------- */
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line-strong);
+    background: color-mix(in srgb, var(--bg-deep) 55%, transparent);
+  }
+  .search {
+    flex: 1 1 220px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    padding: 0 10px;
+    height: 36px;
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+  }
+  .search:focus-within { border-color: var(--line-strong); }
+  .search svg { flex: none; color: var(--ink-faint); }
+  .search input {
+    border: 0;
+    background: none;
+    outline: none;
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .search input::placeholder { color: var(--ink-faint); }
+  kbd {
+    font-family: var(--mono);
+    font-size: 10px;
+    border: 1px solid var(--line);
+    padding: 1px 5px;
+    color: var(--ink-faint);
+  }
+  .btn {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .btn:hover { background: var(--ink); color: var(--bg-deep); }
+  .btn.primary { background: var(--accent); color: var(--bg-deep); border-color: var(--accent); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.ghost { border-color: var(--line); color: var(--ink-soft); }
+  .btn.ghost:hover { color: var(--bg-deep); }
+  .btn.danger { border-color: var(--danger); color: var(--danger); }
+  .btn.danger:hover { background: var(--danger); color: var(--bg-deep); }
+  .btn.small { height: 28px; padding: 0 10px; font-size: 11px; }
+  select.btn { appearance: none; padding-right: 28px; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 15px) 15px, calc(100% - 10px) 15px; background-size: 5px 5px; background-repeat: no-repeat; }
+  select.btn:hover { background-color: var(--ink); }
+  select.btn option { color: #111; background: #fff; }
+  .toolbar-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line-strong);
+    align-items: center;
+  }
+  .filters .eyebrow { margin-right: 6px; }
+  .chip {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px dashed var(--line);
+    background: none;
+    cursor: pointer;
+    color: var(--ink-soft);
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .chip:hover { border-style: solid; color: var(--ink); }
+  .chip[aria-pressed="true"] {
+    border-style: solid;
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--bg-deep);
+  }
+  .chip .count { opacity: .6; }
+
+  /* ---------- Cards ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 0;
+  }
+  .card {
+    position: relative;
+    text-align: left;
+    background: none;
+    border: 0;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 20px 18px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 330px;
+    transition: background .2s;
+  }
+  .card:hover, .card:focus-visible {
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
+    outline: none;
+  }
+  .card::before, .card::after {
+    content: "";
+    position: absolute;
+    width: 14px; height: 14px;
+    border-color: var(--accent);
+    border-style: solid;
+    opacity: 0;
+    transition: opacity .2s, transform .2s;
+  }
+  .card::before { top: 8px; left: 8px; border-width: 1px 0 0 1px; transform: translate(4px, 4px); }
+  .card::after { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; transform: translate(-4px, -4px); }
+  .card:hover::before, .card:hover::after,
+  .card:focus-visible::before, .card:focus-visible::after { opacity: 1; transform: none; }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: .06em;
+  }
+  .card-code { color: var(--ink-soft); }
+  .glyph {
+    height: 108px;
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    color: var(--ink-soft);
+    position: relative;
+    background:
+      linear-gradient(var(--grid-minor) 1px, transparent 1px) 0 0 / 12px 12px,
+      linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px) 0 0 / 12px 12px;
+    transition: color .2s;
+  }
+  .card:hover .glyph { color: var(--ink); }
+  .glyph svg { width: 70%; height: 82%; overflow: visible; }
+  .glyph-label {
+    position: absolute;
+    left: 6px; bottom: 4px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .card h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    margin: 4px 0 0;
+  }
+  .card-place {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .card-brief {
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-foot {
+    margin-top: auto;
+    display: flex;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: 1px dashed var(--line);
+    padding-top: 10px;
+  }
+  .empty {
+    grid-column: 1 / -1;
+    padding: 70px 20px;
+    text-align: center;
+    font-family: var(--mono);
+    color: var(--ink-soft);
+  }
+
+  .legend {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    padding: 12px 20px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .scalebar { display: inline-flex; align-items: center; gap: 8px; }
+  .scalebar i {
+    display: inline-block; width: 100px; height: 6px;
+    border: 1px solid var(--ink-faint);
+    background: linear-gradient(90deg, var(--ink-faint) 25%, transparent 25% 50%, var(--ink-faint) 50% 75%, transparent 75%);
+  }
+
+  /* ---------- Dialog ---------- */
+  dialog {
+    width: min(920px, calc(100vw - 32px));
+    max-height: calc(100vh - 48px);
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    background: var(--bg);
+    color: var(--ink);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+  }
+  dialog::backdrop { background: rgba(4, 18, 36, .6); backdrop-filter: blur(3px); }
+  :root[data-theme="vellum"] dialog::backdrop { background: rgba(40, 46, 60, .35); }
+  dialog[open] { animation: rise .22s ease-out; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+  .dlg-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 26px 18px;
+    border-bottom: 1px solid var(--line-strong);
+    background-image:
+      linear-gradient(var(--grid-minor) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .dlg-head h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: .92;
+    text-transform: uppercase;
+    margin: 6px 0 6px;
+  }
+  .dlg-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .close-x { width: 36px; padding: 0; justify-content: center; font-size: 18px; }
+  .dlg-body {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+  }
+  .dlg-col { padding: 22px 26px; min-width: 0; }
+  .dlg-col + .dlg-col { border-left: 1px solid var(--line); }
+  .section-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+    margin: 0 0 12px;
+  }
+  .facts { margin: 0 0 24px; }
+  .facts div {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .facts dt {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+  }
+  .facts dd { margin: 0; font-size: 14px; overflow-wrap: anywhere; }
+  .facts .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    color: var(--ink-soft);
+  }
+  .dlg-glyph { height: 150px; margin-bottom: 20px; }
+  .links { list-style: none; padding: 0; margin: 0 0 12px; }
+  .links li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .links .idx { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); flex: none; }
+  .links a {
+    flex: 1;
+    min-width: 0;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .links a:hover .link-label { text-decoration: underline; text-underline-offset: 3px; }
+  .link-host { display: block; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
+  .icon-btn {
+    border: 0; background: none; cursor: pointer;
+    color: var(--ink-faint); font-family: var(--mono); font-size: 14px;
+    padding: 4px 6px;
+  }
+  .icon-btn:hover { color: var(--danger); }
+  .add-link { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 8px; }
+  .field {
+    height: 34px;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg-deep) 60%, transparent);
+    padding: 0 10px;
+    font-size: 13px;
+    outline: none;
+    min-width: 0;
+  }
+  .field:focus { border-color: var(--line-strong); }
+  .field::placeholder { color: var(--ink-faint); }
+  textarea.field { height: auto; padding: 8px 10px; resize: vertical; }
+
+  /* Edit form */
+  .form { padding: 22px 26px 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+  .form label { display: grid; gap: 5px; }
+  .form label > span, .form fieldset legend {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .form .full { grid-column: 1 / -1; }
+  .form fieldset { border: 0; padding: 0; margin: 0; }
+  .theme-picks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .theme-picks input { position: absolute; opacity: 0; pointer-events: none; }
+  .theme-picks input:checked + .chip { border-style: solid; border-color: var(--ink); background: var(--ink); color: var(--bg-deep); }
+  .theme-picks input:focus-visible + .chip { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .form-foot { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+  .req { color: var(--accent); }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 24px;
+    transform: translate(-50%, 20px);
+    background: var(--ink); color: var(--bg-deep);
+    font-family: var(--mono); font-size: 12px; letter-spacing: .06em;
+    padding: 10px 16px; opacity: 0; pointer-events: none;
+    transition: opacity .2s, transform .2s; z-index: 10;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 820px) {
+    .masthead { grid-template-columns: 1fr; }
+    .masthead-title { border-right: 0; border-bottom: 1px solid var(--line-strong); }
+    .dlg-body { grid-template-columns: 1fr; }
+    .dlg-col + .dlg-col { border-left: 0; border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 560px) {
+    .sheet { padding: 16px 16px 60px; }
+    .frame { outline-offset: 3px; }
+    .masthead-title { padding: 26px 18px 22px; }
+    .north { width: 40px; height: 40px; right: 16px; top: 18px; }
+    .toolbar, .filters { padding-left: 14px; padding-right: 14px; }
+    .card { border-right: 0; min-height: 0; }
+    .form { grid-template-columns: 1fr; padding: 18px; }
+    .dlg-head, .dlg-col { padding-left: 18px; padding-right: 18px; }
+    .add-link { grid-template-columns: 1fr; }
+    dialog { width: calc(100vw - 16px); max-height: calc(100vh - 16px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="frame">
+    <header class="masthead">
+      <div class="masthead-title">
+        <svg class="north" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+          <circle cx="30" cy="30" r="22"/>
+          <circle cx="30" cy="30" r="2"/>
+          <path d="M30 6 L36 32 L30 28 L24 32 Z" fill="currentColor" fill-opacity=".25"/>
+          <path d="M30 54 V48 M6 30 h6 M54 30 h-6"/>
+          <text x="30" y="4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="currentColor" stroke="none">N</text>
+        </svg>
+        <div class="eyebrow">A personal archive · urbanism &amp; architecture</div>
+        <h1>Case<span>/</span>book</h1>
+        <p class="lede">Places, plans and buildings worth coming back to. Open a sheet to read the facts and follow the sources.</p>
+      </div>
+      <div class="titleblock" aria-label="Title block">
+        <div class="tb-cell"><span class="tb-label">Entries</span><span class="tb-value big" id="tb-count">00</span></div>
+        <div class="tb-cell"><span class="tb-label">Sources</span><span class="tb-value big" id="tb-sources">00</span></div>
+        <div class="tb-cell"><span class="tb-label">Scale</span><span class="tb-value">N.T.S.</span></div>
+        <div class="tb-cell"><span class="tb-label">Sheet</span><span class="tb-value">01 of 01</span></div>
+        <div class="tb-cell wide"><span class="tb-label">Last revision</span><span class="tb-value" id="tb-rev">—</span></div>
+        <div class="tb-cell wide last">
+          <span class="tb-label">Drawing set</span>
+          <span class="toolbar-group" style="margin-top:4px">
+            <button class="btn small ghost" id="theme-toggle" type="button">Vellum</button>
+            <button class="btn small ghost" id="export-btn" type="button">Export</button>
+            <button class="btn small ghost" id="import-btn" type="button">Import</button>
+            <input type="file" id="import-file" accept="application/json,.json" hidden>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <label class="search">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg>
+        <span class="sr-only">Search</span>
+        <input id="search" type="search" placeholder="Search places, people, sources…" autocomplete="off">
+        <kbd>/</kbd>
+      </label>
+      <select class="btn ghost" id="sort" aria-label="Sort">
+        <option value="code">Sort · Sheet no.</option>
+        <option value="year">Sort · Year</option>
+        <option value="title">Sort · A–Z</option>
+        <option value="updated">Sort · Recently edited</option>
+      </select>
+      <button class="btn primary" id="new-btn" type="button">+ New case <kbd style="border-color:currentColor;color:inherit">N</kbd></button>
+    </div>
+
+    <nav class="filters" id="filters" aria-label="Filter by theme"></nav>
+
+    <main class="grid" id="grid" aria-live="polite"></main>
+
+    <footer class="legend">
+      <span class="scalebar"><i></i> 0 — 100 — 200 m</span>
+      <span>Saved in this browser · Export to keep a backup</span>
+    </footer>
+  </div>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlg-title"></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+  const KEY = "casebook.v1";
+  const THEME_KEY = "casebook.theme";
+
+  const THEMES = {
+    "mobility":     "Mobility",
+    "housing":      "Housing",
+    "public-space": "Public space",
+    "landscape":    "Landscape & water",
+    "reuse":        "Adaptive reuse",
+    "regional":     "Regional planning",
+  };
+
+  // Line drawings, one per primary theme. Drawn on a 120 × 80 sheet.
+  const GLYPHS = {
+    "mobility": `
+      <path d="M4 66 C 30 66, 40 20, 70 22 S 108 40, 116 14"/>
+      <path d="M4 58 C 28 58, 36 12, 70 14 S 104 32, 116 6" stroke-dasharray="2 3"/>
+      ${[[18,62],[46,36],[72,18],[100,28]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3.2" fill="var(--bg)"/>`).join("")}
+      <path d="M4 74 H116" stroke-opacity=".4"/>
+      <path d="M4 72 v4 M60 72 v4 M116 72 v4" stroke-opacity=".4"/>`,
+    "housing": `
+      <rect x="10" y="44" width="22" height="26"/><rect x="32" y="34" width="22" height="36"/>
+      <rect x="54" y="40" width="22" height="30"/><rect x="76" y="26" width="22" height="44"/>
+      <rect x="98" y="48" width="14" height="22"/>
+      <path d="M32 34 L43 24 L54 34 M76 26 L87 16 L98 26" />
+      <path d="M16 52 h10 M38 44 h10 M38 54 h10 M60 50 h10 M82 36 h10 M82 46 h10 M82 56 h10" stroke-opacity=".55"/>
+      <path d="M4 70 H116"/>`,
+    "public-space": `
+      <rect x="20" y="8" width="80" height="64"/>
+      <rect x="34" y="20" width="52" height="40" stroke-dasharray="3 3"/>
+      <path d="M20 8 L100 72 M100 8 L20 72" stroke-opacity=".45"/>
+      <circle cx="60" cy="40" r="7"/>
+      ${[28,92].flatMap(x=>[16,40,64].map(y=>`<circle cx="${x}" cy="${y}" r="2.4"/>`)).join("")}
+      <path d="M4 40 H20 M100 40 H116 M60 0 V8 M60 72 V80" stroke-opacity=".5"/>`,
+    "landscape": `
+      <path d="M8 46 C 20 20, 54 10, 76 18 S 116 36, 108 54 S 70 76, 40 70 S 2 62, 8 46 Z"/>
+      <path d="M22 46 C 30 30, 54 22, 72 28 S 100 40, 94 52 S 66 66, 44 62 S 18 56, 22 46 Z"/>
+      <path d="M38 46 C 42 38, 56 32, 68 36 S 82 44, 78 50 S 62 58, 50 56 S 36 52, 38 46 Z"/>
+      <path d="M54 46 C 56 42, 62 40, 66 42 S 68 48, 64 49 S 54 50, 54 46 Z"/>
+      <path d="M0 76 C 20 70, 40 80, 60 74 S 100 70, 120 76" stroke-dasharray="4 3"/>`,
+    "reuse": `
+      <path d="M4 30 H116 M4 36 H116"/>
+      ${[14,38,62,86,110].map(x=>`<path d="M${x} 36 V74 M${x-3} 74 h6"/>`).join("")}
+      <path d="M4 30 L4 24 M116 30 L116 24" stroke-opacity=".5"/>
+      ${[20,32,50,70,78,96].map((x,i)=>`<path d="M${x} 30 c -2 -${6+i%3*3}, 2 -${6+i%3*3}, 0 -${10+i%3*4} M${x} 30 c 3 -4, 5 -6, 6 -${4+i%2*3}"/>`).join("")}
+      <path d="M4 78 H116" stroke-opacity=".4"/>`,
+    "regional": `
+      <circle cx="30" cy="54" r="10"/>
+      <circle cx="30" cy="54" r="3" fill="currentColor"/>
+      <path d="M38 48 L112 10 M40 52 L116 36 M38 60 L110 70 M24 46 L12 6 M36 46 L62 4"/>
+      <path d="M36 44 L104 4 L116 14 L42 50" fill="currentColor" fill-opacity=".08" stroke-dasharray="2 3"/>
+      <path d="M40 58 L116 64 L104 78 L36 64" fill="currentColor" fill-opacity=".08" stroke-dasharray="2 3"/>
+      <path d="M0 74 C 10 72, 14 78, 22 76" stroke-opacity=".5"/>`,
+  };
+  const glyphSvg = (theme) =>
+    `<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLYPHS[theme] || GLYPHS["public-space"]}</svg>`;
+
+  const src = (label, url) => ({ label, url });
+
+  const SEED = [
+    { title: "Superblocks", city: "Barcelona", country: "Spain", year: "2016–", designers: "Ajuntament de Barcelona; Salvador Rueda / BCNecologia", scale: "≈ 400 × 400 m per superblock (3 × 3 blocks)", coords: "41.39° N, 2.17° E", themes: ["public-space", "mobility"], brief: "Grouping nine Eixample blocks and pushing through-traffic to the perimeter turns interior streets into plazas, play space and shade.", links: [src("Ajuntament de Barcelona — Superilles", "https://ajuntament.barcelona.cat/superilles/en/")] },
+    { title: "The High Line", city: "New York", country: "USA", year: "2009–2014", designers: "James Corner Field Operations; Diller Scofidio + Renfro; Piet Oudolf", scale: "2.33 km elevated park", coords: "40.75° N, 74.00° W", themes: ["reuse", "public-space", "landscape"], brief: "A disused freight viaduct on Manhattan's West Side planted as a linear park, with Oudolf's self-seeding planting design.", links: [src("Friends of the High Line — History", "https://www.thehighline.org/history/"), src("Friends of the High Line", "https://www.thehighline.org/")] },
+    { title: "Vauban", city: "Freiburg im Breisgau", country: "Germany", year: "1998–2006", designers: "City of Freiburg; Forum Vauban; Baugruppen co-housing groups", scale: "≈ 38 ha, ≈ 5,500 residents", coords: "47.98° N, 7.83° E", themes: ["housing", "mobility"], brief: "A former barracks rebuilt as a car-reduced district of resident-led building groups, tram access and Passivhaus-standard homes.", links: [src("Vauban district website", "https://www.vauban.de/en/")] },
+    { title: "Cheonggyecheon", city: "Seoul", country: "South Korea", year: "2005", designers: "Seoul Metropolitan Government", scale: "10.9 km restored stream", coords: "37.57° N, 126.98° E", themes: ["landscape", "public-space", "mobility"], brief: "An elevated expressway was torn down and the buried stream beneath it brought back as a sunken public promenade.", links: [src("Seoul Facilities Corporation — Cheonggyecheon", "https://www.sisul.or.kr/open_content/cheonggye/")] },
+    { title: "Metrocable", city: "Medellín", country: "Colombia", year: "2004–", designers: "Metro de Medellín; Municipality of Medellín (social urbanism)", scale: "Line K ≈ 2 km, 4 stations", coords: "6.29° N, 75.54° W", themes: ["mobility", "public-space"], brief: "Cable-car lines linking hillside informal neighbourhoods to the metro, paired with library-parks and public works at each station.", links: [src("Metro de Medellín", "https://www.metrodemedellin.gov.co/")] },
+    { title: "The Sea Ranch", city: "Sonoma County, California", country: "USA", year: "1965–", designers: "Lawrence Halprin; MLTW (Moore Lyndon Turnbull Whitaker); Joseph Esherick", scale: "≈ 16 km of coastline", coords: "38.72° N, 123.45° W", themes: ["landscape", "housing"], brief: "A coastal community planned from wind, hedgerows and meadows, with timber buildings clustered to leave the land open.", links: [src("The Sea Ranch Association", "https://www.tsra.org/")] },
+    { title: "Aranya Housing", city: "Indore", country: "India", year: "1989", designers: "Balkrishna Doshi; Vastu-Shilpa Foundation", scale: "≈ 85 ha, ≈ 6,500 dwellings", coords: "22.75° N, 75.85° E", themes: ["housing"], brief: "Sites-and-services housing with plinths, service cores and a street hierarchy, built so families could extend their homes over time.", links: [src("Balkrishna Doshi Archives (Vastu-Shilpa Foundation)", "https://www.vastushilpa.org/")] },
+    { title: "Quinta Monroy", city: "Iquique", country: "Chile", year: "2004", designers: "Elemental (Alejandro Aravena)", scale: "93 families, ≈ 0.5 ha", coords: "20.21° S, 70.15° W", themes: ["housing"], brief: "\"Half a good house\": the state subsidy pays for the hard half, and families build the other half themselves inside the frame.", links: [src("ELEMENTAL — Quinta Monroy Housing Project", "https://www.elementalchile.cl/works/iquique-violeta-parra-ex-quinta-monroy")] },
+    { title: "Byker Wall", city: "Newcastle upon Tyne", country: "UK", year: "1969–1982", designers: "Ralph Erskine", scale: "≈ 620 homes in the Wall; ≈ 1,800 on the estate", coords: "54.98° N, 1.58° W", themes: ["housing", "landscape"], brief: "A long, colourful perimeter block shelters a low-rise estate designed together with the residents, with an on-site architect's office.", links: [src("Byker Community Trust", "https://bykercommunitytrust.org/")] },
+    { title: "Finger Plan", city: "Copenhagen", country: "Denmark", year: "1947", designers: "Regional Planning Office (Peter Bredsdorff, Steen Eiler Rasmussen)", scale: "Greater Copenhagen region", coords: "55.68° N, 12.57° E", themes: ["regional", "mobility", "landscape"], brief: "Growth along five rail \"fingers\" from the \"palm\" of the city, with green wedges kept open between them.", links: [src("Danish Agency for Planning — Fingerplanen", "https://www.plst.dk/landsplanlaegning/fingerplanen")] },
+    { title: "Curitiba BRT", city: "Curitiba", country: "Brazil", year: "1974–", designers: "Jaime Lerner; IPPUC", scale: "Citywide trunk network", coords: "25.43° S, 49.27° W", themes: ["mobility", "regional"], brief: "Dedicated busways with tube stations and level boarding, set out together with land-use rules along structural axes.", links: [src("URBS — Curitiba public transport", "https://www.urbs.curitiba.pr.gov.br/portal/"), src("IPPUC — Curitiba planning institute", "https://www.ippuc.org.br/")] },
+    { title: "Habitat 67", city: "Montréal", country: "Canada", year: "1967", designers: "Moshe Safdie", scale: "354 prefabricated modules", coords: "45.50° N, 73.54° W", themes: ["housing"], brief: "Stacked precast boxes give each apartment its own garden on the roof of the unit below: density with the qualities of a house.", links: [src("Habitat 67", "https://www.habitat67.com/"), src("Safdie Architects — Habitat 67", "https://www.safdiearchitects.com/projects/habitat-67")] },
+    // From casestudies.json: projects found on ArchDaily, Dezeen, Planetizen, Urbanize Atlanta and Urban Omnibus.
+    {"title": "Rotiers – Renovation of 46 housing units", "city": "Brussels", "country": "Belgium", "site": "Edge of the Sonian Forest", "year": "2025", "designers": "MULTIPLE Architecture & Urbanism; architecture team: FP architecture; structural engineering: GEI", "scale": "3,916 m²; 46 housing units in a 1960s social housing building", "coords": "50.85° N, 4.36° E", "themes": ["housing", "reuse"], "brief": "Renovation of a 1960s social housing building that gives it a renewed identity while keeping the qualities of its wooded setting.", "links": [{"label": "ArchDaily — project page", "url": "https://www.archdaily.com/1187565/rotiers-renovation-of-46-housing-units-in-brussels-multiple-architecture-and-urbanism"}]},
+    {"title": "Novéo", "city": "Bordeaux", "country": "France", "site": "Bassins à Flot mixed-use development zone (ZAC)", "year": "2026", "designers": "Taillandier Architectes Associés (lead architect: Marinell Van Wyk; TAA Bordeaux); architecture office: Lanoire & Courrian", "scale": "13,688 m²; 117 housing units (21 affordable homeownership, 37 social rental) in four buildings, a serviced residence and a 128-space shared car park", "coords": "44.87° N, 0.55° W", "themes": ["housing"], "brief": "Four buildings combining 117 homes, a serviced residence and a shared car park in Bordeaux's Bassins à Flot district.", "links": [{"label": "ArchDaily — project page", "url": "https://www.archdaily.com/1187563/noveo-taillandier-architectes-associes"}]},
+    {"title": "Hotel MS Collection Arouca", "city": "Arouca", "country": "Portugal", "site": "Former Monastery of Santa Maria de Arouca", "year": "2025", "designers": "MiMool Arquitectura & Design de Interiores (lead architects: Fábio Milhazes, Rui Loureiro, Ana Ferreira, Joana Monteiro)", "scale": "6,698 m²; part of a monastic complex classified as a National Monument since 1910, converted into a five-star hotel", "coords": "40.93° N, 8.24° W", "themes": ["reuse"], "brief": "Part of a monastery classified as a National Monument since 1910, rehabilitated as a five-star hotel.", "links": [{"label": "ArchDaily — project page", "url": "https://www.archdaily.com/1187879/hotel-ms-collection-arouca-mimool-arquitectura-and-design-de-interiores"}]},
+    {"title": "Photography Studio as Local Infrastructure", "city": "Hiroshima", "country": "Japan", "site": "", "year": "2025", "designers": "ArchTank (lead architect: Yasumasa Hayashi; architect: Nagi Kumagai); construction: Shinwa Kenko", "scale": "269 m²; a flood-damaged neighbourhood photo studio rebuilt with a café, observatory and retail", "coords": "34.39° N, 132.46° E", "themes": ["public-space"], "brief": "A flood-damaged neighbourhood photo studio rebuilt as a small civic space with a café, observatory and shop.", "links": [{"label": "ArchDaily — project page", "url": "https://www.archdaily.com/1186440/photography-studio-as-local-infrastructure-archtank"}]},
+    {"title": "Oxford Street pedestrianisation", "city": "London", "country": "UK", "site": "Oxford Street, City of Westminster (first phase: Orchard Street to Great Portland Street)", "year": "2026–2028", "designers": "East (lead) with Gehl, Publica, J&L Gibbons, Etude and NRP; Hawkins\\Brown (long-term vision for the whole street); overseen by the Oxford Street Development Corporation (Mayor of London)", "scale": "Almost 1 km traffic-free in the first phase, of a street about 2 km long; two new squares planned near Holles Street and Duke Street", "coords": "", "themes": ["public-space", "mobility"], "brief": "Almost a kilometre of Oxford Street is now traffic-free, as a trial phase before the permanent scheme is built.", "links": [{"label": "ArchDaily — news article", "url": "https://www.archdaily.com/1187796/londons-oxford-street-opens-its-first-traffic-free-phase"}, {"label": "Dezeen — news article", "url": "https://www.dezeen.com/2026/10/27/photos-walkable-oxford-street-pedestrianisation-begins/"}, {"label": "East — designer's website (homepage)", "url": "https://www.east.uk.com/"}]},
+    {"title": "Essen Central Library", "city": "Essen", "country": "Germany", "site": "Boeckerhaus (former department store), Kennedyplatz", "year": "2026", "designers": "MVRDV with Meyer Architekten; interiors with Includi", "scale": "11,000 m² across six storeys", "coords": "", "themes": ["public-space", "reuse"], "brief": "A six-storey former department store turned into a city library designed as a public \"living room\".", "links": [{"label": "Dezeen — project article", "url": "https://www.dezeen.com/2026/10/27/mvrdv-essen-central-library/"}, {"label": "MVRDV — architect's website (homepage)", "url": "https://www.mvrdv.com/"}, {"label": "Meyer Architekten — architect's website (homepage)", "url": "https://www.meyer-architekten.de/"}, {"label": "Includi — interior collaborator's website (homepage)", "url": "https://www.includi.com/"}]},
+    {"title": "Observatory, Landscapes of Waste", "city": "Toon, Ehime", "country": "Japan", "site": "Oono Associates recycling complex, Shikoku", "year": "2026", "designers": "Ryue Nishizawa (observatory); Kazuyo Sejima (supervision); Shingo Masuda + Katsuhisa Otsubo (plaza and bus stop); Suzuko Yamada (bus and visitor wear)", "scale": "Cone 33 m in diameter and 4 m high, overlooking a landfill basin", "coords": "", "themes": ["landscape", "reuse"], "brief": "A 33-metre orange cone overlooking a landfill basin, built for the Setouchi Art and Industry 2026 festival.", "links": [{"label": "Dezeen — project article", "url": "https://www.dezeen.com/2026/10/28/ryue-nishizawa-viewpoint-setouchi-art-industry/"}, {"label": "Setouchi Art and Industry — festival website", "url": "https://www.sai-art.jp/en"}]},
+    {"title": "Loco Park masterplan", "city": "Tbilisi", "country": "Georgia", "site": "Former Soviet-era locomotive factory site", "year": "2026 (proposed)", "designers": "Stefano Boeri Architetti (founder Stefano Boeri; partner Pietro Chiodi)", "scale": "Not stated by the source", "coords": "", "themes": ["housing", "reuse", "public-space"], "brief": "Competition-winning masterplan that renovates a locomotive factory and adds brick housing blocks, parks and public space.", "links": [{"label": "Dezeen — project article", "url": "https://www.dezeen.com/2026/10/26/loco-park-masterplan-stefano-boeri/"}, {"label": "Stefano Boeri Architetti — architect's website (homepage)", "url": "https://www.stefanoboeriarchitetti.net/en/"}]},
+    {"title": "Murphy Crossing MARTA infill station", "city": "Atlanta", "country": "USA", "site": "Murphy Crossing, Southwest Atlanta (Adair Park, West End and Oakland City)", "year": "2026– (in study)", "designers": "Atlanta Beltline Inc. (preliminary scoping study; principal engineer Shaun Green)", "scale": "20-acre Murphy Crossing site; 60-ft vertical gap between Beltline transit and MARTA rail; study costs about $800,000–$900,000", "coords": "", "themes": ["mobility"], "brief": "Five options for a new MARTA rail station that would give the Beltline its first direct connection to MARTA rail.", "links": [{"label": "Urbanize Atlanta — news article", "url": "https://atlanta.urbanize.city/post/marta-infill-station-beltline-murphy-crossing-reveals-5-options-connecting-trail-transit-rail"}, {"label": "Atlanta Beltline — Murphy Crossing infill station virtual open house", "url": "https://beltline.konveio.com/murphy-crossing-infill-station"}]},
+    {"title": "Atlanta Beltline Northwest Trail – Segment 2A", "city": "Atlanta", "country": "USA", "site": "Buckhead, from Bobby Jones Golf Course toward Peachtree Road", "year": "2026–2028", "designers": "Heath & Lineback (designers); PATH Foundation (program manager); Hasbun Construction (contractor); Atlanta Beltline Inc.", "scale": "0.3-mile segment of 14-ft-wide multi-use trail, with a pedestrian bridge and an elevated trail structure; the full Northwest Trail will be 4.3 miles", "coords": "", "themes": ["mobility", "public-space"], "brief": "A 0.3-mile trail segment with a pedestrian bridge and elevated section, linking the Beltline toward Peachtree Road job centres.", "links": [{"label": "Urbanize Atlanta — news article", "url": "https://atlanta.urbanize.city/post/atl-beltline-northwest-trail-section-officially-breaks-ground-peachtree-images"}]},
+    {"title": "Grove Theatre revival", "city": "Atlanta", "country": "USA", "site": "1576 Donald Lee Hollowell Parkway NW, Grove Park", "year": "c. 1941; 2026–2027", "designers": "Not named by the source; owner: Grove Park Foundation", "scale": "10,400 sq ft of leasable space; $5.5 million renovation", "coords": "", "themes": ["reuse", "public-space"], "brief": "A 1940s Westside movie house being renovated as a performing and cultural arts centre for Grove Park.", "links": [{"label": "Urbanize Atlanta — news article", "url": "https://atlanta.urbanize.city/post/grove-theatre-historic-1940s-atl-movie-house-mixed-use-revival-go"}, {"label": "Grove Park Foundation — economic development", "url": "https://groveparkfoundation.org/economic-development/"}]},
+    {"title": "GuildHouse", "city": "Atlanta", "country": "USA", "site": "2051, 2085 and 2095 Marietta Boulevard, Bolton (Upper Westside)", "year": "2026 (proposed)", "designers": "Vida Companies (developer); Geheber Lewis Associates (architecture); Dix Hite (landscape); Krywicki (interior design); Kimley-Horn (civil engineering)", "scale": "6.68 acres; about 310 apartments and 39 rental townhomes; 7,200 sq ft retail and coworking; $107.6 million; 15% workforce housing", "coords": "", "themes": ["housing"], "brief": "About 310 apartments, 39 townhomes and retail planned on former industrial lots, with 15% workforce housing.", "links": [{"label": "Urbanize Atlanta — news article", "url": "https://atlanta.urbanize.city/post/guildhouse-uppper-westside-proposal-scores-develop-fulton-backing"}, {"label": "Vida Companies — developer's website (homepage)", "url": "https://www.vidacompanies.com/"}]},
+    {"title": "Jewel Streets Neighborhood Plan", "city": "New York", "country": "USA", "site": "Jewel Streets, East New York, Brooklyn and Lindenwood, Queens", "year": "2025–", "designers": "NYC Department of Housing Preservation and Development (HPD) with the Department of Environmental Protection (DEP) and the Mayor's Office of Climate & Environmental Justice; community partners: Justice for the Jewel Streets Coalition (East New York Community Land Trust) and Cypress Hills Local Development Corporation", "scale": "12-block neighbourhood, including a 17-acre City-owned site; nearly $150 million in proposed infrastructure upgrades (per Urban Omnibus)", "coords": "", "themes": ["landscape", "housing"], "brief": "A City plan for a sunken, flood-prone 12-block neighbourhood: new drainage, rezoning, affordable housing and voluntary buyouts.", "links": [{"label": "Urban Omnibus — “What Water Wants”", "url": "https://urbanomnibus.net/2026/07/what-water-wants-2/"}, {"label": "NYC HPD — Jewel Streets Neighborhood Plan", "url": "https://www.nyc.gov/site/hpd/services-and-information/jewel-streets-neighborhood-plan.page"}, {"label": "NYC HPD — Jewel Streets Neighborhood Plan (PDF)", "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/services/jewel-streets-neighborhood-plan.pdf"}, {"label": "NYC Housing Recovery — Resilient Acquisitions", "url": "https://www.nyc.gov/site/housingrecovery/preparedness/resilient-acquisitions.page"}]},
+    {"title": "Federal Boulevard BRT", "city": "Denver", "country": "USA", "site": "Federal Boulevard", "year": "2026–2028", "designers": "Not named by the source; funded by Colorado's Nonattainment Area Air Pollution Mitigation Enterprise", "scale": "Up to 18 miles and 74 stations; $50 million plus $2.7 million a year for maintenance", "coords": "", "themes": ["mobility"], "brief": "Bus rapid transit with 74 stations along up to 18 miles of one of metro Denver's busiest transit corridors.", "links": [{"label": "Planetizen — news summary", "url": "https://www.planetizen.com/news/2026/10/138756-one-denvers-busiest-corridors-gain-brt"}, {"label": "Transportation Today News — original article", "url": "https://transportationtodaynews.com/news/39099-colorado-approves-funding-for-denver-bus-rapid-transit-project/"}]},
+  ];
+
+  // ---------- State ----------
+  const uid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
+  const now = () => new Date().toISOString();
+
+  function seedState() {
+    const t = now();
+    return {
+      nextNo: SEED.length + 1,
+      noWiki: true,
+      seedVersion: 2,
+      items: SEED.map((s, i) => ({ id: uid(), no: i + 1, updated: t, ...s })),
+    };
+  }
+  function load() {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (!raw) return null;
+      const data = JSON.parse(raw);
+      if (data && Array.isArray(data.items)) return data;
+    } catch (e) {}
+    return null;
+  }
+  let state = load() || seedState();
+
+  // One-time cleanup for copies saved before sources changed: drop Wikipedia
+  // links and add the official sources to the matching seeded sheets.
+  if (!state.noWiki) {
+    state.items.forEach(item => {
+      item.links = (item.links || []).filter(l => !/wikipedia\.org/i.test(l.url || ""));
+      const seed = SEED.find(s => s.title === item.title);
+      if (seed) seed.links.forEach(l => { if (!item.links.some(x => x.url === l.url)) item.links.push({ ...l }); });
+    });
+    state.noWiki = true;
+  }
+  // Add seeded sheets that a saved copy doesn't have yet (matched by title).
+  if ((state.seedVersion || 1) < 2) {
+    SEED.forEach(seed => {
+      if (state.items.some(i => i.title === seed.title)) return;
+      state.items.push({ id: uid(), no: state.nextNo++, updated: now(), ...seed, links: seed.links.map(l => ({ ...l })) });
+    });
+    state.seedVersion = 2;
+  }
+  let storageOk = true;
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); storageOk = true; }
+    catch (e) {
+      if (storageOk) toast("Couldn't save in this browser. Use Export to keep a copy.");
+      storageOk = false;
+    }
+  }
+  save();
+
+  const ui = { q: "", theme: null, sort: "code" };
+
+  // ---------- Helpers ----------
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const code = (n) => "CS-" + String(n).padStart(2, "0");
+  const firstYear = (y) => parseInt(String(y).match(/\d{3,4}/)?.[0] || "9999", 10);
+  const safeUrl = (u) => {
+    try { const url = new URL(u.trim()); return /^https?:$/.test(url.protocol) ? url.href : null; }
+    catch (e) { return null; }
+  };
+  const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } };
+  const fmtDate = (iso) => {
+    const d = new Date(iso);
+    return isNaN(d) ? "—" : d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }) + " · " + d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+  };
+  const byId = (id) => state.items.find(i => i.id === id);
+
+  let toastTimer;
+  function toast(msg) {
+    const t = $("#toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove("show"), 2400);
+  }
+
+  // ---------- Render ----------
+  function matches(item) {
+    if (ui.theme && !item.themes?.includes(ui.theme)) return false;
+    if (!ui.q) return true;
+    const hay = [item.title, item.city, item.country, item.site, item.year, item.designers, item.scale, item.brief,
+      ...(item.links || []).map(l => l.label), ...(item.themes || []).map(t => THEMES[t])].join(" ").toLowerCase();
+    return ui.q.toLowerCase().split(/\s+/).every(w => hay.includes(w));
+  }
+  function sorted(list) {
+    const l = [...list];
+    if (ui.sort === "year") l.sort((a, b) => firstYear(a.year) - firstYear(b.year));
+    else if (ui.sort === "title") l.sort((a, b) => a.title.localeCompare(b.title));
+    else if (ui.sort === "updated") l.sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
+    else l.sort((a, b) => a.no - b.no);
+    return l;
+  }
+
+  function renderFilters() {
+    const counts = {};
+    state.items.forEach(i => (i.themes || []).forEach(t => counts[t] = (counts[t] || 0) + 1));
+    $("#filters").innerHTML =
+      `<span class="eyebrow">Layers</span>` +
+      `<button class="chip" type="button" data-theme="" aria-pressed="${!ui.theme}">All <span class="count">${state.items.length}</span></button>` +
+      Object.entries(THEMES).map(([k, label]) =>
+        `<button class="chip" type="button" data-theme="${k}" aria-pressed="${ui.theme === k}">${esc(label)} <span class="count">${counts[k] || 0}</span></button>`
+      ).join("");
+  }
+
+  function renderGrid() {
+    const list = sorted(state.items.filter(matches));
+    $("#grid").innerHTML = list.length ? list.map(item => {
+      const primary = item.themes?.[0] || "public-space";
+      const n = (item.links || []).length;
+      return `
+      <button class="card" type="button" data-id="${item.id}">
+        <div class="card-top"><span class="card-code">${code(item.no)}</span><span>${esc(item.coords || "")}</span></div>
+        <div class="glyph">${glyphSvg(primary)}<span class="glyph-label">${esc(THEMES[primary] || "")}</span></div>
+        <h3>${esc(item.title)}</h3>
+        <div class="card-place">${esc([item.city, item.country].filter(Boolean).join(", "))}${item.year ? " · " + esc(item.year) : ""}</div>
+        ${item.brief ? `<p class="card-brief">${esc(item.brief)}</p>` : ""}
+        <div class="card-foot">
+          <span>${n} ${n === 1 ? "source" : "sources"}</span>
+          <span>${(item.themes || []).length} ${(item.themes || []).length === 1 ? "layer" : "layers"}</span>
+        </div>
+      </button>`;
+    }).join("") : `<div class="empty">No sheets match${ui.q ? ` “${esc(ui.q)}”` : ""}${ui.theme ? ` in ${esc(THEMES[ui.theme])}` : ""}.</div>`;
+  }
+
+  function renderTitleBlock() {
+    $("#tb-count").textContent = String(state.items.length).padStart(2, "0");
+    $("#tb-sources").textContent = String(state.items.reduce((n, i) => n + (i.links || []).length, 0)).padStart(2, "0");
+    const latest = state.items.map(i => i.updated).filter(Boolean).sort().pop();
+    $("#tb-rev").textContent = latest ? fmtDate(latest) : "—";
+  }
+
+  function render() { renderFilters(); renderGrid(); renderTitleBlock(); }
+
+  // ---------- Detail sheet ----------
+  const dlg = $("#dlg");
+  let currentId = null;
+
+  function openSheet(id) {
+    const item = byId(id);
+    if (!item) return;
+    currentId = id;
+    const primary = item.themes?.[0] || "public-space";
+    const fact = (k, v) => v ? `<div><dt>${k}</dt><dd>${v}</dd></div>` : "";
+    dlg.innerHTML = `
+      <div class="dlg-head">
+        <div>
+          <div class="eyebrow">${code(item.no)} · ${esc([item.city, item.country].filter(Boolean).join(", "))}</div>
+          <h2 id="dlg-title">${esc(item.title)}</h2>
+          ${item.brief ? `<p class="lede" style="max-width:60ch">${esc(item.brief)}</p>` : ""}
+        </div>
+        <div class="dlg-actions">
+          <button class="btn small ghost" type="button" data-act="edit">Edit</button>
+          <button class="btn small ghost close-x" type="button" data-act="close" aria-label="Close">×</button>
+        </div>
+      </div>
+      <div class="dlg-body">
+        <div class="dlg-col">
+          <div class="glyph dlg-glyph">${glyphSvg(primary)}<span class="glyph-label">${esc(THEMES[primary] || "")}</span></div>
+          <h4 class="section-title">Core facts</h4>
+          <dl class="facts">
+            ${fact("Location", esc([item.city, item.country].filter(Boolean).join(", ")))}
+            ${fact("Site", esc(item.site))}
+            ${fact("Year", esc(item.year))}
+            ${fact("Designers", esc(item.designers))}
+            ${fact("Scale", esc(item.scale))}
+            ${fact("Coords", esc(item.coords))}
+            ${fact("Themes", item.themes?.length ? `<span class="tags">${item.themes.map(t => `<span class="tag">${esc(THEMES[t] || t)}</span>`).join("")}</span>` : "")}
+          </dl>
+        </div>
+        <div class="dlg-col">
+          <h4 class="section-title"><span>Links &amp; reading</span><span>${(item.links || []).length}</span></h4>
+          <ul class="links">
+            ${(item.links || []).map((l, i) => `
+              <li>
+                <span class="idx">${String(i + 1).padStart(2, "0")}</span>
+                <a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span class="link-label">${esc(l.label || host(l.url))}</span><span class="link-host">${esc(host(l.url))} ↗</span></a>
+                <button class="icon-btn" type="button" data-act="del-link" data-i="${i}" aria-label="Remove link">×</button>
+              </li>`).join("") || `<li style="color:var(--ink-faint);font-family:var(--mono);font-size:12px">No links yet.</li>`}
+          </ul>
+          <form class="add-link" id="add-link">
+            <input class="field" name="label" placeholder="Title (optional)" aria-label="Link title">
+            <input class="field" name="url" placeholder="https://…" aria-label="Link URL" required>
+            <button class="btn small" type="submit" style="height:34px">Add</button>
+          </form>
+        </div>
+      </div>`;
+    if (!dlg.open) dlg.showModal();
+    dlg.scrollTop = 0;
+
+    $("#add-link", dlg).addEventListener("submit", (e) => {
+      e.preventDefault();
+      const f = new FormData(e.target);
+      let raw = String(f.get("url") || "").trim();
+      if (raw && !/^[a-z]+:\/\//i.test(raw)) raw = "https://" + raw;
+      const url = safeUrl(raw);
+      if (!url) { toast("That doesn't look like a web address."); return; }
+      item.links = [...(item.links || []), { label: String(f.get("label") || "").trim(), url }];
+      item.updated = now();
+      save(); render();
+      openSheet(item.id);
+      $("#add-link input[name=url]", dlg)?.focus();
+    });
+  }
+
+  function openForm(id) {
+    const item = id ? byId(id) : null;
+    currentId = id || null;
+    const v = (k) => esc(item?.[k] || "");
+    dlg.innerHTML = `
+      <div class="dlg-head">
+        <div>
+          <div class="eyebrow">${item ? code(item.no) + " · Revise sheet" : code(state.nextNo) + " · New sheet"}</div>
+          <h2 id="dlg-title">${item ? esc(item.title) : "New case study"}</h2>
+        </div>
+        <div class="dlg-actions">
+          <button class="btn small ghost close-x" type="button" data-act="${item ? "back" : "close"}" aria-label="Close">×</button>
+        </div>
+      </div>
+      <form class="form" id="case-form">
+        <label class="full"><span>Title <b class="req">*</b></span><input class="field" name="title" required value="${v("title")}" placeholder="e.g. Superkilen"></label>
+        <label><span>City / place</span><input class="field" name="city" value="${v("city")}" placeholder="Copenhagen"></label>
+        <label><span>Country</span><input class="field" name="country" value="${v("country")}" placeholder="Denmark"></label>
+        <label class="full"><span>Site / address</span><input class="field" name="site" value="${v("site")}" placeholder="Nørrebro"></label>
+        <label><span>Year</span><input class="field" name="year" value="${v("year")}" placeholder="2012"></label>
+        <label><span>Coordinates</span><input class="field" name="coords" value="${v("coords")}" placeholder="55.70° N, 12.54° E"></label>
+        <label class="full"><span>Architects / designers / agencies</span><input class="field" name="designers" value="${v("designers")}" placeholder="BIG; Topotek 1; Superflex"></label>
+        <label class="full"><span>Scale</span><input class="field" name="scale" value="${v("scale")}" placeholder="750 m urban park, 3 ha"></label>
+        <label class="full"><span>One-line description</span><textarea class="field" name="brief" rows="2" placeholder="What it is, in a sentence.">${v("brief")}</textarea></label>
+        <fieldset class="full">
+          <legend>Themes · the first one picked sets the drawing</legend>
+          <div class="theme-picks">
+            ${Object.entries(THEMES).map(([k, label]) => `
+              <label><input type="checkbox" name="themes" value="${k}" ${item?.themes?.includes(k) ? "checked" : ""}><span class="chip">${esc(label)}</span></label>`).join("")}
+          </div>
+        </fieldset>
+        <div class="form-foot">
+          ${item ? `<button class="btn danger" type="button" data-act="delete" style="margin-right:auto">Delete</button>` : ""}
+          <button class="btn ghost" type="button" data-act="${item ? "back" : "close"}">Cancel</button>
+          <button class="btn primary" type="submit">${item ? "Save changes" : "Add to casebook"}</button>
+        </div>
+      </form>`;
+    if (!dlg.open) dlg.showModal();
+    dlg.scrollTop = 0;
+    $("input[name=title]", dlg).focus();
+
+    // Keep check order so the first ticked theme stays the primary one.
+    const order = [...(item?.themes || [])];
+    dlg.querySelectorAll("input[name=themes]").forEach(cb => cb.addEventListener("change", () => {
+      const i = order.indexOf(cb.value);
+      if (cb.checked && i < 0) order.push(cb.value);
+      if (!cb.checked && i >= 0) order.splice(i, 1);
+    }));
+
+    $("#case-form", dlg).addEventListener("submit", (e) => {
+      e.preventDefault();
+      const f = new FormData(e.target);
+      const data = {};
+      ["title", "city", "country", "site", "year", "coords", "designers", "scale", "brief"].forEach(k => data[k] = String(f.get(k) || "").trim());
+      data.themes = order.filter(t => THEMES[t]);
+      data.updated = now();
+      if (item) {
+        Object.assign(item, data);
+        save(); render();
+        openSheet(item.id);
+        toast("Sheet revised.");
+      } else {
+        const fresh = { id: uid(), no: state.nextNo++, links: [], ...data };
+        state.items.push(fresh);
+        save(); render();
+        openSheet(fresh.id);
+        toast(`${code(fresh.no)} added.`);
+      }
+    });
+  }
+
+  dlg.addEventListener("click", (e) => {
+    if (e.target === dlg) { dlg.close(); return; } // backdrop click
+    const btn = e.target.closest("[data-act]");
+    if (!btn) return;
+    const act = btn.dataset.act;
+    const item = currentId && byId(currentId);
+    if (act === "close") dlg.close();
+    else if (act === "edit" && item) openForm(item.id);
+    else if (act === "back" && item) openSheet(item.id);
+    else if (act === "del-link" && item) {
+      item.links.splice(+btn.dataset.i, 1);
+      item.updated = now();
+      save(); render(); openSheet(item.id);
+    } else if (act === "delete" && item) {
+      if (confirm(`Delete “${item.title}” and its sources? This can't be undone (unless you've exported a backup).`)) {
+        state.items = state.items.filter(i => i.id !== item.id);
+        save(); render(); dlg.close();
+        toast("Sheet removed.");
+      }
+    }
+  });
+  dlg.addEventListener("close", () => { currentId = null; });
+
+  // ---------- Controls ----------
+  $("#grid").addEventListener("click", (e) => {
+    const card = e.target.closest(".card");
+    if (card) openSheet(card.dataset.id);
+  });
+  $("#filters").addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    ui.theme = chip.dataset.theme || null;
+    renderFilters(); renderGrid();
+  });
+  $("#search").addEventListener("input", (e) => { ui.q = e.target.value.trim(); renderGrid(); });
+  $("#sort").addEventListener("change", (e) => { ui.sort = e.target.value; renderGrid(); });
+  $("#new-btn").addEventListener("click", () => openForm(null));
+
+  document.addEventListener("keydown", (e) => {
+    if (dlg.open || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName)) return;
+    if (e.key === "/") { e.preventDefault(); $("#search").focus(); }
+    else if (e.key.toLowerCase() === "n") { e.preventDefault(); openForm(null); }
+  });
+
+  // Theme
+  function applyTheme(t) {
+    document.documentElement.dataset.theme = t;
+    $("#theme-toggle").textContent = t === "vellum" ? "Blueprint" : "Vellum";
+  }
+  let theme = "blueprint";
+  try { theme = localStorage.getItem(THEME_KEY) || "blueprint"; } catch (e) {}
+  applyTheme(theme);
+  $("#theme-toggle").addEventListener("click", () => {
+    theme = theme === "vellum" ? "blueprint" : "vellum";
+    applyTheme(theme);
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+  });
+
+  // Export / import
+  // On claude.ai the viewer saves through the downloads capability; opened as a
+  // plain file, the page falls back to an ordinary download link.
+  let downloads = null;
+  if (window.claude?.use) window.claude.use("downloads").then(d => { downloads = d; }).catch(() => {});
+
+  $("#export-btn").addEventListener("click", async () => {
+    const filename = `casebook-${new Date().toISOString().slice(0, 10)}.json`;
+    if (downloads) {
+      try {
+        await downloads.save({ filename, data: JSON.stringify(state, null, 2) });
+        toast("Backup exported.");
+      } catch (err) {
+        toast(err?.code === "declined" ? "Export cancelled." : "Couldn't export here. Try again in a moment.");
+      }
+      return;
+    }
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    toast("Backup exported.");
+  });
+  $("#import-btn").addEventListener("click", () => $("#import-file").click());
+  $("#import-file").addEventListener("change", async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    try {
+      const data = JSON.parse(await file.text());
+      if (!data || !Array.isArray(data.items)) throw new Error("bad");
+      if (!confirm(`Replace your current ${state.items.length} sheets with ${data.items.length} from “${file.name}”?`)) return;
+      data.items = data.items.filter(i => i && i.title).map((i, n) => ({
+        id: i.id || uid(), no: +i.no || n + 1, title: String(i.title), city: i.city || "", country: i.country || "",
+        site: i.site || "", year: i.year || "", designers: i.designers || "", scale: i.scale || "", coords: i.coords || "", brief: i.brief || "",
+        updated: i.updated || now(),
+        themes: Array.isArray(i.themes) ? i.themes.filter(t => THEMES[t]) : [],
+        links: Array.isArray(i.links) ? i.links.filter(l => l && safeUrl(String(l.url || ""))).map(l => ({ label: String(l.label || ""), url: safeUrl(String(l.url)) })) : [],
+      }));
+      data.nextNo = Math.max(+data.nextNo || 0, ...data.items.map(i => i.no + 1), 1);
+      state = data;
+      save(); render();
+      toast(`Imported ${state.items.length} sheets.`);
+    } catch (err) {
+      toast("Couldn't read that file. Is it a Casebook export?");
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
