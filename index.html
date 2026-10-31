@@ -193,6 +193,7 @@
   .btn:hover { background: var(--ink); color: var(--ground); border-color: var(--ink); }
   .btn.on { background: var(--ink); color: var(--ground); border-color: var(--ink); }
   .btn.icon { width: 34px; padding: 0; justify-content: center; font-size: 16px; }
+  .btn:disabled { opacity: .35; cursor: default; pointer-events: none; }
   .btn.primary { background: var(--accent); color: var(--ground); border-color: var(--accent); }
   .btn.danger { border-color: var(--danger); color: var(--danger); }
   .btn.danger:hover { background: var(--danger); color: var(--ground); }
@@ -596,7 +597,7 @@
 
   // ---------- View state ----------
   const field = $("#field"), ptsEl = $("#pts"), panG = $("#pan"), guidesG = $("#guides"), terrG = $("#terr");
-  const view = { layout: "location", zoom: 1, x: 0, y: 0 };
+  const view = { layout: "location", zoom: 1, minZoom: .04, x: 0, y: 0 };
   const filters = { themes: new Set(), regions: new Set(), stages: new Set(), yMin: 1940, yMax: 2030, q: "" };
   let yearBounds = [1940, 2030];
   let anchors = new Map();   // world position for the current layout
@@ -847,7 +848,7 @@
         vline(t.x, t.major ? "strong" : "");
         if (t.x > x0 && t.x < x1) g += `<text class="guide-label" x="${t.x}" y="${labelY}" text-anchor="middle">${t.y}</text>`;
       });
-      const lx = Math.max(-48, left + (mobile ? 110 : 150));
+      const lx = Math.max(-48, left + (mobile ? 150 : 150));
       THEME_ORDER.forEach((t, i) => {
         g += `<text class="guide-label" x="${lx}" y="${i * lane - 6}" text-anchor="end" style="fill:${col(t)}">${esc(THEMES[t])}</text>`;
       });
@@ -867,19 +868,26 @@
   function safeArea() {
     const mobile = innerWidth < 760;
     const year = view.layout === "year";
-    return { l: mobile ? (year ? 110 : 24) : (year ? 260 : 70), t: mobile ? 90 : 120, r: mobile ? 40 : 240, b: mobile ? 170 : 130 };
+    return { l: mobile ? (year ? 160 : 24) : (year ? 260 : 70), t: mobile ? 90 : 120, r: mobile ? 40 : 240, b: mobile ? 170 : 130 };
   }
   function fit(animate = true) {
     const s = safeArea(), w = innerWidth - s.l - s.r, h = innerHeight - s.t - s.b;
     const b = boundsOf(anchors);
     const z = Math.min(4, Math.max(.05, Math.min(w / Math.max(b.x1 - b.x0, 1), h / Math.max(b.y1 - b.y0, 1))));
-    view.zoom = z;
+    view.zoom = view.minZoom = z;
     relax(z);
     const pb = boundsOf(pos);
     view.x = s.l + (w - (pb.x1 - pb.x0)) / 2 - pb.x0;
     view.y = s.t + (h - (pb.y1 - pb.y0)) / 2 - pb.y0;
     animateNext(animate);
     renderAll();
+    updateZoomButtons();
+  }
+  // The landing view is the furthest out you can go; zooming back to it re-centres everything.
+  function updateZoomButtons() {
+    const atMin = view.zoom <= view.minZoom * 1.001;
+    $("#zoom-out").disabled = atMin;
+    $("#zoom-fit").disabled = atMin;
   }
   let animTimer;
   function animateNext(on) {
@@ -889,8 +897,10 @@
   }
   let relaxTimer;
   function zoomAt(factor, cx, cy) {
-    const z0 = view.zoom, z1 = Math.min(12, Math.max(.04, z0 * factor)), k = z1 / z0;
+    if (factor < 1 && view.zoom <= view.minZoom * 1.001) return;
+    const z0 = view.zoom, z1 = Math.min(12, Math.max(view.minZoom, z0 * factor)), k = z1 / z0;
     if (k === 1) return;
+    if (k < 1 && z1 <= view.minZoom * 1.001) { clearTimeout(relaxTimer); fit(true); return; }
     view.zoom = z1;
     pos.forEach(p => { p.x *= k; p.y *= k; });
     view.x = cx - (cx - view.x) * k;
@@ -900,6 +910,7 @@
     hideHover();
     clearTimeout(relaxTimer);
     relaxTimer = setTimeout(() => { relax(view.zoom); animateNext(true); placePoints(); drawTerritories(); cullLabels(); }, 160);
+    updateZoomButtons();
   }
   function setLayout(layout) {
     if (view.layout === layout && anchors.size) return;
@@ -1371,7 +1382,7 @@
     if (e.key === "/") { e.preventDefault(); $("#q").focus(); }
   });
   let resizeTimer;
-  addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { relax(view.zoom); renderAll(); }, 150); });
+  addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { fit(false); }, 150); });
 
   function rebuild() {
     merge();
