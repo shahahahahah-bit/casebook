@@ -1,0 +1,995 @@
+{
+  "updated": "2026-10-30",
+  "note": "Case studies shown on the Casebook site. Daily additions are appended here automatically.",
+  "items": [
+    {
+      "id": "superblocks",
+      "no": 1,
+      "title": "Superblocks",
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "site": "",
+      "year": "2016–",
+      "axisYear": 2016,
+      "stage": "built",
+      "designers": "Ajuntament de Barcelona; Salvador Rueda / BCNecologia",
+      "scale": "≈ 400 × 400 m per superblock (3 × 3 blocks)",
+      "lat": 41.3786,
+      "lng": 2.161,
+      "coords": "41.3786° N, 2.1610° E",
+      "approx": true,
+      "placement": "Placed at the Sant Antoni superblock, one of several in the programme. Position from OpenStreetMap.",
+      "themes": [
+        "public-space",
+        "mobility"
+      ],
+      "brief": "Grouping nine Eixample blocks and pushing through-traffic to the perimeter turns interior streets into plazas, play space and shade.",
+      "links": [
+        {
+          "label": "Ajuntament de Barcelona — Superilles",
+          "url": "https://ajuntament.barcelona.cat/superilles/en/"
+        }
+      ],
+      "image": null,
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "high-line",
+      "no": 2,
+      "title": "The High Line",
+      "city": "New York",
+      "country": "USA",
+      "region": "North America",
+      "site": "",
+      "year": "2009–2014",
+      "axisYear": 2009,
+      "stage": "built",
+      "designers": "James Corner Field Operations; Diller Scofidio + Renfro; Piet Oudolf",
+      "scale": "2.33 km elevated park",
+      "lat": 40.7408,
+      "lng": -74.008,
+      "coords": "40.7408° N, 74.0080° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "reuse",
+        "public-space",
+        "landscape"
+      ],
+      "brief": "A disused freight viaduct on Manhattan's West Side planted as a linear park, with Oudolf's self-seeding planting design.",
+      "links": [
+        {
+          "label": "Friends of the High Line — History",
+          "url": "https://www.thehighline.org/history/"
+        },
+        {
+          "label": "Friends of the High Line",
+          "url": "https://www.thehighline.org/"
+        }
+      ],
+      "image": {
+        "url": "https://fhl-website.s3.amazonaws.com/content/uploads/2018/07/24203559/overview_header_iwan_baan.jpg",
+        "credit": "Friends of the High Line"
+      },
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "vauban",
+      "no": 3,
+      "title": "Vauban",
+      "city": "Freiburg im Breisgau",
+      "country": "Germany",
+      "region": "Europe",
+      "site": "",
+      "year": "1998–2006",
+      "axisYear": 1998,
+      "stage": "built",
+      "designers": "City of Freiburg; Forum Vauban; Baugruppen co-housing groups",
+      "scale": "≈ 38 ha, ≈ 5,500 residents",
+      "lat": 47.9764,
+      "lng": 7.8236,
+      "coords": "47.9764° N, 7.8236° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "housing",
+        "mobility"
+      ],
+      "brief": "A former barracks rebuilt as a car-reduced district of resident-led building groups, tram access and Passivhaus-standard homes.",
+      "links": [
+        {
+          "label": "Vauban district website",
+          "url": "https://www.vauban.de/en/"
+        }
+      ],
+      "image": null,
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "cheonggyecheon",
+      "no": 4,
+      "title": "Cheonggyecheon",
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "Asia",
+      "site": "",
+      "year": "2005",
+      "axisYear": 2005,
+      "stage": "built",
+      "designers": "Seoul Metropolitan Government",
+      "scale": "10.9 km restored stream",
+      "lat": 37.5723,
+      "lng": 127.0367,
+      "coords": "37.5723° N, 127.0367° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "landscape",
+        "public-space",
+        "mobility"
+      ],
+      "brief": "An elevated expressway was torn down and the buried stream beneath it brought back as a sunken public promenade.",
+      "links": [
+        {
+          "label": "Seoul Facilities Corporation — Cheonggyecheon",
+          "url": "https://www.sisul.or.kr/open_content/cheonggye/"
+        }
+      ],
+      "image": null,
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "metrocable",
+      "no": 5,
+      "title": "Metrocable",
+      "city": "Medellín",
+      "country": "Colombia",
+      "region": "Latin America",
+      "site": "",
+      "year": "2004–",
+      "axisYear": 2004,
+      "stage": "built",
+      "designers": "Metro de Medellín; Municipality of Medellín (social urbanism)",
+      "scale": "Line K ≈ 2 km, 4 stations",
+      "lat": 6.2938,
+      "lng": -75.5435,
+      "coords": "6.2938° N, 75.5435° W",
+      "approx": true,
+      "placement": "Placed at Santo Domingo Savio, one station on the network. Position from OpenStreetMap.",
+      "themes": [
+        "mobility",
+        "public-space"
+      ],
+      "brief": "Cable-car lines linking hillside informal neighbourhoods to the metro, paired with library-parks and public works at each station.",
+      "links": [
+        {
+          "label": "Metro de Medellín",
+          "url": "https://www.metrodemedellin.gov.co/"
+        }
+      ],
+      "image": null,
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "sea-ranch",
+      "no": 6,
+      "title": "The Sea Ranch",
+      "city": "Sonoma County, California",
+      "country": "USA",
+      "region": "North America",
+      "site": "",
+      "year": "1965–",
+      "axisYear": 1965,
+      "stage": "built",
+      "designers": "Lawrence Halprin; MLTW (Moore Lyndon Turnbull Whitaker); Joseph Esherick",
+      "scale": "≈ 16 km of coastline",
+      "lat": 38.715,
+      "lng": -123.455,
+      "coords": "38.7150° N, 123.4550° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "landscape",
+        "housing"
+      ],
+      "brief": "A coastal community planned from wind, hedgerows and meadows, with timber buildings clustered to leave the land open.",
+      "links": [
+        {
+          "label": "The Sea Ranch Association",
+          "url": "https://www.tsra.org/"
+        }
+      ],
+      "image": null,
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "aranya",
+      "no": 7,
+      "title": "Aranya Housing",
+      "city": "Indore",
+      "country": "India",
+      "region": "Asia",
+      "site": "",
+      "year": "1989",
+      "axisYear": 1989,
+      "stage": "built",
+      "designers": "Balkrishna Doshi; Vastu-Shilpa Foundation",
+      "scale": "≈ 85 ha, ≈ 6,500 dwellings",
+      "lat": 22.7204,
+      "lng": 75.8682,
+      "coords": "22.7204° N, 75.8682° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "Sites-and-services housing with plinths, service cores and a street hierarchy, built so families could extend their homes over time.",
+      "links": [
+        {
+          "label": "Balkrishna Doshi Archives (Vastu-Shilpa Foundation)",
+          "url": "https://www.vastushilpa.org/"
+        }
+      ],
+      "image": null,
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "quinta-monroy",
+      "no": 8,
+      "title": "Quinta Monroy",
+      "city": "Iquique",
+      "country": "Chile",
+      "region": "Latin America",
+      "site": "",
+      "year": "2004",
+      "axisYear": 2004,
+      "stage": "built",
+      "designers": "Elemental (Alejandro Aravena)",
+      "scale": "93 families, ≈ 0.5 ha",
+      "lat": -20.2299,
+      "lng": -70.136,
+      "coords": "20.2299° S, 70.1360° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "\"Half a good house\": the state subsidy pays for the hard half, and families build the other half themselves inside the frame.",
+      "links": [
+        {
+          "label": "ELEMENTAL — Quinta Monroy Housing Project",
+          "url": "https://www.elementalchile.cl/works/iquique-violeta-parra-ex-quinta-monroy"
+        }
+      ],
+      "image": {
+        "url": "https://cdn.sanity.io/images/tqkjkvi1/production/945d6699dfe5d653c71f962e3b100fc1503c1029-4000x2722.jpg?w=1200&auto=format",
+        "credit": "ELEMENTAL"
+      },
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "byker-wall",
+      "no": 9,
+      "title": "Byker Wall",
+      "city": "Newcastle upon Tyne",
+      "country": "UK",
+      "region": "Europe",
+      "site": "",
+      "year": "1969–1982",
+      "axisYear": 1969,
+      "stage": "built",
+      "designers": "Ralph Erskine",
+      "scale": "≈ 620 homes in the Wall; ≈ 1,800 on the estate",
+      "lat": 54.976,
+      "lng": -1.5803,
+      "coords": "54.9760° N, 1.5803° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "housing",
+        "landscape"
+      ],
+      "brief": "A long, colourful perimeter block shelters a low-rise estate designed together with the residents, with an on-site architect's office.",
+      "links": [
+        {
+          "label": "Byker Community Trust",
+          "url": "https://bykercommunitytrust.org/"
+        }
+      ],
+      "image": null,
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "finger-plan",
+      "no": 10,
+      "title": "Finger Plan",
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "region": "Europe",
+      "site": "",
+      "year": "1947",
+      "axisYear": 1947,
+      "stage": "built",
+      "designers": "Regional Planning Office (Peter Bredsdorff, Steen Eiler Rasmussen)",
+      "scale": "Greater Copenhagen region",
+      "lat": 55.6867,
+      "lng": 12.5701,
+      "coords": "55.6867° N, 12.5701° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "regional",
+        "mobility",
+        "landscape"
+      ],
+      "brief": "Growth along five rail \"fingers\" from the \"palm\" of the city, with green wedges kept open between them.",
+      "links": [
+        {
+          "label": "Danish Agency for Planning — Fingerplanen",
+          "url": "https://www.plst.dk/landsplanlaegning/fingerplanen"
+        }
+      ],
+      "image": {
+        "url": "https://cdn.plst.dk/plst/Media/638965612809600239/Fingerplanen%20-%20forsidebillede.png?width=1024&height=512&format=png&mode=crop",
+        "credit": "Danish Agency for Planning"
+      },
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "curitiba-brt",
+      "no": 11,
+      "title": "Curitiba BRT",
+      "city": "Curitiba",
+      "country": "Brazil",
+      "region": "Latin America",
+      "site": "",
+      "year": "1974–",
+      "axisYear": 1974,
+      "stage": "built",
+      "designers": "Jaime Lerner; IPPUC",
+      "scale": "Citywide trunk network",
+      "lat": -25.4296,
+      "lng": -49.2713,
+      "coords": "25.4296° S, 49.2713° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "mobility",
+        "regional"
+      ],
+      "brief": "Dedicated busways with tube stations and level boarding, set out together with land-use rules along structural axes.",
+      "links": [
+        {
+          "label": "URBS — Curitiba public transport",
+          "url": "https://www.urbs.curitiba.pr.gov.br/portal/"
+        },
+        {
+          "label": "IPPUC — Curitiba planning institute",
+          "url": "https://www.ippuc.org.br/"
+        }
+      ],
+      "image": null,
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "habitat-67",
+      "no": 12,
+      "title": "Habitat 67",
+      "city": "Montréal",
+      "country": "Canada",
+      "region": "North America",
+      "site": "",
+      "year": "1967",
+      "axisYear": 1967,
+      "stage": "built",
+      "designers": "Moshe Safdie",
+      "scale": "354 prefabricated modules",
+      "lat": 45.4999,
+      "lng": -73.5438,
+      "coords": "45.4999° N, 73.5438° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "Stacked precast boxes give each apartment its own garden on the roof of the unit below: density with the qualities of a house.",
+      "links": [
+        {
+          "label": "Habitat 67",
+          "url": "https://www.habitat67.com/"
+        },
+        {
+          "label": "Safdie Architects — Habitat 67",
+          "url": "https://www.safdiearchitects.com/projects/habitat-67"
+        }
+      ],
+      "image": {
+        "url": "https://www.habitat67.com/wp-content/uploads/2021/07/H67_juillet_-064-Cramer-Miau-169.jpeg",
+        "credit": "Habitat 67"
+      },
+      "origin": "original",
+      "added": "2026-10-30"
+    },
+    {
+      "id": "rotiers-brussels",
+      "no": 13,
+      "title": "Rotiers – Renovation of 46 housing units",
+      "city": "Brussels",
+      "country": "Belgium",
+      "region": "Europe",
+      "site": "Edge of the Sonian Forest",
+      "year": "2025",
+      "axisYear": 2025,
+      "stage": "built",
+      "designers": "MULTIPLE Architecture & Urbanism; architecture team: FP architecture; structural engineering: GEI",
+      "scale": "3,916 m²; 46 housing units in a 1960s social housing building",
+      "lat": 50.8467,
+      "lng": 4.3525,
+      "coords": "50.8467° N, 4.3525° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "housing",
+        "reuse"
+      ],
+      "brief": "Renovation of a 1960s social housing building that gives it a renewed identity while keeping the qualities of its wooded setting.",
+      "links": [
+        {
+          "label": "ArchDaily — project page",
+          "url": "https://www.archdaily.com/1187565/rotiers-renovation-of-46-housing-units-in-brussels-multiple-architecture-and-urbanism"
+        }
+      ],
+      "image": {
+        "url": "https://images.adsttc.com/media/images/6adf/8efb/3271/8400/01d0/ecee/large_jpg/Rotiers_08_Bruno_Dias_Ventura.jpg?1793036122",
+        "credit": "Bruno Dias Ventura, via ArchDaily"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "noveo-bordeaux",
+      "no": 14,
+      "title": "Novéo",
+      "city": "Bordeaux",
+      "country": "France",
+      "region": "Europe",
+      "site": "Bassins à Flot mixed-use development zone (ZAC)",
+      "year": "2026",
+      "axisYear": 2026,
+      "stage": "built",
+      "designers": "Taillandier Architectes Associés (lead architect: Marinell Van Wyk; TAA Bordeaux); architecture office: Lanoire & Courrian",
+      "scale": "13,688 m²; 117 housing units (21 affordable homeownership, 37 social rental) in four buildings, a serviced residence and a 128-space shared car park",
+      "lat": 44.8676,
+      "lng": -0.5582,
+      "coords": "44.8676° N, 0.5582° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "Four buildings combining 117 homes, a serviced residence and a shared car park in Bordeaux's Bassins à Flot district.",
+      "links": [
+        {
+          "label": "ArchDaily — project page",
+          "url": "https://www.archdaily.com/1187563/noveo-taillandier-architectes-associes"
+        }
+      ],
+      "image": {
+        "url": "https://images.adsttc.com/media/images/6adf/8e64/3271/8400/01d0/ecc6/large_jpg/RH3333-0002.jpg?1793035917",
+        "credit": "Roland Halbe, via ArchDaily"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "ms-collection-arouca",
+      "no": 15,
+      "title": "Hotel MS Collection Arouca",
+      "city": "Arouca",
+      "country": "Portugal",
+      "region": "Europe",
+      "site": "Former Monastery of Santa Maria de Arouca",
+      "year": "2025",
+      "axisYear": 2025,
+      "stage": "built",
+      "designers": "MiMool Arquitectura & Design de Interiores (lead architects: Fábio Milhazes, Rui Loureiro, Ana Ferreira, Joana Monteiro)",
+      "scale": "6,698 m²; part of a monastic complex classified as a National Monument since 1910, converted into a five-star hotel",
+      "lat": 40.9279,
+      "lng": -8.2466,
+      "coords": "40.9279° N, 8.2466° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "reuse"
+      ],
+      "brief": "Part of a monastery classified as a National Monument since 1910, rehabilitated as a five-star hotel.",
+      "links": [
+        {
+          "label": "ArchDaily — project page",
+          "url": "https://www.archdaily.com/1187879/hotel-ms-collection-arouca-mimool-arquitectura-and-design-de-interiores"
+        }
+      ],
+      "image": {
+        "url": "https://images.adsttc.com/media/images/6ae3/22be/20d6/d801/8852/1f28/large_jpg/ms-collection-arouca-mimool-arquitectura-and-design-de-interiores_5.jpg?1793270502",
+        "credit": "Ivo Tavares Studio, via ArchDaily"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "photo-studio-hiroshima",
+      "no": 16,
+      "title": "Photography Studio as Local Infrastructure",
+      "city": "Hiroshima",
+      "country": "Japan",
+      "region": "Asia",
+      "site": "",
+      "year": "2025",
+      "axisYear": 2025,
+      "stage": "built",
+      "designers": "ArchTank (lead architect: Yasumasa Hayashi; architect: Nagi Kumagai); construction: Shinwa Kenko",
+      "scale": "269 m²; a flood-damaged neighbourhood photo studio rebuilt with a café, observatory and retail",
+      "lat": 34.3917,
+      "lng": 132.4518,
+      "coords": "34.3917° N, 132.4518° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A flood-damaged neighbourhood photo studio rebuilt as a small civic space with a café, observatory and shop.",
+      "links": [
+        {
+          "label": "ArchDaily — project page",
+          "url": "https://www.archdaily.com/1186440/photography-studio-as-local-infrastructure-archtank"
+        }
+      ],
+      "image": {
+        "url": "https://images.adsttc.com/media/images/6ac5/4c1f/90e2/9d10/2520/8b91/large_jpg/hinomarusyasinkan-archtank_1.jpg?1791314991",
+        "credit": "Tsutomu Yoshizaki, via ArchDaily"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "oxford-street-london",
+      "no": 17,
+      "title": "Oxford Street pedestrianisation",
+      "city": "London",
+      "country": "UK",
+      "region": "Europe",
+      "site": "Oxford Street, City of Westminster (first phase: Orchard Street to Great Portland Street)",
+      "year": "2026–2028",
+      "axisYear": 2026,
+      "stage": "in-progress",
+      "designers": "East (lead) with Gehl, Publica, J&L Gibbons, Etude and NRP; Hawkins\\Brown (long-term vision for the whole street); overseen by the Oxford Street Development Corporation (Mayor of London)",
+      "scale": "Almost 1 km traffic-free in the first phase, of a street about 2 km long; two new squares planned near Holles Street and Duke Street",
+      "lat": 51.516,
+      "lng": -0.1352,
+      "coords": "51.5160° N, 0.1352° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "public-space",
+        "mobility"
+      ],
+      "brief": "Almost a kilometre of Oxford Street is now traffic-free, as a trial phase before the permanent scheme is built.",
+      "links": [
+        {
+          "label": "ArchDaily — news article",
+          "url": "https://www.archdaily.com/1187796/londons-oxford-street-opens-its-first-traffic-free-phase"
+        },
+        {
+          "label": "Dezeen — news article",
+          "url": "https://www.dezeen.com/2026/10/27/photos-walkable-oxford-street-pedestrianisation-begins/"
+        },
+        {
+          "label": "East — designer's website (homepage)",
+          "url": "https://www.east.uk.com/"
+        }
+      ],
+      "image": {
+        "url": "https://images.adsttc.com/media/images/6ae3/9d63/a8ed/4101/8962/3228/large_jpg/londons-oxford-street-opens-its-first-traffic-free-phase_3.jpg?1793301898",
+        "credit": "Greater London Authority + Caroline Teo, via ArchDaily"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "essen-central-library",
+      "no": 18,
+      "title": "Essen Central Library",
+      "city": "Essen",
+      "country": "Germany",
+      "region": "Europe",
+      "site": "Boeckerhaus (former department store), Kennedyplatz",
+      "year": "2026",
+      "axisYear": 2026,
+      "stage": "built",
+      "designers": "MVRDV with Meyer Architekten; interiors with Includi",
+      "scale": "11,000 m² across six storeys",
+      "lat": 51.4564,
+      "lng": 7.0106,
+      "coords": "51.4564° N, 7.0106° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "public-space",
+        "reuse"
+      ],
+      "brief": "A six-storey former department store turned into a city library designed as a public \"living room\".",
+      "links": [
+        {
+          "label": "Dezeen — project article",
+          "url": "https://www.dezeen.com/2026/10/27/mvrdv-essen-central-library/"
+        },
+        {
+          "label": "MVRDV — architect's website (homepage)",
+          "url": "https://www.mvrdv.com/"
+        },
+        {
+          "label": "Meyer Architekten — architect's website (homepage)",
+          "url": "https://www.meyer-architekten.de/"
+        },
+        {
+          "label": "Includi — interior collaborator's website (homepage)",
+          "url": "https://www.includi.com/"
+        }
+      ],
+      "image": {
+        "url": "https://static-2026.dezeen.com/uploads/2026/10/essen-central-library-mvrdv-germany-architectre-public-leisure_dezeen_2364_hero2.jpg",
+        "credit": "Daria Scagliola, via Dezeen"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "observatory-toon",
+      "no": 19,
+      "title": "Observatory, Landscapes of Waste",
+      "city": "Toon, Ehime",
+      "country": "Japan",
+      "region": "Asia",
+      "site": "Oono Associates recycling complex, Shikoku",
+      "year": "2026",
+      "axisYear": 2026,
+      "stage": "built",
+      "designers": "Ryue Nishizawa (observatory); Kazuyo Sejima (supervision); Shingo Masuda + Katsuhisa Otsubo (plaza and bus stop); Suzuko Yamada (bus and visitor wear)",
+      "scale": "Cone 33 m in diameter and 4 m high, overlooking a landfill basin",
+      "lat": 33.7909,
+      "lng": 132.8719,
+      "coords": "33.7909° N, 132.8719° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "landscape",
+        "reuse"
+      ],
+      "brief": "A 33-metre orange cone overlooking a landfill basin, built for the Setouchi Art and Industry 2026 festival.",
+      "links": [
+        {
+          "label": "Dezeen — project article",
+          "url": "https://www.dezeen.com/2026/10/28/ryue-nishizawa-viewpoint-setouchi-art-industry/"
+        },
+        {
+          "label": "Setouchi Art and Industry — festival website",
+          "url": "https://www.sai-art.jp/en"
+        }
+      ],
+      "image": {
+        "url": "https://static-2026.dezeen.com/uploads/2026/10/final-disposal-site-observation-deck-ryue-nishizawa-setouchi-art-and-industry-architecture-art-installations-japan-shikoku_dezeen_1704_sq.jpg",
+        "credit": "Setouchi Art and Industry, via Dezeen"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "loco-park-tbilisi",
+      "no": 20,
+      "title": "Loco Park masterplan",
+      "city": "Tbilisi",
+      "country": "Georgia",
+      "region": "Asia",
+      "site": "Former Soviet-era locomotive factory site",
+      "year": "2026 (proposed)",
+      "axisYear": 2026,
+      "stage": "planned",
+      "designers": "Stefano Boeri Architetti (founder Stefano Boeri; partner Pietro Chiodi)",
+      "scale": "Not stated by the source",
+      "lat": 41.6935,
+      "lng": 44.8014,
+      "coords": "41.6935° N, 44.8014° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "housing",
+        "reuse",
+        "public-space"
+      ],
+      "brief": "Competition-winning masterplan that renovates a locomotive factory and adds brick housing blocks, parks and public space.",
+      "links": [
+        {
+          "label": "Dezeen — project article",
+          "url": "https://www.dezeen.com/2026/10/26/loco-park-masterplan-stefano-boeri/"
+        },
+        {
+          "label": "Stefano Boeri Architetti — architect's website (homepage)",
+          "url": "https://www.stefanoboeriarchitetti.net/en/"
+        }
+      ],
+      "image": {
+        "url": "https://static-2026.dezeen.com/uploads/2026/10/loco-park-masterplan-stefano-boeri-architetti-tbilisi_dezeen_2364_col_1.jpg",
+        "credit": "Stefano Boeri Architetti, via Dezeen"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "murphy-crossing-infill-station",
+      "no": 21,
+      "title": "Murphy Crossing MARTA infill station",
+      "city": "Atlanta",
+      "country": "USA",
+      "region": "North America",
+      "site": "Murphy Crossing, Southwest Atlanta (Adair Park, West End and Oakland City)",
+      "year": "2026– (in study)",
+      "axisYear": 2026,
+      "stage": "planned",
+      "designers": "Atlanta Beltline Inc. (preliminary scoping study; principal engineer Shaun Green)",
+      "scale": "20-acre Murphy Crossing site; 60-ft vertical gap between Beltline transit and MARTA rail; study costs about $800,000–$900,000",
+      "lat": 33.7269,
+      "lng": -84.4171,
+      "coords": "33.7269° N, 84.4171° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "mobility"
+      ],
+      "brief": "Five options for a new MARTA rail station that would give the Beltline its first direct connection to MARTA rail.",
+      "links": [
+        {
+          "label": "Urbanize Atlanta — news article",
+          "url": "https://atlanta.urbanize.city/post/marta-infill-station-beltline-murphy-crossing-reveals-5-options-connecting-trail-transit-rail"
+        },
+        {
+          "label": "Atlanta Beltline — Murphy Crossing infill station virtual open house",
+          "url": "https://beltline.konveio.com/murphy-crossing-infill-station"
+        }
+      ],
+      "image": {
+        "url": "https://atlanta.urbanize.city/sites/default/files/styles/social_1200x630/public/background/2026-10/lead%20Murphy%20Crossing%20Infill%20station%20MARTA.png?itok=SAfoOH9A",
+        "credit": "Atlanta Beltline Inc., via Urbanize Atlanta"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "beltline-northwest-trail-2a",
+      "no": 22,
+      "title": "Atlanta Beltline Northwest Trail – Segment 2A",
+      "city": "Atlanta",
+      "country": "USA",
+      "region": "North America",
+      "site": "Buckhead, from Bobby Jones Golf Course toward Peachtree Road",
+      "year": "2026–2028",
+      "axisYear": 2026,
+      "stage": "in-progress",
+      "designers": "Heath & Lineback (designers); PATH Foundation (program manager); Hasbun Construction (contractor); Atlanta Beltline Inc.",
+      "scale": "0.3-mile segment of 14-ft-wide multi-use trail, with a pedestrian bridge and an elevated trail structure; the full Northwest Trail will be 4.3 miles",
+      "lat": 33.8167,
+      "lng": -84.4037,
+      "coords": "33.8167° N, 84.4037° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "mobility",
+        "public-space"
+      ],
+      "brief": "A 0.3-mile trail segment with a pedestrian bridge and elevated section, linking the Beltline toward Peachtree Road job centres.",
+      "links": [
+        {
+          "label": "Urbanize Atlanta — news article",
+          "url": "https://atlanta.urbanize.city/post/atl-beltline-northwest-trail-section-officially-breaks-ground-peachtree-images"
+        }
+      ],
+      "image": {
+        "url": "https://atlanta.urbanize.city/sites/default/files/styles/social_1200x630/public/background/2026-08/Northwest%20Trail%20Segment%202%20Bennett%20Street%20NWT2.png?itok=92RMKsyP",
+        "credit": "Atlanta Beltline Inc., via Urbanize Atlanta"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "grove-theatre-atlanta",
+      "no": 23,
+      "title": "Grove Theatre revival",
+      "city": "Atlanta",
+      "country": "USA",
+      "region": "North America",
+      "site": "1576 Donald Lee Hollowell Parkway NW, Grove Park",
+      "year": "c. 1941; 2026–2027",
+      "axisYear": 2026,
+      "stage": "planned",
+      "designers": "Not named by the source; owner: Grove Park Foundation",
+      "scale": "10,400 sq ft of leasable space; $5.5 million renovation",
+      "lat": 33.7717,
+      "lng": -84.4398,
+      "coords": "33.7717° N, 84.4398° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "reuse",
+        "public-space"
+      ],
+      "brief": "A 1940s Westside movie house being renovated as a performing and cultural arts centre for Grove Park.",
+      "links": [
+        {
+          "label": "Urbanize Atlanta — news article",
+          "url": "https://atlanta.urbanize.city/post/grove-theatre-historic-1940s-atl-movie-house-mixed-use-revival-go"
+        },
+        {
+          "label": "Grove Park Foundation — economic development",
+          "url": "https://groveparkfoundation.org/economic-development/"
+        }
+      ],
+      "image": {
+        "url": "https://atlanta.urbanize.city/sites/default/files/styles/social_1200x630/public/background/2026-10/Grove%20Theatre%20rendering%20Grant%20Park%20Fountation%202025.png?itok=xhOAsD0_",
+        "credit": "Grove Park Foundation, via Urbanize Atlanta"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "guildhouse-atlanta",
+      "no": 24,
+      "title": "GuildHouse",
+      "city": "Atlanta",
+      "country": "USA",
+      "region": "North America",
+      "site": "2051, 2085 and 2095 Marietta Boulevard, Bolton (Upper Westside)",
+      "year": "2026 (proposed)",
+      "axisYear": 2026,
+      "stage": "planned",
+      "designers": "Vida Companies (developer); Geheber Lewis Associates (architecture); Dix Hite (landscape); Krywicki (interior design); Kimley-Horn (civil engineering)",
+      "scale": "6.68 acres; about 310 apartments and 39 rental townhomes; 7,200 sq ft retail and coworking; $107.6 million; 15% workforce housing",
+      "lat": 33.8121,
+      "lng": -84.4381,
+      "coords": "33.8121° N, 84.4381° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "About 310 apartments, 39 townhomes and retail planned on former industrial lots, with 15% workforce housing.",
+      "links": [
+        {
+          "label": "Urbanize Atlanta — news article",
+          "url": "https://atlanta.urbanize.city/post/guildhouse-uppper-westside-proposal-scores-develop-fulton-backing"
+        },
+        {
+          "label": "Vida Companies — developer's website (homepage)",
+          "url": "https://www.vidacompanies.com/"
+        }
+      ],
+      "image": {
+        "url": "https://atlanta.urbanize.city/sites/default/files/styles/social_1200x630/public/background/2026-10/lead%2010.27.26%20GuildHouse%202051%20Marietta%20Boulevard%201.jpg.png?itok=2G9JnWiH",
+        "credit": "Vida Companies, via Urbanize Atlanta"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "jewel-streets-nyc",
+      "no": 25,
+      "title": "Jewel Streets Neighborhood Plan",
+      "city": "New York",
+      "country": "USA",
+      "region": "North America",
+      "site": "Jewel Streets, East New York, Brooklyn and Lindenwood, Queens",
+      "year": "2025–",
+      "axisYear": 2025,
+      "stage": "planned",
+      "designers": "NYC Department of Housing Preservation and Development (HPD) with the Department of Environmental Protection (DEP) and the Mayor's Office of Climate & Environmental Justice; community partners: Justice for the Jewel Streets Coalition (East New York Community Land Trust) and Cypress Hills Local Development Corporation",
+      "scale": "12-block neighbourhood, including a 17-acre City-owned site; nearly $150 million in proposed infrastructure upgrades (per Urban Omnibus)",
+      "lat": 40.6706,
+      "lng": -73.8602,
+      "coords": "40.6706° N, 73.8602° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "landscape",
+        "housing"
+      ],
+      "brief": "A City plan for a sunken, flood-prone 12-block neighbourhood: new drainage, rezoning, affordable housing and voluntary buyouts.",
+      "links": [
+        {
+          "label": "Urban Omnibus — “What Water Wants”",
+          "url": "https://urbanomnibus.net/2026/07/what-water-wants-2/"
+        },
+        {
+          "label": "NYC HPD — Jewel Streets Neighborhood Plan",
+          "url": "https://www.nyc.gov/site/hpd/services-and-information/jewel-streets-neighborhood-plan.page"
+        },
+        {
+          "label": "NYC HPD — Jewel Streets Neighborhood Plan (PDF)",
+          "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/services/jewel-streets-neighborhood-plan.pdf"
+        },
+        {
+          "label": "NYC Housing Recovery — Resilient Acquisitions",
+          "url": "https://www.nyc.gov/site/housingrecovery/preparedness/resilient-acquisitions.page"
+        }
+      ],
+      "image": {
+        "url": "https://urbanomnibus.net/wp-content/uploads/sites/2/2026/06/Water.jpg",
+        "credit": "Jessica Angima, via Urban Omnibus"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "federal-boulevard-brt-denver",
+      "no": 26,
+      "title": "Federal Boulevard BRT",
+      "city": "Denver",
+      "country": "USA",
+      "region": "North America",
+      "site": "Federal Boulevard",
+      "year": "2026–2028",
+      "axisYear": 2026,
+      "stage": "planned",
+      "designers": "Not named by the source; funded by Colorado's Nonattainment Area Air Pollution Mitigation Enterprise",
+      "scale": "Up to 18 miles and 74 stations; $50 million plus $2.7 million a year for maintenance",
+      "lat": 39.7817,
+      "lng": -105.0251,
+      "coords": "39.7817° N, 105.0251° W",
+      "approx": true,
+      "placement": "Placed at one point on an 18-mile corridor. Position from OpenStreetMap.",
+      "themes": [
+        "mobility"
+      ],
+      "brief": "Bus rapid transit with 74 stations along up to 18 miles of one of metro Denver's busiest transit corridors.",
+      "links": [
+        {
+          "label": "Planetizen — news summary",
+          "url": "https://www.planetizen.com/news/2026/10/138756-one-denvers-busiest-corridors-gain-brt"
+        },
+        {
+          "label": "Transportation Today News — original article",
+          "url": "https://transportationtodaynews.com/news/39099-colorado-approves-funding-for-denver-bus-rapid-transit-project/"
+        }
+      ],
+      "image": {
+        "url": "https://www.planetizen.com/files/images/shutterstock_2213530595.jpg",
+        "credit": "Jon Rehg / Shutterstock, via Planetizen"
+      },
+      "origin": "sources",
+      "added": "2026-10-30",
+      "lane": null
+    }
+  ]
+}

@@ -2,550 +2,395 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Casebook</title>
+<meta name="description" content="A field of urban case studies, placed by where they are in the world.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230c2217'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23ffd36b'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d3560;
-    --bg-deep: #0a2a4d;
-    --panel: rgba(9, 36, 66, 0.82);
-    --ink: #e4f0ff;
-    --ink-soft: #a9c4e4;
-    --ink-faint: #6f93bd;
-    --line: rgba(196, 222, 255, 0.28);
-    --line-strong: rgba(214, 233, 255, 0.7);
-    --grid-minor: rgba(160, 200, 245, 0.07);
-    --grid-major: rgba(160, 200, 245, 0.14);
-    --accent: #ffd36a;
-    --danger: #ff9b8a;
-    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-    --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
-    --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --ground: #0c2217;
+    --ground-2: #102b1e;
+    --panel: #0f281c;
+    --panel-2: #143324;
+    --ink: #ebf2e8;
+    --ink-2: #b7cabb;
+    --ink-3: #7e9a85;
+    --line: rgba(235, 242, 232, 0.11);
+    --line-2: rgba(235, 242, 232, 0.26);
+    --glass: rgba(14, 38, 26, 0.86);
+    --accent: #f3e7c2;
+    --danger: #ff9a86;
+    --mobility: #63c7ff;
+    --housing: #ff8562;
+    --public-space: #ffd36b;
+    --landscape: #b9ef6e;
+    --reuse: #d59dff;
+    --regional: #ff9fcd;
+    --serif: "Instrument Serif", Georgia, serif;
+    --sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --ease: cubic-bezier(.2, .7, .2, 1);
   }
-  :root[data-theme="vellum"] {
-    --bg: #f2efe6;
-    --bg-deep: #e8e3d6;
-    --panel: rgba(247, 244, 236, 0.92);
-    --ink: #17365f;
-    --ink-soft: #3d5c86;
-    --ink-faint: #7d90ab;
-    --line: rgba(23, 54, 95, 0.22);
-    --line-strong: rgba(23, 54, 95, 0.65);
-    --grid-minor: rgba(23, 54, 95, 0.045);
-    --grid-major: rgba(23, 54, 95, 0.09);
-    --accent: #c8452c;
-    --danger: #b3321c;
-  }
-
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html, body { height: 100%; }
   body {
     margin: 0;
-    background-color: var(--bg);
-    background-image:
-      linear-gradient(var(--grid-major) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
-      linear-gradient(var(--grid-minor) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
-    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-    background-attachment: fixed;
+    background: var(--ground);
     color: var(--ink);
     font-family: var(--sans);
     font-size: 15px;
-    line-height: 1.55;
-    min-height: 100vh;
-    transition: background-color .3s, color .3s;
-  }
-  ::selection { background: var(--accent); color: var(--bg-deep); }
-  a { color: inherit; }
-  button, input, select, textarea { font: inherit; color: inherit; }
-
-  .sheet {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 28px 24px 80px;
-  }
-  .frame {
-    border: 1px solid var(--line-strong);
-    outline: 1px solid var(--line);
-    outline-offset: 6px;
-    position: relative;
-  }
-
-  /* ---------- Title block ---------- */
-  .masthead {
-    display: grid;
-    grid-template-columns: 1fr minmax(280px, 380px);
-    border-bottom: 1px solid var(--line-strong);
-  }
-  .masthead-title {
-    padding: 34px 32px 30px;
-    border-right: 1px solid var(--line-strong);
-    position: relative;
-  }
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  h1 {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: clamp(54px, 9vw, 112px);
-    line-height: .86;
-    letter-spacing: .01em;
-    text-transform: uppercase;
-    margin: 14px 0 16px;
-  }
-  h1 span { color: var(--accent); }
-  .lede {
-    max-width: 46ch;
-    color: var(--ink-soft);
-    margin: 0;
-  }
-  .north {
-    position: absolute;
-    right: 28px;
-    top: 28px;
-    width: 54px;
-    height: 54px;
-    color: var(--ink-soft);
-  }
-  .titleblock {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-  .tb-cell {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--line);
-    border-right: 1px solid var(--line);
-    min-width: 0;
-  }
-  .tb-cell:nth-child(2n) { border-right: 0; }
-  .tb-cell.wide { grid-column: 1 / -1; border-right: 0; }
-  .tb-cell:last-child, .tb-cell.last { border-bottom: 0; }
-  .tb-label {
-    display: block;
-    font-size: 9.5px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 2px;
-  }
-  .tb-value { font-size: 13px; overflow-wrap: anywhere; }
-  .tb-value.big {
-    font-family: var(--display);
-    font-size: 30px;
-    line-height: 1;
-    letter-spacing: .02em;
-  }
-
-  /* ---------- Toolbar ---------- */
-  .toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px 14px;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--line-strong);
-    background: color-mix(in srgb, var(--bg-deep) 55%, transparent);
-  }
-  .search {
-    flex: 1 1 220px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid var(--line);
-    padding: 0 10px;
-    height: 36px;
-    background: color-mix(in srgb, var(--bg) 70%, transparent);
-  }
-  .search:focus-within { border-color: var(--line-strong); }
-  .search svg { flex: none; color: var(--ink-faint); }
-  .search input {
-    border: 0;
-    background: none;
-    outline: none;
-    width: 100%;
-    font-family: var(--mono);
-    font-size: 13px;
-  }
-  .search input::placeholder { color: var(--ink-faint); }
-  kbd {
-    font-family: var(--mono);
-    font-size: 10px;
-    border: 1px solid var(--line);
-    padding: 1px 5px;
-    color: var(--ink-faint);
-  }
-  .btn {
-    height: 36px;
-    padding: 0 14px;
-    border: 1px solid var(--line-strong);
-    background: transparent;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    cursor: pointer;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: background .15s, color .15s, border-color .15s;
-  }
-  .btn:hover { background: var(--ink); color: var(--bg-deep); }
-  .btn.primary { background: var(--accent); color: var(--bg-deep); border-color: var(--accent); }
-  .btn.primary:hover { filter: brightness(1.08); }
-  .btn.ghost { border-color: var(--line); color: var(--ink-soft); }
-  .btn.ghost:hover { color: var(--bg-deep); }
-  .btn.danger { border-color: var(--danger); color: var(--danger); }
-  .btn.danger:hover { background: var(--danger); color: var(--bg-deep); }
-  .btn.small { height: 28px; padding: 0 10px; font-size: 11px; }
-  select.btn { appearance: none; padding-right: 28px; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 15px) 15px, calc(100% - 10px) 15px; background-size: 5px 5px; background-repeat: no-repeat; }
-  select.btn:hover { background-color: var(--ink); }
-  select.btn option { color: #111; background: #fff; }
-  .toolbar-group { display: flex; gap: 8px; flex-wrap: wrap; }
-
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--line-strong);
-    align-items: center;
-  }
-  .filters .eyebrow { margin-right: 6px; }
-  .chip {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border: 1px dashed var(--line);
-    background: none;
-    cursor: pointer;
-    color: var(--ink-soft);
-    display: inline-flex;
-    gap: 6px;
-    align-items: center;
-  }
-  .chip:hover { border-style: solid; color: var(--ink); }
-  .chip[aria-pressed="true"] {
-    border-style: solid;
-    border-color: var(--ink);
-    background: var(--ink);
-    color: var(--bg-deep);
-  }
-  .chip .count { opacity: .6; }
-
-  /* ---------- Cards ---------- */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 0;
-  }
-  .card {
-    position: relative;
-    text-align: left;
-    background: none;
-    border: 0;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 18px 20px 18px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-height: 330px;
-    transition: background .2s;
-  }
-  .card:hover, .card:focus-visible {
-    background: color-mix(in srgb, var(--ink) 6%, transparent);
-    outline: none;
-  }
-  .card::before, .card::after {
-    content: "";
-    position: absolute;
-    width: 14px; height: 14px;
-    border-color: var(--accent);
-    border-style: solid;
-    opacity: 0;
-    transition: opacity .2s, transform .2s;
-  }
-  .card::before { top: 8px; left: 8px; border-width: 1px 0 0 1px; transform: translate(4px, 4px); }
-  .card::after { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; transform: translate(-4px, -4px); }
-  .card:hover::before, .card:hover::after,
-  .card:focus-visible::before, .card:focus-visible::after { opacity: 1; transform: none; }
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-faint);
-    letter-spacing: .06em;
-  }
-  .card-code { color: var(--ink-soft); }
-  .glyph {
-    height: 108px;
-    border: 1px solid var(--line);
-    display: grid;
-    place-items: center;
-    color: var(--ink-soft);
-    position: relative;
-    background:
-      linear-gradient(var(--grid-minor) 1px, transparent 1px) 0 0 / 12px 12px,
-      linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px) 0 0 / 12px 12px;
-    transition: color .2s;
-  }
-  .card:hover .glyph { color: var(--ink); }
-  .glyph svg { width: 70%; height: 82%; overflow: visible; }
-  .glyph-label {
-    position: absolute;
-    left: 6px; bottom: 4px;
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  .card h3 {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 1;
-    letter-spacing: .01em;
-    text-transform: uppercase;
-    margin: 4px 0 0;
-  }
-  .card-place {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--ink-soft);
-  }
-  .card-brief {
-    color: var(--ink-soft);
-    font-size: 14px;
-    margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    line-height: 1.5;
     overflow: hidden;
+    -webkit-font-smoothing: antialiased;
   }
-  .card-foot {
-    margin-top: auto;
-    display: flex;
-    gap: 12px;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    border-top: 1px dashed var(--line);
-    padding-top: 10px;
-  }
-  .empty {
-    grid-column: 1 / -1;
-    padding: 70px 20px;
-    text-align: center;
-    font-family: var(--mono);
-    color: var(--ink-soft);
-  }
-
-  .legend {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-    padding: 12px 20px;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  .scalebar { display: inline-flex; align-items: center; gap: 8px; }
-  .scalebar i {
-    display: inline-block; width: 100px; height: 6px;
-    border: 1px solid var(--ink-faint);
-    background: linear-gradient(90deg, var(--ink-faint) 25%, transparent 25% 50%, var(--ink-faint) 50% 75%, transparent 75%);
-  }
-
-  /* ---------- Dialog ---------- */
-  dialog {
-    width: min(920px, calc(100vw - 32px));
-    max-height: calc(100vh - 48px);
-    padding: 0;
-    border: 1px solid var(--line-strong);
-    background: var(--bg);
-    color: var(--ink);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
-  }
-  dialog::backdrop { background: rgba(4, 18, 36, .6); backdrop-filter: blur(3px); }
-  :root[data-theme="vellum"] dialog::backdrop { background: rgba(40, 46, 60, .35); }
-  dialog[open] { animation: rise .22s ease-out; }
-  @keyframes rise { from { opacity: 0; transform: translateY(12px); } }
-  .dlg-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 22px 26px 18px;
-    border-bottom: 1px solid var(--line-strong);
-    background-image:
-      linear-gradient(var(--grid-minor) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-  .dlg-head h2 {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: clamp(36px, 6vw, 56px);
-    line-height: .92;
-    text-transform: uppercase;
-    margin: 6px 0 6px;
-  }
-  .dlg-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
-  .close-x { width: 36px; padding: 0; justify-content: center; font-size: 18px; }
-  .dlg-body {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-  }
-  .dlg-col { padding: 22px 26px; min-width: 0; }
-  .dlg-col + .dlg-col { border-left: 1px solid var(--line); }
-  .section-title {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 6px;
-    margin: 0 0 12px;
-  }
-  .facts { margin: 0 0 24px; }
-  .facts div {
-    display: grid;
-    grid-template-columns: 92px 1fr;
-    gap: 10px;
-    padding: 7px 0;
-    border-bottom: 1px dashed var(--line);
-  }
-  .facts dt {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    padding-top: 2px;
-  }
-  .facts dd { margin: 0; font-size: 14px; overflow-wrap: anywhere; }
-  .facts .tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    border: 1px solid var(--line);
-    padding: 1px 6px;
-    color: var(--ink-soft);
-  }
-  .dlg-glyph { height: 150px; margin-bottom: 20px; }
-  .links { list-style: none; padding: 0; margin: 0 0 12px; }
-  .links li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px dashed var(--line);
-  }
-  .links .idx { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); flex: none; }
-  .links a {
-    flex: 1;
-    min-width: 0;
-    text-decoration: none;
-    overflow-wrap: anywhere;
-  }
-  .links a:hover .link-label { text-decoration: underline; text-underline-offset: 3px; }
-  .link-host { display: block; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
-  .icon-btn {
-    border: 0; background: none; cursor: pointer;
-    color: var(--ink-faint); font-family: var(--mono); font-size: 14px;
-    padding: 4px 6px;
-  }
-  .icon-btn:hover { color: var(--danger); }
-  .add-link { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 8px; }
-  .field {
-    height: 34px;
-    border: 1px solid var(--line);
-    background: color-mix(in srgb, var(--bg-deep) 60%, transparent);
-    padding: 0 10px;
-    font-size: 13px;
-    outline: none;
-    min-width: 0;
-  }
-  .field:focus { border-color: var(--line-strong); }
-  .field::placeholder { color: var(--ink-faint); }
-  textarea.field { height: auto; padding: 8px 10px; resize: vertical; }
-
-  /* Edit form */
-  .form { padding: 22px 26px 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
-  .form label { display: grid; gap: 5px; }
-  .form label > span, .form fieldset legend {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  .form .full { grid-column: 1 / -1; }
-  .form fieldset { border: 0; padding: 0; margin: 0; }
-  .theme-picks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
-  .theme-picks input { position: absolute; opacity: 0; pointer-events: none; }
-  .theme-picks input:checked + .chip { border-style: solid; border-color: var(--ink); background: var(--ink); color: var(--bg-deep); }
-  .theme-picks input:focus-visible + .chip { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .form-foot { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
-  .req { color: var(--accent); }
-
-  .toast {
-    position: fixed; left: 50%; bottom: 24px;
-    transform: translate(-50%, 20px);
-    background: var(--ink); color: var(--bg-deep);
-    font-family: var(--mono); font-size: 12px; letter-spacing: .06em;
-    padding: 10px 16px; opacity: 0; pointer-events: none;
-    transition: opacity .2s, transform .2s; z-index: 10;
-  }
-  .toast.show { opacity: 1; transform: translate(-50%, 0); }
-
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  a { color: inherit; }
+  ::selection { background: var(--accent); color: var(--ground); }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-  @media (max-width: 820px) {
-    .masthead { grid-template-columns: 1fr; }
-    .masthead-title { border-right: 0; border-bottom: 1px solid var(--line-strong); }
-    .dlg-body { grid-template-columns: 1fr; }
-    .dlg-col + .dlg-col { border-left: 0; border-top: 1px solid var(--line); }
+  /* ---------- Field ---------- */
+  #field {
+    position: fixed; inset: 0;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none;
+    background:
+      radial-gradient(1200px 800px at 30% 20%, rgba(255,255,255,.025), transparent 60%),
+      var(--ground);
+    outline: none;
   }
-  @media (max-width: 560px) {
-    .sheet { padding: 16px 16px 60px; }
-    .frame { outline-offset: 3px; }
-    .masthead-title { padding: 26px 18px 22px; }
-    .north { width: 40px; height: 40px; right: 16px; top: 18px; }
-    .toolbar, .filters { padding-left: 14px; padding-right: 14px; }
-    .card { border-right: 0; min-height: 0; }
-    .form { grid-template-columns: 1fr; padding: 18px; }
-    .dlg-head, .dlg-col { padding-left: 18px; padding-right: 18px; }
-    .add-link { grid-template-columns: 1fr; }
-    dialog { width: calc(100vw - 16px); max-height: calc(100vh - 16px); }
+  #field.dragging { cursor: grabbing; }
+  #deco { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  #terr { transition: opacity .45s ease; }
+  #terr.fade { opacity: 0; }
+  .terr { fill-opacity: .11; stroke-opacity: .32; stroke-width: 1; }
+  .guide { stroke: var(--line); stroke-width: 1; fill: none; }
+  .guide.strong { stroke: var(--line-2); }
+  .guide-label { fill: var(--ink-3); font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; }
+  .big-label { font-family: var(--serif); font-style: italic; font-size: 44px; fill: var(--ink); opacity: .13; }
+  .theme-label { font-family: var(--serif); font-style: italic; font-size: 26px; }
+  #pts { position: absolute; left: 0; top: 0; }
+  .pt {
+    position: absolute; left: 0; top: 0;
+    border: 0; padding: 0; background: none;
+    width: 0; height: 0;
+    --c: var(--ink);
+  }
+  #field.anim .pt { transition: transform .75s var(--ease), opacity .3s; }
+  .pt .sq {
+    position: absolute; left: -5px; top: -5px;
+    width: 10px; height: 10px;
+    background: var(--c);
+    box-shadow: 0 0 0 0 transparent;
+    transition: transform .15s, box-shadow .2s;
+  }
+  .pt.new .sq::after {
+    content: ""; position: absolute; inset: -5px;
+    border: 1px solid var(--c); opacity: .8;
+  }
+  .pt .lb {
+    position: absolute; left: 10px; top: -10px;
+    white-space: nowrap;
+    text-align: left;
+    pointer-events: none;
+    line-height: 1.15;
+  }
+  .pt .t { display: block; font-size: 12.5px; font-weight: 500; color: var(--ink); text-shadow: 0 1px 6px var(--ground), 0 0 2px var(--ground); }
+  .pt .m { display: block; font-family: var(--mono); font-size: 9.5px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; text-shadow: 0 0 4px var(--ground); }
+  .pt .m b { color: var(--c); font-weight: 500; }
+  .pt.nolabel .lb { visibility: hidden; }
+  .pt:hover .sq, .pt:focus-visible .sq, .pt.sel .sq { transform: scale(1.5); box-shadow: 0 0 0 4px rgba(12,34,23,.9), 0 0 0 5px var(--c); }
+  .pt:hover .lb, .pt:focus-visible .lb, .pt.sel .lb { visibility: visible; z-index: 2; }
+  .pt:hover, .pt:focus-visible, .pt.sel { z-index: 5; outline: none; }
+  .pt.dim { opacity: .14; }
+  .pt.dim .lb { visibility: hidden; }
+
+  /* ---------- Chrome ---------- */
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--line);
+  }
+  .brand {
+    position: fixed; top: 18px; left: 20px; z-index: 10;
+    pointer-events: none;
+  }
+  .brand h1 {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: .9;
+    letter-spacing: -.01em;
+  }
+  .brand h1 i { color: var(--accent); }
+  .brand p {
+    margin: 6px 0 0;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .topnav {
+    position: fixed; top: 16px; right: 16px; z-index: 10;
+    display: flex; gap: 4px; padding: 4px;
+  }
+  .navbtn {
+    border: 0; background: none;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase;
+    padding: 8px 12px; color: var(--ink-2);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .navbtn:hover { color: var(--ink); background: rgba(255,255,255,.05); }
+  .navbtn[aria-pressed="true"] { color: var(--ground); background: var(--ink); }
+  .navbtn .badge {
+    font-size: 10px; padding: 0 5px; line-height: 16px;
+    background: var(--accent); color: var(--ground);
+  }
+
+  .axis-card {
+    position: fixed; left: 16px; bottom: 16px; z-index: 10;
+    padding: 12px 14px 12px;
+    display: grid; gap: 10px;
+    width: 196px;
+  }
+  .axis-card .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .axis-glyph { display: flex; align-items: flex-end; gap: 10px; height: 46px; }
+  .axis-glyph svg { width: 54px; height: 46px; color: var(--ink-2); flex: none; }
+  .axis-glyph span { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); line-height: 1.4; }
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line-2); }
+  .seg button {
+    border: 0; background: none; padding: 7px 0;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2);
+  }
+  .seg button + button { border-left: 1px solid var(--line-2); }
+  .seg button:hover { color: var(--ink); }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+
+  .bar {
+    position: fixed; left: 228px; right: 16px; bottom: 16px; z-index: 10;
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px;
+    max-width: 860px; margin-left: auto;
+  }
+  .search { flex: 1; display: flex; align-items: center; gap: 8px; padding: 0 10px; min-width: 0; }
+  .search svg { flex: none; color: var(--ink-3); }
+  .search input { flex: 1; min-width: 0; border: 0; background: none; outline: none; height: 34px; font-size: 14px; }
+  .search input::placeholder { color: var(--ink-3); }
+  .count { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; padding: 0 6px; }
+  .btn {
+    height: 34px; padding: 0 12px;
+    border: 1px solid var(--line-2); background: none;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+  }
+  .btn:hover { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .btn.on { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .btn.icon { width: 34px; padding: 0; justify-content: center; font-size: 16px; }
+  .btn.primary { background: var(--accent); color: var(--ground); border-color: var(--accent); }
+  .btn.danger { border-color: var(--danger); color: var(--danger); }
+  .btn.danger:hover { background: var(--danger); color: var(--ground); }
+  .btn .n { background: var(--accent); color: var(--ground); padding: 0 5px; line-height: 16px; font-size: 10px; }
+  .zoom { display: flex; gap: 4px; }
+
+  /* Filters tray */
+  .tray {
+    position: fixed; right: 16px; bottom: 70px; z-index: 11;
+    width: min(560px, calc(100vw - 32px));
+    max-height: calc(100vh - 150px); overflow: auto;
+    padding: 16px 18px 18px;
+    display: none;
+  }
+  .tray.open { display: block; animation: rise .2s var(--ease); }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+  .tray h3, .sheet h3 {
+    margin: 14px 0 8px;
+    font-family: var(--mono); font-weight: 400; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
+  }
+  .tray h3:first-child { margin-top: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    border: 1px solid var(--line-2); background: none;
+    padding: 5px 10px;
+    font-size: 13px;
+    display: inline-flex; align-items: center; gap: 7px;
+    color: var(--ink-2);
+  }
+  .chip i { width: 9px; height: 9px; background: var(--c, var(--ink-3)); flex: none; }
+  .chip .k { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); }
+  .chip:hover { color: var(--ink); border-color: var(--ink-2); }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .chip[aria-pressed="true"] .k { color: var(--ground); opacity: .6; }
+  .range { display: grid; gap: 6px; }
+  .range-vals { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
+  .dual { position: relative; height: 26px; }
+  .dual input { position: absolute; inset: 0; width: 100%; margin: 0; appearance: none; -webkit-appearance: none; background: none; pointer-events: none; }
+  .dual::before { content: ""; position: absolute; left: 0; right: 0; top: 12px; height: 2px; background: var(--line-2); }
+  .dual .fill { position: absolute; top: 12px; height: 2px; background: var(--accent); }
+  .dual input::-webkit-slider-thumb { -webkit-appearance: none; pointer-events: auto; width: 16px; height: 16px; background: var(--accent); border: 2px solid var(--ground); cursor: pointer; }
+  .dual input::-moz-range-thumb { pointer-events: auto; width: 14px; height: 14px; background: var(--accent); border: 2px solid var(--ground); border-radius: 0; cursor: pointer; }
+  .tray-foot { display: flex; justify-content: flex-end; margin-top: 16px; }
+
+  /* Detail panel */
+  .panel {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 20;
+    width: min(440px, 100vw);
+    background: var(--panel);
+    border-left: 1px solid var(--line-2);
+    transform: translateX(102%);
+    transition: transform .35s var(--ease);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .panel.open { transform: none; box-shadow: -30px 0 60px rgba(0,0,0,.35); }
+  .ph { position: relative; aspect-ratio: 16 / 10; background: var(--panel-2); overflow: hidden; }
+  .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ph .glyph { position: absolute; inset: 0; display: grid; place-items: center; color: var(--c); }
+  .ph .glyph svg { width: 56%; height: 70%; overflow: visible; }
+  .credit {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 18px 14px 8px;
+    background: linear-gradient(transparent, rgba(0,0,0,.6));
+    font-family: var(--mono); font-size: 10px; letter-spacing: .04em; color: rgba(255,255,255,.85);
+  }
+  .panel-top { position: absolute; top: 12px; right: 12px; display: flex; gap: 6px; z-index: 2; }
+  .panel-top .btn { background: var(--glass); backdrop-filter: blur(8px); border-color: var(--line-2); }
+  .panel-top .btn:hover { background: var(--ink); }
+  .pbody { padding: 20px 22px 30px; }
+  .kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .stage { padding: 2px 7px; border: 1px solid var(--line-2); color: var(--ink-2); }
+  .stage.built { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .stage.planned { border-style: dashed; }
+  .newtag { padding: 2px 7px; background: var(--accent); color: var(--ground); }
+  .pbody h2 { margin: 10px 0 6px; font-family: var(--serif); font-weight: 400; font-size: 38px; line-height: 1; letter-spacing: -.01em; }
+  .place { color: var(--ink-2); margin: 0 0 14px; }
+  .brief { font-size: 16px; line-height: 1.5; margin: 0 0 22px; color: var(--ink); }
+  .facts { margin: 0 0 24px; border-top: 1px solid var(--line); }
+  .facts div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); padding-top: 3px; }
+  .facts dd { margin: 0; font-size: 14px; overflow-wrap: anywhere; }
+  .facts .note { display: block; color: var(--ink-3); font-size: 12px; margin-top: 2px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
+  .tag i { width: 8px; height: 8px; background: var(--c); }
+  .links { list-style: none; margin: 0 0 22px; padding: 0; border-top: 1px solid var(--line); }
+  .links li { border-bottom: 1px solid var(--line); }
+  .links a { display: block; padding: 10px 0; text-decoration: none; }
+  .links a:hover .ll { text-decoration: underline; text-underline-offset: 3px; }
+  .links .lh { display: block; font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); }
+  .pnav { display: flex; justify-content: space-between; gap: 8px; }
+
+  /* Sheets (Latest / Index / About) */
+  .sheet {
+    position: fixed; top: 64px; right: 16px; z-index: 15;
+    width: min(640px, calc(100vw - 32px));
+    max-height: calc(100vh - 150px);
+    display: none; flex-direction: column;
+  }
+  .sheet.open { display: flex; animation: rise .2s var(--ease); }
+  .sheet, .tray { background: var(--panel); box-shadow: 0 24px 60px rgba(0, 0, 0, .4); }
+  .idx th { background: var(--panel); }
+  .sheet-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 16px 18px 12px; border-bottom: 1px solid var(--line); }
+  .sheet-head h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1; }
+  .sheet-head p { margin: 4px 0 0; color: var(--ink-3); font-size: 13px; }
+  .sheet-body { overflow-y: auto; padding: 6px 18px 18px; overscroll-behavior: contain; }
+  .tabs { display: flex; gap: 4px; padding: 10px 18px 0; }
+  .tabs .navbtn { padding: 6px 10px; }
+  .day { margin: 16px 0 4px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .row {
+    display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center;
+    width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line);
+    padding: 10px 0;
+  }
+  .row:hover .rt { text-decoration: underline; text-underline-offset: 3px; }
+  .thumb { width: 64px; height: 46px; background: var(--panel-2); overflow: hidden; display: grid; place-items: center; color: var(--c); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb svg { width: 70%; height: 70%; overflow: visible; }
+  .rt { display: block; font-weight: 500; }
+  .rm { display: flex; flex-wrap: wrap; gap: 4px 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--ink-3); margin-top: 2px; }
+  .lane { color: var(--accent); }
+  .empty { padding: 30px 0; color: var(--ink-3); font-size: 14px; }
+  table.idx { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .idx th { text-align: left; font-family: var(--mono); font-weight: 400; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); padding: 10px 8px 8px 0; position: sticky; top: 0; background: var(--glass); cursor: pointer; white-space: nowrap; }
+  .idx th[aria-sort] { color: var(--ink); }
+  .idx td { padding: 9px 8px 9px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  .idx tr { cursor: pointer; }
+  .idx tbody tr:hover td { background: rgba(255,255,255,.03); }
+  .idx .no { font-family: var(--mono); font-size: 11px; color: var(--ink-3); }
+  .idx .dot { display: inline-block; width: 8px; height: 8px; background: var(--c); margin-right: 8px; }
+  .about p { color: var(--ink-2); margin: 10px 0; }
+  .about strong { color: var(--ink); font-weight: 500; }
+  .about .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+  .legend { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 6px 14px; margin: 8px 0; }
+
+  /* Hover card */
+  .hover {
+    position: fixed; z-index: 12; pointer-events: none;
+    width: 230px; overflow: hidden;
+    opacity: 0; transform: translateY(4px);
+    transition: opacity .15s, transform .15s;
+  }
+  .hover.show { opacity: 1; transform: none; }
+  .hover .ph { aspect-ratio: 16 / 10; }
+  .hover .hb { padding: 9px 11px 10px; }
+  .hover .ht { font-family: var(--serif); font-size: 20px; line-height: 1.05; }
+  .hover .hm { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
+
+  /* Edit dialog */
+  dialog {
+    width: min(640px, calc(100vw - 24px)); max-height: calc(100vh - 32px);
+    padding: 0; border: 1px solid var(--line-2);
+    background: var(--panel); color: var(--ink);
+  }
+  dialog::backdrop { background: rgba(0, 10, 5, .6); backdrop-filter: blur(3px); }
+  .form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; padding: 18px 20px 20px; }
+  .form label { display: grid; gap: 4px; }
+  .form label > span, .form legend { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .form .full { grid-column: 1 / -1; }
+  .form fieldset { border: 0; margin: 0; padding: 0; }
+  .field { height: 36px; border: 1px solid var(--line-2); background: var(--ground-2); padding: 0 10px; outline: none; min-width: 0; font-size: 14px; }
+  .field:focus { border-color: var(--ink-2); }
+  textarea.field { height: auto; padding: 8px 10px; resize: vertical; }
+  select.field option { background: var(--panel); }
+  .picks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .picks input { position: absolute; opacity: 0; pointer-events: none; }
+  .picks input:checked + .chip { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .picks input:focus-visible + .chip { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .form-foot { grid-column: 1 / -1; display: flex; gap: 8px; justify-content: flex-end; margin-top: 4px; }
+  .hint { grid-column: 1 / -1; margin: -4px 0 0; font-size: 12px; color: var(--ink-3); }
+
+  .toast {
+    position: fixed; left: 50%; top: 18px; z-index: 40;
+    transform: translate(-50%, -10px); opacity: 0; pointer-events: none;
+    background: var(--ink); color: var(--ground);
+    font-family: var(--mono); font-size: 12px; padding: 9px 14px;
+    transition: opacity .2s, transform .2s;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .loading { position: fixed; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); z-index: 5; text-align: center; padding: 20px; }
+
+  @media (max-width: 760px) {
+    .brand { top: 14px; left: 14px; }
+    .brand h1 { font-size: 30px; }
+    .brand p { display: none; }
+    .topnav { top: 10px; right: 10px; }
+    .navbtn { padding: 7px 8px; font-size: 10.5px; }
+    .axis-card { left: 10px; right: 10px; bottom: 62px; width: auto; padding: 8px; grid-template-columns: auto 1fr; align-items: center; gap: 10px; }
+    .axis-glyph { display: none; }
+    .bar { left: 10px; right: 10px; bottom: 10px; }
+    .count, .zoom .fit { display: none; }
+    .tray { right: 10px; bottom: 112px; width: calc(100vw - 20px); max-height: calc(100vh - 190px); }
+    .sheet { top: 56px; right: 10px; width: calc(100vw - 20px); max-height: calc(100vh - 186px); }
+    .panel { top: auto; height: 82vh; width: 100vw; border-left: 0; border-top: 1px solid var(--line-2); transform: translateY(102%); }
+    .panel.open { transform: none; }
+    .form { grid-template-columns: 1fr; }
+    .hover { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -553,73 +398,80 @@
 </style>
 </head>
 <body>
-<div class="sheet">
-  <div class="frame">
-    <header class="masthead">
-      <div class="masthead-title">
-        <svg class="north" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-          <circle cx="30" cy="30" r="22"/>
-          <circle cx="30" cy="30" r="2"/>
-          <path d="M30 6 L36 32 L30 28 L24 32 Z" fill="currentColor" fill-opacity=".25"/>
-          <path d="M30 54 V48 M6 30 h6 M54 30 h-6"/>
-          <text x="30" y="4" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="currentColor" stroke="none">N</text>
-        </svg>
-        <div class="eyebrow">A personal archive · urbanism &amp; architecture</div>
-        <h1>Case<span>/</span>book</h1>
-        <p class="lede">Places, plans and buildings worth coming back to. Open a sheet to read the facts and follow the sources.</p>
-      </div>
-      <div class="titleblock" aria-label="Title block">
-        <div class="tb-cell"><span class="tb-label">Entries</span><span class="tb-value big" id="tb-count">00</span></div>
-        <div class="tb-cell"><span class="tb-label">Sources</span><span class="tb-value big" id="tb-sources">00</span></div>
-        <div class="tb-cell"><span class="tb-label">Scale</span><span class="tb-value">N.T.S.</span></div>
-        <div class="tb-cell"><span class="tb-label">Sheet</span><span class="tb-value">01 of 01</span></div>
-        <div class="tb-cell wide"><span class="tb-label">Last revision</span><span class="tb-value" id="tb-rev">—</span></div>
-        <div class="tb-cell wide last">
-          <span class="tb-label">Drawing set</span>
-          <span class="toolbar-group" style="margin-top:4px">
-            <button class="btn small ghost" id="theme-toggle" type="button">Vellum</button>
-            <button class="btn small ghost" id="export-btn" type="button">Export</button>
-            <button class="btn small ghost" id="import-btn" type="button">Import</button>
-            <input type="file" id="import-file" accept="application/json,.json" hidden>
-          </span>
-        </div>
-      </div>
-    </header>
+<div id="field" tabindex="0" aria-label="Case study field. Drag to move, scroll or pinch to zoom.">
+  <svg id="deco" aria-hidden="true"><g id="pan"><g id="guides"></g><g id="terr"></g></g></svg>
+  <div id="pts"></div>
+</div>
+<div class="loading" id="loading">Laying out the field…</div>
 
-    <div class="toolbar">
-      <label class="search">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg>
-        <span class="sr-only">Search</span>
-        <input id="search" type="search" placeholder="Search places, people, sources…" autocomplete="off">
-        <kbd>/</kbd>
-      </label>
-      <select class="btn ghost" id="sort" aria-label="Sort">
-        <option value="code">Sort · Sheet no.</option>
-        <option value="year">Sort · Year</option>
-        <option value="title">Sort · A–Z</option>
-        <option value="updated">Sort · Recently edited</option>
-      </select>
-      <button class="btn primary" id="new-btn" type="button">+ New case <kbd style="border-color:currentColor;color:inherit">N</kbd></button>
-    </div>
+<header class="brand">
+  <h1>Case<i>/</i>book</h1>
+  <p id="brand-sub">A field of urban case studies</p>
+</header>
 
-    <nav class="filters" id="filters" aria-label="Filter by theme"></nav>
+<nav class="topnav glass" aria-label="Sections">
+  <button class="navbtn" type="button" data-sheet="latest" aria-pressed="false">Latest <span class="badge" id="latest-badge" hidden></span></button>
+  <button class="navbtn" type="button" data-sheet="index" aria-pressed="false">Index</button>
+  <button class="navbtn" type="button" data-sheet="about" aria-pressed="false">About</button>
+</nav>
 
-    <main class="grid" id="grid" aria-live="polite"></main>
-
-    <footer class="legend">
-      <span class="scalebar"><i></i> 0 — 100 — 200 m</span>
-      <span>Saved in this browser · Export to keep a backup</span>
-    </footer>
+<div class="axis-card glass">
+  <div class="lbl">Arrange by</div>
+  <div class="axis-glyph">
+    <svg viewBox="0 0 54 46" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+      <path d="M8 4 V38 H50"/><path d="M5 8 L8 4 L11 8 M46 35 L50 38 L46 41"/>
+    </svg>
+    <span id="axis-desc">Latitude ↑<br>Longitude →</span>
+  </div>
+  <div class="seg" role="group" aria-label="Arrange by">
+    <button type="button" data-layout="location" aria-pressed="true">Place</button>
+    <button type="button" data-layout="theme" aria-pressed="false">Theme</button>
+    <button type="button" data-layout="year" aria-pressed="false">Year</button>
   </div>
 </div>
 
-<dialog id="dlg" aria-labelledby="dlg-title"></dialog>
+<div class="bar glass">
+  <label class="search">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg>
+    <span class="sr-only">Search</span>
+    <input id="q" type="search" placeholder="Search places, designers…" autocomplete="off">
+  </label>
+  <span class="count" id="count"></span>
+  <button class="btn" type="button" id="filters-btn" aria-expanded="false">Filters <span class="n" id="filters-n" hidden></span></button>
+  <div class="zoom">
+    <button class="btn icon" type="button" id="zoom-out" aria-label="Zoom out">−</button>
+    <button class="btn icon" type="button" id="zoom-in" aria-label="Zoom in">+</button>
+    <button class="btn icon fit" type="button" id="zoom-fit" aria-label="Show everything">⤢</button>
+  </div>
+</div>
+
+<div class="tray glass" id="tray" role="dialog" aria-label="Filters"></div>
+
+<section class="sheet glass" id="latest" aria-label="Latest">
+  <div class="sheet-head"><div><h2>Latest</h2><p>New projects from your sources, newest first.</p></div><button class="btn icon" type="button" data-close aria-label="Close">×</button></div>
+  <div class="tabs"><button class="navbtn" type="button" data-tab="added" aria-pressed="true">Added</button><button class="navbtn" type="button" data-tab="skipped" aria-pressed="false">Skipped</button></div>
+  <div class="sheet-body" id="latest-body"></div>
+</section>
+<section class="sheet glass" id="index" aria-label="Index">
+  <div class="sheet-head"><div><h2>Index</h2><p id="index-sub"></p></div><button class="btn icon" type="button" data-close aria-label="Close">×</button></div>
+  <div class="sheet-body" id="index-body"></div>
+</section>
+<section class="sheet glass" id="about" aria-label="About">
+  <div class="sheet-head"><div><h2>About</h2><p>How this field works.</p></div><button class="btn icon" type="button" data-close aria-label="Close">×</button></div>
+  <div class="sheet-body about" id="about-body"></div>
+</section>
+
+<aside class="panel" id="panel" aria-label="Case study"></aside>
+<div class="hover glass" id="hover" aria-hidden="true"></div>
+<dialog id="dlg" aria-label="Edit case study"></dialog>
 <div class="toast" id="toast" role="status"></div>
+<input type="file" id="import-file" accept="application/json,.json" hidden>
 
 <script>
 (() => {
-  const KEY = "casebook.v1";
-  const THEME_KEY = "casebook.theme";
+  const OVERLAY_KEY = "casebook.v2.changes";
+  const DAY = 86400000;
+  const NEW_DAYS = 7;
 
   const THEMES = {
     "mobility":     "Mobility",
@@ -629,472 +481,935 @@
     "reuse":        "Adaptive reuse",
     "regional":     "Regional planning",
   };
+  const THEME_ORDER = Object.keys(THEMES);
+  const STAGES = { "built": "Built", "in-progress": "In progress", "planned": "Planned" };
+  const REGIONS = ["North America", "Latin America", "Europe", "Africa", "Asia", "Oceania"];
+  const SOURCES = { "archdaily.com": "ArchDaily", "dezeen.com": "Dezeen", "planetizen.com": "Planetizen", "urbanize.city": "Urbanize Atlanta", "urbanomnibus.net": "Urban Omnibus" };
+  const LANES = { large: "Large-scale", small: "Small-scale" };
+  const col = (t) => `var(--${THEMES[t] ? t : "public-space"})`;
 
-  // Line drawings, one per primary theme. Drawn on a 120 × 80 sheet.
+  // Line drawings, one per theme, for projects without a photo. Drawn on a 120 × 80 sheet.
   const GLYPHS = {
     "mobility": `
       <path d="M4 66 C 30 66, 40 20, 70 22 S 108 40, 116 14"/>
       <path d="M4 58 C 28 58, 36 12, 70 14 S 104 32, 116 6" stroke-dasharray="2 3"/>
-      ${[[18,62],[46,36],[72,18],[100,28]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3.2" fill="var(--bg)"/>`).join("")}
-      <path d="M4 74 H116" stroke-opacity=".4"/>
-      <path d="M4 72 v4 M60 72 v4 M116 72 v4" stroke-opacity=".4"/>`,
+      ${[[18,62],[46,36],[72,18],[100,28]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3.2" fill="var(--panel-2)"/>`).join("")}`,
     "housing": `
       <rect x="10" y="44" width="22" height="26"/><rect x="32" y="34" width="22" height="36"/>
       <rect x="54" y="40" width="22" height="30"/><rect x="76" y="26" width="22" height="44"/>
       <rect x="98" y="48" width="14" height="22"/>
-      <path d="M32 34 L43 24 L54 34 M76 26 L87 16 L98 26" />
-      <path d="M16 52 h10 M38 44 h10 M38 54 h10 M60 50 h10 M82 36 h10 M82 46 h10 M82 56 h10" stroke-opacity=".55"/>
-      <path d="M4 70 H116"/>`,
+      <path d="M32 34 L43 24 L54 34 M76 26 L87 16 L98 26"/><path d="M4 70 H116"/>`,
     "public-space": `
       <rect x="20" y="8" width="80" height="64"/>
       <rect x="34" y="20" width="52" height="40" stroke-dasharray="3 3"/>
       <path d="M20 8 L100 72 M100 8 L20 72" stroke-opacity=".45"/>
-      <circle cx="60" cy="40" r="7"/>
-      ${[28,92].flatMap(x=>[16,40,64].map(y=>`<circle cx="${x}" cy="${y}" r="2.4"/>`)).join("")}
-      <path d="M4 40 H20 M100 40 H116 M60 0 V8 M60 72 V80" stroke-opacity=".5"/>`,
+      <circle cx="60" cy="40" r="7"/>`,
     "landscape": `
       <path d="M8 46 C 20 20, 54 10, 76 18 S 116 36, 108 54 S 70 76, 40 70 S 2 62, 8 46 Z"/>
       <path d="M22 46 C 30 30, 54 22, 72 28 S 100 40, 94 52 S 66 66, 44 62 S 18 56, 22 46 Z"/>
-      <path d="M38 46 C 42 38, 56 32, 68 36 S 82 44, 78 50 S 62 58, 50 56 S 36 52, 38 46 Z"/>
-      <path d="M54 46 C 56 42, 62 40, 66 42 S 68 48, 64 49 S 54 50, 54 46 Z"/>
-      <path d="M0 76 C 20 70, 40 80, 60 74 S 100 70, 120 76" stroke-dasharray="4 3"/>`,
+      <path d="M38 46 C 42 38, 56 32, 68 36 S 82 44, 78 50 S 62 58, 50 56 S 36 52, 38 46 Z"/>`,
     "reuse": `
       <path d="M4 30 H116 M4 36 H116"/>
       ${[14,38,62,86,110].map(x=>`<path d="M${x} 36 V74 M${x-3} 74 h6"/>`).join("")}
-      <path d="M4 30 L4 24 M116 30 L116 24" stroke-opacity=".5"/>
-      ${[20,32,50,70,78,96].map((x,i)=>`<path d="M${x} 30 c -2 -${6+i%3*3}, 2 -${6+i%3*3}, 0 -${10+i%3*4} M${x} 30 c 3 -4, 5 -6, 6 -${4+i%2*3}"/>`).join("")}
-      <path d="M4 78 H116" stroke-opacity=".4"/>`,
+      ${[20,32,50,70,78,96].map((x,i)=>`<path d="M${x} 30 c -2 -${6+i%3*3}, 2 -${6+i%3*3}, 0 -${10+i%3*4}"/>`).join("")}`,
     "regional": `
-      <circle cx="30" cy="54" r="10"/>
-      <circle cx="30" cy="54" r="3" fill="currentColor"/>
-      <path d="M38 48 L112 10 M40 52 L116 36 M38 60 L110 70 M24 46 L12 6 M36 46 L62 4"/>
-      <path d="M36 44 L104 4 L116 14 L42 50" fill="currentColor" fill-opacity=".08" stroke-dasharray="2 3"/>
-      <path d="M40 58 L116 64 L104 78 L36 64" fill="currentColor" fill-opacity=".08" stroke-dasharray="2 3"/>
-      <path d="M0 74 C 10 72, 14 78, 22 76" stroke-opacity=".5"/>`,
+      <circle cx="30" cy="54" r="10"/><circle cx="30" cy="54" r="3" fill="currentColor"/>
+      <path d="M38 48 L112 10 M40 52 L116 36 M38 60 L110 70 M24 46 L12 6 M36 46 L62 4"/>`,
   };
-  const glyphSvg = (theme) =>
-    `<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLYPHS[theme] || GLYPHS["public-space"]}</svg>`;
-
-  const src = (label, url) => ({ label, url });
-
-  const SEED = [
-    { title: "Superblocks", city: "Barcelona", country: "Spain", year: "2016–", designers: "Ajuntament de Barcelona; Salvador Rueda / BCNecologia", scale: "≈ 400 × 400 m per superblock (3 × 3 blocks)", coords: "41.39° N, 2.17° E", themes: ["public-space", "mobility"], brief: "Grouping nine Eixample blocks and pushing through-traffic to the perimeter turns interior streets into plazas, play space and shade.", links: [src("Ajuntament de Barcelona — Superilles", "https://ajuntament.barcelona.cat/superilles/en/")] },
-    { title: "The High Line", city: "New York", country: "USA", year: "2009–2014", designers: "James Corner Field Operations; Diller Scofidio + Renfro; Piet Oudolf", scale: "2.33 km elevated park", coords: "40.75° N, 74.00° W", themes: ["reuse", "public-space", "landscape"], brief: "A disused freight viaduct on Manhattan's West Side planted as a linear park, with Oudolf's self-seeding planting design.", links: [src("Friends of the High Line — History", "https://www.thehighline.org/history/"), src("Friends of the High Line", "https://www.thehighline.org/")] },
-    { title: "Vauban", city: "Freiburg im Breisgau", country: "Germany", year: "1998–2006", designers: "City of Freiburg; Forum Vauban; Baugruppen co-housing groups", scale: "≈ 38 ha, ≈ 5,500 residents", coords: "47.98° N, 7.83° E", themes: ["housing", "mobility"], brief: "A former barracks rebuilt as a car-reduced district of resident-led building groups, tram access and Passivhaus-standard homes.", links: [src("Vauban district website", "https://www.vauban.de/en/")] },
-    { title: "Cheonggyecheon", city: "Seoul", country: "South Korea", year: "2005", designers: "Seoul Metropolitan Government", scale: "10.9 km restored stream", coords: "37.57° N, 126.98° E", themes: ["landscape", "public-space", "mobility"], brief: "An elevated expressway was torn down and the buried stream beneath it brought back as a sunken public promenade.", links: [src("Seoul Facilities Corporation — Cheonggyecheon", "https://www.sisul.or.kr/open_content/cheonggye/")] },
-    { title: "Metrocable", city: "Medellín", country: "Colombia", year: "2004–", designers: "Metro de Medellín; Municipality of Medellín (social urbanism)", scale: "Line K ≈ 2 km, 4 stations", coords: "6.29° N, 75.54° W", themes: ["mobility", "public-space"], brief: "Cable-car lines linking hillside informal neighbourhoods to the metro, paired with library-parks and public works at each station.", links: [src("Metro de Medellín", "https://www.metrodemedellin.gov.co/")] },
-    { title: "The Sea Ranch", city: "Sonoma County, California", country: "USA", year: "1965–", designers: "Lawrence Halprin; MLTW (Moore Lyndon Turnbull Whitaker); Joseph Esherick", scale: "≈ 16 km of coastline", coords: "38.72° N, 123.45° W", themes: ["landscape", "housing"], brief: "A coastal community planned from wind, hedgerows and meadows, with timber buildings clustered to leave the land open.", links: [src("The Sea Ranch Association", "https://www.tsra.org/")] },
-    { title: "Aranya Housing", city: "Indore", country: "India", year: "1989", designers: "Balkrishna Doshi; Vastu-Shilpa Foundation", scale: "≈ 85 ha, ≈ 6,500 dwellings", coords: "22.75° N, 75.85° E", themes: ["housing"], brief: "Sites-and-services housing with plinths, service cores and a street hierarchy, built so families could extend their homes over time.", links: [src("Balkrishna Doshi Archives (Vastu-Shilpa Foundation)", "https://www.vastushilpa.org/")] },
-    { title: "Quinta Monroy", city: "Iquique", country: "Chile", year: "2004", designers: "Elemental (Alejandro Aravena)", scale: "93 families, ≈ 0.5 ha", coords: "20.21° S, 70.15° W", themes: ["housing"], brief: "\"Half a good house\": the state subsidy pays for the hard half, and families build the other half themselves inside the frame.", links: [src("ELEMENTAL — Quinta Monroy Housing Project", "https://www.elementalchile.cl/works/iquique-violeta-parra-ex-quinta-monroy")] },
-    { title: "Byker Wall", city: "Newcastle upon Tyne", country: "UK", year: "1969–1982", designers: "Ralph Erskine", scale: "≈ 620 homes in the Wall; ≈ 1,800 on the estate", coords: "54.98° N, 1.58° W", themes: ["housing", "landscape"], brief: "A long, colourful perimeter block shelters a low-rise estate designed together with the residents, with an on-site architect's office.", links: [src("Byker Community Trust", "https://bykercommunitytrust.org/")] },
-    { title: "Finger Plan", city: "Copenhagen", country: "Denmark", year: "1947", designers: "Regional Planning Office (Peter Bredsdorff, Steen Eiler Rasmussen)", scale: "Greater Copenhagen region", coords: "55.68° N, 12.57° E", themes: ["regional", "mobility", "landscape"], brief: "Growth along five rail \"fingers\" from the \"palm\" of the city, with green wedges kept open between them.", links: [src("Danish Agency for Planning — Fingerplanen", "https://www.plst.dk/landsplanlaegning/fingerplanen")] },
-    { title: "Curitiba BRT", city: "Curitiba", country: "Brazil", year: "1974–", designers: "Jaime Lerner; IPPUC", scale: "Citywide trunk network", coords: "25.43° S, 49.27° W", themes: ["mobility", "regional"], brief: "Dedicated busways with tube stations and level boarding, set out together with land-use rules along structural axes.", links: [src("URBS — Curitiba public transport", "https://www.urbs.curitiba.pr.gov.br/portal/"), src("IPPUC — Curitiba planning institute", "https://www.ippuc.org.br/")] },
-    { title: "Habitat 67", city: "Montréal", country: "Canada", year: "1967", designers: "Moshe Safdie", scale: "354 prefabricated modules", coords: "45.50° N, 73.54° W", themes: ["housing"], brief: "Stacked precast boxes give each apartment its own garden on the roof of the unit below: density with the qualities of a house.", links: [src("Habitat 67", "https://www.habitat67.com/"), src("Safdie Architects — Habitat 67", "https://www.safdiearchitects.com/projects/habitat-67")] },
-    // From casestudies.json: projects found on ArchDaily, Dezeen, Planetizen, Urbanize Atlanta and Urban Omnibus.
-    {"title": "Rotiers – Renovation of 46 housing units", "city": "Brussels", "country": "Belgium", "site": "Edge of the Sonian Forest", "year": "2025", "designers": "MULTIPLE Architecture & Urbanism; architecture team: FP architecture; structural engineering: GEI", "scale": "3,916 m²; 46 housing units in a 1960s social housing building", "coords": "50.85° N, 4.36° E", "themes": ["housing", "reuse"], "brief": "Renovation of a 1960s social housing building that gives it a renewed identity while keeping the qualities of its wooded setting.", "links": [{"label": "ArchDaily — project page", "url": "https://www.archdaily.com/1187565/rotiers-renovation-of-46-housing-units-in-brussels-multiple-architecture-and-urbanism"}]},
-    {"title": "Novéo", "city": "Bordeaux", "country": "France", "site": "Bassins à Flot mixed-use development zone (ZAC)", "year": "2026", "designers": "Taillandier Architectes Associés (lead architect: Marinell Van Wyk; TAA Bordeaux); architecture office: Lanoire & Courrian", "scale": "13,688 m²; 117 housing units (21 affordable homeownership, 37 social rental) in four buildings, a serviced residence and a 128-space shared car park", "coords": "44.87° N, 0.55° W", "themes": ["housing"], "brief": "Four buildings combining 117 homes, a serviced residence and a shared car park in Bordeaux's Bassins à Flot district.", "links": [{"label": "ArchDaily — project page", "url": "https://www.archdaily.com/1187563/noveo-taillandier-architectes-associes"}]},
-    {"title": "Hotel MS Collection Arouca", "city": "Arouca", "country": "Portugal", "site": "Former Monastery of Santa Maria de Arouca", "year": "2025", "designers": "MiMool Arquitectura & Design de Interiores (lead architects: Fábio Milhazes, Rui Loureiro, Ana Ferreira, Joana Monteiro)", "scale": "6,698 m²; part of a monastic complex classified as a National Monument since 1910, converted into a five-star hotel", "coords": "40.93° N, 8.24° W", "themes": ["reuse"], "brief": "Part of a monastery classified as a National Monument since 1910, rehabilitated as a five-star hotel.", "links": [{"label": "ArchDaily — project page", "url": "https://www.archdaily.com/1187879/hotel-ms-collection-arouca-mimool-arquitectura-and-design-de-interiores"}]},
-    {"title": "Photography Studio as Local Infrastructure", "city": "Hiroshima", "country": "Japan", "site": "", "year": "2025", "designers": "ArchTank (lead architect: Yasumasa Hayashi; architect: Nagi Kumagai); construction: Shinwa Kenko", "scale": "269 m²; a flood-damaged neighbourhood photo studio rebuilt with a café, observatory and retail", "coords": "34.39° N, 132.46° E", "themes": ["public-space"], "brief": "A flood-damaged neighbourhood photo studio rebuilt as a small civic space with a café, observatory and shop.", "links": [{"label": "ArchDaily — project page", "url": "https://www.archdaily.com/1186440/photography-studio-as-local-infrastructure-archtank"}]},
-    {"title": "Oxford Street pedestrianisation", "city": "London", "country": "UK", "site": "Oxford Street, City of Westminster (first phase: Orchard Street to Great Portland Street)", "year": "2026–2028", "designers": "East (lead) with Gehl, Publica, J&L Gibbons, Etude and NRP; Hawkins\\Brown (long-term vision for the whole street); overseen by the Oxford Street Development Corporation (Mayor of London)", "scale": "Almost 1 km traffic-free in the first phase, of a street about 2 km long; two new squares planned near Holles Street and Duke Street", "coords": "", "themes": ["public-space", "mobility"], "brief": "Almost a kilometre of Oxford Street is now traffic-free, as a trial phase before the permanent scheme is built.", "links": [{"label": "ArchDaily — news article", "url": "https://www.archdaily.com/1187796/londons-oxford-street-opens-its-first-traffic-free-phase"}, {"label": "Dezeen — news article", "url": "https://www.dezeen.com/2026/10/27/photos-walkable-oxford-street-pedestrianisation-begins/"}, {"label": "East — designer's website (homepage)", "url": "https://www.east.uk.com/"}]},
-    {"title": "Essen Central Library", "city": "Essen", "country": "Germany", "site": "Boeckerhaus (former department store), Kennedyplatz", "year": "2026", "designers": "MVRDV with Meyer Architekten; interiors with Includi", "scale": "11,000 m² across six storeys", "coords": "", "themes": ["public-space", "reuse"], "brief": "A six-storey former department store turned into a city library designed as a public \"living room\".", "links": [{"label": "Dezeen — project article", "url": "https://www.dezeen.com/2026/10/27/mvrdv-essen-central-library/"}, {"label": "MVRDV — architect's website (homepage)", "url": "https://www.mvrdv.com/"}, {"label": "Meyer Architekten — architect's website (homepage)", "url": "https://www.meyer-architekten.de/"}, {"label": "Includi — interior collaborator's website (homepage)", "url": "https://www.includi.com/"}]},
-    {"title": "Observatory, Landscapes of Waste", "city": "Toon, Ehime", "country": "Japan", "site": "Oono Associates recycling complex, Shikoku", "year": "2026", "designers": "Ryue Nishizawa (observatory); Kazuyo Sejima (supervision); Shingo Masuda + Katsuhisa Otsubo (plaza and bus stop); Suzuko Yamada (bus and visitor wear)", "scale": "Cone 33 m in diameter and 4 m high, overlooking a landfill basin", "coords": "", "themes": ["landscape", "reuse"], "brief": "A 33-metre orange cone overlooking a landfill basin, built for the Setouchi Art and Industry 2026 festival.", "links": [{"label": "Dezeen — project article", "url": "https://www.dezeen.com/2026/10/28/ryue-nishizawa-viewpoint-setouchi-art-industry/"}, {"label": "Setouchi Art and Industry — festival website", "url": "https://www.sai-art.jp/en"}]},
-    {"title": "Loco Park masterplan", "city": "Tbilisi", "country": "Georgia", "site": "Former Soviet-era locomotive factory site", "year": "2026 (proposed)", "designers": "Stefano Boeri Architetti (founder Stefano Boeri; partner Pietro Chiodi)", "scale": "Not stated by the source", "coords": "", "themes": ["housing", "reuse", "public-space"], "brief": "Competition-winning masterplan that renovates a locomotive factory and adds brick housing blocks, parks and public space.", "links": [{"label": "Dezeen — project article", "url": "https://www.dezeen.com/2026/10/26/loco-park-masterplan-stefano-boeri/"}, {"label": "Stefano Boeri Architetti — architect's website (homepage)", "url": "https://www.stefanoboeriarchitetti.net/en/"}]},
-    {"title": "Murphy Crossing MARTA infill station", "city": "Atlanta", "country": "USA", "site": "Murphy Crossing, Southwest Atlanta (Adair Park, West End and Oakland City)", "year": "2026– (in study)", "designers": "Atlanta Beltline Inc. (preliminary scoping study; principal engineer Shaun Green)", "scale": "20-acre Murphy Crossing site; 60-ft vertical gap between Beltline transit and MARTA rail; study costs about $800,000–$900,000", "coords": "", "themes": ["mobility"], "brief": "Five options for a new MARTA rail station that would give the Beltline its first direct connection to MARTA rail.", "links": [{"label": "Urbanize Atlanta — news article", "url": "https://atlanta.urbanize.city/post/marta-infill-station-beltline-murphy-crossing-reveals-5-options-connecting-trail-transit-rail"}, {"label": "Atlanta Beltline — Murphy Crossing infill station virtual open house", "url": "https://beltline.konveio.com/murphy-crossing-infill-station"}]},
-    {"title": "Atlanta Beltline Northwest Trail – Segment 2A", "city": "Atlanta", "country": "USA", "site": "Buckhead, from Bobby Jones Golf Course toward Peachtree Road", "year": "2026–2028", "designers": "Heath & Lineback (designers); PATH Foundation (program manager); Hasbun Construction (contractor); Atlanta Beltline Inc.", "scale": "0.3-mile segment of 14-ft-wide multi-use trail, with a pedestrian bridge and an elevated trail structure; the full Northwest Trail will be 4.3 miles", "coords": "", "themes": ["mobility", "public-space"], "brief": "A 0.3-mile trail segment with a pedestrian bridge and elevated section, linking the Beltline toward Peachtree Road job centres.", "links": [{"label": "Urbanize Atlanta — news article", "url": "https://atlanta.urbanize.city/post/atl-beltline-northwest-trail-section-officially-breaks-ground-peachtree-images"}]},
-    {"title": "Grove Theatre revival", "city": "Atlanta", "country": "USA", "site": "1576 Donald Lee Hollowell Parkway NW, Grove Park", "year": "c. 1941; 2026–2027", "designers": "Not named by the source; owner: Grove Park Foundation", "scale": "10,400 sq ft of leasable space; $5.5 million renovation", "coords": "", "themes": ["reuse", "public-space"], "brief": "A 1940s Westside movie house being renovated as a performing and cultural arts centre for Grove Park.", "links": [{"label": "Urbanize Atlanta — news article", "url": "https://atlanta.urbanize.city/post/grove-theatre-historic-1940s-atl-movie-house-mixed-use-revival-go"}, {"label": "Grove Park Foundation — economic development", "url": "https://groveparkfoundation.org/economic-development/"}]},
-    {"title": "GuildHouse", "city": "Atlanta", "country": "USA", "site": "2051, 2085 and 2095 Marietta Boulevard, Bolton (Upper Westside)", "year": "2026 (proposed)", "designers": "Vida Companies (developer); Geheber Lewis Associates (architecture); Dix Hite (landscape); Krywicki (interior design); Kimley-Horn (civil engineering)", "scale": "6.68 acres; about 310 apartments and 39 rental townhomes; 7,200 sq ft retail and coworking; $107.6 million; 15% workforce housing", "coords": "", "themes": ["housing"], "brief": "About 310 apartments, 39 townhomes and retail planned on former industrial lots, with 15% workforce housing.", "links": [{"label": "Urbanize Atlanta — news article", "url": "https://atlanta.urbanize.city/post/guildhouse-uppper-westside-proposal-scores-develop-fulton-backing"}, {"label": "Vida Companies — developer's website (homepage)", "url": "https://www.vidacompanies.com/"}]},
-    {"title": "Jewel Streets Neighborhood Plan", "city": "New York", "country": "USA", "site": "Jewel Streets, East New York, Brooklyn and Lindenwood, Queens", "year": "2025–", "designers": "NYC Department of Housing Preservation and Development (HPD) with the Department of Environmental Protection (DEP) and the Mayor's Office of Climate & Environmental Justice; community partners: Justice for the Jewel Streets Coalition (East New York Community Land Trust) and Cypress Hills Local Development Corporation", "scale": "12-block neighbourhood, including a 17-acre City-owned site; nearly $150 million in proposed infrastructure upgrades (per Urban Omnibus)", "coords": "", "themes": ["landscape", "housing"], "brief": "A City plan for a sunken, flood-prone 12-block neighbourhood: new drainage, rezoning, affordable housing and voluntary buyouts.", "links": [{"label": "Urban Omnibus — “What Water Wants”", "url": "https://urbanomnibus.net/2026/07/what-water-wants-2/"}, {"label": "NYC HPD — Jewel Streets Neighborhood Plan", "url": "https://www.nyc.gov/site/hpd/services-and-information/jewel-streets-neighborhood-plan.page"}, {"label": "NYC HPD — Jewel Streets Neighborhood Plan (PDF)", "url": "https://www.nyc.gov/assets/hpd/downloads/pdfs/services/jewel-streets-neighborhood-plan.pdf"}, {"label": "NYC Housing Recovery — Resilient Acquisitions", "url": "https://www.nyc.gov/site/housingrecovery/preparedness/resilient-acquisitions.page"}]},
-    {"title": "Federal Boulevard BRT", "city": "Denver", "country": "USA", "site": "Federal Boulevard", "year": "2026–2028", "designers": "Not named by the source; funded by Colorado's Nonattainment Area Air Pollution Mitigation Enterprise", "scale": "Up to 18 miles and 74 stations; $50 million plus $2.7 million a year for maintenance", "coords": "", "themes": ["mobility"], "brief": "Bus rapid transit with 74 stations along up to 18 miles of one of metro Denver's busiest transit corridors.", "links": [{"label": "Planetizen — news summary", "url": "https://www.planetizen.com/news/2026/10/138756-one-denvers-busiest-corridors-gain-brt"}, {"label": "Transportation Today News — original article", "url": "https://transportationtodaynews.com/news/39099-colorado-approves-funding-for-denver-bus-rapid-transit-project/"}]},
-  ];
-
-  // ---------- State ----------
-  const uid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
-  const now = () => new Date().toISOString();
-
-  function seedState() {
-    const t = now();
-    return {
-      nextNo: SEED.length + 1,
-      noWiki: true,
-      seedVersion: 2,
-      items: SEED.map((s, i) => ({ id: uid(), no: i + 1, updated: t, ...s })),
-    };
-  }
-  function load() {
-    try {
-      const raw = localStorage.getItem(KEY);
-      if (!raw) return null;
-      const data = JSON.parse(raw);
-      if (data && Array.isArray(data.items)) return data;
-    } catch (e) {}
-    return null;
-  }
-  let state = load() || seedState();
-
-  // One-time cleanup for copies saved before sources changed: drop Wikipedia
-  // links and add the official sources to the matching seeded sheets.
-  if (!state.noWiki) {
-    state.items.forEach(item => {
-      item.links = (item.links || []).filter(l => !/wikipedia\.org/i.test(l.url || ""));
-      const seed = SEED.find(s => s.title === item.title);
-      if (seed) seed.links.forEach(l => { if (!item.links.some(x => x.url === l.url)) item.links.push({ ...l }); });
-    });
-    state.noWiki = true;
-  }
-  // Add seeded sheets that a saved copy doesn't have yet (matched by title).
-  if ((state.seedVersion || 1) < 2) {
-    SEED.forEach(seed => {
-      if (state.items.some(i => i.title === seed.title)) return;
-      state.items.push({ id: uid(), no: state.nextNo++, updated: now(), ...seed, links: seed.links.map(l => ({ ...l })) });
-    });
-    state.seedVersion = 2;
-  }
-  let storageOk = true;
-  function save() {
-    try { localStorage.setItem(KEY, JSON.stringify(state)); storageOk = true; }
-    catch (e) {
-      if (storageOk) toast("Couldn't save in this browser. Use Export to keep a copy.");
-      storageOk = false;
-    }
-  }
-  save();
-
-  const ui = { q: "", theme: null, sort: "code" };
+  const glyph = (t) => `<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLYPHS[t] || GLYPHS["public-space"]}</svg>`;
 
   // ---------- Helpers ----------
   const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const code = (n) => "CS-" + String(n).padStart(2, "0");
-  const firstYear = (y) => parseInt(String(y).match(/\d{3,4}/)?.[0] || "9999", 10);
-  const safeUrl = (u) => {
-    try { const url = new URL(u.trim()); return /^https?:$/.test(url.protocol) ? url.href : null; }
-    catch (e) { return null; }
-  };
+  const primary = (it) => (it.themes && THEMES[it.themes[0]]) ? it.themes[0] : "public-space";
   const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } };
-  const fmtDate = (iso) => {
-    const d = new Date(iso);
-    return isNaN(d) ? "—" : d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }) + " · " + d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+  const sourceOf = (it) => {
+    const h = host(it.links?.[0]?.url || "");
+    const k = Object.keys(SOURCES).find(s => h.endsWith(s));
+    return k ? SOURCES[k] : null;
   };
-  const byId = (id) => state.items.find(i => i.id === id);
-
+  const safeUrl = (u) => { try { const x = new URL(String(u).trim()); return /^https?:$/.test(x.protocol) ? x.href : null; } catch (e) { return null; } };
+  const firstYear = (y) => parseInt(String(y || "").match(/\d{4}/)?.[0] || "", 10) || null;
+  const isNew = (it) => it.origin !== "original" && it.added && (Date.now() - Date.parse(it.added)) < NEW_DAYS * DAY;
+  const placeOf = (it) => [it.city, it.country].filter(Boolean).join(", ");
   let toastTimer;
   function toast(msg) {
-    const t = $("#toast");
-    t.textContent = msg;
-    t.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove("show"), 2400);
+    const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2600);
+  }
+  function photo(it, cls = "ph") {
+    const c = col(primary(it));
+    const g = `<div class="glyph" style="--c:${c}">${glyph(primary(it))}</div>`;
+    if (!it.image?.url) return `<div class="${cls}" style="--c:${c}">${g}</div>`;
+    return `<div class="${cls}" style="--c:${c}">${g}<img src="${esc(it.image.url)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">${cls === "ph" && it.image.credit ? `<div class="credit">Image: ${esc(it.image.credit)}</div>` : ""}</div>`;
   }
 
-  // ---------- Render ----------
-  function matches(item) {
-    if (ui.theme && !item.themes?.includes(ui.theme)) return false;
-    if (!ui.q) return true;
-    const hay = [item.title, item.city, item.country, item.site, item.year, item.designers, item.scale, item.brief,
-      ...(item.links || []).map(l => l.label), ...(item.themes || []).map(t => THEMES[t])].join(" ").toLowerCase();
-    return ui.q.toLowerCase().split(/\s+/).every(w => hay.includes(w));
-  }
-  function sorted(list) {
-    const l = [...list];
-    if (ui.sort === "year") l.sort((a, b) => firstYear(a.year) - firstYear(b.year));
-    else if (ui.sort === "title") l.sort((a, b) => a.title.localeCompare(b.title));
-    else if (ui.sort === "updated") l.sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
-    else l.sort((a, b) => a.no - b.no);
-    return l;
-  }
+  // ---------- Data ----------
+  let base = [];
+  let skipped = { days: [] };
+  let overlay = { added: [], edits: {}, removed: [] };
+  let items = [];
+  const byId = (id) => items.find(i => i.id === id);
 
-  function renderFilters() {
-    const counts = {};
-    state.items.forEach(i => (i.themes || []).forEach(t => counts[t] = (counts[t] || 0) + 1));
-    $("#filters").innerHTML =
-      `<span class="eyebrow">Layers</span>` +
-      `<button class="chip" type="button" data-theme="" aria-pressed="${!ui.theme}">All <span class="count">${state.items.length}</span></button>` +
-      Object.entries(THEMES).map(([k, label]) =>
-        `<button class="chip" type="button" data-theme="${k}" aria-pressed="${ui.theme === k}">${esc(label)} <span class="count">${counts[k] || 0}</span></button>`
-      ).join("");
+  function loadOverlay() {
+    try {
+      const o = JSON.parse(localStorage.getItem(OVERLAY_KEY) || "null");
+      if (o && Array.isArray(o.added)) overlay = { added: o.added, edits: o.edits || {}, removed: o.removed || [] };
+    } catch (e) {}
   }
-
-  function renderGrid() {
-    const list = sorted(state.items.filter(matches));
-    $("#grid").innerHTML = list.length ? list.map(item => {
-      const primary = item.themes?.[0] || "public-space";
-      const n = (item.links || []).length;
-      return `
-      <button class="card" type="button" data-id="${item.id}">
-        <div class="card-top"><span class="card-code">${code(item.no)}</span><span>${esc(item.coords || "")}</span></div>
-        <div class="glyph">${glyphSvg(primary)}<span class="glyph-label">${esc(THEMES[primary] || "")}</span></div>
-        <h3>${esc(item.title)}</h3>
-        <div class="card-place">${esc([item.city, item.country].filter(Boolean).join(", "))}${item.year ? " · " + esc(item.year) : ""}</div>
-        ${item.brief ? `<p class="card-brief">${esc(item.brief)}</p>` : ""}
-        <div class="card-foot">
-          <span>${n} ${n === 1 ? "source" : "sources"}</span>
-          <span>${(item.themes || []).length} ${(item.themes || []).length === 1 ? "layer" : "layers"}</span>
-        </div>
-      </button>`;
-    }).join("") : `<div class="empty">No sheets match${ui.q ? ` “${esc(ui.q)}”` : ""}${ui.theme ? ` in ${esc(THEMES[ui.theme])}` : ""}.</div>`;
+  function saveOverlay() {
+    try { localStorage.setItem(OVERLAY_KEY, JSON.stringify(overlay)); }
+    catch (e) { toast("Couldn't save in this browser. Use Export to keep a copy."); }
   }
-
-  function renderTitleBlock() {
-    $("#tb-count").textContent = String(state.items.length).padStart(2, "0");
-    $("#tb-sources").textContent = String(state.items.reduce((n, i) => n + (i.links || []).length, 0)).padStart(2, "0");
-    const latest = state.items.map(i => i.updated).filter(Boolean).sort().pop();
-    $("#tb-rev").textContent = latest ? fmtDate(latest) : "—";
+  // Sheets added by hand in the previous version of the site carry over once.
+  function migrateV1() {
+    try {
+      if (localStorage.getItem("casebook.v2.migrated")) return;
+      const old = JSON.parse(localStorage.getItem("casebook.v1") || "null");
+      const titles = new Set(base.map(b => b.title));
+      (old?.items || []).filter(i => i?.title && !titles.has(i.title) && !overlay.added.some(a => a.title === i.title)).forEach(i => {
+        overlay.added.push({
+          id: "mine-" + Math.random().toString(36).slice(2, 9), title: i.title, city: i.city || "", country: i.country || "", site: i.site || "",
+          year: i.year || "", axisYear: firstYear(i.year), stage: "built", designers: i.designers || "", scale: i.scale || "",
+          lat: null, lng: null, coords: i.coords || "", approx: true, placement: "", themes: (i.themes || []).filter(t => THEMES[t]),
+          brief: i.brief || "", links: (i.links || []).filter(l => safeUrl(l.url)), image: null, origin: "mine", added: new Date().toISOString().slice(0, 10),
+        });
+      });
+      localStorage.setItem("casebook.v2.migrated", "1");
+      saveOverlay();
+    } catch (e) {}
+  }
+  function merge() {
+    const removed = new Set(overlay.removed);
+    const list = base.filter(b => !removed.has(b.id)).map(b => overlay.edits[b.id] ? { ...b, ...overlay.edits[b.id] } : b);
+    const maxNo = Math.max(0, ...base.map(b => b.no || 0));
+    overlay.added.forEach((a, i) => list.push({ ...a, no: a.no || maxNo + i + 1 }));
+    items = list;
+    regionGuess(items);
+  }
+  function regionGuess(list) {
+    const map = { "USA": "North America", "United States": "North America", "Canada": "North America", "Mexico": "Latin America", "UK": "Europe", "United Kingdom": "Europe", "Australia": "Oceania", "New Zealand": "Oceania" };
+    list.forEach(it => { if (!it.region) it.region = map[it.country] || "Unknown"; });
   }
 
-  function render() { renderFilters(); renderGrid(); renderTitleBlock(); }
+  // ---------- View state ----------
+  const field = $("#field"), ptsEl = $("#pts"), panG = $("#pan"), guidesG = $("#guides"), terrG = $("#terr");
+  const view = { layout: "location", zoom: 1, x: 0, y: 0 };
+  const filters = { themes: new Set(), regions: new Set(), stages: new Set(), yMin: 1940, yMax: 2030, q: "" };
+  let yearBounds = [1940, 2030];
+  let anchors = new Map();   // world position for the current layout
+  let pos = new Map();       // screen position at the current zoom (before pan)
+  let selected = null;
+  const els = new Map();
+  const labelSize = new Map();
 
-  // ---------- Detail sheet ----------
-  const dlg = $("#dlg");
-  let currentId = null;
+  function matches(it) {
+    if (filters.themes.size && !(it.themes || []).some(t => filters.themes.has(t))) return false;
+    if (filters.regions.size && !filters.regions.has(it.region)) return false;
+    if (filters.stages.size && !filters.stages.has(it.stage)) return false;
+    const y = it.axisYear || firstYear(it.year);
+    if (y && (y < filters.yMin || y > filters.yMax)) return false;
+    if (filters.q) {
+      const hay = [it.title, it.city, it.country, it.site, it.year, it.designers, it.scale, it.brief, it.region, STAGES[it.stage], sourceOf(it),
+        ...(it.themes || []).map(t => THEMES[t])].join(" ").toLowerCase();
+      if (!filters.q.toLowerCase().split(/\s+/).every(w => hay.includes(w))) return false;
+    }
+    return true;
+  }
+  const activeFilterCount = () => filters.themes.size + filters.regions.size + filters.stages.size +
+    ((filters.yMin > yearBounds[0] || filters.yMax < yearBounds[1]) ? 1 : 0);
 
-  function openSheet(id) {
-    const item = byId(id);
-    if (!item) return;
-    currentId = id;
-    const primary = item.themes?.[0] || "public-space";
-    const fact = (k, v) => v ? `<div><dt>${k}</dt><dd>${v}</dd></div>` : "";
-    dlg.innerHTML = `
-      <div class="dlg-head">
-        <div>
-          <div class="eyebrow">${code(item.no)} · ${esc([item.city, item.country].filter(Boolean).join(", "))}</div>
-          <h2 id="dlg-title">${esc(item.title)}</h2>
-          ${item.brief ? `<p class="lede" style="max-width:60ch">${esc(item.brief)}</p>` : ""}
-        </div>
-        <div class="dlg-actions">
-          <button class="btn small ghost" type="button" data-act="edit">Edit</button>
-          <button class="btn small ghost close-x" type="button" data-act="close" aria-label="Close">×</button>
-        </div>
-      </div>
-      <div class="dlg-body">
-        <div class="dlg-col">
-          <div class="glyph dlg-glyph">${glyphSvg(primary)}<span class="glyph-label">${esc(THEMES[primary] || "")}</span></div>
-          <h4 class="section-title">Core facts</h4>
-          <dl class="facts">
-            ${fact("Location", esc([item.city, item.country].filter(Boolean).join(", ")))}
-            ${fact("Site", esc(item.site))}
-            ${fact("Year", esc(item.year))}
-            ${fact("Designers", esc(item.designers))}
-            ${fact("Scale", esc(item.scale))}
-            ${fact("Coords", esc(item.coords))}
-            ${fact("Themes", item.themes?.length ? `<span class="tags">${item.themes.map(t => `<span class="tag">${esc(THEMES[t] || t)}</span>`).join("")}</span>` : "")}
-          </dl>
-        </div>
-        <div class="dlg-col">
-          <h4 class="section-title"><span>Links &amp; reading</span><span>${(item.links || []).length}</span></h4>
-          <ul class="links">
-            ${(item.links || []).map((l, i) => `
-              <li>
-                <span class="idx">${String(i + 1).padStart(2, "0")}</span>
-                <a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span class="link-label">${esc(l.label || host(l.url))}</span><span class="link-host">${esc(host(l.url))} ↗</span></a>
-                <button class="icon-btn" type="button" data-act="del-link" data-i="${i}" aria-label="Remove link">×</button>
-              </li>`).join("") || `<li style="color:var(--ink-faint);font-family:var(--mono);font-size:12px">No links yet.</li>`}
-          </ul>
-          <form class="add-link" id="add-link">
-            <input class="field" name="label" placeholder="Title (optional)" aria-label="Link title">
-            <input class="field" name="url" placeholder="https://…" aria-label="Link URL" required>
-            <button class="btn small" type="submit" style="height:34px">Add</button>
-          </form>
-        </div>
-      </div>`;
-    if (!dlg.open) dlg.showModal();
-    dlg.scrollTop = 0;
+  // ---------- Layouts (world coordinates) ----------
+  const K = 12; // world units per degree
+  const T_MIN = Math.log(2032 - 1940), T_MAX = Math.log(2032 - 2028);
+  const yearX = (y) => (T_MIN - Math.log(2032 - Math.min(Math.max(y, 1940), 2028))) / (T_MIN - T_MAX) * 2600;
+  const LANE = 170;
 
-    $("#add-link", dlg).addEventListener("submit", (e) => {
-      e.preventDefault();
-      const f = new FormData(e.target);
-      let raw = String(f.get("url") || "").trim();
-      if (raw && !/^[a-z]+:\/\//i.test(raw)) raw = "https://" + raw;
-      const url = safeUrl(raw);
-      if (!url) { toast("That doesn't look like a web address."); return; }
-      item.links = [...(item.links || []), { label: String(f.get("label") || "").trim(), url }];
-      item.updated = now();
-      save(); render();
-      openSheet(item.id);
-      $("#add-link input[name=url]", dlg)?.focus();
+  function computeAnchors(layout) {
+    const m = new Map();
+    if (layout === "location") {
+      let un = 0;
+      items.forEach(it => {
+        if (it.lat == null || it.lng == null) { m.set(it.id, { x: (-170 + 180) * K + (un % 6) * 30, y: (90 + 62) * K + Math.floor(un / 6) * 30 }); un++; }
+        else m.set(it.id, { x: (it.lng + 180) * K, y: (90 - it.lat) * K });
+      });
+    } else if (layout === "theme") {
+      THEME_ORDER.forEach((t, ti) => {
+        const a = -Math.PI / 2 + ti / THEME_ORDER.length * Math.PI * 2;
+        const cx = Math.cos(a) * 900, cy = Math.sin(a) * 520;
+        items.filter(it => primary(it) === t).sort((p, q) => p.no - q.no).forEach((it, k) => {
+          const r = 48 * Math.sqrt(k + .6), ang = k * 2.39996;
+          m.set(it.id, { x: cx + Math.cos(ang) * r, y: cy + Math.sin(ang) * r });
+        });
+      });
+    } else {
+      items.forEach(it => {
+        const y = it.axisYear || firstYear(it.year) || 2026;
+        m.set(it.id, { x: yearX(y), y: THEME_ORDER.indexOf(primary(it)) * LANE });
+      });
+    }
+    return m;
+  }
+
+  // Spread out points that would overlap at this zoom, keeping them near their true position.
+  function relax(zoom) {
+    const D = 18, list = items.map((it, i) => {
+      const a = anchors.get(it.id);
+      return { id: it.id, ax: a.x * zoom, ay: a.y * zoom, x: a.x * zoom + Math.cos(i * 2.4) * .01, y: a.y * zoom + Math.sin(i * 2.4) * .01 };
+    });
+    for (let iter = 0; iter < 90; iter++) {
+      let moved = false;
+      for (let i = 0; i < list.length; i++) {
+        const p = list[i];
+        for (let j = i + 1; j < list.length; j++) {
+          const q = list[j];
+          const dx = q.x - p.x, dy = q.y - p.y;
+          if (Math.abs(dx) > D || Math.abs(dy) > D) continue;
+          const d = Math.hypot(dx, dy) || .01;
+          if (d < D) {
+            const push = (D - d) / 2, ux = dx / d, uy = dy / d;
+            p.x -= ux * push; p.y -= uy * push; q.x += ux * push; q.y += uy * push; moved = true;
+          }
+        }
+        p.x += (p.ax - p.x) * .02; p.y += (p.ay - p.y) * .02;
+      }
+      if (!moved) break;
+    }
+    pos = new Map(list.map(p => [p.id, { x: p.x, y: p.y }]));
+  }
+
+  // ---------- Rendering ----------
+  function buildPoints() {
+    ptsEl.innerHTML = "";
+    els.clear();
+    items.forEach(it => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "pt" + (isNew(it) ? " new" : "");
+      b.dataset.id = it.id;
+      b.style.setProperty("--c", col(primary(it)));
+      const y = it.axisYear || firstYear(it.year) || "";
+      b.setAttribute("aria-label", `${it.title}, ${placeOf(it)}${y ? ", " + y : ""}`);
+      b.innerHTML = `<span class="sq"></span><span class="lb"><span class="t">${esc(it.title)}</span><span class="m">${esc(it.city || "")}${y ? " · " + y : ""}${isNew(it) ? " · <b>New</b>" : ""}</span></span>`;
+      ptsEl.appendChild(b);
+      els.set(it.id, b);
+    });
+    measureLabels();
+  }
+  function measureLabels() {
+    els.forEach((b, id) => { const lb = b.querySelector(".lb"); labelSize.set(id, { w: lb.offsetWidth, h: lb.offsetHeight }); });
+  }
+  // Label widths change once the web fonts arrive.
+  document.fonts?.ready.then(() => { measureLabels(); cullLabels(); });
+
+  function placePoints() {
+    els.forEach((b, id) => { const p = pos.get(id); if (p) b.style.transform = `translate(${p.x}px, ${p.y}px)`; });
+  }
+  function applyPan() {
+    ptsEl.style.transform = `translate(${view.x}px, ${view.y}px)`;
+    panG.style.transform = `translate(${view.x}px, ${view.y}px)`;
+    drawGuides();
+    cullLabels();
+  }
+  function applyFilters() {
+    let n = 0;
+    items.forEach(it => { const ok = matches(it); if (ok) n++; els.get(it.id)?.classList.toggle("dim", !ok); });
+    $("#count").textContent = `${n} of ${items.length} shown`;
+    const fc = activeFilterCount();
+    $("#filters-n").hidden = !fc; $("#filters-n").textContent = fc;
+    drawTerritories(); cullLabels();
+    if ($("#index").classList.contains("open")) renderIndex();
+  }
+
+  // Hide labels that would collide, giving priority to the selected, new and lower-numbered sheets.
+  function cullLabels() {
+    const vw = innerWidth, vh = innerHeight, placed = [];
+    const order = items.slice().sort((a, b) => (b.id === selected) - (a.id === selected) || isNew(b) - isNew(a) || a.no - b.no);
+    const hit = (r) => placed.some(o => r.x < o.x + o.w && r.x + r.w > o.x && r.y < o.y + o.h && r.y + r.h > o.y);
+    items.forEach(it => { const p = pos.get(it.id); if (p) placed.push({ x: p.x + view.x - 6, y: p.y + view.y - 6, w: 12, h: 12, pt: it.id }); });
+    order.forEach(it => {
+      const el = els.get(it.id), p = pos.get(it.id); if (!el || !p) return;
+      if (el.classList.contains("dim")) { el.classList.add("nolabel"); return; }
+      const s = labelSize.get(it.id) || { w: 120, h: 26 };
+      const r = { x: p.x + view.x + 10, y: p.y + view.y - 10, w: s.w, h: s.h };
+      const onScreen = r.x > 0 && r.x + r.w < vw && r.y > 0 && r.y + r.h < vh;
+      const free = onScreen && !placed.some(o => o.pt !== it.id && r.x < o.x + o.w && r.x + r.w > o.x && r.y < o.y + o.h && r.y + r.h > o.y);
+      el.classList.toggle("nolabel", !free);
+      if (free) placed.push(r);
     });
   }
 
-  function openForm(id) {
-    const item = id ? byId(id) : null;
-    currentId = id || null;
-    const v = (k) => esc(item?.[k] || "");
-    dlg.innerHTML = `
-      <div class="dlg-head">
-        <div>
-          <div class="eyebrow">${item ? code(item.no) + " · Revise sheet" : code(state.nextNo) + " · New sheet"}</div>
-          <h2 id="dlg-title">${item ? esc(item.title) : "New case study"}</h2>
-        </div>
-        <div class="dlg-actions">
-          <button class="btn small ghost close-x" type="button" data-act="${item ? "back" : "close"}" aria-label="Close">×</button>
+  // Soft territories: padded, rounded hulls around nearby points that share a main theme.
+  function hull(pts) {
+    const P = pts.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    if (P.length < 3) return P;
+    const cross = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const lo = [], up = [];
+    for (const p of P) { while (lo.length >= 2 && cross(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+    for (const p of P.slice().reverse()) { while (up.length >= 2 && cross(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+    return lo.slice(0, -1).concat(up.slice(0, -1));
+  }
+  function blobPath(points, pad) {
+    const ring = [];
+    points.forEach(([x, y]) => { for (let k = 0; k < 10; k++) { const a = k / 10 * Math.PI * 2; ring.push([x + Math.cos(a) * pad, y + Math.sin(a) * pad]); } });
+    const h = hull(ring);
+    if (h.length < 3) return "";
+    const mid = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+    let d = `M${mid(h[h.length - 1], h[0]).join(" ")}`;
+    h.forEach((p, i) => { const m = mid(p, h[(i + 1) % h.length]); d += ` Q${p[0].toFixed(1)} ${p[1].toFixed(1)} ${m[0].toFixed(1)} ${m[1].toFixed(1)}`; });
+    return d + "Z";
+  }
+  function drawTerritories() {
+    const groups = {};
+    items.filter(matches).forEach(it => { (groups[primary(it)] ||= []).push(pos.get(it.id)); });
+    let html = "";
+    Object.entries(groups).forEach(([t, list]) => {
+      const clusters = [];
+      if (view.layout === "theme") clusters.push(list);
+      else {
+        const left = list.slice();
+        while (left.length) {
+          const c = [left.pop()];
+          for (let i = 0; i < c.length; i++) for (let j = left.length - 1; j >= 0; j--)
+            if (Math.hypot(left[j].x - c[i].x, left[j].y - c[i].y) < 80) c.push(left.splice(j, 1)[0]);
+          clusters.push(c);
+        }
+      }
+      clusters.forEach(c => {
+        const d = blobPath(c.map(p => [p.x, p.y]), c.length > 1 ? 24 : 18);
+        if (d) html += `<path class="terr" d="${d}" fill="${col(t)}" stroke="${col(t)}"/>`;
+      });
+    });
+    terrG.innerHTML = html;
+  }
+
+  // Grid lines cover the whole screen in every view, and their spacing adapts to the zoom.
+  const pickStep = (steps, unitPx, minPx = 56) => steps.find(st => st * unitPx >= minPx) || steps[steps.length - 1];
+  function drawGuides() {
+    const z = view.zoom, vw = innerWidth, vh = innerHeight, mobile = vw < 760;
+    // Drawn a screen beyond each edge so lines are already there while the view glides.
+    const m = Math.max(vw, vh), x0 = -view.x - m, x1 = -view.x + vw + m, y0 = -view.y - m, y1 = -view.y + vh + m;
+    const left = -view.x, top = -view.y;
+    let g = "";
+    const vline = (x, cls = "") => { g += `<line class="guide ${cls}" x1="${x}" y1="${y0}" x2="${x}" y2="${y1}"/>`; };
+    const hline = (y, cls = "") => { g += `<line class="guide ${cls}" x1="${x0}" y1="${y}" x2="${x1}" y2="${y}"/>`; };
+    if (view.layout === "location") {
+      const step = pickStep([1, 2, 5, 10, 15, 30, 45, 90], K * z), px = step * K * z;
+      for (let k = Math.floor(x0 / px); k * px <= x1; k++) {
+        const lng = -180 + k * step;
+        vline(k * px, lng === 0 ? "strong" : "");
+        if (lng >= -180 && lng <= 180 && lng % (step * 2) === 0) g += `<text class="guide-label" x="${k * px + 4}" y="${top + (mobile ? 74 : 78)}">${Math.abs(lng)}°${lng < 0 ? "W" : lng > 0 ? "E" : ""}</text>`;
+      }
+      const oy = 90 * K * z;
+      for (let m = Math.floor((y0 - oy) / px); oy + m * px <= y1; m++) {
+        const lat = -m * step, y = oy + m * px;
+        hline(y, lat === 0 ? "strong" : "");
+        if (lat >= -90 && lat <= 90) g += `<text class="guide-label" x="${left + 12}" y="${y - 5}">${lat === 0 ? "Equator" : Math.abs(lat) + "°" + (lat > 0 ? "N" : "S")}</text>`;
+      }
+      const regions = {};
+      items.forEach(it => { if (it.lat == null) return; const p = pos.get(it.id); (regions[it.region] ||= []).push(p); });
+      Object.entries(regions).forEach(([r, ps]) => {
+        if (r === "Unknown" || K * z < 3) return;
+        const x = ps.reduce((s, p) => s + p.x, 0) / ps.length, y = ps.reduce((s, p) => s + p.y, 0) / ps.length;
+        g += `<text class="big-label" x="${x}" y="${y + 10}" text-anchor="middle">${esc(r)}</text>`;
+      });
+      if (items.some(it => it.lat == null)) g += `<text class="guide-label" x="${10 * K * z}" y="${(90 + 62) * K * z - 16}">Not yet placed</text>`;
+    } else if (view.layout === "theme") {
+      const step = pickStep([10, 25, 50, 100, 200, 400, 800, 1600], z), px = step * z;
+      for (let k = Math.floor(x0 / px); k * px <= x1; k++) vline(k * px, k === 0 ? "strong" : "");
+      for (let k = Math.floor(y0 / px); k * px <= y1; k++) hline(k * px, k === 0 ? "strong" : "");
+      THEME_ORDER.forEach((t, ti) => {
+        const a = -Math.PI / 2 + ti / THEME_ORDER.length * Math.PI * 2;
+        const n = items.filter(it => primary(it) === t).length;
+        const r = 48 * Math.sqrt(n + .6);
+        g += `<text class="theme-label" x="${Math.cos(a) * 900 * z}" y="${(Math.sin(a) * 520 - r) * z - 26}" text-anchor="middle" fill="${col(t)}">${esc(THEMES[t])}</text>`;
+      });
+    } else {
+      // Lanes: one row per theme, continued as empty rows above and below.
+      const lane = LANE * z;
+      for (let i = Math.floor(y0 / lane); i * lane <= y1; i++) hline(i * lane, i >= 0 && i < THEME_ORDER.length ? "strong" : "");
+      // Years: ticks get finer as you zoom in; the timeline gives recent years more room.
+      const ticks = [];
+      const add = (y, major) => { const x = yearX(y) * z; if (ticks.every(t => Math.abs(t.x - x) >= 50)) ticks.push({ y, x, major }); };
+      for (let y = 1940; y <= 2020; y += 10) add(y, true);
+      add(2025, true);
+      for (let y = 1945; y <= 2025; y += 5) add(y, false);
+      for (let y = 1940; y <= 2028; y++) add(y, false);
+      ticks.sort((a, b) => a.x - b.x);
+      const first = ticks[0], last = ticks[ticks.length - 1];
+      const gapL = ticks.length > 1 ? ticks[1].x - first.x : 80, gapR = ticks.length > 1 ? last.x - ticks[ticks.length - 2].x : 80;
+      for (let x = first.x - gapL; x >= x0; x -= gapL) vline(x);
+      for (let x = last.x + gapR; x <= x1; x += gapR) vline(x);
+      const labelY = Math.min(Math.max((THEME_ORDER.length - .4) * lane + 22, top + 96), top + vh - (mobile ? 180 : 96));
+      ticks.forEach(t => {
+        vline(t.x, t.major ? "strong" : "");
+        if (t.x > x0 && t.x < x1) g += `<text class="guide-label" x="${t.x}" y="${labelY}" text-anchor="middle">${t.y}</text>`;
+      });
+      const lx = Math.max(-48, left + (mobile ? 110 : 150));
+      THEME_ORDER.forEach((t, i) => {
+        g += `<text class="guide-label" x="${lx}" y="${i * lane - 6}" text-anchor="end" style="fill:${col(t)}">${esc(THEMES[t])}</text>`;
+      });
+    }
+    guidesG.innerHTML = g;
+  }
+
+  function renderAll() { placePoints(); drawTerritories(); applyPan(); }
+
+  // ---------- Camera ----------
+  function boundsOf(map) {
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    items.filter(matches).forEach(it => { const p = map.get(it.id); if (!p) return; x0 = Math.min(x0, p.x); y0 = Math.min(y0, p.y); x1 = Math.max(x1, p.x); y1 = Math.max(y1, p.y); });
+    if (!isFinite(x0)) map.forEach(p => { x0 = Math.min(x0, p.x); y0 = Math.min(y0, p.y); x1 = Math.max(x1, p.x); y1 = Math.max(y1, p.y); });
+    return { x0, y0, x1, y1 };
+  }
+  function safeArea() {
+    const mobile = innerWidth < 760;
+    const year = view.layout === "year";
+    return { l: mobile ? (year ? 110 : 24) : (year ? 260 : 70), t: mobile ? 90 : 120, r: mobile ? 40 : 240, b: mobile ? 170 : 130 };
+  }
+  function fit(animate = true) {
+    const s = safeArea(), w = innerWidth - s.l - s.r, h = innerHeight - s.t - s.b;
+    const b = boundsOf(anchors);
+    const z = Math.min(4, Math.max(.05, Math.min(w / Math.max(b.x1 - b.x0, 1), h / Math.max(b.y1 - b.y0, 1))));
+    view.zoom = z;
+    relax(z);
+    const pb = boundsOf(pos);
+    view.x = s.l + (w - (pb.x1 - pb.x0)) / 2 - pb.x0;
+    view.y = s.t + (h - (pb.y1 - pb.y0)) / 2 - pb.y0;
+    animateNext(animate);
+    renderAll();
+  }
+  let animTimer;
+  function animateNext(on) {
+    clearTimeout(animTimer);
+    field.classList.toggle("anim", on);
+    if (on) animTimer = setTimeout(() => field.classList.remove("anim"), 800);
+  }
+  let relaxTimer;
+  function zoomAt(factor, cx, cy) {
+    const z0 = view.zoom, z1 = Math.min(12, Math.max(.04, z0 * factor)), k = z1 / z0;
+    if (k === 1) return;
+    view.zoom = z1;
+    pos.forEach(p => { p.x *= k; p.y *= k; });
+    view.x = cx - (cx - view.x) * k;
+    view.y = cy - (cy - view.y) * k;
+    animateNext(false);
+    placePoints(); drawTerritories(); applyPan();
+    hideHover();
+    clearTimeout(relaxTimer);
+    relaxTimer = setTimeout(() => { relax(view.zoom); animateNext(true); placePoints(); drawTerritories(); cullLabels(); }, 160);
+  }
+  function setLayout(layout) {
+    if (view.layout === layout && anchors.size) return;
+    view.layout = layout;
+    $$(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.layout === layout)));
+    $("#axis-desc").innerHTML = { location: "Latitude ↑<br>Longitude →", theme: "Grouped by<br>main theme", year: "Theme ↕<br>Year →" }[layout];
+    anchors = computeAnchors(layout);
+    terrG.classList.add("fade");
+    fit(true);
+    setTimeout(() => terrG.classList.remove("fade"), 700);
+    if (selected) setTimeout(() => focusPoint(selected, false), 820);
+  }
+  function focusPoint(id, open = true) {
+    const p = pos.get(id); if (!p) return;
+    const panelW = innerWidth < 760 ? 0 : Math.min(440, innerWidth);
+    const cx = (innerWidth - panelW) / 2, cy = innerWidth < 760 ? innerHeight * .2 : innerHeight / 2;
+    view.x = cx - p.x; view.y = cy - p.y;
+    animateNext(true);
+    ptsEl.style.transition = panG.style.transition = "transform .6s var(--ease)";
+    applyPan();
+    setTimeout(() => { ptsEl.style.transition = panG.style.transition = ""; }, 650);
+    if (open) openPanel(id);
+  }
+
+  // ---------- Pointer: drag, pinch, click ----------
+  const pointers = new Map();
+  let drag = null, pinch = null, moved = false;
+  field.addEventListener("pointerdown", (e) => {
+    field.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    moved = false;
+    if (pointers.size === 1) drag = { x: e.clientX, y: e.clientY, vx: view.x, vy: view.y, target: e.target.closest(".pt") };
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinch = { d: Math.hypot(a.x - b.x, a.y - b.y) };
+      drag = null;
+    }
+  });
+  field.addEventListener("pointermove", (e) => {
+    if (!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pinch && pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      zoomAt(d / pinch.d, (a.x + b.x) / 2, (a.y + b.y) / 2);
+      pinch.d = d; moved = true;
+      return;
+    }
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!moved && Math.hypot(dx, dy) < 5) return;
+    moved = true;
+    field.classList.add("dragging");
+    hideHover();
+    view.x = drag.vx + dx; view.y = drag.vy + dy;
+    applyPan();
+  });
+  const endPointer = (e) => {
+    const wasDrag = drag;
+    pointers.delete(e.pointerId);
+    if (pointers.size < 2) pinch = null;
+    if (!pointers.size) {
+      field.classList.remove("dragging");
+      if (wasDrag && !moved && e.type === "pointerup") {
+        if (wasDrag.target) { const id = wasDrag.target.dataset.id; openPanel(id); }
+        else if (selected) closePanel();
+      }
+      drag = null;
+    }
+  };
+  field.addEventListener("pointerup", endPointer);
+  field.addEventListener("pointercancel", endPointer);
+  field.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const f = Math.exp(-(e.ctrlKey ? e.deltaY * 3 : e.deltaY) * 0.0016);
+    zoomAt(f, e.clientX, e.clientY);
+  }, { passive: false });
+  field.addEventListener("keydown", (e) => {
+    const t = e.target.closest?.(".pt");
+    if (t && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openPanel(t.dataset.id); }
+  });
+
+  // Hover card (mouse only)
+  const hoverEl = $("#hover");
+  function hideHover() { hoverEl.classList.remove("show"); }
+  ptsEl.addEventListener("pointerover", (e) => {
+    if (e.pointerType !== "mouse" || drag && moved) return;
+    const b = e.target.closest(".pt"); if (!b) return;
+    const it = byId(b.dataset.id); if (!it) return;
+    hoverEl.innerHTML = `${photo(it, "ph")}<div class="hb"><div class="ht">${esc(it.title)}</div><div class="hm">${esc(placeOf(it))} · ${esc(it.year || "")} · ${esc(STAGES[it.stage] || "")}</div></div>`;
+    hoverEl.querySelector(".credit")?.remove();
+    const r = b.getBoundingClientRect();
+    let x = r.left + 18, y = r.top + 18;
+    if (x + 240 > innerWidth) x = r.left - 248;
+    if (y + 240 > innerHeight) y = r.top - 240;
+    hoverEl.style.left = Math.max(8, x) + "px"; hoverEl.style.top = Math.max(8, y) + "px";
+    hoverEl.classList.add("show");
+  });
+  ptsEl.addEventListener("pointerout", (e) => { if (e.target.closest(".pt") && !e.relatedTarget?.closest?.(".pt")) hideHover(); });
+
+  // ---------- Detail panel ----------
+  const panel = $("#panel");
+  function visibleOrder() { return items.filter(matches).sort((a, b) => a.no - b.no); }
+  function openPanel(id) {
+    const it = byId(id); if (!it) return;
+    hideHover();
+    closeSheets();
+    selected = id;
+    els.forEach((b, k) => b.classList.toggle("sel", k === id));
+    const fact = (k, v, note) => v ? `<div><dt>${k}</dt><dd>${v}${note ? `<span class="note">${esc(note)}</span>` : ""}</dd></div>` : "";
+    const src = sourceOf(it);
+    const list = visibleOrder(), i = list.findIndex(x => x.id === id);
+    const prev = list[(i - 1 + list.length) % list.length], next = list[(i + 1) % list.length];
+    panel.innerHTML = `
+      <div class="panel-top">
+        <button class="btn" type="button" data-act="edit">Edit</button>
+        <button class="btn icon" type="button" data-act="close" aria-label="Close">×</button>
+      </div>
+      ${photo(it, "ph")}
+      <div class="pbody">
+        <div class="kicker"><span>${code(it.no)}</span><span class="stage ${esc(it.stage || "")}">${esc(STAGES[it.stage] || "Stage not stated")}</span>${isNew(it) ? `<span class="newtag">New</span>` : ""}${it.lane ? `<span>${esc(LANES[it.lane] || "")}</span>` : ""}</div>
+        <h2>${esc(it.title)}</h2>
+        <p class="place">${esc(placeOf(it))}${it.site ? " · " + esc(it.site) : ""}</p>
+        ${it.brief ? `<p class="brief">${esc(it.brief)}</p>` : ""}
+        <dl class="facts">
+          ${fact("Year", esc(it.year))}
+          ${fact("Designers", esc(it.designers))}
+          ${fact("Scale", esc(it.scale))}
+          ${fact("Region", esc(it.region !== "Unknown" ? it.region : ""))}
+          ${fact("Coordinates", esc(it.coords), it.placement || (it.approx ? "Approximate position." : ""))}
+          ${fact("Themes", it.themes?.length ? `<span class="tags">${it.themes.map(t => `<span class="tag" style="--c:${col(t)}"><i></i>${esc(THEMES[t] || t)}</span>`).join("")}</span>` : "")}
+          ${fact("Found via", esc(src || (it.origin === "original" ? "Original casebook" : "")), it.added && it.origin !== "original" ? `Added ${it.added}` : "")}
+        </dl>
+        ${(it.links || []).length ? `<h3 style="margin:0 0 6px;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">Sources</h3>
+        <ul class="links">${it.links.map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span class="ll">${esc(l.label || host(l.url))}</span><span class="lh">${esc(host(l.url))} ↗</span></a></li>`).join("")}</ul>` : ""}
+        ${list.length > 1 ? `<div class="pnav"><button class="btn" type="button" data-go="${esc(prev.id)}">← ${esc(code(prev.no))}</button><button class="btn" type="button" data-go="${esc(next.id)}">${esc(code(next.no))} →</button></div>` : ""}
+      </div>`;
+    panel.classList.add("open");
+    panel.scrollTop = 0;
+    // Keep the chosen square in view beside (or above) the panel.
+    const p = pos.get(id), sx = p.x + view.x, sy = p.y + view.y;
+    const mobile = innerWidth < 760, right = mobile ? innerWidth : innerWidth - Math.min(440, innerWidth);
+    const bottom = mobile ? innerHeight * .18 + 60 : innerHeight;
+    if (sx > right - 60 || sx < 20 || sy > bottom - 40 || sy < 70) {
+      view.x += (right / 2) - sx;
+      view.y += (mobile ? innerHeight * .1 : innerHeight / 2) - sy + (mobile ? 0 : 0);
+      ptsEl.style.transition = panG.style.transition = "transform .5s var(--ease)";
+      setTimeout(() => { ptsEl.style.transition = panG.style.transition = ""; }, 550);
+      applyPan();
+    }
+    history.replaceState(null, "", "#/" + encodeURIComponent(id));
+    cullLabels();
+  }
+  function closePanel() {
+    panel.classList.remove("open");
+    selected = null;
+    els.forEach(b => b.classList.remove("sel"));
+    history.replaceState(null, "", location.pathname + location.search);
+    cullLabels();
+  }
+  panel.addEventListener("click", (e) => {
+    const go = e.target.closest("[data-go]");
+    if (go) { focusPoint(go.dataset.go); return; }
+    const act = e.target.closest("[data-act]")?.dataset.act;
+    if (act === "close") closePanel();
+    if (act === "edit" && selected) openForm(selected);
+  });
+
+  // ---------- Filters tray ----------
+  const tray = $("#tray");
+  function renderTray() {
+    const count = (fn) => items.filter(fn).length;
+    const chip = (group, key, label, n, c) =>
+      `<button class="chip" type="button" data-group="${group}" data-key="${esc(key)}" aria-pressed="${filters[group].has(key)}" ${c ? `style="--c:${c}"` : ""}>${c ? "<i></i>" : ""}${esc(label)} <span class="k">${n}</span></button>`;
+    const regions = REGIONS.filter(r => items.some(i => i.region === r));
+    const [a, b] = yearBounds;
+    tray.innerHTML = `
+      <h3>Theme</h3>
+      <div class="chips">${THEME_ORDER.map(t => chip("themes", t, THEMES[t], count(i => i.themes?.includes(t)), col(t))).join("")}</div>
+      <h3>Region</h3>
+      <div class="chips">${regions.map(r => chip("regions", r, r, count(i => i.region === r))).join("")}</div>
+      <h3>Stage</h3>
+      <div class="chips">${Object.entries(STAGES).map(([k, l]) => chip("stages", k, l, count(i => i.stage === k))).join("")}</div>
+      <h3>Year</h3>
+      <div class="range">
+        <div class="range-vals"><span id="ymin-v">${filters.yMin}</span><span id="ymax-v">${filters.yMax}</span></div>
+        <div class="dual"><span class="fill" id="yfill"></span>
+          <input type="range" id="ymin" min="${a}" max="${b}" value="${filters.yMin}" aria-label="From year">
+          <input type="range" id="ymax" min="${a}" max="${b}" value="${filters.yMax}" aria-label="To year">
         </div>
       </div>
+      <div class="tray-foot"><button class="btn" type="button" id="reset">Clear filters</button></div>`;
+    paintRange();
+  }
+  function paintRange() {
+    const [a, b] = yearBounds, f = $("#yfill"); if (!f) return;
+    f.style.left = ((filters.yMin - a) / (b - a) * 100) + "%";
+    f.style.right = (100 - (filters.yMax - a) / (b - a) * 100) + "%";
+    $("#ymin-v").textContent = filters.yMin; $("#ymax-v").textContent = filters.yMax;
+  }
+  tray.addEventListener("click", (e) => {
+    const c = e.target.closest(".chip");
+    if (c) {
+      const set = filters[c.dataset.group], k = c.dataset.key;
+      set.has(k) ? set.delete(k) : set.add(k);
+      c.setAttribute("aria-pressed", String(set.has(k)));
+      applyFilters();
+    }
+    if (e.target.id === "reset") {
+      filters.themes.clear(); filters.regions.clear(); filters.stages.clear();
+      [filters.yMin, filters.yMax] = yearBounds;
+      renderTray(); applyFilters();
+    }
+  });
+  tray.addEventListener("input", (e) => {
+    if (e.target.id === "ymin") filters.yMin = Math.min(+e.target.value, filters.yMax);
+    if (e.target.id === "ymax") filters.yMax = Math.max(+e.target.value, filters.yMin);
+    $("#ymin").value = filters.yMin; $("#ymax").value = filters.yMax;
+    paintRange(); applyFilters();
+  });
+  $("#filters-btn").addEventListener("click", () => {
+    const open = !tray.classList.contains("open");
+    closeSheets();
+    tray.classList.toggle("open", open);
+    $("#filters-btn").classList.toggle("on", open);
+    $("#filters-btn").setAttribute("aria-expanded", String(open));
+    if (open) renderTray();
+  });
+  $("#q").addEventListener("input", (e) => { filters.q = e.target.value.trim(); applyFilters(); });
+
+  // ---------- Sheets ----------
+  function closeSheets(except) {
+    $$(".sheet").forEach(s => { if (s.id !== except) s.classList.remove("open"); });
+    $$(".topnav .navbtn").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.sheet === except)));
+    if (except !== "tray") { tray.classList.remove("open"); $("#filters-btn").classList.remove("on"); }
+  }
+  $$(".topnav .navbtn").forEach(b => b.addEventListener("click", () => {
+    const id = b.dataset.sheet, s = $("#" + id), open = !s.classList.contains("open");
+    closeSheets(open ? id : null);
+    s.classList.toggle("open", open);
+    if (open) { if (selected) closePanel(); ({ latest: renderLatest, index: renderIndex, about: renderAbout })[id](); }
+  }));
+  $$(".sheet [data-close]").forEach(b => b.addEventListener("click", () => closeSheets()));
+
+  let latestTab = "added";
+  $$("#latest .tabs .navbtn").forEach(b => b.addEventListener("click", () => {
+    latestTab = b.dataset.tab;
+    $$("#latest .tabs .navbtn").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    renderLatest();
+  }));
+  const dayLabel = (d) => {
+    const t = new Date(); t.setHours(0, 0, 0, 0);
+    const x = new Date(d + "T00:00:00");
+    const diff = Math.round((t - x) / DAY);
+    return diff === 0 ? "Today" : diff === 1 ? "Yesterday" : x.toLocaleDateString(undefined, { weekday: "short", day: "numeric", month: "long", year: "numeric" });
+  };
+  function renderLatest() {
+    const body = $("#latest-body");
+    if (latestTab === "skipped") {
+      const days = (skipped.days || []).slice().sort((a, b) => b.date.localeCompare(a.date));
+      body.innerHTML = days.length ? days.map(d => `<div class="day">${esc(dayLabel(d.date))}</div>` + d.items.map(s => `
+        <a class="row" href="${esc(safeUrl(s.url) || "#")}" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+          <span class="thumb"></span>
+          <span><span class="rt">${esc(s.title)}</span><span class="rm"><span>${esc(s.source || "")}</span><span>${esc(s.reason || "")}</span></span></span>
+        </a>`).join("")).join("")
+        : `<p class="empty">Nothing skipped yet. Once the daily check is running, posts it decides not to add show up here with the reason, so you can spot anything good it missed.</p>`;
+      return;
+    }
+    const list = items.filter(it => it.origin !== "original" && it.added).sort((a, b) => b.added.localeCompare(a.added) || b.no - a.no);
+    const days = [...new Set(list.map(i => i.added))];
+    body.innerHTML = list.length ? days.map(d => `<div class="day">${esc(dayLabel(d))}</div>` + list.filter(i => i.added === d).map(it => `
+      <button class="row" type="button" data-id="${esc(it.id)}">
+        ${photo(it, "thumb")}
+        <span><span class="rt">${esc(it.title)}</span>
+          <span class="rm"><span>${esc(placeOf(it))}</span><span>${esc(sourceOf(it) || "")}</span>${it.lane ? `<span class="lane">${esc(LANES[it.lane] || "")}</span>` : ""}<span>${esc(STAGES[it.stage] || "")}</span></span>
+        </span>
+      </button>`).join("")).join("") : `<p class="empty">No new projects yet.</p>`;
+  }
+  $("#latest-body").addEventListener("click", (e) => {
+    const r = e.target.closest("button.row"); if (!r) return;
+    clearFiltersFor(r.dataset.id);
+    focusPoint(r.dataset.id);
+  });
+  function clearFiltersFor(id) {
+    const it = byId(id);
+    if (it && !matches(it)) {
+      filters.themes.clear(); filters.regions.clear(); filters.stages.clear(); [filters.yMin, filters.yMax] = yearBounds; filters.q = ""; $("#q").value = "";
+      applyFilters();
+    }
+  }
+
+  let sortKey = "no", sortDir = 1;
+  function renderIndex() {
+    const list = items.filter(matches);
+    const val = { no: i => i.no, title: i => i.title.toLowerCase(), place: i => placeOf(i).toLowerCase(), year: i => i.axisYear || firstYear(i.year) || 0, stage: i => i.stage || "" };
+    list.sort((a, b) => (val[sortKey](a) > val[sortKey](b) ? 1 : val[sortKey](a) < val[sortKey](b) ? -1 : 0) * sortDir);
+    $("#index-sub").textContent = `${list.length} of ${items.length} case studies${activeFilterCount() || filters.q ? " (filtered)" : ""}. Click a row to open it.`;
+    const th = (k, l) => `<th data-k="${k}" ${sortKey === k ? `aria-sort="${sortDir > 0 ? "ascending" : "descending"}"` : ""}>${l}${sortKey === k ? (sortDir > 0 ? " ↑" : " ↓") : ""}</th>`;
+    $("#index-body").innerHTML = `<table class="idx"><thead><tr>${th("no", "No.")}${th("title", "Case study")}${th("place", "Place")}${th("year", "Year")}${th("stage", "Stage")}</tr></thead><tbody>
+      ${list.map(it => `<tr data-id="${esc(it.id)}" tabindex="0"><td class="no">${code(it.no)}</td><td><span class="dot" style="--c:${col(primary(it))}"></span>${esc(it.title)}</td><td>${esc(placeOf(it))}</td><td>${esc(it.year || "")}</td><td>${esc(STAGES[it.stage] || "")}</td></tr>`).join("")}
+    </tbody></table>`;
+  }
+  $("#index-body").addEventListener("click", (e) => {
+    const h = e.target.closest("th[data-k]");
+    if (h) { sortDir = sortKey === h.dataset.k ? -sortDir : 1; sortKey = h.dataset.k; renderIndex(); return; }
+    const r = e.target.closest("tr[data-id]"); if (r) focusPoint(r.dataset.id);
+  });
+  $("#index-body").addEventListener("keydown", (e) => { const r = e.target.closest("tr[data-id]"); if (r && e.key === "Enter") focusPoint(r.dataset.id); });
+
+  function renderAbout() {
+    const mine = overlay.added.length + Object.keys(overlay.edits).length + overlay.removed.length;
+    $("#about-body").innerHTML = `
+      <p><strong>Casebook</strong> is a field of case studies in urbanism and architecture. Each square is one place.</p>
+      <h3>Arranging the field</h3>
+      <p><strong>Place</strong> puts every square where it is in the world, using latitude and longitude, with no map drawn underneath. Squares that would overlap are nudged apart slightly. <strong>Theme</strong> gathers them by main theme. <strong>Year</strong> lays them along a timeline, with recent years given more room.</p>
+      <p>Positions come from OpenStreetMap. Where a source names the exact site or address, the square sits there. Otherwise it sits at the city centre and is marked as approximate.</p>
+      <h3>Colours</h3>
+      <div class="legend">${THEME_ORDER.map(t => `<span class="tag" style="--c:${col(t)}"><i></i>${esc(THEMES[t])}</span>`).join("")}</div>
+      <p>Soft shapes gather nearby squares that share a main theme. A square with a ring around it was added in the last ${NEW_DAYS} days.</p>
+      <h3>Sources and photos</h3>
+      <p>New projects come from ArchDaily, Dezeen, Planetizen, Urbanize Atlanta and Urban Omnibus. Facts come only from each article or the project's own website. Photos are shown from the publishers' pages and belong to the photographers credited under each one.</p>
+      <h3>Your own changes</h3>
+      <p>You can add, edit or remove case studies here. Those changes are saved in this browser only, so other devices and visitors won't see them. ${mine ? `You have <strong>${mine}</strong> saved change${mine === 1 ? "" : "s"}.` : ""}</p>
+      <div class="actions">
+        <button class="btn primary" type="button" data-act="add">+ Add a case study</button>
+        <button class="btn" type="button" data-act="export">Export my changes</button>
+        <button class="btn" type="button" data-act="import">Import</button>
+        ${mine ? `<button class="btn danger" type="button" data-act="reset">Undo all my changes</button>` : ""}
+      </div>`;
+  }
+  $("#about-body").addEventListener("click", (e) => {
+    const act = e.target.closest("[data-act]")?.dataset.act;
+    if (act === "add") openForm(null);
+    if (act === "export") exportChanges();
+    if (act === "import") $("#import-file").click();
+    if (act === "reset" && confirm("Undo every change you've made in this browser? The shared case studies stay as they are.")) {
+      overlay = { added: [], edits: {}, removed: [] }; saveOverlay(); rebuild(); renderAbout(); toast("Your changes were undone.");
+    }
+  });
+
+  // ---------- Add / edit ----------
+  const dlg = $("#dlg");
+  function openForm(id) {
+    const it = id ? byId(id) : null;
+    const v = (k) => esc(it?.[k] ?? "");
+    const links = (it?.links || []).map(l => `${l.label} | ${l.url}`).join("\n");
+    dlg.innerHTML = `
+      <div class="sheet-head"><div><h2>${it ? "Edit case study" : "Add a case study"}</h2><p>Saved in this browser only.</p></div><button class="btn icon" type="button" data-act="cancel" aria-label="Close">×</button></div>
       <form class="form" id="case-form">
-        <label class="full"><span>Title <b class="req">*</b></span><input class="field" name="title" required value="${v("title")}" placeholder="e.g. Superkilen"></label>
-        <label><span>City / place</span><input class="field" name="city" value="${v("city")}" placeholder="Copenhagen"></label>
-        <label><span>Country</span><input class="field" name="country" value="${v("country")}" placeholder="Denmark"></label>
-        <label class="full"><span>Site / address</span><input class="field" name="site" value="${v("site")}" placeholder="Nørrebro"></label>
-        <label><span>Year</span><input class="field" name="year" value="${v("year")}" placeholder="2012"></label>
-        <label><span>Coordinates</span><input class="field" name="coords" value="${v("coords")}" placeholder="55.70° N, 12.54° E"></label>
-        <label class="full"><span>Architects / designers / agencies</span><input class="field" name="designers" value="${v("designers")}" placeholder="BIG; Topotek 1; Superflex"></label>
-        <label class="full"><span>Scale</span><input class="field" name="scale" value="${v("scale")}" placeholder="750 m urban park, 3 ha"></label>
-        <label class="full"><span>One-line description</span><textarea class="field" name="brief" rows="2" placeholder="What it is, in a sentence.">${v("brief")}</textarea></label>
-        <fieldset class="full">
-          <legend>Themes · the first one picked sets the drawing</legend>
-          <div class="theme-picks">
-            ${Object.entries(THEMES).map(([k, label]) => `
-              <label><input type="checkbox" name="themes" value="${k}" ${item?.themes?.includes(k) ? "checked" : ""}><span class="chip">${esc(label)}</span></label>`).join("")}
-          </div>
+        <label class="full"><span>Title *</span><input class="field" name="title" required value="${v("title")}"></label>
+        <label><span>City</span><input class="field" name="city" value="${v("city")}"></label>
+        <label><span>Country</span><input class="field" name="country" value="${v("country")}"></label>
+        <label class="full"><span>Site or address</span><input class="field" name="site" value="${v("site")}" placeholder="Used to place it on the field"></label>
+        <label><span>Year</span><input class="field" name="year" value="${v("year")}" placeholder="e.g. 2012 or 2019–2024"></label>
+        <label><span>Stage</span><select class="field" name="stage">${Object.entries(STAGES).map(([k, l]) => `<option value="${k}" ${it?.stage === k ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+        <label><span>Region</span><select class="field" name="region">${REGIONS.map(r => `<option ${it?.region === r ? "selected" : ""}>${r}</option>`).join("")}</select></label>
+        <label><span>Latitude, longitude</span><input class="field" name="latlng" value="${it?.lat != null ? `${it.lat}, ${it.lng}` : ""}" placeholder="Leave blank to look it up"></label>
+        <label class="full"><span>Designers</span><input class="field" name="designers" value="${v("designers")}"></label>
+        <label class="full"><span>Scale</span><input class="field" name="scale" value="${v("scale")}"></label>
+        <label class="full"><span>Short description</span><textarea class="field" name="brief" rows="2">${v("brief")}</textarea></label>
+        <fieldset class="full"><legend>Themes (the first one sets the colour)</legend>
+          <div class="picks">${THEME_ORDER.map(t => `<label><input type="checkbox" name="themes" value="${t}" ${it?.themes?.includes(t) ? "checked" : ""}><span class="chip" style="--c:${col(t)}"><i></i>${esc(THEMES[t])}</span></label>`).join("")}</div>
         </fieldset>
+        <label class="full"><span>Sources, one per line: title | web address</span><textarea class="field" name="links" rows="3">${esc(links)}</textarea></label>
+        <label><span>Photo web address</span><input class="field" name="img" value="${esc(it?.image?.url || "")}"></label>
+        <label><span>Photo credit</span><input class="field" name="credit" value="${esc(it?.image?.credit || "")}"></label>
         <div class="form-foot">
-          ${item ? `<button class="btn danger" type="button" data-act="delete" style="margin-right:auto">Delete</button>` : ""}
-          <button class="btn ghost" type="button" data-act="${item ? "back" : "close"}">Cancel</button>
-          <button class="btn primary" type="submit">${item ? "Save changes" : "Add to casebook"}</button>
+          ${it ? `<button class="btn danger" type="button" data-act="delete" style="margin-right:auto">Remove</button>` : ""}
+          <button class="btn" type="button" data-act="cancel">Cancel</button>
+          <button class="btn primary" type="submit">${it ? "Save" : "Add"}</button>
         </div>
       </form>`;
-    if (!dlg.open) dlg.showModal();
-    dlg.scrollTop = 0;
-    $("input[name=title]", dlg).focus();
-
-    // Keep check order so the first ticked theme stays the primary one.
-    const order = [...(item?.themes || [])];
-    dlg.querySelectorAll("input[name=themes]").forEach(cb => cb.addEventListener("change", () => {
+    const order = [...(it?.themes || [])];
+    $$("input[name=themes]", dlg).forEach(cb => cb.addEventListener("change", () => {
       const i = order.indexOf(cb.value);
       if (cb.checked && i < 0) order.push(cb.value);
       if (!cb.checked && i >= 0) order.splice(i, 1);
     }));
-
-    $("#case-form", dlg).addEventListener("submit", (e) => {
+    $("#case-form", dlg).addEventListener("submit", async (e) => {
       e.preventDefault();
-      const f = new FormData(e.target);
-      const data = {};
-      ["title", "city", "country", "site", "year", "coords", "designers", "scale", "brief"].forEach(k => data[k] = String(f.get(k) || "").trim());
-      data.themes = order.filter(t => THEMES[t]);
-      data.updated = now();
-      if (item) {
-        Object.assign(item, data);
-        save(); render();
-        openSheet(item.id);
-        toast("Sheet revised.");
-      } else {
-        const fresh = { id: uid(), no: state.nextNo++, links: [], ...data };
-        state.items.push(fresh);
-        save(); render();
-        openSheet(fresh.id);
-        toast(`${code(fresh.no)} added.`);
+      const f = new FormData(e.target), g = (k) => String(f.get(k) || "").trim();
+      const data = { title: g("title"), city: g("city"), country: g("country"), site: g("site"), year: g("year"), stage: g("stage"), region: g("region"),
+        designers: g("designers"), scale: g("scale"), brief: g("brief"), themes: order.filter(t => THEMES[t]) };
+      data.axisYear = firstYear(data.year);
+      data.links = g("links").split("\n").map(l => { const [a, b] = l.includes("|") ? l.split("|") : ["", l]; const u = safeUrl((b || "").trim()); return u ? { label: a.trim(), url: u } : null; }).filter(Boolean);
+      const img = safeUrl(g("img")); data.image = img ? { url: img, credit: g("credit") } : null;
+      const ll = g("latlng").match(/(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)/);
+      if (ll) { data.lat = +ll[1]; data.lng = +ll[2]; data.approx = false; data.placement = "Position entered by hand."; }
+      else if (!it || it.lat == null || g("site") !== (it.site || "") || g("city") !== (it.city || "")) {
+        const q = [data.site, data.city, data.country].filter(Boolean).join(", ");
+        const found = q ? await geocode(q) : null;
+        if (found) { data.lat = found.lat; data.lng = found.lng; data.approx = !data.site; data.placement = (data.site ? "Placed at the site." : "Placed at the city centre, approximate.") + " Position from OpenStreetMap."; }
+        else if (!it) { data.lat = null; data.lng = null; data.approx = true; data.placement = ""; toast("Couldn't find that place. It's listed under “Not yet placed”."); }
       }
+      if (data.lat != null) data.coords = `${Math.abs(data.lat).toFixed(4)}° ${data.lat >= 0 ? "N" : "S"}, ${Math.abs(data.lng).toFixed(4)}° ${data.lng >= 0 ? "E" : "W"}`;
+      let targetId;
+      if (it && it.origin === "mine") { Object.assign(overlay.added.find(a => a.id === it.id), data); targetId = it.id; }
+      else if (it) { overlay.edits[it.id] = { ...(overlay.edits[it.id] || {}), ...data }; targetId = it.id; }
+      else {
+        targetId = "mine-" + Math.random().toString(36).slice(2, 9);
+        overlay.added.push({ id: targetId, origin: "mine", added: new Date().toISOString().slice(0, 10), ...data });
+      }
+      saveOverlay(); dlg.close(); rebuild();
+      toast(it ? "Saved." : "Added to the field.");
+      setTimeout(() => focusPoint(targetId), 200);
     });
+    dlg.showModal();
   }
-
   dlg.addEventListener("click", (e) => {
-    if (e.target === dlg) { dlg.close(); return; } // backdrop click
-    const btn = e.target.closest("[data-act]");
-    if (!btn) return;
-    const act = btn.dataset.act;
-    const item = currentId && byId(currentId);
-    if (act === "close") dlg.close();
-    else if (act === "edit" && item) openForm(item.id);
-    else if (act === "back" && item) openSheet(item.id);
-    else if (act === "del-link" && item) {
-      item.links.splice(+btn.dataset.i, 1);
-      item.updated = now();
-      save(); render(); openSheet(item.id);
-    } else if (act === "delete" && item) {
-      if (confirm(`Delete “${item.title}” and its sources? This can't be undone (unless you've exported a backup).`)) {
-        state.items = state.items.filter(i => i.id !== item.id);
-        save(); render(); dlg.close();
-        toast("Sheet removed.");
-      }
+    if (e.target === dlg) { dlg.close(); return; }
+    const act = e.target.closest("[data-act]")?.dataset.act;
+    if (act === "cancel") dlg.close();
+    if (act === "delete" && selected) {
+      const it = byId(selected);
+      if (!confirm(`Remove “${it.title}” from the field in this browser?`)) return;
+      if (it.origin === "mine") overlay.added = overlay.added.filter(a => a.id !== it.id);
+      else overlay.removed.push(it.id);
+      saveOverlay(); dlg.close(); closePanel(); rebuild(); toast("Removed.");
     }
   });
-  dlg.addEventListener("close", () => { currentId = null; });
-
-  // ---------- Controls ----------
-  $("#grid").addEventListener("click", (e) => {
-    const card = e.target.closest(".card");
-    if (card) openSheet(card.dataset.id);
-  });
-  $("#filters").addEventListener("click", (e) => {
-    const chip = e.target.closest(".chip");
-    if (!chip) return;
-    ui.theme = chip.dataset.theme || null;
-    renderFilters(); renderGrid();
-  });
-  $("#search").addEventListener("input", (e) => { ui.q = e.target.value.trim(); renderGrid(); });
-  $("#sort").addEventListener("change", (e) => { ui.sort = e.target.value; renderGrid(); });
-  $("#new-btn").addEventListener("click", () => openForm(null));
-
-  document.addEventListener("keydown", (e) => {
-    if (dlg.open || e.metaKey || e.ctrlKey || e.altKey) return;
-    if (/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName)) return;
-    if (e.key === "/") { e.preventDefault(); $("#search").focus(); }
-    else if (e.key.toLowerCase() === "n") { e.preventDefault(); openForm(null); }
-  });
-
-  // Theme
-  function applyTheme(t) {
-    document.documentElement.dataset.theme = t;
-    $("#theme-toggle").textContent = t === "vellum" ? "Blueprint" : "Vellum";
+  async function geocode(q) {
+    try {
+      const r = await fetch("https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=" + encodeURIComponent(q), { headers: { "Accept-Language": "en" } });
+      const j = await r.json();
+      return j[0] ? { lat: +(+j[0].lat).toFixed(4), lng: +(+j[0].lon).toFixed(4) } : null;
+    } catch (e) { return null; }
   }
-  let theme = "blueprint";
-  try { theme = localStorage.getItem(THEME_KEY) || "blueprint"; } catch (e) {}
-  applyTheme(theme);
-  $("#theme-toggle").addEventListener("click", () => {
-    theme = theme === "vellum" ? "blueprint" : "vellum";
-    applyTheme(theme);
-    try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
-  });
 
-  // Export / import
-  // On claude.ai the viewer saves through the downloads capability; opened as a
-  // plain file, the page falls back to an ordinary download link.
+  // ---------- Export / import ----------
   let downloads = null;
   if (window.claude?.use) window.claude.use("downloads").then(d => { downloads = d; }).catch(() => {});
-
-  $("#export-btn").addEventListener("click", async () => {
-    const filename = `casebook-${new Date().toISOString().slice(0, 10)}.json`;
+  async function exportChanges() {
+    const filename = `casebook-my-changes-${new Date().toISOString().slice(0, 10)}.json`, data = JSON.stringify(overlay, null, 2);
     if (downloads) {
-      try {
-        await downloads.save({ filename, data: JSON.stringify(state, null, 2) });
-        toast("Backup exported.");
-      } catch (err) {
-        toast(err?.code === "declined" ? "Export cancelled." : "Couldn't export here. Try again in a moment.");
-      }
+      try { await downloads.save({ filename, data }); toast("Exported."); }
+      catch (err) { toast(err?.code === "declined" ? "Export cancelled." : "Couldn't export here."); }
       return;
     }
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    document.body.appendChild(a); a.click(); a.remove();
+    a.href = URL.createObjectURL(new Blob([data], { type: "application/json" }));
+    a.download = filename; document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-    toast("Backup exported.");
-  });
-  $("#import-btn").addEventListener("click", () => $("#import-file").click());
+    toast("Exported.");
+  }
   $("#import-file").addEventListener("change", async (e) => {
-    const file = e.target.files?.[0];
-    e.target.value = "";
-    if (!file) return;
+    const file = e.target.files?.[0]; e.target.value = ""; if (!file) return;
     try {
-      const data = JSON.parse(await file.text());
-      if (!data || !Array.isArray(data.items)) throw new Error("bad");
-      if (!confirm(`Replace your current ${state.items.length} sheets with ${data.items.length} from “${file.name}”?`)) return;
-      data.items = data.items.filter(i => i && i.title).map((i, n) => ({
-        id: i.id || uid(), no: +i.no || n + 1, title: String(i.title), city: i.city || "", country: i.country || "",
-        site: i.site || "", year: i.year || "", designers: i.designers || "", scale: i.scale || "", coords: i.coords || "", brief: i.brief || "",
-        updated: i.updated || now(),
-        themes: Array.isArray(i.themes) ? i.themes.filter(t => THEMES[t]) : [],
-        links: Array.isArray(i.links) ? i.links.filter(l => l && safeUrl(String(l.url || ""))).map(l => ({ label: String(l.label || ""), url: safeUrl(String(l.url)) })) : [],
-      }));
-      data.nextNo = Math.max(+data.nextNo || 0, ...data.items.map(i => i.no + 1), 1);
-      state = data;
-      save(); render();
-      toast(`Imported ${state.items.length} sheets.`);
-    } catch (err) {
-      toast("Couldn't read that file. Is it a Casebook export?");
-    }
+      const o = JSON.parse(await file.text());
+      if (!o || !Array.isArray(o.added)) throw new Error();
+      if (!confirm(`Replace your changes in this browser with the ones in “${file.name}”?`)) return;
+      overlay = { added: o.added.filter(a => a && a.title && a.id), edits: o.edits || {}, removed: Array.isArray(o.removed) ? o.removed : [] };
+      saveOverlay(); rebuild(); renderAbout(); toast("Imported.");
+    } catch (err) { toast("That file isn't a Casebook export."); }
   });
 
-  render();
+  // ---------- Controls ----------
+  $$(".seg button").forEach(b => b.addEventListener("click", () => setLayout(b.dataset.layout)));
+  $("#zoom-in").addEventListener("click", () => zoomAt(1.5, innerWidth / 2, innerHeight / 2));
+  $("#zoom-out").addEventListener("click", () => zoomAt(1 / 1.5, innerWidth / 2, innerHeight / 2));
+  $("#zoom-fit").addEventListener("click", () => fit(true));
+  document.addEventListener("keydown", (e) => {
+    if (dlg.open || /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName)) return;
+    if (e.key === "Escape") { if (panel.classList.contains("open")) closePanel(); else closeSheets(); }
+    if (e.key === "+" || e.key === "=") zoomAt(1.4, innerWidth / 2, innerHeight / 2);
+    if (e.key === "-") zoomAt(1 / 1.4, innerWidth / 2, innerHeight / 2);
+    if (e.key === "1") setLayout("location");
+    if (e.key === "2") setLayout("theme");
+    if (e.key === "3") setLayout("year");
+    if (e.key === "/") { e.preventDefault(); $("#q").focus(); }
+  });
+  let resizeTimer;
+  addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { relax(view.zoom); renderAll(); }, 150); });
+
+  function rebuild() {
+    merge();
+    const ys = items.map(i => i.axisYear || firstYear(i.year)).filter(Boolean);
+    const lo = Math.floor(Math.min(...ys, 1940) / 10) * 10, hi = Math.max(...ys, 2026);
+    if (filters.yMin === yearBounds[0]) filters.yMin = lo;
+    if (filters.yMax === yearBounds[1]) filters.yMax = hi;
+    yearBounds = [lo, hi];
+    buildPoints();
+    anchors = computeAnchors(view.layout);
+    relax(view.zoom);
+    renderAll();
+    applyFilters();
+    const fresh = items.filter(isNew).length;
+    $("#latest-badge").hidden = !fresh; $("#latest-badge").textContent = fresh;
+    $("#brand-sub").textContent = `A field of ${items.length} urban case studies`;
+    if (selected && !byId(selected)) closePanel();
+  }
+
+  // ---------- Start ----------
+  async function start() {
+    try {
+      const r = await fetch("data/casebook.json", { cache: "no-cache" });
+      base = (await r.json()).items || [];
+    } catch (e) {
+      $("#loading").textContent = "Couldn't load the case studies. Open this page from the website, or from a local web server.";
+      return;
+    }
+    try { const s = await fetch("data/skipped.json", { cache: "no-cache" }); if (s.ok) skipped = await s.json(); } catch (e) {}
+    loadOverlay(); migrateV1();
+    rebuild();
+    anchors = computeAnchors(view.layout);
+    fit(false);
+    $("#loading").remove();
+    const id = decodeURIComponent(location.hash.replace(/^#\//, ""));
+    if (id && byId(id)) setTimeout(() => focusPoint(id), 300);
+  }
+  start();
 })();
 </script>
 </body>

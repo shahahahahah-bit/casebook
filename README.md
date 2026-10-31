@@ -1,30 +1,35 @@
 # Casebook
 
-A personal archive of case studies in urbanism and architecture, drawn as a blueprint sheet.
+A field of case studies in urbanism and architecture, on a dark green ground.
 
-Each case study is a numbered sheet with its location, year, designers, scale, coordinates, themes and sources. You can search, filter by theme, and add or edit sheets on the page.
+Each square is one place. You can arrange the field three ways:
+
+- **Place**: where each project is in the world, by latitude and longitude, with no map underneath
+- **Theme**: gathered by main theme
+- **Year**: along a timeline, with recent years given more room
+
+Colours show each project's main theme, and soft shapes gather nearby projects that share one. Filter by theme, region, stage and year, search, or open the **Latest** and **Index** lists. Click a square to see its photo, facts and sources.
 
 ## Files
 
 | File | What it is |
 |---|---|
-| `index.html` | The whole site: layout, styles, the starting set of 26 case studies, and the code |
-| `casestudies.json` | Projects collected from the source sites below, with every fact and link checked (October 2026) |
+| `index.html` | The site: layout, styles and code |
+| `data/casebook.json` | Every case study on the field: facts, position, stage, photo and sources |
+| `data/skipped.json` | Posts the daily check decided not to add, with the reason (filled once daily updates start) |
+| `casestudies.json` | The original research file for the 14 projects found in October 2026, with every link checked |
 
-## Sources
+## Where the information comes from
 
-- [ArchDaily](https://www.archdaily.com/): architecture projects, worldwide
-- [Dezeen](https://www.dezeen.com/): architecture and design news, worldwide
-- [Planetizen](https://www.planetizen.com/): urban planning news, US
-- [Urbanize Atlanta](https://atlanta.urbanize.city/): regional development news, Atlanta
-- [Urban Omnibus](https://urbanomnibus.net/): urban culture journal, New York
-
-Facts come only from each project's article or its own website. No Wikipedia links.
-
-## Viewing it
-
-Open `index.html` in a browser. There's no build step and no server.
+- **Facts** come only from each project's article or its own website. No Wikipedia.
+- **Positions** come from OpenStreetMap: at the exact site where the source names one, otherwise at the city centre (marked approximate).
+- **Photos** are shown from the publishers' pages, with the photographer or owner credited under each one.
+- **Sources** for new projects: [ArchDaily](https://www.archdaily.com/), [Dezeen](https://www.dezeen.com/), [Planetizen](https://www.planetizen.com/), [Urbanize Atlanta](https://atlanta.urbanize.city/) and [Urban Omnibus](https://urbanomnibus.net/).
 
 ## About saved changes
 
-Sheets you add or edit are saved in your own browser only. Other devices and other visitors won't see them. Use **Export** to save a backup file and **Import** to load it somewhere else. To change what everyone sees, edit the starting set (`SEED`) in `index.html`.
+Case studies you add, edit or remove on the site are saved in your own browser only. Use **About → Export my changes** to keep a backup. To change what everyone sees, edit `data/casebook.json`.
+
+## Viewing it locally
+
+The page loads its data from `data/`, so open it through a small local web server rather than by double-clicking the file. For example, run `python3 -m http.server` in this folder and visit `http://localhost:8000`.
