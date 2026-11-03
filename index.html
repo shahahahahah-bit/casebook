@@ -845,11 +845,12 @@
     const i = Math.min(Math.floor(c), ELEV_W - 2), j = Math.min(Math.floor(r), ELEV_H - 2), u = c - i, v = r - j;
     const at = (a, b) => elevation[b * ELEV_W + a];
     const e = (at(i, j) * (1 - u) + at(i + 1, j) * u) * (1 - v) + (at(i, j + 1) * (1 - u) + at(i + 1, j + 1) * u) * v;
-    // Past the poles there's no real land, so the lines fade into neutral terrain.
+    // Beyond the world the lines settle to flat values between contour levels, leaving calm empty space.
     const t = Math.min(1, Math.max(0, (Math.abs(lat) - 80) / 14));
-    if (!t) return e;
-    const beyond = (lat > 0 ? -3200 : 2700) + terrain(lng / 70, lat / 70) * 900;
-    return e * (1 - t) + beyond * t;
+    const south = lat < 0 ? t : 0, flat = -3500 + south * 6350;
+    const polar = e * (1 - t) + (lat > 0 ? -3500 : 2850) * t;
+    const side = Math.min(1, Math.max(0, (Math.abs(lng) - 180) / 8));
+    return polar * (1 - side) + flat * side;
   }
   function elevationLevels(tier) {
     const set = new Set([-5000, -3000, -1000, 0, 200, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000]);
@@ -993,11 +994,13 @@
   function safeArea() {
     const mobile = innerWidth < 760;
     const year = view.layout === "year", place = view.layout === "location", stackTop = $(".left-stack").getBoundingClientRect().top;
-    return { l: mobile ? (year ? 160 : 24) : (year ? 260 : place ? 110 : 244), t: mobile ? 120 : 120, r: mobile ? 28 : 70, b: mobile ? innerHeight - stackTop + 16 : 90 };
+    if (place) return { l: mobile ? 12 : 40, t: mobile ? 120 : 90, r: mobile ? 12 : 40, b: mobile ? innerHeight - stackTop + 16 : 84 };
+    return { l: mobile ? (year ? 160 : 24) : (year ? 260 : 244), t: 120, r: mobile ? 28 : 70, b: mobile ? innerHeight - stackTop + 16 : 90 };
   }
   function landingZoom() {
     const s = safeArea(), w = innerWidth - s.l - s.r, h = innerHeight - s.t - s.b;
-    const b = boundsOf(anchors);
+    // Place always starts on the whole world; the other views start on their projects.
+    const b = view.layout === "location" ? { x0: 0, y0: 0, x1: 360 * K, y1: 180 * K } : boundsOf(anchors);
     return Math.min(4, Math.max(.05, Math.min(w / Math.max(b.x1 - b.x0, 1), h / Math.max(b.y1 - b.y0, 1))));
   }
   function fit(animate = true) {
@@ -1005,7 +1008,7 @@
     const z = landingZoom();
     view.zoom = view.minZoom = z;
     relax(z);
-    const pb = boundsOf(pos);
+    const pb = view.layout === "location" ? { x0: 0, y0: 0, x1: 360 * K * z, y1: 180 * K * z } : boundsOf(pos);
     view.x = s.l + (w - (pb.x1 - pb.x0)) / 2 - pb.x0;
     view.y = s.t + (h - (pb.y1 - pb.y0)) / 2 - pb.y0;
     animateNext(animate);
