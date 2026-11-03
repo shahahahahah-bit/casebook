@@ -4,7 +4,7 @@ A field of case studies in urbanism and architecture, on a dark green ground.
 
 Each square is one place. You can arrange the field three ways:
 
-- **Place**: where each project is in the world, on ridgelines drawn from real elevation data
+- **Place**: where each project is in the world, by latitude and longitude, with no map underneath
 - **Theme**: gathered by main theme
 - **Year**: along a timeline, with recent years given more room
 
@@ -16,7 +16,6 @@ Colours show each project's main theme, and soft shapes gather nearby projects t
 |---|---|
 | `index.html` | The site: layout, styles and code |
 | `data/casebook.json` | Every case study on the field: facts, position, stage, photo and sources |
-| `data/elevation.bin` | World elevation at half-degree spacing (NOAA ETOPO1, public domain) |
 | `data/skipped.json` | Posts the daily check decided not to add, with the reason (filled once daily updates start) |
 | `casestudies.json` | The original research file for the 14 projects found in October 2026, with every link checked |
 

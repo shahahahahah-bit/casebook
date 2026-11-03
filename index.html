@@ -68,7 +68,6 @@
   #terr { transition: opacity .45s ease; }
   #terr.fade { opacity: 0; }
   .terr { fill-opacity: .11; stroke-opacity: .32; stroke-width: 1; }
-  #ridges { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
   .contour { fill: none; stroke: rgba(235, 242, 232, .1); stroke-width: 1; vector-effect: non-scaling-stroke; }
   .contour.major { stroke: rgba(235, 242, 232, .22); }
   .tick { stroke: var(--line-2); stroke-width: 1; }
@@ -102,8 +101,8 @@
     pointer-events: none;
     line-height: 1.15;
   }
-  .pt .t { display: block; font-size: 12.5px; font-weight: 400; color: var(--ink); text-shadow: 0 0 5px var(--ground), 0 0 5px var(--ground), 0 0 2px var(--ground), 0 0 2px var(--ground); }
-  .pt .m { display: block; font-family: var(--font); font-size: 9.5px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; text-shadow: 0 0 4px var(--ground), 0 0 4px var(--ground), 0 0 2px var(--ground); }
+  .pt .t { display: block; font-size: 12.5px; font-weight: 400; color: var(--ink); text-shadow: 0 1px 6px var(--ground), 0 0 2px var(--ground); }
+  .pt .m { display: block; font-family: var(--font); font-size: 9.5px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; text-shadow: 0 0 4px var(--ground); }
   .pt .m b { color: var(--c); font-weight: 400; }
   .pt.nolabel .lb { visibility: hidden; }
   .pt:hover .sq, .pt:focus-visible .sq, .pt.sel .sq { transform: scale(1.5); box-shadow: 0 0 0 4px rgba(12,34,23,.9), 0 0 0 5px var(--c); }
@@ -170,7 +169,6 @@
     font-size: 12px; font-weight: 700; line-height: 1.5;
     pointer-events: none;
   }
-  .brand h1, .brand p, .cat-legend span, .guide-label { paint-order: stroke; text-shadow: 0 0 5px var(--ground), 0 0 5px var(--ground), 0 0 2px var(--ground); }
   .cat-legend[hidden] { display: none; }
   .cat-legend span { color: var(--c); white-space: nowrap; }
   .axis-card {
@@ -422,7 +420,6 @@
 </head>
 <body>
 <div id="field" tabindex="0" aria-label="Case study field. Drag to move, scroll or pinch to zoom.">
-  <canvas id="ridges" aria-hidden="true"></canvas>
   <svg id="deco" aria-hidden="true"><g id="pan"><g id="contours"></g><g id="guides"></g><g id="terr"></g></g></svg>
   <div id="pts"></div>
 </div>
@@ -661,7 +658,7 @@
       let un = 0;
       items.forEach(it => {
         if (it.lat == null || it.lng == null) { m.set(it.id, { x: (-170 + 180) * K + (un % 6) * 30, y: (90 + 62) * K + Math.floor(un / 6) * 30 }); un++; }
-        else m.set(it.id, { x: (it.lng + 180) * K, y: (90 - it.lat) * K - (elevation ? Math.max(0, elevationAt(it.lng, it.lat)) * RIDGE_LIFT : 0) });
+        else m.set(it.id, { x: (it.lng + 180) * K, y: (90 - it.lat) * K });
       });
     } else if (layout === "theme") {
       THEME_ORDER.forEach((t, ti) => {
@@ -840,65 +837,7 @@
     }
     return sum;
   }
-  // Place view: real elevation drawn as ridgelines. Rows of latitude run across the land and
-  // lift where the ground rises, nearer rows hiding what's behind them.
-  const RIDGE_LIFT = .02; // world units per metre
-  const ridgeC = $("#ridges");
-  let elevation = null;
-  function elevationAt(lng, lat) {
-    const c = Math.min(719.999, Math.max(0, (lng + 180) * 2)), r = Math.min(359.999, Math.max(0, (90 - lat) * 2));
-    const i = Math.floor(c), j = Math.floor(r), u = c - i, v = r - j, at = (a, b) => elevation[b * 721 + a];
-    return (at(i, j) * (1 - u) + at(i + 1, j) * u) * (1 - v) + (at(i, j + 1) * (1 - u) + at(i + 1, j + 1) * u) * v;
-  }
-  function drawRidges() {
-    const z = view.zoom, vw = innerWidth, vh = innerHeight, perDeg = K * z, dpr = Math.min(devicePixelRatio || 1, 2);
-    const rect = { x0: -view.x - vw * .3, y0: -view.y - vh * .3, x1: -view.x + vw * 1.3, y1: -view.y + vh * 1.3 };
-    const w = rect.x1 - rect.x0, h = rect.y1 - rect.y0;
-    ridgeC.width = Math.ceil(w * dpr); ridgeC.height = Math.ceil(h * dpr);
-    ridgeC.style.width = w + "px"; ridgeC.style.height = h + "px";
-    const ctx = ridgeC.getContext("2d");
-    ctx.scale(dpr, dpr); ctx.translate(-rect.x0, -rect.y0);
-    ctx.lineWidth = vw < 760 && perDeg < 2 ? .7 : 1; ctx.lineJoin = "round"; ctx.strokeStyle = "rgba(235, 242, 232, .62)";
-    const rowDeg = [.5, 1, 1.5, 2, 3, 4, 6].find(d => d * perDeg >= (vw < 760 ? 3 : 7)) || 6;
-    const lngStep = Math.max(.25, 2 / perDeg), lift = RIDGE_LIFT * z, maxRise = 7000 * lift;
-    const lng0 = Math.max(-180, rect.x0 / perDeg - 180), lng1 = Math.min(180, rect.x1 / perDeg - 180);
-    const flush = (run, base) => {
-      if (run.length > 1) {
-        const last = run[run.length - 1];
-        ctx.globalCompositeOperation = "destination-out";
-        ctx.beginPath(); ctx.moveTo(run[0][0], base);
-        run.forEach(p => ctx.lineTo(p[0], p[1]));
-        ctx.lineTo(last[0], base); ctx.closePath(); ctx.fill();
-        ctx.globalCompositeOperation = "source-over";
-        ctx.beginPath(); run.forEach((p, n) => n ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke();
-      }
-      run.length = 0;
-    };
-    for (let lat = 84; lat >= -85; lat -= rowDeg) {
-      const base = (90 - lat) * perDeg;
-      if (base < rect.y0 || base - maxRise > rect.y1) continue;
-      const run = [];
-      for (let lng = lng0; lng <= lng1; lng += lngStep) {
-        const e = elevationAt(lng, lat);
-        if (e > 0) run.push([(lng + 180) * perDeg, base - e * lift]);
-        else flush(run, base);
-      }
-      flush(run, base);
-    }
-    contourGen = { ridge: true, z, ...rect };
-    placeRidges();
-  }
-  function placeRidges() {
-    const g = contourGen, s = view.zoom / g.z;
-    ridgeC.style.transform = `translate(${view.x + g.x0 * s}px, ${view.y + g.y0 * s}px) scale(${s})`;
-  }
   function drawContours() {
-    if (view.layout === "location" && elevation) {
-      contourG.innerHTML = ""; contourG.removeAttribute("transform");
-      drawRidges();
-      return;
-    }
-    ridgeC.width = ridgeC.height = 0;
     const z = view.zoom, vw = innerWidth, vh = innerHeight, cell = vw < 760 ? 16 : 14;
     const rect = { x0: -view.x - vw * .5, y0: -view.y - vh * .5, x1: -view.x + vw * 1.5, y1: -view.y + vh * 1.5 };
     const nx = Math.ceil((rect.x1 - rect.x0) / cell), ny = Math.ceil((rect.y1 - rect.y0) / cell);
@@ -929,12 +868,6 @@
   }
   function keepContours() {
     if (!contourGen) return;
-    if (contourGen.ridge) {
-      const g = contourGen;
-      if (g.z === view.zoom && (-view.x < g.x0 || -view.y < g.y0 || -view.x + innerWidth > g.x1 || -view.y + innerHeight > g.y1)) { ridgeC.style.transition = "none"; drawRidges(); }
-      else placeRidges();
-      return;
-    }
     if (contourGen.z !== view.zoom) { contourG.setAttribute("transform", `scale(${view.zoom / contourGen.z})`); return; }
     if (-view.x < contourGen.x0 || -view.y < contourGen.y0 || -view.x + innerWidth > contourGen.x1 || -view.y + innerHeight > contourGen.y1) drawContours();
   }
@@ -973,7 +906,7 @@
         }
       }
       const regions = {};
-      if (!elevation) items.forEach(it => { if (it.lat == null) return; const p = pos.get(it.id); (regions[it.region] ||= []).push(p); });
+      items.forEach(it => { if (it.lat == null) return; const p = pos.get(it.id); (regions[it.region] ||= []).push(p); });
       Object.entries(regions).forEach(([r, ps]) => {
         if (r === "Unknown" || K * z < 3) return;
         const x = ps.reduce((s, p) => s + p.x, 0) / ps.length, y = ps.reduce((s, p) => s + p.y, 0) / ps.length;
@@ -1021,14 +954,11 @@
   function safeArea() {
     const mobile = innerWidth < 760;
     const year = view.layout === "year", place = view.layout === "location", stackTop = $(".left-stack").getBoundingClientRect().top;
-    if (place && elevation) return { l: mobile ? 12 : 40, t: mobile ? 120 : 90, r: mobile ? 12 : 40, b: mobile ? innerHeight - stackTop + 16 : 84 };
     return { l: mobile ? (year ? 160 : 24) : (year ? 260 : place ? 110 : 244), t: mobile ? 120 : 120, r: mobile ? 28 : 70, b: mobile ? innerHeight - stackTop + 16 : 90 };
   }
   function landingZoom() {
     const s = safeArea(), w = innerWidth - s.l - s.r, h = innerHeight - s.t - s.b;
-    // With terrain, Place starts on the whole world; other views start on their projects.
-    const world = view.layout === "location" && elevation;
-    const b = world ? { x0: 0, y0: 0, x1: 360 * K, y1: 180 * K } : boundsOf(anchors);
+    const b = boundsOf(anchors);
     return Math.min(4, Math.max(.05, Math.min(w / Math.max(b.x1 - b.x0, 1), h / Math.max(b.y1 - b.y0, 1))));
   }
   function fit(animate = true) {
@@ -1036,7 +966,7 @@
     const z = landingZoom();
     view.zoom = view.minZoom = z;
     relax(z);
-    const pb = view.layout === "location" && elevation ? { x0: 0, y0: 0, x1: 360 * K * z, y1: 180 * K * z } : boundsOf(pos);
+    const pb = boundsOf(pos);
     view.x = s.l + (w - (pb.x1 - pb.x0)) / 2 - pb.x0;
     view.y = s.t + (h - (pb.y1 - pb.y0)) / 2 - pb.y0;
     animateNext(animate);
@@ -1090,9 +1020,9 @@
     const cx = (innerWidth - panelW) / 2, cy = innerWidth < 760 ? innerHeight * .2 : innerHeight / 2;
     view.x = cx - p.x; view.y = cy - p.y;
     animateNext(true);
-    ptsEl.style.transition = panG.style.transition = ridgeC.style.transition = "transform .6s var(--ease)";
+    ptsEl.style.transition = panG.style.transition = "transform .6s var(--ease)";
     applyPan();
-    setTimeout(() => { ptsEl.style.transition = panG.style.transition = ridgeC.style.transition = ""; }, 650);
+    setTimeout(() => { ptsEl.style.transition = panG.style.transition = ""; }, 650);
     if (open) openPanel(id);
   }
 
@@ -1218,8 +1148,8 @@
     if (sx > right - 60 || sx < 20 || sy > bottom - 40 || sy < 70) {
       view.x += (right / 2) - sx;
       view.y += (mobile ? innerHeight * .1 : innerHeight / 2) - sy + (mobile ? 0 : 0);
-      ptsEl.style.transition = panG.style.transition = ridgeC.style.transition = "transform .5s var(--ease)";
-      setTimeout(() => { ptsEl.style.transition = panG.style.transition = ridgeC.style.transition = ""; }, 550);
+      ptsEl.style.transition = panG.style.transition = "transform .5s var(--ease)";
+      setTimeout(() => { ptsEl.style.transition = panG.style.transition = ""; }, 550);
       applyPan();
     }
     history.replaceState(null, "", "#/" + encodeURIComponent(id));
@@ -1386,7 +1316,7 @@
     $("#about-body").innerHTML = `
       <p><strong>Casebook</strong> is a field of case studies in urbanism and architecture. Each square is one place.</p>
       <h3>Arranging the field</h3>
-      <p><strong>Place</strong> puts every square where it is in the world, on ridgelines drawn from real elevation data (NOAA ETOPO1): rows of latitude that lift where the land rises. Squares that would overlap are nudged apart slightly. <strong>Theme</strong> gathers them by main theme. <strong>Year</strong> lays them along a timeline, with recent years given more room.</p>
+      <p><strong>Place</strong> puts every square where it is in the world, using latitude and longitude, with no map drawn underneath. Squares that would overlap are nudged apart slightly. <strong>Theme</strong> gathers them by main theme. <strong>Year</strong> lays them along a timeline, with recent years given more room.</p>
       <p>Positions come from OpenStreetMap. Where a source names the exact site or address, the square sits there. Otherwise it sits at the city centre and is marked as approximate.</p>
       <h3>Colours</h3>
       <div class="legend">${THEME_ORDER.map(t => `<span class="tag" style="--c:${col(t)}"><i></i>${esc(THEMES[t])}</span>`).join("")}</div>
@@ -1580,7 +1510,6 @@
       return;
     }
     try { const s = await fetch("data/skipped.json", { cache: "no-cache" }); if (s.ok) skipped = await s.json(); } catch (e) {}
-    try { const e = await fetch("data/elevation.bin"); if (e.ok) elevation = new Int16Array(await e.arrayBuffer()); } catch (e) {}
     loadOverlay(); migrateV1();
     rebuild();
     anchors = computeAnchors(view.layout);
