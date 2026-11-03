@@ -68,8 +68,9 @@
   #terr { transition: opacity .45s ease; }
   #terr.fade { opacity: 0; }
   .terr { fill-opacity: .11; stroke-opacity: .32; stroke-width: 1; }
-  .guide { stroke: var(--line-2); stroke-width: 1.2; stroke-linecap: round; stroke-dasharray: .1 7; fill: none; }
-  .guide.strong { stroke: rgba(235, 242, 232, .5); stroke-dasharray: .1 5; }
+  .contour { fill: none; stroke: rgba(235, 242, 232, .1); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .contour.major { stroke: rgba(235, 242, 232, .22); }
+  .tick { stroke: var(--line-2); stroke-width: 1; }
   .guide-label { fill: var(--ink-3); font-family: var(--font); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; }
   .big-label { font-family: var(--font); font-weight: 400; font-size: 34px; fill: var(--ink); opacity: .1; }
   .theme-label { font-family: var(--font); font-weight: 400; font-size: 20px; }
@@ -419,7 +420,7 @@
 </head>
 <body>
 <div id="field" tabindex="0" aria-label="Case study field. Drag to move, scroll or pinch to zoom.">
-  <svg id="deco" aria-hidden="true"><g id="pan"><g id="guides"></g><g id="terr"></g></g></svg>
+  <svg id="deco" aria-hidden="true"><g id="pan"><g id="contours"></g><g id="guides"></g><g id="terr"></g></g></svg>
   <div id="pts"></div>
 </div>
 <div class="loading" id="loading">Laying out the field…</div>
@@ -734,6 +735,7 @@
   function applyPan() {
     ptsEl.style.transform = `translate(${view.x}px, ${view.y}px)`;
     panG.style.transform = `translate(${view.x}px, ${view.y}px)`;
+    keepContours();
     drawGuides();
     cullLabels();
   }
@@ -814,35 +816,94 @@
     terrG.innerHTML = html;
   }
 
-  // Grid lines cover the whole screen in every view, and their spacing adapts to the zoom.
+  // Contour lines: isolines of a smooth imaginary terrain that fills the screen in every view.
+  // Zooming in adds finer lines between the existing ones, as on a topographic map.
+  const CONTOUR_BASE = .1;
+  const contourG = $("#contours");
+  let contourGen = null;
+  function lattice(x, y, o) {
+    let h = Math.imul(x, 374761393) + Math.imul(y, 668265263) + Math.imul(o + 1, 2147483647) | 0;
+    h = Math.imul(h ^ (h >>> 13), 1274126177);
+    return ((h ^ (h >>> 16)) >>> 0) / 4294967295 * 2 - 1;
+  }
+  function terrain(x, y) {
+    let sum = 0, amp = .62, f = 1;
+    for (let o = 0; o < 5; o++, amp *= .5, f *= 2) {
+      const px = x * f + o * 17.3, py = y * f - o * 9.1, ix = Math.floor(px), iy = Math.floor(py);
+      const u = px - ix, v = py - iy, a = u * u * (3 - 2 * u), b = v * v * (3 - 2 * v);
+      const top = lattice(ix, iy, o) * (1 - a) + lattice(ix + 1, iy, o) * a;
+      const bot = lattice(ix, iy + 1, o) * (1 - a) + lattice(ix + 1, iy + 1, o) * a;
+      sum += amp * (top * (1 - b) + bot * b);
+    }
+    return sum;
+  }
+  function drawContours() {
+    const z = view.zoom, vw = innerWidth, vh = innerHeight, cell = vw < 760 ? 16 : 14;
+    const rect = { x0: -view.x - vw * .5, y0: -view.y - vh * .5, x1: -view.x + vw * 1.5, y1: -view.y + vh * 1.5 };
+    const nx = Math.ceil((rect.x1 - rect.x0) / cell), ny = Math.ceil((rect.y1 - rect.y0) / cell);
+    // Hills keep the same size on screen at each view's starting zoom.
+    const wave = 460 / view.minZoom, field = new Float32Array((nx + 1) * (ny + 1));
+    for (let j = 0, n = 0; j <= ny; j++) for (let i = 0; i <= nx; i++, n++)
+      field[n] = terrain((rect.x0 + i * cell) / z / wave, (rect.y0 + j * cell) / z / wave);
+    const level = Math.max(0, Math.min(4, Math.floor(Math.log2(z / view.minZoom + 1e-6))));
+    const step = CONTOUR_BASE / 2 ** level, every = 5 * 2 ** level;
+    const fine = [], major = [];
+    const cross = (a, b, h) => (h - a) / (b - a);
+    for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+      const n = j * (nx + 1) + i, a = field[n], b = field[n + 1], c = field[n + nx + 2], d = field[n + nx + 1];
+      const lo = Math.min(a, b, c, d), hi = Math.max(a, b, c, d);
+      for (let k = Math.ceil(lo / step); k * step <= hi; k++) {
+        const h = k * step, x = rect.x0 + i * cell, y = rect.y0 + j * cell, pts = [];
+        if ((a < h) !== (b < h)) pts.push(x + cross(a, b, h) * cell, y);
+        if ((b < h) !== (c < h)) pts.push(x + cell, y + cross(b, c, h) * cell);
+        if ((d < h) !== (c < h)) pts.push(x + cross(d, c, h) * cell, y + cell);
+        if ((a < h) !== (d < h)) pts.push(x, y + cross(a, d, h) * cell);
+        const out = k % every === 0 ? major : fine;
+        for (let p = 0; p + 3 < pts.length; p += 4) out.push(`M${pts[p].toFixed(1)} ${pts[p + 1].toFixed(1)}L${pts[p + 2].toFixed(1)} ${pts[p + 3].toFixed(1)}`);
+      }
+    }
+    contourG.removeAttribute("transform");
+    contourG.innerHTML = `<path class="contour" d="${fine.join("")}"/><path class="contour major" d="${major.join("")}"/>`;
+    contourGen = { z, ...rect };
+  }
+  function keepContours() {
+    if (!contourGen) return;
+    if (contourGen.z !== view.zoom) { contourG.setAttribute("transform", `scale(${view.zoom / contourGen.z})`); return; }
+    if (-view.x < contourGen.x0 || -view.y < contourGen.y0 || -view.x + innerWidth > contourGen.x1 || -view.y + innerHeight > contourGen.y1) drawContours();
+  }
+
+  // Labels around the field; their spacing adapts to the zoom.
   const pickStep = (steps, unitPx, minPx = 56) => steps.find(st => st * unitPx >= minPx) || steps[steps.length - 1];
   function drawGuides() {
     const z = view.zoom, vw = innerWidth, vh = innerHeight, mobile = vw < 760;
-    // Drawn a screen beyond each edge so lines are already there while the view glides.
     const m = Math.max(vw, vh), x0 = -view.x - m, x1 = -view.x + vw + m, y0 = -view.y - m, y1 = -view.y + vh + m;
     const left = -view.x, top = -view.y;
     let g = "";
     const chrome = chromeRects();
-    // Skip a grid label if it would run under one of the fixed boxes.
+    const blocked = (sx, sy, w, h) => sx < 0 || chrome.some(o => sx < o.x + o.w && sx + w > o.x && sy < o.y + o.h && sy + h > o.y);
+    // Skip a label or tick if it would run under one of the fixed boxes.
     const text = (x, y, label, cls = "", anchor = "start", extra = "") => {
       const w = String(label).length * 7.4, sx = (anchor === "end" ? x - w : anchor === "middle" ? x - w / 2 : x) + view.x, sy = y - 12 + view.y;
-      if (sx < 0 || chrome.some(o => sx < o.x + o.w && sx + w > o.x && sy < o.y + o.h && sy + 15 > o.y)) return;
+      if (blocked(sx, sy, w, 15)) return;
       g += `<text class="guide-label ${cls}" x="${x}" y="${y}" text-anchor="${anchor}"${extra}>${esc(label)}</text>`;
     };
-    const vline = (x, cls = "") => { g += `<line class="guide ${cls}" x1="${x}" y1="${y0}" x2="${x}" y2="${y1}"/>`; };
-    const hline = (y, cls = "") => { g += `<line class="guide ${cls}" x1="${x0}" y1="${y}" x2="${x1}" y2="${y}"/>`; };
+    const tick = (x, y, dx, dy) => { if (!blocked(x + view.x, y + view.y, Math.max(dx, 1), Math.max(dy, 1))) g += `<line class="tick" x1="${x}" y1="${y}" x2="${x + dx}" y2="${y + dy}"/>`; };
     if (view.layout === "location") {
       const step = pickStep([1, 2, 5, 10, 15, 30, 45, 90], K * z), px = step * K * z;
       for (let k = Math.floor(x0 / px); k * px <= x1; k++) {
         const lng = -180 + k * step;
-        vline(k * px, lng === 0 ? "strong" : "");
-        if (lng >= -180 && lng <= 180 && lng % (step * 2) === 0) text(k * px + 4, top + (mobile ? 74 : 78), `${Math.abs(lng)}°${lng < 0 ? "W" : lng > 0 ? "E" : ""}`);
+        if (lng >= -180 && lng <= 180 && lng % (step * 2) === 0) {
+          text(k * px + 4, top + (mobile ? 104 : 78), `${Math.abs(lng)}°${lng < 0 ? "W" : lng > 0 ? "E" : ""}`);
+          tick(k * px, top + (mobile ? 94 : 68), 0, 10);
+        }
       }
       const oy = 90 * K * z;
-      for (let m = Math.floor((y0 - oy) / px); oy + m * px <= y1; m++) {
-        const lat = -m * step, y = oy + m * px;
-        hline(y, lat === 0 ? "strong" : "");
-        if (lat >= -90 && lat <= 90) text(left + 12, y - 5, lat === 0 ? "Equator" : Math.abs(lat) + "°" + (lat > 0 ? "N" : "S"));
+      for (let n = Math.floor((y0 - oy) / px); oy + n * px <= y1; n++) {
+        const lat = -n * step, y = oy + n * px;
+        if (lat >= -90 && lat <= 90) {
+          text(left + 12, y - 5, lat === 0 ? "Equator" : Math.abs(lat) + "°" + (lat > 0 ? "N" : "S"));
+          tick(left + 2, y, 8, 0);
+        }
       }
       const regions = {};
       items.forEach(it => { if (it.lat == null) return; const p = pos.get(it.id); (regions[it.region] ||= []).push(p); });
@@ -853,9 +914,6 @@
       });
       if (items.some(it => it.lat == null)) g += `<text class="guide-label" x="${10 * K * z}" y="${(90 + 62) * K * z - 16}">Not yet placed</text>`;
     } else if (view.layout === "theme") {
-      const step = pickStep([10, 25, 50, 100, 200, 400, 800, 1600], z), px = step * z;
-      for (let k = Math.floor(x0 / px); k * px <= x1; k++) vline(k * px, k === 0 ? "strong" : "");
-      for (let k = Math.floor(y0 / px); k * px <= y1; k++) hline(k * px, k === 0 ? "strong" : "");
       THEME_ORDER.forEach((t, ti) => {
         const a = -Math.PI / 2 + ti / THEME_ORDER.length * Math.PI * 2;
         const n = items.filter(it => primary(it) === t).length;
@@ -863,27 +921,20 @@
         g += `<text class="theme-label" x="${Math.cos(a) * 900 * z}" y="${(Math.sin(a) * 520 - r) * z - 26}" text-anchor="middle" fill="${col(t)}">${esc(THEMES[t])}</text>`;
       });
     } else {
-      // Lanes: one row per theme, continued as empty rows above and below.
-      const lane = LANE * z;
-      for (let i = Math.floor(y0 / lane); i * lane <= y1; i++) hline(i * lane, i >= 0 && i < THEME_ORDER.length ? "strong" : "");
-      // Years: ticks get finer as you zoom in; the timeline gives recent years more room.
-      const ticks = [];
-      const add = (y, major) => { const x = yearX(y) * z; if (ticks.every(t => Math.abs(t.x - x) >= 50)) ticks.push({ y, x, major }); };
-      for (let y = 1940; y <= 2020; y += 10) add(y, true);
-      add(2025, true);
-      for (let y = 1945; y <= 2025; y += 5) add(y, false);
-      for (let y = 1940; y <= 2028; y++) add(y, false);
-      ticks.sort((a, b) => a.x - b.x);
-      const first = ticks[0], last = ticks[ticks.length - 1];
-      const gapL = ticks.length > 1 ? ticks[1].x - first.x : 80, gapR = ticks.length > 1 ? last.x - ticks[ticks.length - 2].x : 80;
-      for (let x = first.x - gapL; x >= x0; x -= gapL) vline(x);
-      for (let x = last.x + gapR; x <= x1; x += gapR) vline(x);
+      // Years: markers get finer as you zoom in; the timeline gives recent years more room.
+      const lane = LANE * z, ticks = [];
+      const add = (y) => { const x = yearX(y) * z; if (ticks.every(t => Math.abs(t.x - x) >= 50)) ticks.push({ y, x }); };
+      for (let y = 1940; y <= 2020; y += 10) add(y);
+      add(2025);
+      for (let y = 1945; y <= 2025; y += 5) add(y);
+      for (let y = 1940; y <= 2028; y++) add(y);
       const labelY = Math.min(Math.max((THEME_ORDER.length - .4) * lane + 22, top + 96), top + vh - (mobile ? 180 : 96));
       ticks.forEach(t => {
-        vline(t.x, t.major ? "strong" : "");
-        if (t.x > x0 && t.x < x1) text(t.x, labelY, t.y, "", "middle");
+        if (t.x <= x0 || t.x >= x1) return;
+        text(t.x, labelY, t.y, "", "middle");
+        tick(t.x, labelY - 22, 0, 8);
       });
-      const lx = Math.max(-48, left + (mobile ? 150 : 150));
+      const lx = Math.max(-48, left + 150);
       THEME_ORDER.forEach((t, i) => {
         text(lx, i * lane - 6, THEMES[t], "cat", "end", ` style="fill:${col(t)}"`);
       });
@@ -891,7 +942,7 @@
     guidesG.innerHTML = g;
   }
 
-  function renderAll() { placePoints(); drawTerritories(); applyPan(); }
+  function renderAll() { placePoints(); drawTerritories(); drawContours(); applyPan(); }
 
   // ---------- Camera ----------
   function boundsOf(map) {
@@ -948,7 +999,7 @@
     placePoints(); drawTerritories(); applyPan();
     hideHover();
     clearTimeout(relaxTimer);
-    relaxTimer = setTimeout(() => { relax(view.zoom); animateNext(true); placePoints(); drawTerritories(); cullLabels(); }, 160);
+    relaxTimer = setTimeout(() => { relax(view.zoom); animateNext(true); placePoints(); drawTerritories(); drawContours(); cullLabels(); }, 160);
     updateZoomButtons();
   }
   function setLayout(layout) {
@@ -1427,7 +1478,7 @@
     const atLanding = view.zoom <= view.minZoom * 1.001, min = landingZoom();
     if (atLanding || view.zoom < min) { fit(false); return; }
     view.minZoom = min;
-    applyPan(); updateZoomButtons();
+    drawContours(); applyPan(); updateZoomButtons();
   }, 150); });
 
   function rebuild() {
