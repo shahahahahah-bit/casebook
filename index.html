@@ -68,11 +68,9 @@
   #terr { transition: opacity .45s ease; }
   #terr.fade { opacity: 0; }
   .terr { fill-opacity: .11; stroke-opacity: .32; stroke-width: 1; }
-  .contour { fill: none; stroke: rgba(235, 242, 232, .1); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .contour.major { stroke: rgba(235, 242, 232, .22); }
+  #contour-canvas { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: none; }
   .tick { stroke: var(--line-2); stroke-width: 1; }
   .guide-label { fill: var(--ink-3); font-family: var(--font); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; }
-  .big-label { font-family: var(--font); font-weight: 400; font-size: 34px; fill: var(--ink); opacity: .1; }
   .theme-label { font-family: var(--font); font-weight: 400; font-size: 20px; }
   .guide-label.cat { font-weight: 400; font-size: 11px; }
   #pts { position: absolute; left: 0; top: 0; }
@@ -420,7 +418,8 @@
 </head>
 <body>
 <div id="field" tabindex="0" aria-label="Case study field. Drag to move, scroll or pinch to zoom.">
-  <svg id="deco" aria-hidden="true"><g id="pan"><g id="contours"></g><g id="guides"></g><g id="terr"></g></g></svg>
+  <canvas id="contour-canvas" aria-hidden="true"></canvas>
+  <svg id="deco" aria-hidden="true"><g id="pan"><g id="guides"></g><g id="terr"></g></g></svg>
   <div id="pts"></div>
 </div>
 <div class="loading" id="loading">Laying out the field…</div>
@@ -819,7 +818,7 @@
   // Contour lines: isolines of a smooth imaginary terrain that fills the screen in every view.
   // Zooming in adds finer lines between the existing ones, as on a topographic map.
   const CONTOUR_BASE = .1;
-  const contourG = $("#contours");
+  const contourC = $("#contour-canvas");
   let contourGen = null;
   function lattice(x, y, o) {
     let h = Math.imul(x, 374761393) + Math.imul(y, 668265263) + Math.imul(o + 1, 2147483647) | 0;
@@ -837,39 +836,86 @@
     }
     return sum;
   }
+  // Place view: real elevation, in metres. Land reads through closely spaced lines, oceans faintly.
+  let elevation = null, elevationFailed = false;
+  const ELEV_W = 721, ELEV_H = 361;
+  function elevationAt(lng, lat) {
+    const c = ((lng + 180) % 360 + 360) % 360 * 2;
+    const r = (90 - Math.max(-90, Math.min(90, lat))) * 2;
+    const i = Math.min(Math.floor(c), ELEV_W - 2), j = Math.min(Math.floor(r), ELEV_H - 2), u = c - i, v = r - j;
+    const at = (a, b) => elevation[b * ELEV_W + a];
+    const e = (at(i, j) * (1 - u) + at(i + 1, j) * u) * (1 - v) + (at(i, j + 1) * (1 - u) + at(i + 1, j + 1) * u) * v;
+    // Past the poles there's no real land, so the lines fade into neutral terrain.
+    const t = Math.min(1, Math.max(0, (Math.abs(lat) - 80) / 14));
+    if (!t) return e;
+    const beyond = (lat > 0 ? -3200 : 2700) + terrain(lng / 70, lat / 70) * 900;
+    return e * (1 - t) + beyond * t;
+  }
+  function elevationLevels(tier) {
+    const set = new Set([-5000, -3000, -1000, 0, 200, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000]);
+    if (tier >= 1) [-4000, -2000, -200, 100, 750, 1250, 1750, 2500, 3500, 4500, 5500].forEach(l => set.add(l));
+    if (tier >= 2) { for (let l = 100; l <= 2000; l += 100) set.add(l); for (let l = 2250; l <= 6000; l += 250) set.add(l); }
+    return [...set].sort((a, b) => a - b);
+  }
+  // Contours are painted to one canvas, which moves cheaply while you drag.
   function drawContours() {
-    const z = view.zoom, vw = innerWidth, vh = innerHeight, cell = vw < 760 ? 16 : 14;
-    const rect = { x0: -view.x - vw * .5, y0: -view.y - vh * .5, x1: -view.x + vw * 1.5, y1: -view.y + vh * 1.5 };
+    const real = view.layout === "location" && !elevationFailed;
+    if (real && !elevation) { contourC.width = contourC.height = 0; contourGen = null; return; }
+    const z = view.zoom, vw = innerWidth, vh = innerHeight, tier = Math.floor(Math.log2(z / view.minZoom + 1e-6));
+    const cell = real ? Math.min(10, Math.max(3.5, K * z)) : vw < 760 ? 16 : 14;
+    const rect = { x0: -view.x - vw * .3, y0: -view.y - vh * .3, x1: -view.x + vw * 1.3, y1: -view.y + vh * 1.3 };
     const nx = Math.ceil((rect.x1 - rect.x0) / cell), ny = Math.ceil((rect.y1 - rect.y0) / cell);
-    // Hills keep the same size on screen at each view's starting zoom.
     const wave = 460 / view.minZoom, field = new Float32Array((nx + 1) * (ny + 1));
-    for (let j = 0, n = 0; j <= ny; j++) for (let i = 0; i <= nx; i++, n++)
-      field[n] = terrain((rect.x0 + i * cell) / z / wave, (rect.y0 + j * cell) / z / wave);
-    const level = Math.max(0, Math.min(4, Math.floor(Math.log2(z / view.minZoom + 1e-6))));
-    const step = CONTOUR_BASE / 2 ** level, every = 5 * 2 ** level;
-    const fine = [], major = [];
-    const cross = (a, b, h) => (h - a) / (b - a);
+    for (let j = 0, n = 0; j <= ny; j++) for (let i = 0; i <= nx; i++, n++) {
+      const wx = (rect.x0 + i * cell) / z, wy = (rect.y0 + j * cell) / z;
+      field[n] = real ? elevationAt(wx / K - 180, 90 - wy / K) : terrain(wx / wave, wy / wave);
+    }
+    // Invented terrain: evenly spaced heights, with every fifth line heavier.
+    const lvl = Math.max(0, Math.min(4, tier)), step = CONTOUR_BASE / 2 ** lvl, every = 5 * 2 ** lvl, levels = [];
+    if (real) levels.push(...elevationLevels(tier));
+    else for (let k = Math.ceil(-1.6 / step); k * step <= 1.6; k++) levels.push(k * step);
+    const fine = new Path2D(), major = new Path2D(), deep = new Path2D();
+    const pathFor = (h, n) => real ? (h === 0 ? major : h < 0 ? deep : fine) : (n % every === 0 ? major : fine);
+    const k0 = real ? 0 : Math.ceil(-1.6 / step);
     for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
       const n = j * (nx + 1) + i, a = field[n], b = field[n + 1], c = field[n + nx + 2], d = field[n + nx + 1];
-      const lo = Math.min(a, b, c, d), hi = Math.max(a, b, c, d);
-      for (let k = Math.ceil(lo / step); k * step <= hi; k++) {
-        const h = k * step, x = rect.x0 + i * cell, y = rect.y0 + j * cell, pts = [];
-        if ((a < h) !== (b < h)) pts.push(x + cross(a, b, h) * cell, y);
-        if ((b < h) !== (c < h)) pts.push(x + cell, y + cross(b, c, h) * cell);
-        if ((d < h) !== (c < h)) pts.push(x + cross(d, c, h) * cell, y + cell);
-        if ((a < h) !== (d < h)) pts.push(x, y + cross(a, d, h) * cell);
-        const out = k % every === 0 ? major : fine;
-        for (let p = 0; p + 3 < pts.length; p += 4) out.push(`M${pts[p].toFixed(1)} ${pts[p + 1].toFixed(1)}L${pts[p + 2].toFixed(1)} ${pts[p + 3].toFixed(1)}`);
+      const lo = Math.min(a, b, c, d), hi = Math.max(a, b, c, d), x = i * cell, y = j * cell;
+      for (let l = 0; l < levels.length; l++) {
+        const h = levels[l];
+        if (h > hi) break;
+        if (h < lo) continue;
+        const pts = [], f = (p, q) => (h - p) / (q - p) * cell;
+        if ((a < h) !== (b < h)) pts.push(x + f(a, b), y);
+        if ((b < h) !== (c < h)) pts.push(x + cell, y + f(b, c));
+        if ((d < h) !== (c < h)) pts.push(x + f(d, c), y + cell);
+        if ((a < h) !== (d < h)) pts.push(x, y + f(a, d));
+        const path = pathFor(h, k0 + l);
+        for (let q = 0; q + 3 < pts.length; q += 4) { path.moveTo(pts[q], pts[q + 1]); path.lineTo(pts[q + 2], pts[q + 3]); }
       }
     }
-    contourG.removeAttribute("transform");
-    contourG.innerHTML = `<path class="contour" d="${fine.join("")}"/><path class="contour major" d="${major.join("")}"/>`;
+    const dpr = Math.min(devicePixelRatio || 1, 2), w = rect.x1 - rect.x0, h = rect.y1 - rect.y0;
+    contourC.width = Math.ceil(w * dpr); contourC.height = Math.ceil(h * dpr);
+    contourC.style.width = w + "px"; contourC.style.height = h + "px";
+    const ctx = contourC.getContext("2d");
+    ctx.scale(dpr, dpr); ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(235, 242, 232, .05)"; ctx.stroke(deep);
+    ctx.strokeStyle = "rgba(235, 242, 232, .1)"; ctx.stroke(fine);
+    ctx.strokeStyle = real ? "rgba(235, 242, 232, .3)" : "rgba(235, 242, 232, .22)"; ctx.stroke(major);
     contourGen = { z, ...rect };
+    placeContours();
+  }
+  function placeContours() {
+    const g = contourGen, s = view.zoom / g.z;
+    contourC.style.transform = `translate(${view.x + g.x0 * s}px, ${view.y + g.y0 * s}px) scale(${s})`;
   }
   function keepContours() {
     if (!contourGen) return;
-    if (contourGen.z !== view.zoom) { contourG.setAttribute("transform", `scale(${view.zoom / contourGen.z})`); return; }
-    if (-view.x < contourGen.x0 || -view.y < contourGen.y0 || -view.x + innerWidth > contourGen.x1 || -view.y + innerHeight > contourGen.y1) drawContours();
+    if (contourGen.z === view.zoom && (-view.x < contourGen.x0 || -view.y < contourGen.y0 || -view.x + innerWidth > contourGen.x1 || -view.y + innerHeight > contourGen.y1)) {
+      contourC.style.transition = "none";
+      drawContours();
+      return;
+    }
+    placeContours();
   }
 
   // Labels around the field; their spacing adapts to the zoom.
@@ -905,13 +951,6 @@
           tick(left + 2, y, 8, 0);
         }
       }
-      const regions = {};
-      items.forEach(it => { if (it.lat == null) return; const p = pos.get(it.id); (regions[it.region] ||= []).push(p); });
-      Object.entries(regions).forEach(([r, ps]) => {
-        if (r === "Unknown" || K * z < 3) return;
-        const x = ps.reduce((s, p) => s + p.x, 0) / ps.length, y = ps.reduce((s, p) => s + p.y, 0) / ps.length;
-        g += `<text class="big-label" x="${x}" y="${y + 10}" text-anchor="middle">${esc(r)}</text>`;
-      });
       if (items.some(it => it.lat == null)) g += `<text class="guide-label" x="${10 * K * z}" y="${(90 + 62) * K * z - 16}">Not yet placed</text>`;
     } else if (view.layout === "theme") {
       THEME_ORDER.forEach((t, ti) => {
@@ -1020,9 +1059,9 @@
     const cx = (innerWidth - panelW) / 2, cy = innerWidth < 760 ? innerHeight * .2 : innerHeight / 2;
     view.x = cx - p.x; view.y = cy - p.y;
     animateNext(true);
-    ptsEl.style.transition = panG.style.transition = "transform .6s var(--ease)";
+    ptsEl.style.transition = panG.style.transition = contourC.style.transition = "transform .6s var(--ease)";
     applyPan();
-    setTimeout(() => { ptsEl.style.transition = panG.style.transition = ""; }, 650);
+    setTimeout(() => { ptsEl.style.transition = panG.style.transition = contourC.style.transition = ""; }, 650);
     if (open) openPanel(id);
   }
 
@@ -1148,8 +1187,8 @@
     if (sx > right - 60 || sx < 20 || sy > bottom - 40 || sy < 70) {
       view.x += (right / 2) - sx;
       view.y += (mobile ? innerHeight * .1 : innerHeight / 2) - sy + (mobile ? 0 : 0);
-      ptsEl.style.transition = panG.style.transition = "transform .5s var(--ease)";
-      setTimeout(() => { ptsEl.style.transition = panG.style.transition = ""; }, 550);
+      ptsEl.style.transition = panG.style.transition = contourC.style.transition = "transform .5s var(--ease)";
+      setTimeout(() => { ptsEl.style.transition = panG.style.transition = contourC.style.transition = ""; }, 550);
       applyPan();
     }
     history.replaceState(null, "", "#/" + encodeURIComponent(id));
@@ -1316,7 +1355,7 @@
     $("#about-body").innerHTML = `
       <p><strong>Casebook</strong> is a field of case studies in urbanism and architecture. Each square is one place.</p>
       <h3>Arranging the field</h3>
-      <p><strong>Place</strong> puts every square where it is in the world, using latitude and longitude, with no map drawn underneath. Squares that would overlap are nudged apart slightly. <strong>Theme</strong> gathers them by main theme. <strong>Year</strong> lays them along a timeline, with recent years given more room.</p>
+      <p><strong>Place</strong> puts every square where it is in the world, using latitude and longitude. The lines underneath are real elevation contours (NOAA ETOPO1), so continents and mountain ranges show through them. Squares that would overlap are nudged apart slightly. <strong>Theme</strong> gathers them by main theme. <strong>Year</strong> lays them along a timeline, with recent years given more room.</p>
       <p>Positions come from OpenStreetMap. Where a source names the exact site or address, the square sits there. Otherwise it sits at the city centre and is marked as approximate.</p>
       <h3>Colours</h3>
       <div class="legend">${THEME_ORDER.map(t => `<span class="tag" style="--c:${col(t)}"><i></i>${esc(THEMES[t])}</span>`).join("")}</div>
@@ -1510,6 +1549,10 @@
       return;
     }
     try { const s = await fetch("data/skipped.json", { cache: "no-cache" }); if (s.ok) skipped = await s.json(); } catch (e) {}
+    fetch("data/elevation.bin").then(r => { if (!r.ok) throw new Error(); return r.arrayBuffer(); })
+      .then(b => { elevation = new Int16Array(b); })
+      .catch(() => { elevationFailed = true; })
+      .finally(() => { if (view.layout === "location") drawContours(); });
     loadOverlay(); migrateV1();
     rebuild();
     anchors = computeAnchors(view.layout);
