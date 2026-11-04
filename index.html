@@ -103,8 +103,8 @@
     opacity: var(--name-fade, 0);
     transition: opacity .7s ease;
   }
-  .pt .t { display: block; font-size: 12.5px; font-weight: 400; color: var(--ink); text-shadow: 0 1px 6px var(--ground), 0 0 2px var(--ground); }
-  .pt .m { display: block; font-family: var(--font); font-size: 9.5px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; text-shadow: 0 0 4px var(--ground); }
+  .pt .t { display: block; font-size: 14.5px; font-weight: 400; color: var(--ink); text-shadow: 0 1px 6px var(--ground), 0 0 2px var(--ground); }
+  .pt .m { display: block; font-family: var(--font); font-size: 11.5px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; text-shadow: 0 0 4px var(--ground); }
   .pt .m b { color: var(--c); font-weight: 400; }
   .pt.nolabel .lb { visibility: hidden; opacity: 0; }
   .pt:hover .sq, .pt:focus-visible .sq, .pt.sel .sq { transform: scale(1.5); box-shadow: 0 0 0 4px rgba(12,34,23,.9), 0 0 0 5px var(--c); }
@@ -757,7 +757,7 @@
     return { x: r.left, y: r.top, w: r.width, h: r.height };
   });
   // Names stay hidden through the first zoom step, then fade in gradually as you keep zooming.
-  const NAMES_START = 1.8, NAMES_FULL = 5;
+  const NAMES_START = 1.5, NAMES_FULL = 5;
   function cullLabels() {
     const fade = (view.zoom / view.minZoom - NAMES_START) / (NAMES_FULL - NAMES_START);
     field.style.setProperty("--name-fade", Math.max(0, Math.min(1, fade)).toFixed(2));
