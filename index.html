@@ -87,14 +87,15 @@
   .pt .sq {
     position: absolute; left: -5px; top: -5px;
     width: 10px; height: 10px;
-    background: var(--c);
-    box-shadow: 0 0 0 0 transparent;
-    transition: transform .15s, box-shadow .2s;
+    transition: transform .15s;
   }
-  .pt.new .sq::after {
-    content: ""; position: absolute; inset: -5px;
-    border: 1px solid var(--c); opacity: .8;
-  }
+  .mark { display: block; width: 100%; height: 100%; overflow: visible; }
+  .mark .fill { fill: var(--c); }
+  .mark .out { fill: none; stroke: var(--c); stroke-width: 1px; vector-effect: non-scaling-stroke; opacity: 0; transition: opacity .2s; }
+  .pt.new .mark .out { opacity: .8; }
+  .pt:hover .mark .out, .pt:focus-visible .mark .out, .pt.sel .mark .out { opacity: 1; }
+  .shape { display: inline-block; width: 10px; height: 10px; flex: none; overflow: visible; }
+  .shape path { fill: var(--c, currentColor); }
   .pt .lb {
     position: absolute; left: 10px; top: -10px;
     white-space: nowrap;
@@ -108,7 +109,7 @@
   .pt .m { display: block; font-family: var(--font); font-size: 11.5px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; text-shadow: 0 0 4px var(--ground); }
   .pt .m b { color: var(--c); font-weight: 400; }
   .pt.nolabel .lb { visibility: hidden; opacity: 0; }
-  .pt:hover .sq, .pt:focus-visible .sq, .pt.sel .sq { transform: scale(1.5); box-shadow: 0 0 0 4px rgba(12,34,23,.9), 0 0 0 5px var(--c); }
+  .pt:hover .sq, .pt:focus-visible .sq, .pt.sel .sq { transform: scale(1.5); filter: drop-shadow(0 0 3px var(--ground)); }
   .pt:hover .lb, .pt:focus-visible .lb, .pt.sel .lb { visibility: visible; opacity: 1; transition-duration: .15s; z-index: 2; }
   .pt:hover, .pt:focus-visible, .pt.sel { z-index: 5; outline: none; }
   .pt.dim { opacity: .14; }
@@ -167,13 +168,13 @@
   }
   .topnav, .bar, .axis-card { background: var(--panel); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .cat-legend {
-    position: fixed; top: 25px; left: 272px; right: 280px; z-index: 10;
-    display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 2px 20px;
+    position: fixed; top: 25px; left: 280px; right: 280px; z-index: 10;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 20px;
     font-size: 12px; font-weight: 700; line-height: 1.5;
     pointer-events: none;
   }
   .cat-legend[hidden] { display: none; }
-  .cat-legend span { color: var(--c); white-space: nowrap; }
+  .cat-legend span { display: inline-flex; align-items: center; gap: 6px; color: var(--c); white-space: nowrap; }
   .axis-card {
     padding: 12px 14px 12px;
     display: grid; gap: 10px;
@@ -404,7 +405,7 @@
     .topnav { top: 10px; right: 10px; }
     .navbtn { padding: 6px 6px; font-size: 10px; letter-spacing: .05em; }
     .left-stack { left: 10px; right: 10px; bottom: 62px; width: auto; gap: 6px; }
-    .cat-legend { top: 52px; left: 14px; right: 14px; justify-content: flex-start; gap: 0 12px; font-size: 11px; }
+    .cat-legend { top: 52px; left: 14px; right: 14px; justify-content: center; gap: 0 12px; font-size: 11px; }
     .axis-card { padding: 8px; grid-template-columns: auto 1fr; align-items: center; gap: 10px; }
     .axis-glyph { display: none; }
     .bar { left: 10px; right: 10px; bottom: 10px; }
@@ -548,6 +549,18 @@
       <circle cx="30" cy="54" r="10"/><circle cx="30" cy="54" r="3" fill="currentColor"/>
       <path d="M38 48 L112 10 M40 52 L116 36 M38 60 L110 70 M24 46 L12 6 M36 46 L62 4"/>`,
   };
+  // One shape per category: the four PlayStation symbols plus three more.
+  const SHAPES = {
+    "mobility":     "M0-9.5A9.5 9.5 0 1 1 0 9.5A9.5 9.5 0 1 1 0-9.5Z",
+    "housing":      "M-8.5-8.5H8.5V8.5H-8.5Z",
+    "public-space": "M0-10L10.5 8.5H-10.5Z",
+    "community":    "M-6.5-10L0-3.5L6.5-10L10-6.5L3.5 0L10 6.5L6.5 10L0 3.5L-6.5 10L-10 6.5L-3.5 0L-10-6.5Z",
+    "landscape":    "M0-11L11 0L0 11L-11 0Z",
+    "reuse":        "M-11 6A11 11 0 0 1 11 6Z",
+    "regional":     "M0.0 -11.0L2.7 -3.7L10.5 -3.4L4.4 1.4L6.5 8.9L0.0 4.6L-6.5 8.9L-4.4 1.4L-10.5 -3.4L-2.7 -3.7Z",
+  };
+  const mark = (t) => `<svg class="mark" viewBox="-10 -10 20 20" aria-hidden="true"><path class="out" transform="scale(1.8)" d="${SHAPES[t]}"/><path class="fill" d="${SHAPES[t]}"/></svg>`;
+  const shape = (t) => `<svg class="shape" viewBox="-11 -11 22 22" aria-hidden="true"><path d="${SHAPES[t]}"/></svg>`;
   const glyph = (t) => `<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLYPHS[t] || GLYPHS["public-space"]}</svg>`;
 
   // ---------- Helpers ----------
@@ -724,7 +737,7 @@
       b.style.setProperty("--c", col(primary(it)));
       const y = it.axisYear || firstYear(it.year) || "";
       b.setAttribute("aria-label", `${it.title}, ${placeOf(it)}${y ? ", " + y : ""}`);
-      b.innerHTML = `<span class="sq"></span><span class="lb"><span class="t">${esc(it.title)}</span><span class="m">${esc(it.city || "")}${y ? " · " + y : ""}${isNew(it) ? " · <b>New</b>" : ""}</span></span>`;
+      b.innerHTML = `<span class="sq">${mark(primary(it))}</span><span class="lb"><span class="t">${esc(it.title)}</span><span class="m">${esc(it.city || "")}${y ? " · " + y : ""}${isNew(it) ? " · <b>New</b>" : ""}</span></span>`;
       ptsEl.appendChild(b);
       els.set(it.id, b);
     });
@@ -1146,7 +1159,7 @@
           ${fact("Scale", esc(it.scale))}
           ${fact("Region", esc(it.region !== "Unknown" ? it.region : ""))}
           ${fact("Coordinates", esc(it.coords), it.placement || (it.approx ? "Approximate position." : ""))}
-          ${fact("Themes", it.themes?.length ? `<span class="tags">${it.themes.map(t => `<span class="tag" style="--c:${col(t)}"><i></i>${esc(THEMES[t] || t)}</span>`).join("")}</span>` : "")}
+          ${fact("Themes", it.themes?.length ? `<span class="tags">${it.themes.map(t => `<span class="tag" style="--c:${col(t)}">${shape(t)}${esc(THEMES[t] || t)}</span>`).join("")}</span>` : "")}
           ${fact("Found via", esc(src || (it.origin === "original" ? "Original casebook" : "")), it.added && it.origin !== "original" ? `Added ${it.added}` : "")}
         </dl>
         ${(it.links || []).length ? `<h3 style="margin:0 0 6px;font-family:var(--font);font-weight:400;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">Sources</h3>
@@ -1189,7 +1202,7 @@
   function renderTray() {
     const count = (fn) => items.filter(fn).length;
     const chip = (group, key, label, n, c) =>
-      `<button class="chip" type="button" data-group="${group}" data-key="${esc(key)}" aria-pressed="${filters[group].has(key)}" ${c ? `style="--c:${c}"` : ""}>${c ? "<i></i>" : ""}${esc(label)} <span class="k">${n}</span></button>`;
+      `<button class="chip" type="button" data-group="${group}" data-key="${esc(key)}" aria-pressed="${filters[group].has(key)}" ${c ? `style="--c:${c}"` : ""}>${group === "themes" ? shape(key) : c ? "<i></i>" : ""}${esc(label)} <span class="k">${n}</span></button>`;
     const regions = REGIONS.filter(r => items.some(i => i.region === r));
     const [a, b] = yearBounds;
     tray.innerHTML = `
@@ -1333,7 +1346,7 @@
       <p><strong>Place</strong> puts every square where it is in the world, using latitude and longitude, with no map drawn underneath. Squares that would overlap are nudged apart slightly. <strong>Theme</strong> gathers them by main theme. <strong>Year</strong> lays them along a timeline, with recent years given more room.</p>
       <p>Positions come from OpenStreetMap. Where a source names the exact site or address, the square sits there. Otherwise it sits at the city centre and is marked as approximate.</p>
       <h3>Colours</h3>
-      <div class="legend">${THEME_ORDER.map(t => `<span class="tag" style="--c:${col(t)}"><i></i>${esc(THEMES[t])}</span>`).join("")}</div>
+      <div class="legend">${THEME_ORDER.map(t => `<span class="tag" style="--c:${col(t)}">${shape(t)}${esc(THEMES[t])}</span>`).join("")}</div>
       <p>Soft shapes gather nearby squares that share a main theme. A square with a ring around it was added in the last ${NEW_DAYS} days.</p>
       <h3>Sources and photos</h3>
       <p>New projects come from ArchDaily, Dezeen, Planetizen, Urbanize Atlanta and Urban Omnibus. Facts come only from each article or the project's own website. Photos are shown from the publishers' pages and belong to the photographers credited under each one.</p>
@@ -1377,7 +1390,7 @@
         <label class="full"><span>Scale</span><input class="field" name="scale" value="${v("scale")}"></label>
         <label class="full"><span>Short description</span><textarea class="field" name="brief" rows="2">${v("brief")}</textarea></label>
         <fieldset class="full"><legend>Themes (the first one sets the colour)</legend>
-          <div class="picks">${THEME_ORDER.map(t => `<label><input type="checkbox" name="themes" value="${t}" ${it?.themes?.includes(t) ? "checked" : ""}><span class="chip" style="--c:${col(t)}"><i></i>${esc(THEMES[t])}</span></label>`).join("")}</div>
+          <div class="picks">${THEME_ORDER.map(t => `<label><input type="checkbox" name="themes" value="${t}" ${it?.themes?.includes(t) ? "checked" : ""}><span class="chip" style="--c:${col(t)}">${shape(t)}${esc(THEMES[t])}</span></label>`).join("")}</div>
         </fieldset>
         <label class="full"><span>Sources, one per line: title | web address</span><textarea class="field" name="links" rows="3">${esc(links)}</textarea></label>
         <label><span>Photo web address</span><input class="field" name="img" value="${esc(it?.image?.url || "")}"></label>
@@ -1514,7 +1527,7 @@
   }
 
   // ---------- Start ----------
-  $("#legend").innerHTML = THEME_ORDER.map(t => `<span style="--c:${col(t)}">${esc(THEMES[t])}</span>`).join("");
+  $("#legend").innerHTML = THEME_ORDER.map(t => `<span style="--c:${col(t)}">${shape(t)}${esc(THEMES[t])}</span>`).join("");
   async function start() {
     try {
       const r = await fetch("data/casebook.json", { cache: "no-cache" });
