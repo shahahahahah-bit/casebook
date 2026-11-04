@@ -268,7 +268,7 @@
   }
   .panel.open { transform: none; box-shadow: -30px 0 60px rgba(0,0,0,.35); }
   .ph { position: relative; aspect-ratio: 16 / 10; background: var(--panel-2); overflow: hidden; }
-  .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ph img { position: relative; width: 100%; height: 100%; object-fit: cover; display: block; }
   .ph .glyph { position: absolute; inset: 0; display: grid; place-items: center; color: var(--c); }
   .ph .glyph svg { width: 56%; height: 70%; overflow: visible; }
   .credit {
@@ -509,7 +509,7 @@
   const THEME_ORDER = Object.keys(THEMES);
   const STAGES = { "built": "Built", "in-progress": "In progress", "planned": "Planned" };
   const REGIONS = ["North America", "Latin America", "Europe", "Africa", "Asia", "Oceania"];
-  const SOURCES = { "archdaily.com": "ArchDaily", "dezeen.com": "Dezeen", "planetizen.com": "Planetizen", "urbanize.city": "Urbanize Atlanta", "urbanomnibus.net": "Urban Omnibus" };
+  const SOURCES = { "archdaily.com": "ArchDaily", "dezeen.com": "Dezeen", "planetizen.com": "Planetizen", "urbanize.city": "Urbanize Atlanta", "urbanomnibus.net": "Urban Omnibus", "udcsa.gsd.harvard.edu": "Harvard UDCSA" };
   const LANES = { large: "Large-scale", small: "Small-scale" };
   const col = (t) => `var(--${THEMES[t] ? t : "public-space"})`;
 
@@ -622,8 +622,8 @@
   // ---------- View state ----------
   const field = $("#field"), ptsEl = $("#pts"), panG = $("#pan"), guidesG = $("#guides"), terrG = $("#terr");
   const view = { layout: "location", zoom: 1, minZoom: .04, x: 0, y: 0 };
-  const filters = { themes: new Set(), regions: new Set(), stages: new Set(), yMin: 1940, yMax: 2030, q: "" };
-  let yearBounds = [1940, 2030];
+  const filters = { themes: new Set(), regions: new Set(), stages: new Set(), yMin: 1920, yMax: 2030, q: "" };
+  let yearBounds = [1920, 2030];
   let anchors = new Map();   // world position for the current layout
   let pos = new Map();       // screen position at the current zoom (before pan)
   let selected = null;
@@ -648,8 +648,8 @@
 
   // ---------- Layouts (world coordinates) ----------
   const K = 12; // world units per degree
-  const T_MIN = Math.log(2032 - 1940), T_MAX = Math.log(2032 - 2028);
-  const yearX = (y) => (T_MIN - Math.log(2032 - Math.min(Math.max(y, 1940), 2028))) / (T_MIN - T_MAX) * 2600;
+  const T_MIN = Math.log(2032 - 1920), T_MAX = Math.log(2032 - 2028);
+  const yearX = (y) => (T_MIN - Math.log(2032 - Math.min(Math.max(y, 1920), 2028))) / (T_MIN - T_MAX) * 2600;
   const LANE = 170;
 
   function computeAnchors(layout) {
@@ -924,10 +924,10 @@
       // Years: markers get finer as you zoom in; the timeline gives recent years more room.
       const lane = LANE * z, ticks = [];
       const add = (y) => { const x = yearX(y) * z; if (ticks.every(t => Math.abs(t.x - x) >= 50)) ticks.push({ y, x }); };
-      for (let y = 1940; y <= 2020; y += 10) add(y);
+      for (let y = 1920; y <= 2020; y += 10) add(y);
       add(2025);
       for (let y = 1945; y <= 2025; y += 5) add(y);
-      for (let y = 1940; y <= 2028; y++) add(y);
+      for (let y = 1920; y <= 2028; y++) add(y);
       const labelY = Math.min(Math.max((THEME_ORDER.length - .4) * lane + 22, top + 96), top + vh - (mobile ? 180 : 96));
       ticks.forEach(t => {
         if (t.x <= x0 || t.x >= x1) return;
@@ -1484,7 +1484,7 @@
   function rebuild() {
     merge();
     const ys = items.map(i => i.axisYear || firstYear(i.year)).filter(Boolean);
-    const lo = Math.floor(Math.min(...ys, 1940) / 10) * 10, hi = Math.max(...ys, 2026);
+    const lo = Math.floor(Math.min(...ys, 1920) / 10) * 10, hi = Math.max(...ys, 2026);
     if (filters.yMin === yearBounds[0]) filters.yMin = lo;
     if (filters.yMax === yearBounds[1]) filters.yMax = hi;
     yearBounds = [lo, hi];

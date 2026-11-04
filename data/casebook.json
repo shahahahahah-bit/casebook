@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-30",
+  "updated": "2026-11-04",
   "note": "Case studies shown on the Casebook site. Daily additions are appended here automatically.",
   "items": [
     {
@@ -989,6 +989,1427 @@
       },
       "origin": "sources",
       "added": "2026-10-30",
+      "lane": null
+    },
+    {
+      "id": "malagueira-quarter",
+      "no": 27,
+      "title": "Malagueira Quarter Housing Project",
+      "city": "Évora",
+      "country": "Portugal",
+      "region": "Europe",
+      "site": "",
+      "year": "1977–1997",
+      "axisYear": 1977,
+      "stage": "built",
+      "designers": "Álvaro Siza",
+      "scale": "1200 single-family housing units; 12-by-8-meter (39.4-by-26.2-foot) plots of land.",
+      "lat": 38.5714,
+      "lng": -7.9135,
+      "coords": "38.5714° N, 7.9135° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "housing",
+        "public-space"
+      ],
+      "brief": "Siza's low-income housing on 27 hectares outside Évora, part of Portugal's social housing movement after the 1974 revolution.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/3"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/9amy4li8mivi8kjztj9xt345yyh3/full/^!1000,1000/0/default.jpg",
+        "credit": "Peter G. Rowe, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "northeastern-urban-integration-medellin",
+      "no": 28,
+      "title": "Northeastern Urban Integration Project (PUI)",
+      "city": "Medellín",
+      "country": "Colombia",
+      "region": "Latin America",
+      "site": "Medellín, Antioquia, Colombia",
+      "year": "2004–2015",
+      "axisYear": 2004,
+      "stage": "built",
+      "designers": "Alejandro Echeverri Restrepo; Empresa de Desarrollo Urbano (EDU); City of Medellín",
+      "scale": "Not stated",
+      "lat": 6.2476,
+      "lng": -75.5658,
+      "coords": "6.2476° N, 75.5658° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "mobility",
+        "housing"
+      ],
+      "brief": "A city programme building on the MetroCable to improve life for about 170,000 residents of informal settlements.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/4"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/7kuzkrtz2si1wnfz8fet3qav8hye/full/^!1000,1000/0/default.jpg",
+        "credit": "Photo: Iwan Baan, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "olympic-sculpture-park",
+      "no": 29,
+      "title": "Olympic Sculpture Park",
+      "city": "Seattle",
+      "country": "USA",
+      "region": "North America",
+      "site": "Seattle, WA, USA",
+      "year": "Not stated (Green Prize 2007)",
+      "axisYear": 2007,
+      "stage": "built",
+      "designers": "Weiss/Manfredi (Marion Weiss, Michael Manfredi)",
+      "scale": "9 acres",
+      "lat": 47.6062,
+      "lng": -122.3321,
+      "coords": "47.6062° N, 122.3321° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "public-space",
+        "reuse"
+      ],
+      "brief": "A Z-shaped park across a complex infrastructure node, joining the city and the waterfront on different levels.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/5"
+        }
+      ],
+      "image": null,
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "barcelona-urban-public-spaces",
+      "no": 30,
+      "title": "Barcelona Urban Public Spaces",
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "site": "",
+      "year": "1981–1987",
+      "axisYear": 1981,
+      "stage": "built",
+      "designers": "Many designers; Office of Urban Projects, Town Planning Commission",
+      "scale": "100 sq. km",
+      "lat": 41.3874,
+      "lng": 2.1686,
+      "coords": "41.3874° N, 2.1686° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "public-space",
+        "mobility",
+        "landscape"
+      ],
+      "brief": "A collective effort by many designers that reworked 42 plazas, parks and streets across Barcelona's districts.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/6"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/l71otplvk5c73c266x1irta19l7m/full/^!1000,1000/0/default.jpg",
+        "credit": "Peter G. Rowe, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "favela-bairro",
+      "no": 31,
+      "title": "Favela-Bairro Project",
+      "city": "Rio de Janeiro",
+      "country": "Brazil",
+      "region": "Latin America",
+      "site": "Rio de Janeiro, State of Rio de Janeiro, Brazil",
+      "year": "1995–2000",
+      "axisYear": 1995,
+      "stage": "built",
+      "designers": "Jorge Mario Jáuregui (Atelier Metropolitano)",
+      "scale": "Not stated",
+      "lat": -22.9068,
+      "lng": -43.1729,
+      "coords": "22.9068° S, 43.1729° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "Rio's shift from clearing favelas to upgrading them, with sanitation, streets and underground infrastructure.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/7"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/hflvstr90h124ua99ymqusmd58wh/full/^!1000,1000/0/default.jpg",
+        "credit": "Jorge Mario Jáuregui, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "metro-do-porto",
+      "no": 32,
+      "title": "Metro do Porto",
+      "city": "Porto",
+      "country": "Portugal",
+      "region": "Europe",
+      "site": "",
+      "year": "1991– (about ten years)",
+      "axisYear": 1991,
+      "stage": "built",
+      "designers": "Eduardo Souto de Moura; Álvaro Siza; Metro do Porto S.A.; Normetro ACE",
+      "scale": "58.8 kilometers",
+      "lat": 41.1579,
+      "lng": -8.6291,
+      "coords": "41.1579° N, 8.6291° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "mobility",
+        "public-space"
+      ],
+      "brief": "New surface and underground rail with sixty stations, designed to repair and regenerate the city and its region.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/10"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/xg2ekc6vytdbvgziiyz7pptbtxxn/full/^!1000,1000/0/default.jpg",
+        "credit": "Wuppertaler_Creative Commons, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "old-city-of-aleppo",
+      "no": 33,
+      "title": "Rehabilitation of the Old City of Aleppo",
+      "city": "Aleppo",
+      "country": "Syria",
+      "region": "Asia",
+      "site": "",
+      "year": "1986–2003",
+      "axisYear": 1986,
+      "stage": "built",
+      "designers": "Directorate of the Old City of Aleppo; Advisory Committee for the Protection of the Old City",
+      "scale": "190 km² or 73.36 mi²",
+      "lat": 36.2021,
+      "lng": 37.1343,
+      "coords": "36.2021° N, 37.1343° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "reuse"
+      ],
+      "brief": "Rehabilitation led by the city with GTZ and local citizens, focused on restoring the old city's urban fabric.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/11"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/kk24gdy6ua8cgjj6w81fcav2sjk4/full/^!1000,1000/0/default.jpg",
+        "credit": "2005, President and Fellows of Harvard College, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "hillside-terrace",
+      "no": 34,
+      "title": "Hillside Terrace Complex",
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "Asia",
+      "site": "Daikanyama, Tokyo, Japan",
+      "year": "From 1967",
+      "axisYear": 1967,
+      "stage": "built",
+      "designers": "Fumihiko Maki (Maki and Associates)",
+      "scale": "24625 square meters",
+      "lat": 35.648,
+      "lng": 139.7004,
+      "coords": "35.6480° N, 139.7004° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "Maki's complex in Daikanyama, built phase by phase for one landowning family as land values rose.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/14"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/n4dxzwdpwp6mc9jkk3sbkub0252f/full/^!1000,1000/0/default.jpg",
+        "credit": "Wikimedia Commons, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "monte-carasso",
+      "no": 35,
+      "title": "Monte Carasso Master Plan",
+      "city": "Monte Carasso",
+      "country": "Switzerland",
+      "region": "Europe",
+      "site": "",
+      "year": "From 1977",
+      "axisYear": 1977,
+      "stage": "built",
+      "designers": "Luigi Snozzi",
+      "scale": "3.72 sq mi (9.64 square kilometers)",
+      "lat": 46.189,
+      "lng": 8.9981,
+      "coords": "46.1890° N, 8.9981° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "regional",
+        "public-space"
+      ],
+      "brief": "Over a decade, Snozzi used the town's own public buildings to bring structure to suburban growth.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/15"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/jtxtwzhmrvu2p29ybek2cn0ivug7/full/^!1000,1000/0/default.jpg",
+        "credit": "Paweł Pedrycz, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "grand-paris-express",
+      "no": 36,
+      "title": "Grand Paris Express",
+      "city": "Paris",
+      "country": "France",
+      "region": "Europe",
+      "site": "Île-de-France region (Paris), France",
+      "year": "2010–",
+      "axisYear": 2010,
+      "stage": "in-progress",
+      "designers": "Société du Grand Paris, with many architecture firms",
+      "scale": "200 km",
+      "lat": 48.8566,
+      "lng": 2.3522,
+      "coords": "48.8566° N, 2.3522° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "mobility"
+      ],
+      "brief": "68 new stations and 200 km of track, with four new lines encircling Paris and serving over 100 municipalities.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/16"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/whrllu94dyhcyrlj19ie1q3g0fj5/full/^!1000,1000/0/default.jpg",
+        "credit": "Société du Grand Paris, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "historic-center-mexico-city",
+      "no": 37,
+      "title": "Historic Center of Mexico City",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "site": "Centro, Mexico City, Mexico",
+      "year": "1980–1994",
+      "axisYear": 1980,
+      "stage": "built",
+      "designers": "Jorge De Gamboa (director of planning)",
+      "scale": "Composed of 1436 landmarked buildings, the urban fabric can be categorized in Perimeter A (approximately 3.2 km2) or the core of the colonial center in the city, and Perimeter B (5.9 km2), a buffer area formed by the 19th-century expansion.",
+      "lat": 19.4357,
+      "lng": -99.1318,
+      "coords": "19.4357° N, 99.1318° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "reuse",
+        "public-space"
+      ],
+      "brief": "Rehabilitation of a deteriorated, depopulated historic centre, helped by fiscal incentives from 1989.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/17"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/ojh8h3fodsftttlo2npta9z5mt4x/full/^!1000,1000/0/default.jpg",
+        "credit": "Alex Krieger, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "borneo-sporenburg",
+      "no": 38,
+      "title": "Borneo Sporenburg Residential Waterfront",
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "region": "Europe",
+      "site": "",
+      "year": "1996–2000",
+      "axisYear": 1996,
+      "stage": "built",
+      "designers": "West 8 (Adriaan Geuze), masterplan, with over 30 architects",
+      "scale": "About 6,000 residents",
+      "lat": 52.3676,
+      "lng": 4.9041,
+      "coords": "52.3676° N, 4.9041° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "housing",
+        "landscape",
+        "reuse"
+      ],
+      "brief": "Two harbour peninsulas turned into a neighbourhood for about 6,000 people, with over 30 architects under West 8.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/18"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/fm64nr2aq0c2e9d60mmvkhiyl8wf/full/^!1000,1000/0/default.jpg",
+        "credit": "Creative Commons, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "madrid-rio",
+      "no": 39,
+      "title": "Madrid Río",
+      "city": "Madrid",
+      "country": "Spain",
+      "region": "Europe",
+      "site": "",
+      "year": "2003–2018",
+      "axisYear": 2003,
+      "stage": "built",
+      "designers": "Burgos & Garrido; Porras La Casta; Rubio & Álvarez-Sala; West 8",
+      "scale": "6 kilometers (3.7 miles)",
+      "lat": 40.4167,
+      "lng": -3.7033,
+      "coords": "40.4167° N, 3.7033° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "landscape",
+        "public-space"
+      ],
+      "brief": "A recreational and cultural corridor along the River Manzanares, linking monuments and facilities on the riverbed.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/19"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/ycemrj25pbfmtqoa5765jakex2xz/full/^!1000,1000/0/default.jpg",
+        "credit": "2023 The President and Fellows of Harvard College, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "carre-d-art",
+      "no": 40,
+      "title": "Carré d'Art",
+      "city": "Nîmes",
+      "country": "France",
+      "region": "Europe",
+      "site": "",
+      "year": "From 1984",
+      "axisYear": 1984,
+      "stage": "built",
+      "designers": "Norman Foster (Foster + Partners)",
+      "scale": "Not stated",
+      "lat": 43.838,
+      "lng": 4.355,
+      "coords": "43.8380° N, 4.3550° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A new cultural building that draws on Nîmes's urban structure and Roman past, balancing the new and the old.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/20"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/5i38i2h0b35mt4x5cjq7b6gbtv25/full/^!1000,1000/0/default.jpg",
+        "credit": "Rodolfo Machado, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "bilbao-metro",
+      "no": 41,
+      "title": "Bilbao Metro",
+      "city": "Bilbao",
+      "country": "Spain",
+      "region": "Europe",
+      "site": "Bizkaia, Spain",
+      "year": "1988–2014",
+      "axisYear": 1988,
+      "stage": "built",
+      "designers": "Foster + Partners",
+      "scale": "18,000 m² Capacity: 88 million passengers per annum",
+      "lat": 43.2606,
+      "lng": -2.9257,
+      "coords": "43.2606° N, 2.9257° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "mobility",
+        "public-space"
+      ],
+      "brief": "A metro conceived as one whole from the start, joining architecture, engineering and construction.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/21"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/dlubgo1ee0pxd8phby3fs0jtd7nt/full/^!1000,1000/0/default.jpg",
+        "credit": "Ardo Beltz 15:32, 22 January 2006 (UTC), CC BY-SA 3.0, via Wikimedia Commons, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "xochimilco",
+      "no": 42,
+      "title": "District of Xochimilco",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "site": "Xochimilco, CDMX, Mexico",
+      "year": "1989–1995",
+      "axisYear": 1989,
+      "stage": "built",
+      "designers": "Mario Schjetnan",
+      "scale": "Initiative covers 3,000 hectares, including 150 km of canals and lagoons",
+      "lat": 19.2572,
+      "lng": -99.103,
+      "coords": "19.2572° N, 99.1030° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "landscape",
+        "public-space"
+      ],
+      "brief": "Restoring the Valley of Mexico's heritage through canals, lagoons, reclaimed farmland and an ecological park.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/22"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/epm0aqoap3jepjx2a8ess0923ks8/full/^!1000,1000/0/default.jpg",
+        "credit": "Francisco Gómez Sosa, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "barbican-estate",
+      "no": 43,
+      "title": "Barbican Estate",
+      "city": "London",
+      "country": "UK",
+      "region": "Europe",
+      "site": "Barbican, London, UK",
+      "year": "1955–1976",
+      "axisYear": 1955,
+      "stage": "built",
+      "designers": "Chamberlin, Powell and Bon",
+      "scale": "35 acres",
+      "lat": 51.5189,
+      "lng": -0.0954,
+      "coords": "51.5189° N, 0.0954° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "Mixed development on a 35-acre City of London site flattened by bombing in 1940, designed to draw residents back.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/24"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/l5ld98ncv210xdt8ui1nffgxi59v/full/^!1000,1000/0/default.jpg",
+        "credit": "CreativeCommons, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "bharat-bhavan",
+      "no": 44,
+      "title": "Bharat Bhavan",
+      "city": "Bhopal",
+      "country": "India",
+      "region": "Asia",
+      "site": "Bhopal, Madhya Pradesh, India (southern bank of the Upper Lake)",
+      "year": "1982",
+      "axisYear": 1982,
+      "stage": "built",
+      "designers": "Charles Correa",
+      "scale": "129, 000 ft²",
+      "lat": 23.2585,
+      "lng": 77.402,
+      "coords": "23.2585° N, 77.4020° E",
+      "approx": true,
+      "placement": "Placed at the centre of Bhopal, approximate. Position from OpenStreetMap. The archive's own map point is in Pune, which contradicts its text.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A multi-arts complex set into a hillside that slopes gently toward Bhopal's Upper Lake.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/25"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/57n4su8gpw5v71jhq248qv5yzyk7/full/^!1000,1000/0/default.jpg",
+        "credit": "Charles Correa Foundation, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "parc-de-la-villette",
+      "no": 45,
+      "title": "Parc de la Villette",
+      "city": "Paris",
+      "country": "France",
+      "region": "Europe",
+      "site": "",
+      "year": "1982–1998",
+      "axisYear": 1982,
+      "stage": "built",
+      "designers": "Bernard Tschumi Architects",
+      "scale": "125 acres",
+      "lat": 48.8939,
+      "lng": 2.3905,
+      "coords": "48.8939° N, 2.3905° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A park on the site of Paris's largest slaughterhouses, which closed in 1974, designed after an international competition.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/27"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/t1juj6dmx6rra5ybv91ehyz3h9zq/full/^!1000,1000/0/default.jpg",
+        "credit": "Tommy Larey - stock.adobe.com, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "radburn",
+      "no": 46,
+      "title": "Radburn, New Jersey",
+      "city": "Fair Lawn, New Jersey",
+      "country": "USA",
+      "region": "North America",
+      "site": "Radburn, Fair Lawn, New Jersey",
+      "year": "1927–1930",
+      "axisYear": 1927,
+      "stage": "built",
+      "designers": "Clarence Stein; Henry Wright; Marjorie Cautley (landscape)",
+      "scale": "149 acres",
+      "lat": 40.9409,
+      "lng": -74.1196,
+      "coords": "40.9409° N, 74.1196° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "housing",
+        "public-space"
+      ],
+      "brief": "A planned community conceived in 1928 to rethink suburban life in response to automobile-centric growth.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/28"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/fym06z7i3er7uruuvdesiofypomp/full/^!1000,1000/0/default.jpg",
+        "credit": "Alex MacLean, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "jingdezhen-taoxichuan",
+      "no": 47,
+      "title": "Taoxichuan Ceramic Culture Industrial Park, Jingdezhen",
+      "city": "Jingdezhen",
+      "country": "China",
+      "region": "Asia",
+      "site": "Jingdezhen, Jiangxi, China",
+      "year": "1988–2022",
+      "axisYear": 1988,
+      "stage": "built",
+      "designers": "Many firms, including Beijing Tsinghua Tongheng Urban Planning & Design Institute; David Chipperfield Architects; ISA Architecture",
+      "scale": "100 hectares",
+      "lat": 29.2687,
+      "lng": 117.1784,
+      "coords": "29.2687° N, 117.1784° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "reuse"
+      ],
+      "brief": "Old ceramics factories in China's porcelain capital, restored as a district for culture, tourism and innovation.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/61"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/ghi126ne5sqo2a9rxiy303zvajwf/full/^!1000,1000/0/default.jpg",
+        "credit": "Yao Li, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "robin-hood-gardens",
+      "no": 48,
+      "title": "Robin Hood Gardens",
+      "city": "London",
+      "country": "UK",
+      "region": "Europe",
+      "site": "Poplar, London, UK",
+      "year": "Completed 1972",
+      "axisYear": 1972,
+      "stage": "built",
+      "designers": "Alison and Peter Smithson",
+      "scale": "1.5 hectares (3.7 acres)",
+      "lat": 51.5124,
+      "lng": -0.0088,
+      "coords": "51.5124° N, 0.0088° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "Social housing by the Smithsons: two precast concrete slab blocks around a man-made hill. Demolition began in 2017.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/62"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/mhdvfajcgc30ltzrzl74vcd123il/full/^!1000,1000/0/default.jpg",
+        "credit": "Harvard President Fellows, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "roosevelt-island",
+      "no": 49,
+      "title": "Roosevelt Island Redevelopment",
+      "city": "New York",
+      "country": "USA",
+      "region": "North America",
+      "site": "Roosevelt Island, New York, NY",
+      "year": "1969–1976",
+      "axisYear": 1969,
+      "stage": "built",
+      "designers": "Philip Johnson and John Burgee (master plan); Sert, Jackson and Associates; John Johansen; Kallmann & McKinnell",
+      "scale": "147 acres (0.23 square miles)",
+      "lat": 40.7605,
+      "lng": -73.951,
+      "coords": "40.7605° N, 73.9510° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "Redevelopment of a strip of land beside Manhattan: housing for various incomes, guided by postwar modernist ideals.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/63"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/6t34mvixs5anjmcm85tlv18a7iws/full/^!1000,1000/0/default.jpg",
+        "credit": "Steve Rosenthal, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "plan-for-tokyo-1960",
+      "no": 50,
+      "title": "A Plan for Tokyo: 1960",
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "Asia",
+      "site": "Tokyo Bay, Japan",
+      "year": "1960 (never built)",
+      "axisYear": 1960,
+      "stage": "planned",
+      "designers": "Kenzo Tange (URTEC)",
+      "scale": "618,000 acres (Planned area)",
+      "lat": 35.6764,
+      "lng": 139.65,
+      "coords": "35.6764° N, 139.6500° E",
+      "approx": true,
+      "placement": "Placed at Tokyo, the archive's map point. The plan itself extends into Tokyo Bay.",
+      "themes": [
+        "regional",
+        "mobility"
+      ],
+      "brief": "An 18 km linear megastructure reaching into Tokyo Bay, proposed for 5 million additional residents.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/64"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/xa4sxpl3qrwxaa7vv8aw0nk4fuc7/full/^!1000,1000/0/default.jpg",
+        "credit": "Harvard Frances Loeb Library, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "skopje-master-plan",
+      "no": 51,
+      "title": "Skopje Master Plan",
+      "city": "Skopje",
+      "country": "North Macedonia",
+      "region": "Europe",
+      "site": "",
+      "year": "From 1963",
+      "axisYear": 1963,
+      "stage": "built",
+      "designers": "Kenzo Tange; Institute for Urbanism and Architecture Skopje; UN-backed planning team",
+      "scale": "716.6 acre",
+      "lat": 41.9981,
+      "lng": 21.4254,
+      "coords": "41.9981° N, 21.4254° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "regional",
+        "public-space"
+      ],
+      "brief": "Rebuilding after the 1963 earthquake destroyed over 75% of the city, with Tange's team winning the centre's competition.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/65"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/5xf2ckfjvx9qr1s0im1uftigmouk/full/^!1000,1000/0/default.jpg",
+        "credit": "Wikimedia Creative Commons, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "karl-marx-hof",
+      "no": 52,
+      "title": "Karl Marx-Hof",
+      "city": "Vienna",
+      "country": "Austria",
+      "region": "Europe",
+      "site": "Heiligenstadt, Vienna, Austria",
+      "year": "1927–1930",
+      "axisYear": 1927,
+      "stage": "built",
+      "designers": "Karl Ehn",
+      "scale": "1,100 meters (length)",
+      "lat": 48.2538,
+      "lng": 16.3549,
+      "coords": "48.2538° N, 16.3549° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "A landmark of Red Vienna's social housing, 1,100 metres long, built under the city's Social-Democratic government.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/66"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/15l4kd4kalq9x11dwtg0lqp00xiv/full/^!1000,1000/0/default.jpg",
+        "credit": "Creative Commons - stadtlandflucht, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "seaside-florida",
+      "no": 53,
+      "title": "Seaside, Florida",
+      "city": "Seaside, Florida",
+      "country": "USA",
+      "region": "North America",
+      "site": "Seaside, FL 32459, USA",
+      "year": "1978–1980s",
+      "axisYear": 1978,
+      "stage": "built",
+      "designers": "Duany Plater-Zyberk; Robert Davis (developer); Léon Krier (consultant)",
+      "scale": "80 acres (32 hectares)",
+      "lat": 30.3217,
+      "lng": -86.1429,
+      "coords": "30.3217° N, 86.1429° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "housing",
+        "public-space"
+      ],
+      "brief": "A master-planned Gulf Coast town, regarded as the first fully realised New Urbanist community.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/99"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/h7kndtcm9kixy89oqq40ucdtv4zq/full/^!1000,1000/0/default.jpg",
+        "credit": "Harvard University Graduate School of Design, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "chandigarh",
+      "no": 54,
+      "title": "Chandigarh",
+      "city": "Chandigarh",
+      "country": "India",
+      "region": "Asia",
+      "site": "",
+      "year": "1947–1965",
+      "axisYear": 1947,
+      "stage": "built",
+      "designers": "Le Corbusier; Pierre Jeanneret; Maxwell Fry; Jane Drew; earlier plan by Albert Mayer and Matthew Nowicki",
+      "scale": "Population of 1.5 million",
+      "lat": 30.7333,
+      "lng": 76.7794,
+      "coords": "30.7333° N, 76.7794° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "regional"
+      ],
+      "brief": "A new capital after the 1947 Partition, laid out by Le Corbusier as a grid of self-contained sectors.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/100"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/k5jav36gkvj2b5prgpvmd0j50v2z/full/^!1000,1000/0/default.jpg",
+        "credit": "Laurian Ghinitoiu, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "kuwait-urban-study",
+      "no": 55,
+      "title": "Kuwait Urban Study (Mat-Building)",
+      "city": "Kuwait City",
+      "country": "Kuwait",
+      "region": "Asia",
+      "site": "Mirqab district, Kuwait City, Kuwait",
+      "year": "1968–1970 (never built)",
+      "axisYear": 1968,
+      "stage": "planned",
+      "designers": "Alison and Peter Smithson",
+      "scale": "~200 km² (1970)",
+      "lat": 29.378,
+      "lng": 47.9751,
+      "coords": "29.3780° N, 47.9751° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "regional"
+      ],
+      "brief": "A continuous low-rise carpet of buildings for Mirqab, to restore pedestrian life and reconnect historic fragments.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/101"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/rnk4274fsas04ubxsb6s43yk7qdf/full/^!1000,1000/0/default.jpg",
+        "credit": "Harvard Frances Loeb Library, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "west-kowloon-station",
+      "no": 56,
+      "title": "Kowloon High Speed Train Complex (West Kowloon Station)",
+      "city": "Hong Kong",
+      "country": "Hong Kong",
+      "region": "Asia",
+      "site": "West Kowloon, Hong Kong",
+      "year": "2018",
+      "axisYear": 2018,
+      "stage": "built",
+      "designers": "Andrew Bromberg (architect); EDAW (landscape)",
+      "scale": "25 acres",
+      "lat": 22.3035,
+      "lng": 114.165,
+      "coords": "22.3035° N, 114.1650° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "mobility",
+        "public-space"
+      ],
+      "brief": "The southern terminus of the cross-border high-speed rail link to mainland China, on the western edge of Kowloon.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/102"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/0colq6zjq35522hp46mm0rk7xued/full/^!1000,1000/0/default.jpg",
+        "credit": "Wikimedia Commons, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "tuscolano-tiburtino-valco",
+      "no": 57,
+      "title": "Tuscolano, Tiburtino and Valco San Paolo",
+      "city": "Rome",
+      "country": "Italy",
+      "region": "Europe",
+      "site": "",
+      "year": "1949–1963",
+      "axisYear": 1949,
+      "stage": "built",
+      "designers": "Ludovico Quaroni; Mario Ridolfi; Adalberto Libera; Mario De Renzi; INA-Casa Plan",
+      "scale": "Tiburtino: 21.8 acres Tuscolano: 86.5 acres Valco San Paolo: 12.4 acres",
+      "lat": 41.8967,
+      "lng": 12.4822,
+      "coords": "41.8967° N, 12.4822° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "housing"
+      ],
+      "brief": "Three neighbourhoods of working-class housing from Italy's postwar INA-Casa public housing plan.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/103"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/tt164vmqt0r5g7dofvcd2smfgsst/full/^!1000,1000/0/default.jpg",
+        "credit": "Creative Commons Attribution, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "grand-canal-linear-park",
+      "no": 58,
+      "title": "Grand Canal Linear Park",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "site": "Mexico City, CDMX, Mexico",
+      "year": "2019",
+      "axisYear": 2019,
+      "stage": "built",
+      "designers": "128 architecture and urban design",
+      "scale": "73,000 m²",
+      "lat": 19.4326,
+      "lng": -99.1332,
+      "coords": "19.4326° N, 99.1332° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A public park made by reusing a section of an abandoned canal, reviving areas left vacant by disuse.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/104"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/7ykub9bu9ouetyp1xuhbj0w8w981/full/^!1000,1000/0/default.jpg",
+        "credit": "Onnis Luque via Arch Daily, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "broadacre-city",
+      "no": 59,
+      "title": "Broadacre City",
+      "city": "New York",
+      "country": "USA",
+      "region": "North America",
+      "site": "No real site: a proposal for the American landscape, first shown as a model at Rockefeller Center, New York",
+      "year": "1935 (never built)",
+      "axisYear": 1935,
+      "stage": "planned",
+      "designers": "Frank Lloyd Wright (Taliesin Fellowship)",
+      "scale": "144 square feet (exhibition model)",
+      "lat": 40.7128,
+      "lng": -74.006,
+      "coords": "40.7128° N, 74.0060° W",
+      "approx": true,
+      "placement": "No real site. Placed at New York, where the model was first shown, following the archive.",
+      "themes": [
+        "regional"
+      ],
+      "brief": "Wright's vision of a decentralised America, with one-acre plots each holding a home, farmland and workspace.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/106"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/2f6xojl94tod1txlkw6ei0ip9njp/full/^!1000,1000/0/default.jpg",
+        "credit": "Skot Weidemann via the Frank Lloyd Wright Foundation, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "magnitogorsk",
+      "no": 60,
+      "title": "Magnitogorsk",
+      "city": "Magnitogorsk",
+      "country": "Russia",
+      "region": "Asia",
+      "site": "Magnitogorsk, on the Ural River",
+      "year": "1929–1945",
+      "axisYear": 1929,
+      "stage": "built",
+      "designers": "Ernst May and the German Planning Brigade; Ivan Leonidov; Mikhail Okhitovich; others",
+      "scale": "400 km² (City area)",
+      "lat": 53.4144,
+      "lng": 59.0572,
+      "coords": "53.4144° N, 59.0572° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "regional"
+      ],
+      "brief": "A Soviet steel city founded in 1929, and the rival plans by May, Leonidov and Okhitovich for how to build it.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/107"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/bqns10l6dtj2f7xgo1pfxh4eqmyf/full/^!1000,1000/0/default.jpg",
+        "credit": "Harvard Frances Loeb Library, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "beirut-souks",
+      "no": 61,
+      "title": "Souks in Beirut",
+      "city": "Beirut",
+      "country": "Lebanon",
+      "region": "Asia",
+      "site": "",
+      "year": "1991–2009",
+      "axisYear": 1991,
+      "stage": "built",
+      "designers": "Rafael Moneo with Samir Khairallah; Kevin Dash",
+      "scale": "45.000 m2",
+      "lat": 33.8938,
+      "lng": 35.5018,
+      "coords": "33.8938° N, 35.5018° E",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "Rebuilding the historic commercial heart of downtown Beirut, largely destroyed in the civil war.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/108"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/37s3k7ixy7wamlqj2b0igr8kt2sj/full/^!1000,1000/0/default.jpg",
+        "credit": "Bahaa Ghoussainy, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "chicago-riverwalk",
+      "no": 62,
+      "title": "Chicago Riverfront Expansion (Chicago Riverwalk)",
+      "city": "Chicago",
+      "country": "USA",
+      "region": "North America",
+      "site": "Chicago, IL, USA",
+      "year": "2009",
+      "axisYear": 2009,
+      "stage": "built",
+      "designers": "Sasaki; Ross Barney Architects; Jacobs/Ryan Associates",
+      "scale": "3.5 acres",
+      "lat": 41.8832,
+      "lng": -87.6324,
+      "coords": "41.8832° N, 87.6324° W",
+      "approx": true,
+      "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
+      "themes": [
+        "public-space",
+        "landscape"
+      ],
+      "brief": "Reclaiming an industrial edge of the Chicago River's Main Branch as an accessible public landscape.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/109"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/n7hagubdgyjriivpr7yv8062hjbb/full/^!1000,1000/0/default.jpg",
+        "credit": "Christian Philips via christianphillipsphoto.com, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "wagner-park",
+      "no": 63,
+      "title": "Robert F. Wagner, Jr. Park",
+      "city": "New York",
+      "country": "USA",
+      "region": "North America",
+      "site": "Battery Park City, New York, NY, USA",
+      "year": "1996; redesigned 2025",
+      "axisYear": 1996,
+      "stage": "built",
+      "designers": "Machado Silvetti; Hanna/Olin; Lynden B. Miller; AECOM (redesign)",
+      "scale": "3.5 acres",
+      "lat": 40.7029,
+      "lng": -74.0154,
+      "coords": "40.7029° N, 74.0154° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A waterfront park at the southern edge of Battery Park City, redesigned in 2025 for flood protection.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/110"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/b218s8y5l1eq2f7pqvwg8awc1xgm/full/^!1000,1000/0/default.jpg",
+        "credit": "Machado Silvetti, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "rwanda-institute-conservation-agriculture",
+      "no": 64,
+      "title": "Rwanda Institute for Conservation Agriculture (RICA)",
+      "city": "Bugesera District",
+      "country": "Rwanda",
+      "region": "Africa",
+      "site": "",
+      "year": "2015–2022",
+      "axisYear": 2015,
+      "stage": "built",
+      "designers": "MASS Design Group",
+      "scale": "1,400 hectares of land, about 20,000 square meters of built area.",
+      "lat": -2.2068,
+      "lng": 30.2413,
+      "coords": "2.2068° S, 30.2413° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "landscape"
+      ],
+      "brief": "A conservation agriculture campus on 1,400 hectares of savannah by Lake Kilimbi, with 20,000 m² of buildings.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/111"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/78yye8rcwlzcnj4s87eordr43poj/full/^!1000,1000/0/default.jpg",
+        "credit": "MASS Design Group, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "houtan-park",
+      "no": 65,
+      "title": "Houtan Park",
+      "city": "Shanghai",
+      "country": "China",
+      "region": "Asia",
+      "site": "",
+      "year": "2007–2009",
+      "axisYear": 2007,
+      "stage": "built",
+      "designers": "Kongjian Yu (Turenscape)",
+      "scale": "35 acres",
+      "lat": 31.181,
+      "lng": 121.4688,
+      "coords": "31.1810° N, 121.4688° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from the Harvard archive.",
+      "themes": [
+        "landscape",
+        "public-space"
+      ],
+      "brief": "A 1.7 km wetland park on former shipyards and steelworks by the Huangpu, treating polluted river water daily.",
+      "links": [
+        {
+          "label": "Harvard Urban Design Case Study Archive",
+          "url": "https://udcsa.gsd.harvard.edu/projects/112"
+        }
+      ],
+      "image": {
+        "url": "https://iiif.archivengine.com/iiif/3/sdgcl6jqby9hdloagtmhimsg2zvw/full/^!1000,1000/0/default.jpg",
+        "credit": "Turenscape, via Harvard UDCSA"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
       "lane": null
     }
   ]
