@@ -2421,6 +2421,1260 @@
       "origin": "sources",
       "added": "2026-11-04",
       "lane": null
+    },
+    {
+      "id": "gando-primary-school",
+      "no": 66,
+      "title": "Gando Primary School, with extension, library and teachers’ housing",
+      "city": "Gando",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2001–",
+      "axisYear": 2001,
+      "stage": "built",
+      "designers": "Francis Kéré / Kéré Architecture, with the Community of Gando and Kéré Foundation e.V.",
+      "scale": "School 520 sqm; teachers’ housing 440 sqm; extension 380 sqm; library 640 sqm",
+      "lat": 11.8483,
+      "lng": -0.4906,
+      "coords": "11.8483° N, 0.4906° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A village school built with its community to solve poor light and ventilation, later joined by housing and a library.",
+      "links": [
+        {
+          "label": "Kéré Architecture — gando primary school",
+          "url": "https://www.kerearchitecture.com/work/building/gando-primary-school-3"
+        },
+        {
+          "label": "Kéré Architecture — gando teachers housing",
+          "url": "https://www.kerearchitecture.com/work/building/gando-teachers-housing"
+        },
+        {
+          "label": "Kéré Architecture — gando primary school extension",
+          "url": "https://www.kerearchitecture.com/work/building/gando-primary-school-extension"
+        },
+        {
+          "label": "Kéré Architecture — gando primary school library",
+          "url": "https://www.kerearchitecture.com/work/building/gando-primary-school-library"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./eddec88d-1506-4f61-8841-77d1b5aa370a/GandoPrimarySchool_KereArchitecture_ImageBySimeonDuchoud.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=2480%2C1524%2C0%2C0",
+        "credit": "Photo by Simeon Duchoud, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "naaba-belem-goumma-secondary-school",
+      "no": 67,
+      "title": "Naaba Belem Goumma Secondary School",
+      "city": "Gando",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2011–",
+      "axisYear": 2011,
+      "stage": "in-progress",
+      "designers": "Kéré Architecture, with Kéré Foundation e.V.",
+      "scale": "4,800 sqm, including landscaping",
+      "lat": 11.8483,
+      "lng": -0.4906,
+      "coords": "11.8483° N, 0.4906° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A school complex for Gando's growing teenage population, combining modern and vernacular building methods.",
+      "links": [
+        {
+          "label": "Kéré Architecture — naaba belem goumma secondary school",
+          "url": "https://www.kerearchitecture.com/work/building/naaba-belem-goumma-secondary-school"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./e255329d-12df-47c6-9ebb-48e2441ed697/0498561.JPG?w=980&h=700&fm=jpg&q=70&fit=max&crop=6240%2C4160%2C0%2C0",
+        "credit": "Photo by Andrea Maretto, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "dano-secondary-school",
+      "no": 68,
+      "title": "Dano Secondary School",
+      "city": "Dano",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2006–2007",
+      "axisYear": 2006,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "370 sqm",
+      "lat": 11.1436,
+      "lng": -3.0638,
+      "coords": "11.1436° N, 3.0638° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "Three classrooms and a computer room, designed to be sustainable and suited to the local climate.",
+      "links": [
+        {
+          "label": "Kéré Architecture — dano secondary school",
+          "url": "https://www.kerearchitecture.com/work/building/dano-secondary-school"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./b36227ce-4f57-4893-b91c-9104b1997b7e/StudentsinfrontofDanoSecondarySchool_KereArchitecture_PhotobyErik-JanOuwerkerk.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=4114%2C2738%2C0%2C0",
+        "credit": "Photo by Erik-Jan Ouwerkerk, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "lycee-schorge",
+      "no": 69,
+      "title": "Lycée Schorge",
+      "city": "Koudougou",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2014–2016",
+      "axisYear": 2014,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "1,660 sqm built area",
+      "lat": 12.2515,
+      "lng": -2.3652,
+      "coords": "12.2515° N, 2.3652° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A secondary school of nine modules arranged around a courtyard, showcasing local building materials.",
+      "links": [
+        {
+          "label": "Kéré Architecture — lycee schorge",
+          "url": "https://www.kerearchitecture.com/work/building/lycee-schorge"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./c77b44a5-fc99-460a-a2c3-815fa555c792/LyceeSchorge_KereArchitecture_PhotobyIwanBaan.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5927%2C3952%2C0%2C0",
+        "credit": "Photo by Iwan Baan, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "burkina-institute-of-technology",
+      "no": 70,
+      "title": "Burkina Institute of Technology (BIT)",
+      "city": "Koudougou",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2020",
+      "axisYear": 2020,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "1,000 sqm",
+      "lat": 12.2515,
+      "lng": -2.3652,
+      "coords": "12.2515° N, 2.3652° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "Repeated modules around a courtyard let this campus for high school graduates grow as it needs to.",
+      "links": [
+        {
+          "label": "Kéré Architecture — burkina institute of technology bit",
+          "url": "https://www.kerearchitecture.com/work/building/burkina-institute-of-technology-bit"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./69f4469f-e8e6-4611-9b95-ef8ed295f87c/CourtyardattheITUniversity_PhotobyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=3357%2C2521%2C0%2C0",
+        "credit": "Photo by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "benga-riverside-school",
+      "no": 71,
+      "title": "Benga Riverside School",
+      "city": "Tete",
+      "country": "Mozambique",
+      "region": "Africa",
+      "site": "",
+      "year": "2017–2018",
+      "axisYear": 2017,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "900 sqm",
+      "lat": -15.5205,
+      "lng": 32.7683,
+      "coords": "15.5205° S, 32.7683° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A nursery and primary school by the Revúboé and Zambezi rivers, with a secondary school still in planning.",
+      "links": [
+        {
+          "label": "Kéré Architecture — benga riverside school",
+          "url": "https://www.kerearchitecture.com/work/building/benga-riverside-school"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./38596525-d6d1-4c7c-9f41-59bbe115f59e/CourtyardoftheBengaRiversideSchool_PhotobyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5469%2C3646%2C0%2C0",
+        "credit": "Photo by Jaime Herraiz for Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "kamwokya-community-centre",
+      "no": 72,
+      "title": "Kamwokya Community Centre",
+      "city": "Kampala",
+      "country": "Uganda",
+      "region": "Africa",
+      "site": "",
+      "year": "2016–2022",
+      "axisYear": 2016,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "1,600 sqm",
+      "lat": 0.3177,
+      "lng": 32.5814,
+      "coords": "0.3177° N, 32.5814° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community",
+        "public-space"
+      ],
+      "brief": "Sports, leisure and arts in a poor area of Kampala, keeping the site public and free.",
+      "links": [
+        {
+          "label": "Kéré Architecture — kamwokya community centre",
+          "url": "https://www.kerearchitecture.com/work/building/kamwokya-community-centre"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./cb5baf62-2a39-4e31-b074-c769c92b0125/02KamwokyaCommunityCentre-ImagebyJaimeHerraiz,CopyrightKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5805%2C3870%2C0%2C0",
+        "credit": "Photo by Jaime Herraiz for Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "leo-surgical-clinic",
+      "no": 73,
+      "title": "Léo Surgical Clinic and Health Centre, with doctors’ housing",
+      "city": "Léo",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2014–2018",
+      "axisYear": 2014,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "Clinic 1,660 sqm; doctors’ housing 950 sqm",
+      "lat": 11.1814,
+      "lng": -2.1174,
+      "coords": "11.1814° N, 2.1174° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "Surgery, an in-patient ward and a maternity unit to ease pressure on the district hospital, plus doctors' housing.",
+      "links": [
+        {
+          "label": "Kéré Architecture — leo surgical clinic and health centre",
+          "url": "https://www.kerearchitecture.com/work/building/leo-surgical-clinic-and-health-centre"
+        },
+        {
+          "label": "Kéré Architecture — leo doctors housing",
+          "url": "https://www.kerearchitecture.com/work/building/leo-doctors-housing"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./bce4a180-9823-4bf5-acd2-35d25a841af2/CourtyardoftheLeoSurgicalClinicandHealthCentre_PhotobyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5713%2C3809%2C0%2C0",
+        "credit": "Photo by Andrea Maretto for Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "centre-for-health-and-social-welfare",
+      "no": 74,
+      "title": "Centre for Health and Social Welfare",
+      "city": "Laongo",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2012–2014",
+      "axisYear": 2012,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "1,340 sqm",
+      "lat": 12.5175,
+      "lng": -1.2767,
+      "coords": "12.5175° N, 1.2767° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "Dentistry, gynaecology and obstetrics, and general medicine, arranged around shaded courtyards used as waiting areas.",
+      "links": [
+        {
+          "label": "Kéré Architecture — centre for health and social welfare",
+          "url": "https://www.kerearchitecture.com/work/building/centre-for-health-and-social-welfare"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./e5e23d06-6f1f-453c-bc21-64a13c932b3e/WalloftheCentreforHealthandSocialWelfareattheOperaVillage_PhotobyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=3438%2C2250%2C0%2C0",
+        "credit": "Photo by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "ineza-clinic",
+      "no": 75,
+      "title": "Ineza Clinic",
+      "city": "Bubanza",
+      "country": "Burundi",
+      "region": "Africa",
+      "site": "",
+      "year": "Date not stated",
+      "axisYear": null,
+      "stage": "in-progress",
+      "designers": "Kéré Architecture",
+      "scale": "Not stated",
+      "lat": -3.1155,
+      "lng": 29.4013,
+      "coords": "3.1155° S, 29.4013° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A new healthcare centre providing dignified, improved access to care in the Bubanza region.",
+      "links": [
+        {
+          "label": "Kéré Architecture — ineza clinic",
+          "url": "https://www.kerearchitecture.com/work/building/ineza-clinic"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./730b5493-9d76-478a-90c0-16ac280353e6/BirthingUnitExteriorViewRenderKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=4960%2C3507%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "noomdo-orphanage",
+      "no": 76,
+      "title": "Noomdo Orphanage",
+      "city": "Koudougou",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "Koudougou, Boulkiemdé, Burkina Faso",
+      "year": "2013–2016",
+      "axisYear": 2013,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "4,000 sqm",
+      "lat": 12.2515,
+      "lng": -2.3652,
+      "coords": "12.2515° N, 2.3652° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "Residential units clustered around a communal outdoor space, inspired by nearby residential compounds.",
+      "links": [
+        {
+          "label": "Kéré Architecture — noomdo orphanage",
+          "url": "https://www.kerearchitecture.com/work/building/noomdo-orphanage"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./868fef33-898b-483b-bc60-2f9e2537b8a5/Birds-eyeviewofNoomdoOrphanage_KereArchitecture_PhotobyIwanBaan.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=1000%2C666%2C0%2C0",
+        "credit": "Photo by Iwan Baan, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "naume-childrens-foundation",
+      "no": 77,
+      "title": "Naume Children’s Foundation",
+      "city": "Gulu",
+      "country": "Uganda",
+      "region": "Africa",
+      "site": "Outside Gulu, northern Uganda",
+      "year": "2017–",
+      "axisYear": 2017,
+      "stage": "in-progress",
+      "designers": "Kéré Architecture",
+      "scale": "20-hectare site",
+      "lat": 3.0347,
+      "lng": 32.3802,
+      "coords": "3.0347° N, 32.3802° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A 20-hectare site for up to 700 children, with star-shaped school buildings and a canteen for the whole community.",
+      "links": [
+        {
+          "label": "Kéré Architecture — naume childrens foundation",
+          "url": "https://www.kerearchitecture.com/work/building/naume-childrens-foundation"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./502f7272-d55f-40ac-bf72-82e92ecbbe00/ViewofaschoolcomplexoftheNaumeChildrensFoundation_RenderbyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=2480%2C1753%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "obama-legacy-campus",
+      "no": 78,
+      "title": "Mama Sarah Obama Legacy Campus",
+      "city": "Kogelo",
+      "country": "Kenya",
+      "region": "Africa",
+      "site": "",
+      "year": "2014 (concept)",
+      "axisYear": 2014,
+      "stage": "planned",
+      "designers": "Kéré Architecture",
+      "scale": "9.6 hectares",
+      "lat": 0.3548,
+      "lng": 34.1551,
+      "coords": "0.3548° N, 34.1551° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A proposed education campus in Kogelo to serve upwards of 1,000 children from infancy to adulthood.",
+      "links": [
+        {
+          "label": "Kéré Architecture — obama legacy campus",
+          "url": "https://www.kerearchitecture.com/work/building/obama-legacy-campus"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./305378b3-c1da-4de4-85a7-3d893f2e299d/ObamaLegacyCampus_RenderbyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=3000%2C1787%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "skf-rtl-children-learning-centre",
+      "no": 79,
+      "title": "SKF-RTL Children Learning Centre",
+      "city": "Nyang’oma Kogelo",
+      "country": "Kenya",
+      "region": "Africa",
+      "site": "",
+      "year": "2016–2020",
+      "axisYear": 2016,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "550 sqm",
+      "lat": 0.3548,
+      "lng": 34.1551,
+      "coords": "0.3548° N, 34.1551° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A learning centre for children aged 4 to 14, building skills through activities like sports and agriculture.",
+      "links": [
+        {
+          "label": "Kéré Architecture — skf rtl children learning centre",
+          "url": "https://www.kerearchitecture.com/work/building/skf-rtl-children-learning-centre"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./cafa6400-0b17-4d33-a17f-e9696c9c6284/RoofStructureofSKF-RTLChildrenLearningCentre_PhotobyJaimeHerraizforKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5826%2C3884%2C0%2C0",
+        "credit": "Photo by Jaime Herraiz for Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "startup-lions-campus",
+      "no": 80,
+      "title": "Startup Lions Campus",
+      "city": "Turkana County",
+      "country": "Kenya",
+      "region": "Africa",
+      "site": "Turkana County, Kenya (banks of Lake Turkana)",
+      "year": "2019–2021",
+      "axisYear": 2019,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "1,416 sqm",
+      "lat": 3.1865,
+      "lng": 35.3031,
+      "coords": "3.1865° N, 35.3031° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A technology campus on Lake Turkana, tackling youth unemployment with training young people can get without leaving.",
+      "links": [
+        {
+          "label": "Kéré Architecture — startup lions campus",
+          "url": "https://www.kerearchitecture.com/work/building/startup-lions-campus"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./1a09eea8-0eaa-42ad-911b-4e5597ba06e7/TurkanaanditsSurroundingLandscape_PhotobyKinanDeebforKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=4592%2C3448%2C0%2C0",
+        "credit": "Photo by Kinan Deeb for Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "freie-waldorfschule-weilheim",
+      "no": 81,
+      "title": "Freie Waldorfschule Weilheim",
+      "city": "Weilheim",
+      "country": "Germany",
+      "region": "Europe",
+      "site": "Weilheim, Bavaria, Germany",
+      "year": "2017–",
+      "axisYear": 2017,
+      "stage": "in-progress",
+      "designers": "Kéré Architecture",
+      "scale": "About 4,200 sqm net room area",
+      "lat": 47.8395,
+      "lng": 11.1416,
+      "coords": "47.8395° N, 11.1416° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A school campus begun by a community of parents and teachers, on the edge of the town.",
+      "links": [
+        {
+          "label": "Kéré Architecture — freie waldorfschule weilheim",
+          "url": "https://www.kerearchitecture.com/work/building/freie-waldorfschule-weilheim"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./97466743-c22d-4166-868e-e4a9a5c234a6/AssemblyhalloftheFreieWaldorfschuleWeilheim_RenderbyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=4960%2C3507%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "kinderoase-an-der-tum",
+      "no": 82,
+      "title": "Kinderoase an der TUM",
+      "city": "Munich",
+      "country": "Germany",
+      "region": "Europe",
+      "site": "Munich, Germany (Technical University of Munich campus)",
+      "year": "Date not stated",
+      "axisYear": null,
+      "stage": "built",
+      "designers": "Francis Kéré, Kéré Architecture, with HK Architekten, Hermann Kaufmann + Partner ZT GmbH",
+      "scale": "420 sqm",
+      "lat": 48.1371,
+      "lng": 11.5754,
+      "coords": "48.1371° N, 11.5754° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community"
+      ],
+      "brief": "A five-storey university daycare on a former parking lot, helping young professionals balance work and family.",
+      "links": [
+        {
+          "label": "Kéré Architecture — kinderoase an der tum",
+          "url": "https://www.kerearchitecture.com/work/building/kinderoase-an-der-tum"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./9d2e7cb9-2e6f-4153-93d5-edee542e4ec2/KinderoaseTUMFKA8193.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=2400%2C1601%2C0%2C0",
+        "credit": "Photo by Iwan Baan, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "opera-village-burkina-faso",
+      "no": 83,
+      "title": "Opera Village",
+      "city": "Laongo",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2010–",
+      "axisYear": 2010,
+      "stage": "in-progress",
+      "designers": "Francis Kéré / Kéré Architecture, with Christoph Schlingensief",
+      "scale": "14,230 sqm",
+      "lat": 12.5175,
+      "lng": -1.2767,
+      "coords": "12.5175° N, 1.2767° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "community",
+        "public-space"
+      ],
+      "brief": "An opera house at the heart of a village, conceived with the director Christoph Schlingensief.",
+      "links": [
+        {
+          "label": "Kéré Architecture — opera village burkina faso",
+          "url": "https://www.kerearchitecture.com/work/building/opera-village-burkina-faso"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./5cd3c1d2-360f-43b7-a6d6-c3267ebe70f8/Birds-eyeviewofOperaVillage_RenderbyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=3908%2C2456%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "las-vegas-museum-of-art",
+      "no": 84,
+      "title": "Las Vegas Museum of Art",
+      "city": "Las Vegas",
+      "country": "USA",
+      "region": "North America",
+      "site": "Downtown Las Vegas, USA",
+      "year": "Date not stated",
+      "axisYear": null,
+      "stage": "in-progress",
+      "designers": "Francis Kéré / Kéré Architecture",
+      "scale": "About 5,500 sqm",
+      "lat": 36.1674,
+      "lng": -115.1484,
+      "coords": "36.1674° N, 115.1484° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "The city's first freestanding art museum, a new cultural landmark for Downtown Las Vegas.",
+      "links": [
+        {
+          "label": "Kéré Architecture — las vegas museum of art",
+          "url": "https://www.kerearchitecture.com/work/building/las-vegas-museum-of-art"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./6418516e-c1b8-4055-ac37-34817e041c8d/PlazaViewKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5314%2C2657%2C0%2C0",
+        "credit": "© Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "biblioteca-dos-saberes",
+      "no": 85,
+      "title": "Biblioteca dos Saberes",
+      "city": "Rio de Janeiro",
+      "country": "Brazil",
+      "region": "Latin America",
+      "site": "Cidade Nova, Rio de Janeiro, Brazil",
+      "year": "Date not stated",
+      "axisYear": null,
+      "stage": "in-progress",
+      "designers": "Francis Kéré, Kéré Architecture",
+      "scale": "40,000 sqm",
+      "lat": -22.9101,
+      "lng": -43.2018,
+      "coords": "22.9101° S, 43.2018° W",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A library and cultural centre commissioned by City Hall to anchor the revival of a historic district.",
+      "links": [
+        {
+          "label": "Kéré Architecture — biblioteca dos saberes",
+          "url": "https://www.kerearchitecture.com/work/building/biblioteca-dos-saberes"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./811d87cb-219c-4bec-82c4-6086ca6d9efe/NorthernViewKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=6000%2C3375%2C0%2C0",
+        "credit": "© Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "goethe-institut-dakar",
+      "no": 86,
+      "title": "Goethe-Institut Dakar",
+      "city": "Dakar",
+      "country": "Senegal",
+      "region": "Africa",
+      "site": "",
+      "year": "2018–2026",
+      "axisYear": 2018,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "1,700 sqm",
+      "lat": 14.6934,
+      "lng": -17.4479,
+      "coords": "14.6934° N, 17.4479° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "The Goethe-Institut's first purpose-built space designed from concept to construction, a hub for West Africa.",
+      "links": [
+        {
+          "label": "Kéré Architecture — goethe institut dakar",
+          "url": "https://www.kerearchitecture.com/work/building/goethe-institut-dakar"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./8ab40209-68b4-41c9-9dce-c393e43a6cbe/GoetheInstituteDakarFKA3572.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=2400%2C1601%2C0%2C0",
+        "credit": "Photo by Iwan Baan, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "benin-national-assembly",
+      "no": 87,
+      "title": "Benin National Assembly",
+      "city": "Porto-Novo",
+      "country": "Benin",
+      "region": "Africa",
+      "site": "",
+      "year": "2019–",
+      "axisYear": 2019,
+      "stage": "in-progress",
+      "designers": "Francis Kéré, Kéré Architecture",
+      "scale": "35,000 sqm",
+      "lat": 6.4991,
+      "lng": 2.6253,
+      "coords": "6.4991° N, 2.6253° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A new parliament inspired by the palaver tree, where West African communities meet to reach decisions.",
+      "links": [
+        {
+          "label": "Kéré Architecture — benin national assembly",
+          "url": "https://www.kerearchitecture.com/work/building/benin-national-assembly"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./ed92ba2b-344a-4f80-be40-1f39336afe35/KereArchitecture_BeninNationalAssembly_Render02_Park.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=2500%2C1406%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "burkina-faso-national-assembly",
+      "no": 88,
+      "title": "Burkina Faso National Assembly",
+      "city": "Ouagadougou",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2015– (concept)",
+      "axisYear": 2015,
+      "stage": "planned",
+      "designers": "Kéré Architecture",
+      "scale": "25,000 sqm",
+      "lat": 12.3682,
+      "lng": -1.5271,
+      "coords": "12.3682° N, 1.5271° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A proposed parliament with a stepped pyramid, after the 2014 uprising burned down the former building.",
+      "links": [
+        {
+          "label": "Kéré Architecture — burkina faso national assembly",
+          "url": "https://www.kerearchitecture.com/work/building/burkina-faso-national-assembly"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./d56ba134-6dc9-4f81-b200-227b63f8ed82/AerialviewofBurkinaFasoNationalAssembly_RenderbyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=4134%2C4961%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "thomas-sankara-memorial",
+      "no": 89,
+      "title": "Thomas Sankara Memorial and Mausoleum",
+      "city": "Ouagadougou",
+      "country": "Burkina Faso",
+      "region": "Africa",
+      "site": "",
+      "year": "2017–",
+      "axisYear": 2017,
+      "stage": "in-progress",
+      "designers": "Francis Kéré / Kéré Architecture",
+      "scale": "Memorial 29,600 sqm; mausoleum 450 sqm",
+      "lat": 12.3682,
+      "lng": -1.5271,
+      "coords": "12.3682° N, 1.5271° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A memorial park to Thomas Sankara; its first stage, a mausoleum of local laterite and clay brick, is complete.",
+      "links": [
+        {
+          "label": "Kéré Architecture — memorial thomas sankara",
+          "url": "https://www.kerearchitecture.com/work/building/memorial-thomas-sankara"
+        },
+        {
+          "label": "Kéré Architecture — mausoleum thomas sankara",
+          "url": "https://www.kerearchitecture.com/work/building/mausoleum-thomas-sankara"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./36aca60f-d555-4a65-890e-8d111182728e/145_THOMASSANKARAMAUSOLEUMINAUGURATION1KEREARCHITECTURE.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=4416%2C3316%2C0%2C0",
+        "credit": "© Nabil Haque for Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "centre-cultures-spiritualites-ewes",
+      "no": 90,
+      "title": "Centre des Cultures et Spiritualités Ewés",
+      "city": "Notsé",
+      "country": "Togo",
+      "region": "Africa",
+      "site": "",
+      "year": "2022–",
+      "axisYear": 2022,
+      "stage": "in-progress",
+      "designers": "Francis Kéré, Kéré Architecture",
+      "scale": "7,000 sqm",
+      "lat": 6.948,
+      "lng": 1.1703,
+      "coords": "6.9480° N, 1.1703° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "public-space",
+        "community"
+      ],
+      "brief": "A masterplan and buildings celebrating the history, traditions and spirituality of the Ewé people.",
+      "links": [
+        {
+          "label": "Kéré Architecture — centre des cultures et spiritualites ewes",
+          "url": "https://www.kerearchitecture.com/work/building/centre-des-cultures-et-spiritualites-ewes"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./930111c2-fd41-4fc7-977a-ab5d731a68fc/172_CCSETOGO_RND_KereArchitecture_2.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=4960%2C3508%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "centre-for-earth-architecture",
+      "no": 91,
+      "title": "Centre for Earth Architecture",
+      "city": "Mopti",
+      "country": "Mali",
+      "region": "Africa",
+      "site": "",
+      "year": "2010",
+      "axisYear": 2010,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "480 sqm",
+      "lat": 14.5145,
+      "lng": -3.6465,
+      "coords": "14.5145° N, 3.6465° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "Exhibition and teaching spaces promoting the region's traditional earth architecture.",
+      "links": [
+        {
+          "label": "Kéré Architecture — centre for earth architecture",
+          "url": "https://www.kerearchitecture.com/work/building/centre-for-earth-architecture"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./c8a15018-0458-494f-be9a-c998c63885e4/AccesstotheCentreforEarthArchitecture_KereArchitecture_PhotobyIwanBaan.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5550%2C3724%2C0%2C0",
+        "credit": "Photo by Iwan Baan, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "exilmuseum",
+      "no": 92,
+      "title": "Exilmuseum",
+      "city": "Berlin",
+      "country": "Germany",
+      "region": "Europe",
+      "site": "Anhalter Bahnhof, Berlin, Germany",
+      "year": "2020 (concept)",
+      "axisYear": 2020,
+      "stage": "planned",
+      "designers": "Kéré Architecture",
+      "scale": "9,000 sqm",
+      "lat": 52.5026,
+      "lng": 13.3809,
+      "coords": "52.5026° N, 13.3809° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "public-space",
+        "reuse"
+      ],
+      "brief": "A competition proposal at the Anhalter Bahnhof ruin, for a museum on those who fled the Third Reich.",
+      "links": [
+        {
+          "label": "Kéré Architecture — exilmuseum",
+          "url": "https://www.kerearchitecture.com/work/building/exilmuseum"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./412cb570-6ada-402c-9173-004ebf064759/AerialviewofExilMuseum_RenderbyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5073%2C5490%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "kunstareal-pavilion",
+      "no": 93,
+      "title": "Kunstareal Pavilion",
+      "city": "Munich",
+      "country": "Germany",
+      "region": "Europe",
+      "site": "Kunstareal, Munich, Germany",
+      "year": "2018– (concept)",
+      "axisYear": 2018,
+      "stage": "planned",
+      "designers": "Kéré Architecture",
+      "scale": "1,200 sqm",
+      "lat": 48.1476,
+      "lng": 11.568,
+      "coords": "48.1476° N, 11.5680° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A proposed focal point for Munich's museum quarter, which lacks one and is hard to navigate.",
+      "links": [
+        {
+          "label": "Kéré Architecture — kunstareal pavilion",
+          "url": "https://www.kerearchitecture.com/work/building/kunstareal-pavilion"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./caefc37c-aea2-4bab-a45a-002173368345/AerialviewoftheKunstareal_RenderbyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=2847%2C2088%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "meroe-royal-baths-shelter",
+      "no": 94,
+      "title": "Meroë Royal Baths Protective Shelter",
+      "city": "Meroë",
+      "country": "Sudan",
+      "region": "Africa",
+      "site": "",
+      "year": "2015–",
+      "axisYear": 2015,
+      "stage": "in-progress",
+      "designers": "Kéré Architecture",
+      "scale": "680 sqm",
+      "lat": 16.9381,
+      "lng": 33.7481,
+      "coords": "16.9381° N, 33.7481° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "public-space",
+        "reuse"
+      ],
+      "brief": "A protective shelter over the first-century royal baths of the Kingdom of Kush.",
+      "links": [
+        {
+          "label": "Kéré Architecture — meroe royal baths protective shelter",
+          "url": "https://www.kerearchitecture.com/work/building/meroe-royal-baths-protective-shelter"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./a5907676-78ae-48d9-8198-f0cfb57870d5/ExteriorofMeroeRoyalBaths_RenderbyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=7441%2C3992%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "museum-ehrhardt",
+      "no": 95,
+      "title": "Museum Ehrhardt",
+      "city": "Plüschow",
+      "country": "Germany",
+      "region": "Europe",
+      "site": "Am Schlosspark 4, Plüschow, Germany",
+      "year": "Date not stated",
+      "axisYear": null,
+      "stage": "in-progress",
+      "designers": "Francis Kéré / Kéré Architecture, with HK Architekten",
+      "scale": "1,400 sqm",
+      "lat": 53.8327,
+      "lng": 11.2722,
+      "coords": "53.8327° N, 11.2722° E",
+      "approx": false,
+      "placement": "Placed at the site. Position from OpenStreetMap.",
+      "themes": [
+        "public-space"
+      ],
+      "brief": "A new 1,400 sqm museum for photography and contemporary art at Plüschow.",
+      "links": [
+        {
+          "label": "Kéré Architecture — museum ehrhardt",
+          "url": "https://www.kerearchitecture.com/work/building/museum-ehrhardt"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./cea730ac-13a8-4b45-a754-1c6633a64273/175_MuseumEhrhardt_RND_KereArchitecture_6.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=4960%2C3507%2C0%2C0",
+        "credit": "Render, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "national-park-of-mali",
+      "no": 96,
+      "title": "National Park of Mali",
+      "city": "Bamako",
+      "country": "Mali",
+      "region": "Africa",
+      "site": "",
+      "year": "2010",
+      "axisYear": 2010,
+      "stage": "built",
+      "designers": "Kéré Architecture",
+      "scale": "103-hectare park; 3,000 sqm of new buildings",
+      "lat": 12.6493,
+      "lng": -8.0003,
+      "coords": "12.6493° N, 8.0003° W",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "landscape",
+        "public-space"
+      ],
+      "brief": "New amenities in a refurbished 103-hectare park, reopened for the 50th anniversary of Mali's independence.",
+      "links": [
+        {
+          "label": "Kéré Architecture — national park of mali",
+          "url": "https://www.kerearchitecture.com/work/building/national-park-of-mali"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./49e55377-85bb-43ec-bff5-e5df1b9694d7/VisitorsattheNationalParkofMali_PhotobyIwanBaan.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5061%2C3374%2C0%2C0",
+        "credit": "Photo by Iwan Baan, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "oxford-barracks-revitalisation",
+      "no": 97,
+      "title": "Oxford Barracks Revitalisation",
+      "city": "Münster",
+      "country": "Germany",
+      "region": "Europe",
+      "site": "",
+      "year": "2017 (concept)",
+      "axisYear": 2017,
+      "stage": "planned",
+      "designers": "Kéré Architecture",
+      "scale": "1,615 sqm",
+      "lat": 51.9625,
+      "lng": 7.6252,
+      "coords": "51.9625° N, 7.6252° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "reuse",
+        "community"
+      ],
+      "brief": "A winning proposal to turn former British army barracks into a mixed-use neighbourhood with more public access.",
+      "links": [
+        {
+          "label": "Kéré Architecture — oxford barracks revitalisation",
+          "url": "https://www.kerearchitecture.com/work/building/oxford-barracks-revitalisation"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./aac6a63d-0177-41fa-b9c0-9fdd93f6c7b0/Birds-eyeviewoftheOxfordBarracksRevitalisation_RenderbyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=3000%2C1792%2C0%2C0",
+        "credit": "Render by Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "niamey-nyala-masterplan",
+      "no": 98,
+      "title": "Niamey Nyala Masterplan",
+      "city": "Niamey",
+      "country": "Niger",
+      "region": "Africa",
+      "site": "",
+      "year": "2017– (concept)",
+      "axisYear": 2017,
+      "stage": "planned",
+      "designers": "Kéré Architecture",
+      "scale": "About 250,000 sqm",
+      "lat": 13.5248,
+      "lng": 2.1098,
+      "coords": "13.5248° N, 2.1098° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "regional",
+        "public-space",
+        "landscape"
+      ],
+      "brief": "A plan to turn the city back toward the Niger, with a network of public spaces along its riverbanks.",
+      "links": [
+        {
+          "label": "Kéré Architecture — niamey nyala masterplan",
+          "url": "https://www.kerearchitecture.com/work/building/niamey-nyala-masterplan"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./ed1eb229-31f8-423d-9efd-30ed3564aa2e/NiameyNyalaMasterplan_KereArchitecture_Cityplan.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=3557%2C2937%2C69%2C345",
+        "credit": "Plan, via Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
+    },
+    {
+      "id": "benga-riverside-residential-community",
+      "no": 99,
+      "title": "Benga Riverside Residential Community",
+      "city": "Tete",
+      "country": "Mozambique",
+      "region": "Africa",
+      "site": "",
+      "year": "2014–",
+      "axisYear": 2014,
+      "stage": "in-progress",
+      "designers": "Kéré Architecture",
+      "scale": "10,000 sqm",
+      "lat": -15.5205,
+      "lng": 32.7683,
+      "coords": "15.5205° S, 32.7683° E",
+      "approx": true,
+      "placement": "Placed at the town or city centre, approximate. Position from OpenStreetMap.",
+      "themes": [
+        "housing",
+        "community"
+      ],
+      "brief": "A new neighbourhood type offering affordable housing for migrant and local families by two rivers.",
+      "links": [
+        {
+          "label": "Kéré Architecture — benga riverside residential community",
+          "url": "https://www.kerearchitecture.com/work/building/benga-riverside-residential-community"
+        }
+      ],
+      "image": {
+        "url": "https://kerearchitecture-17f76.kxcdn.com/./2940da88-f9a2-487f-9331-349ab274c20f/SampleHousingatBengaRiversideResidentialCommunity_PhotobyKereArchitecture.jpg?w=980&h=700&fm=jpg&q=70&fit=max&crop=5863%2C3909%2C0%2C0",
+        "credit": "Photo by Jaime Herraiz for Kéré Architecture"
+      },
+      "origin": "sources",
+      "added": "2026-11-04",
+      "lane": null
     }
   ]
 }
