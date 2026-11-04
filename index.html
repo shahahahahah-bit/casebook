@@ -68,8 +68,7 @@
   #deco { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
   #terr { transition: opacity .45s ease; }
   #terr.fade { opacity: 0; }
-  /* Trial: points shown as solid shapes only, without the soft shapes around them. */
-  .terr { display: none; }
+  .terr { fill-opacity: .11; stroke-opacity: .32; stroke-width: 1; }
   .contour { fill: none; stroke: rgba(235, 242, 232, .1); stroke-width: 1; vector-effect: non-scaling-stroke; }
   .contour.major { stroke: rgba(235, 242, 232, .22); }
   .tick { stroke: var(--line-2); stroke-width: 1; }
