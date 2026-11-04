@@ -68,7 +68,8 @@
   #deco { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
   #terr { transition: opacity .45s ease; }
   #terr.fade { opacity: 0; }
-  .terr { fill-opacity: .11; stroke-opacity: .32; stroke-width: 1; }
+  /* Trial: points shown as solid shapes only, without the soft shapes around them. */
+  .terr { display: none; }
   .contour { fill: none; stroke: rgba(235, 242, 232, .1); stroke-width: 1; vector-effect: non-scaling-stroke; }
   .contour.major { stroke: rgba(235, 242, 232, .22); }
   .tick { stroke: var(--line-2); stroke-width: 1; }
@@ -91,9 +92,6 @@
   }
   .mark { display: block; width: 100%; height: 100%; overflow: visible; }
   .mark .fill { fill: var(--c); }
-  .mark .out { fill: none; stroke: var(--c); stroke-width: 1px; vector-effect: non-scaling-stroke; opacity: 0; transition: opacity .2s; }
-  .pt.new .mark .out { opacity: .8; }
-  .pt:hover .mark .out, .pt:focus-visible .mark .out, .pt.sel .mark .out { opacity: 1; }
   .shape { display: inline-block; width: 10px; height: 10px; flex: none; overflow: visible; }
   .shape path { fill: var(--c, currentColor); }
   .pt .lb {
@@ -559,7 +557,7 @@
     "reuse":        "M-11 6A11 11 0 0 1 11 6Z",
     "regional":     "M0.0 -11.0L2.7 -3.7L10.5 -3.4L4.4 1.4L6.5 8.9L0.0 4.6L-6.5 8.9L-4.4 1.4L-10.5 -3.4L-2.7 -3.7Z",
   };
-  const mark = (t) => `<svg class="mark" viewBox="-10 -10 20 20" aria-hidden="true"><path class="out" transform="scale(1.8)" d="${SHAPES[t]}"/><path class="fill" d="${SHAPES[t]}"/></svg>`;
+  const mark = (t) => `<svg class="mark" viewBox="-10 -10 20 20" aria-hidden="true"><path class="fill" d="${SHAPES[t]}"/></svg>`;
   const shape = (t) => `<svg class="shape" viewBox="-11 -11 22 22" aria-hidden="true"><path d="${SHAPES[t]}"/></svg>`;
   const glyph = (t) => `<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLYPHS[t] || GLYPHS["public-space"]}</svg>`;
 
