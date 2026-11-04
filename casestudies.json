@@ -7,7 +7,9 @@
     "Projects are grouped by their main theme. 'themes' lists every theme that applies.",
     "No Wikipedia links.",
     "No project appears twice. Anything already in the Casebook goes under 'alreadyInCasebook' instead of being listed again.",
-    "Photos from Wikimedia Commons are allowed, with credit."
+    "Photos from Wikimedia Commons are allowed, with credit.",
+    "Community means schools, clinics, community centres and neighbourhood-led or upgrading projects. Public architecture & space means civic and cultural buildings, parks, streets and squares.",
+    "Pages on a source that describe parts of one project are grouped as one entry."
   ],
   "linkStatusKey": {
     "working": "Loads and is free to read",
@@ -72,13 +74,23 @@
       "projectsFound": 43,
       "newProjects": 39,
       "alreadyInCasebook": 4
+    },
+    {
+      "name": "Kéré Architecture",
+      "url": "https://www.kerearchitecture.com/work",
+      "topic": "Community and public architecture, mainly Africa and Germany (the practice’s own portfolio)",
+      "status": "working",
+      "checked": "2026-11-04",
+      "kind": "Architecture practice",
+      "lastScanned": "2026-11-04",
+      "projectsFound": 34
     }
   ],
   "topics": [
     {
       "id": "mobility",
       "label": "Mobility",
-      "count": 8,
+      "count": 7,
       "projects": [
         {
           "id": "murphy-crossing-infill-station",
@@ -161,42 +173,6 @@
             }
           ],
           "foundVia": "Planetizen"
-        },
-        {
-          "id": "northeastern-urban-integration-medellin",
-          "title": "Northeastern Urban Integration Project (PUI)",
-          "themes": [
-            "mobility",
-            "housing"
-          ],
-          "location": "Medellín, Antioquia, Colombia",
-          "year": "Started 2004; archive dates 2004–2015",
-          "designers": "Alejandro Echeverri Restrepo; Empresa de Desarrollo Urbano (EDU); City of Medellín",
-          "scale": "Not stated",
-          "coordinates": {
-            "lat": 6.247638,
-            "lng": -75.565815,
-            "source": "Harvard archive map point. It marks the city, not the exact site."
-          },
-          "links": [
-            {
-              "label": "Harvard Urban Design Case Study Archive — project page",
-              "url": "https://udcsa.gsd.harvard.edu/projects/4",
-              "kind": "archive",
-              "status": "working",
-              "checked": "2026-11-03"
-            }
-          ],
-          "foundVia": "Harvard Urban Design Case Study Archive",
-          "archiveType": "Mixed Use",
-          "archiveKeywords": [
-            "informal settlement",
-            "social fabric",
-            "transit system",
-            "public participation"
-          ],
-          "greenPrize": "2013",
-          "relatedInCasebook": "metrocable"
         },
         {
           "id": "metro-do-porto",
@@ -340,7 +316,7 @@
     {
       "id": "housing",
       "label": "Housing",
-      "count": 14,
+      "count": 13,
       "projects": [
         {
           "id": "rotiers-brussels",
@@ -460,7 +436,8 @@
           "title": "Malagueira Quarter Housing Project",
           "themes": [
             "housing",
-            "public-space"
+            "public-space",
+            "community"
           ],
           "location": "Évora, Portugal",
           "year": "Commissioned 1977; 1,100 units built by July 1997",
@@ -490,40 +467,6 @@
           ],
           "greenPrize": "1988",
           "sourceNote": "The size field says 1,200 housing units; the text says 1,100 were built by July 1997."
-        },
-        {
-          "id": "favela-bairro",
-          "title": "Favela-Bairro Project",
-          "themes": [
-            "housing"
-          ],
-          "location": "Rio de Janeiro, State of Rio de Janeiro, Brazil",
-          "year": "Archive dates 1995–2000",
-          "designers": "Jorge Mario Jáuregui (Atelier Metropolitano)",
-          "scale": "Not stated",
-          "coordinates": {
-            "lat": -22.906847,
-            "lng": -43.172897,
-            "source": "Harvard archive map point. It marks the city, not the exact site."
-          },
-          "links": [
-            {
-              "label": "Harvard Urban Design Case Study Archive — project page",
-              "url": "https://udcsa.gsd.harvard.edu/projects/7",
-              "kind": "archive",
-              "status": "working",
-              "checked": "2026-11-03"
-            }
-          ],
-          "foundVia": "Harvard Urban Design Case Study Archive",
-          "archiveType": "Mixed Use",
-          "archiveKeywords": [
-            "informal settlement",
-            "place making",
-            "redevelopment",
-            "slum upgrading"
-          ],
-          "greenPrize": "2000"
         },
         {
           "id": "borneo-sporenburg",
@@ -590,42 +533,6 @@
           "archiveType": "Mixed Development",
           "archiveKeywords": [
             "Mixed Development"
-          ]
-        },
-        {
-          "id": "radburn",
-          "title": "Radburn, New Jersey",
-          "themes": [
-            "housing",
-            "public-space"
-          ],
-          "location": "Radburn, Fair Lawn, New Jersey",
-          "year": "Conceived 1928; archive project dates 1927–1930",
-          "designers": "Clarence Stein; Henry Wright; Marjorie Cautley (landscape)",
-          "scale": "149 acres",
-          "coordinates": {
-            "lat": 40.940902,
-            "lng": -74.119591,
-            "source": "Harvard archive map point."
-          },
-          "links": [
-            {
-              "label": "Harvard Urban Design Case Study Archive — project page",
-              "url": "https://udcsa.gsd.harvard.edu/projects/28",
-              "kind": "archive",
-              "status": "working",
-              "checked": "2026-11-03"
-            }
-          ],
-          "foundVia": "Harvard Urban Design Case Study Archive",
-          "archiveType": "Mixed Use",
-          "archiveKeywords": [
-            "Masterplan",
-            "pedestrian",
-            "open space",
-            "social fabric",
-            "public space",
-            "place making"
           ]
         },
         {
@@ -786,40 +693,41 @@
             "building system",
             "public housing"
           ]
+        },
+        {
+          "id": "benga-riverside-residential-community",
+          "title": "Benga Riverside Residential Community",
+          "themes": [
+            "housing",
+            "community"
+          ],
+          "location": "Tete, Mozambique",
+          "year": "From 2014, under construction",
+          "designers": "Kéré Architecture",
+          "scale": "10,000 sqm",
+          "coordinates": {
+            "lat": -15.5205,
+            "lng": 32.7683,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — benga riverside residential community",
+              "url": "https://www.kerearchitecture.com/work/building/benga-riverside-residential-community",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
         }
       ]
     },
     {
       "id": "public-space",
-      "label": "Public space",
-      "count": 13,
+      "label": "Public architecture & space",
+      "count": 24,
       "projects": [
-        {
-          "id": "photo-studio-hiroshima",
-          "title": "Photography Studio as Local Infrastructure",
-          "themes": [
-            "public-space"
-          ],
-          "location": "Hiroshima, Japan",
-          "year": "2025",
-          "designers": "ArchTank (lead architect: Yasumasa Hayashi; architect: Nagi Kumagai); construction: Shinwa Kenko",
-          "scale": "269 m²; a flood-damaged neighbourhood photo studio rebuilt with a café, observatory and retail",
-          "coordinates": {
-            "lat": 34.3852894,
-            "lng": 132.4553055,
-            "source": "ArchDaily map pin. It may mark the city rather than the exact site."
-          },
-          "links": [
-            {
-              "label": "ArchDaily — project page",
-              "url": "https://www.archdaily.com/1186440/photography-studio-as-local-infrastructure-archtank",
-              "kind": "article",
-              "status": "working",
-              "checked": "2026-10-30"
-            }
-          ],
-          "foundVia": "ArchDaily"
-        },
         {
           "id": "oxford-street-london",
           "title": "Oxford Street pedestrianisation",
@@ -1239,48 +1147,478 @@
           "foundVia": "Harvard Urban Design Case Study Archive",
           "archiveType": "Open Space",
           "archiveKeywords": []
+        },
+        {
+          "id": "las-vegas-museum-of-art",
+          "title": "Las Vegas Museum of Art",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Downtown Las Vegas, USA",
+          "year": "Ongoing; dates not stated",
+          "designers": "Francis Kéré / Kéré Architecture",
+          "scale": "About 5,500 sqm",
+          "coordinates": {
+            "lat": 36.1674,
+            "lng": -115.1484,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — las vegas museum of art",
+              "url": "https://www.kerearchitecture.com/work/building/las-vegas-museum-of-art",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "biblioteca-dos-saberes",
+          "title": "Biblioteca dos Saberes",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Cidade Nova, Rio de Janeiro, Brazil",
+          "year": "Ongoing; dates not stated",
+          "designers": "Francis Kéré, Kéré Architecture",
+          "scale": "40,000 sqm",
+          "coordinates": {
+            "lat": -22.9101,
+            "lng": -43.2018,
+            "source": "OpenStreetMap."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — biblioteca dos saberes",
+              "url": "https://www.kerearchitecture.com/work/building/biblioteca-dos-saberes",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "goethe-institut-dakar",
+          "title": "Goethe-Institut Dakar",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Dakar, Senegal",
+          "year": "2018–2026, completed",
+          "designers": "Kéré Architecture",
+          "scale": "1,700 sqm",
+          "coordinates": {
+            "lat": 14.6934,
+            "lng": -17.4479,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — goethe institut dakar",
+              "url": "https://www.kerearchitecture.com/work/building/goethe-institut-dakar",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "benin-national-assembly",
+          "title": "Benin National Assembly",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Porto-Novo, Benin",
+          "year": "From 2019, under construction",
+          "designers": "Francis Kéré, Kéré Architecture",
+          "scale": "35,000 sqm",
+          "coordinates": {
+            "lat": 6.4991,
+            "lng": 2.6253,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — benin national assembly",
+              "url": "https://www.kerearchitecture.com/work/building/benin-national-assembly",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "burkina-faso-national-assembly",
+          "title": "Burkina Faso National Assembly",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Ouagadougou, Burkina Faso",
+          "year": "From 2015, concept",
+          "designers": "Kéré Architecture",
+          "scale": "25,000 sqm",
+          "coordinates": {
+            "lat": 12.3682,
+            "lng": -1.5271,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — burkina faso national assembly",
+              "url": "https://www.kerearchitecture.com/work/building/burkina-faso-national-assembly",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "thomas-sankara-memorial",
+          "title": "Thomas Sankara Memorial and Mausoleum",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Ouagadougou, Burkina Faso",
+          "year": "Memorial from 2017, ongoing; mausoleum 2023–2025, completed",
+          "designers": "Francis Kéré / Kéré Architecture",
+          "scale": "Memorial 29,600 sqm; mausoleum 450 sqm",
+          "coordinates": {
+            "lat": 12.3682,
+            "lng": -1.5271,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — memorial thomas sankara",
+              "url": "https://www.kerearchitecture.com/work/building/memorial-thomas-sankara",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            },
+            {
+              "label": "Kéré Architecture — mausoleum thomas sankara",
+              "url": "https://www.kerearchitecture.com/work/building/mausoleum-thomas-sankara",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture",
+          "sourceNote": "The mausoleum is the first stage of the memorial, so the two pages are grouped here as one project."
+        },
+        {
+          "id": "centre-cultures-spiritualites-ewes",
+          "title": "Centre des Cultures et Spiritualités Ewés",
+          "themes": [
+            "public-space",
+            "community"
+          ],
+          "location": "Notsé, Togo",
+          "year": "From 2022, under construction",
+          "designers": "Francis Kéré, Kéré Architecture",
+          "scale": "7,000 sqm",
+          "coordinates": {
+            "lat": 6.948,
+            "lng": 1.1703,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — centre des cultures et spiritualites ewes",
+              "url": "https://www.kerearchitecture.com/work/building/centre-des-cultures-et-spiritualites-ewes",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "centre-for-earth-architecture",
+          "title": "Centre for Earth Architecture",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Mopti, Mali",
+          "year": "2010, completed",
+          "designers": "Kéré Architecture",
+          "scale": "480 sqm",
+          "coordinates": {
+            "lat": 14.5145,
+            "lng": -3.6465,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — centre for earth architecture",
+              "url": "https://www.kerearchitecture.com/work/building/centre-for-earth-architecture",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "exilmuseum",
+          "title": "Exilmuseum",
+          "themes": [
+            "public-space",
+            "reuse"
+          ],
+          "location": "Anhalter Bahnhof, Berlin, Germany",
+          "year": "2020, concept (competition proposal)",
+          "designers": "Kéré Architecture",
+          "scale": "9,000 sqm",
+          "coordinates": {
+            "lat": 52.5026,
+            "lng": 13.3809,
+            "source": "OpenStreetMap."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — exilmuseum",
+              "url": "https://www.kerearchitecture.com/work/building/exilmuseum",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "kunstareal-pavilion",
+          "title": "Kunstareal Pavilion",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Kunstareal, Munich, Germany",
+          "year": "From 2018, concept",
+          "designers": "Kéré Architecture",
+          "scale": "1,200 sqm",
+          "coordinates": {
+            "lat": 48.1476,
+            "lng": 11.568,
+            "source": "OpenStreetMap."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — kunstareal pavilion",
+              "url": "https://www.kerearchitecture.com/work/building/kunstareal-pavilion",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "meroe-royal-baths-shelter",
+          "title": "Meroë Royal Baths Protective Shelter",
+          "themes": [
+            "public-space",
+            "reuse"
+          ],
+          "location": "Meroë, Sudan",
+          "year": "From 2015, ongoing",
+          "designers": "Kéré Architecture",
+          "scale": "680 sqm",
+          "coordinates": {
+            "lat": 16.9381,
+            "lng": 33.7481,
+            "source": "OpenStreetMap."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — meroe royal baths protective shelter",
+              "url": "https://www.kerearchitecture.com/work/building/meroe-royal-baths-protective-shelter",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "museum-ehrhardt",
+          "title": "Museum Ehrhardt",
+          "themes": [
+            "public-space"
+          ],
+          "location": "Am Schlosspark 4, Plüschow, Germany",
+          "year": "Under construction; dates not stated",
+          "designers": "Francis Kéré / Kéré Architecture, with HK Architekten",
+          "scale": "1,400 sqm",
+          "coordinates": {
+            "lat": 53.8327,
+            "lng": 11.2722,
+            "source": "OpenStreetMap."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — museum ehrhardt",
+              "url": "https://www.kerearchitecture.com/work/building/museum-ehrhardt",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
         }
       ]
     },
     {
-      "id": "landscape",
-      "label": "Landscape & water",
-      "count": 6,
+      "id": "community",
+      "label": "Community",
+      "count": 23,
       "projects": [
         {
-          "id": "observatory-toon",
-          "title": "Observatory, Landscapes of Waste",
+          "id": "northeastern-urban-integration-medellin",
+          "title": "Northeastern Urban Integration Project (PUI)",
           "themes": [
-            "landscape",
-            "reuse"
+            "community",
+            "mobility",
+            "housing"
           ],
-          "location": "Oono Associates recycling complex, Toon, Ehime Prefecture, Shikoku, Japan",
-          "year": "2026 (Setouchi Art and Industry 2026, 3–31 October)",
-          "designers": "Ryue Nishizawa (observatory); Kazuyo Sejima (supervision); Shingo Masuda + Katsuhisa Otsubo (plaza and bus stop); Suzuko Yamada (bus and visitor wear)",
-          "scale": "Cone 33 m in diameter and 4 m high, overlooking a landfill basin",
-          "coordinates": null,
+          "location": "Medellín, Antioquia, Colombia",
+          "year": "Started 2004; archive dates 2004–2015",
+          "designers": "Alejandro Echeverri Restrepo; Empresa de Desarrollo Urbano (EDU); City of Medellín",
+          "scale": "Not stated",
+          "coordinates": {
+            "lat": 6.247638,
+            "lng": -75.565815,
+            "source": "Harvard archive map point. It marks the city, not the exact site."
+          },
           "links": [
             {
-              "label": "Dezeen — project article",
-              "url": "https://www.dezeen.com/2026/10/28/ryue-nishizawa-viewpoint-setouchi-art-industry/",
-              "kind": "article",
+              "label": "Harvard Urban Design Case Study Archive — project page",
+              "url": "https://udcsa.gsd.harvard.edu/projects/4",
+              "kind": "archive",
               "status": "working",
-              "checked": "2026-10-30"
-            },
+              "checked": "2026-11-03"
+            }
+          ],
+          "foundVia": "Harvard Urban Design Case Study Archive",
+          "archiveType": "Mixed Use",
+          "archiveKeywords": [
+            "informal settlement",
+            "social fabric",
+            "transit system",
+            "public participation"
+          ],
+          "greenPrize": "2013",
+          "relatedInCasebook": "metrocable"
+        },
+        {
+          "id": "favela-bairro",
+          "title": "Favela-Bairro Project",
+          "themes": [
+            "community",
+            "housing"
+          ],
+          "location": "Rio de Janeiro, State of Rio de Janeiro, Brazil",
+          "year": "Archive dates 1995–2000",
+          "designers": "Jorge Mario Jáuregui (Atelier Metropolitano)",
+          "scale": "Not stated",
+          "coordinates": {
+            "lat": -22.906847,
+            "lng": -43.172897,
+            "source": "Harvard archive map point. It marks the city, not the exact site."
+          },
+          "links": [
             {
-              "label": "Setouchi Art and Industry — festival website",
-              "url": "https://www.sai-art.jp/en",
-              "kind": "primary",
+              "label": "Harvard Urban Design Case Study Archive — project page",
+              "url": "https://udcsa.gsd.harvard.edu/projects/7",
+              "kind": "archive",
+              "status": "working",
+              "checked": "2026-11-03"
+            }
+          ],
+          "foundVia": "Harvard Urban Design Case Study Archive",
+          "archiveType": "Mixed Use",
+          "archiveKeywords": [
+            "informal settlement",
+            "place making",
+            "redevelopment",
+            "slum upgrading"
+          ],
+          "greenPrize": "2000"
+        },
+        {
+          "id": "radburn",
+          "title": "Radburn, New Jersey",
+          "themes": [
+            "community",
+            "public-space",
+            "housing"
+          ],
+          "location": "Radburn, Fair Lawn, New Jersey",
+          "year": "Conceived 1928; archive project dates 1927–1930",
+          "designers": "Clarence Stein; Henry Wright; Marjorie Cautley (landscape)",
+          "scale": "149 acres",
+          "coordinates": {
+            "lat": 40.940902,
+            "lng": -74.119591,
+            "source": "Harvard archive map point."
+          },
+          "links": [
+            {
+              "label": "Harvard Urban Design Case Study Archive — project page",
+              "url": "https://udcsa.gsd.harvard.edu/projects/28",
+              "kind": "archive",
+              "status": "working",
+              "checked": "2026-11-03"
+            }
+          ],
+          "foundVia": "Harvard Urban Design Case Study Archive",
+          "archiveType": "Mixed Use",
+          "archiveKeywords": [
+            "Masterplan",
+            "pedestrian",
+            "open space",
+            "social fabric",
+            "public space",
+            "place making"
+          ]
+        },
+        {
+          "id": "photo-studio-hiroshima",
+          "title": "Photography Studio as Local Infrastructure",
+          "themes": [
+            "community",
+            "public-space"
+          ],
+          "location": "Hiroshima, Japan",
+          "year": "2025",
+          "designers": "ArchTank (lead architect: Yasumasa Hayashi; architect: Nagi Kumagai); construction: Shinwa Kenko",
+          "scale": "269 m²; a flood-damaged neighbourhood photo studio rebuilt with a café, observatory and retail",
+          "coordinates": {
+            "lat": 34.3852894,
+            "lng": 132.4553055,
+            "source": "ArchDaily map pin. It may mark the city rather than the exact site."
+          },
+          "links": [
+            {
+              "label": "ArchDaily — project page",
+              "url": "https://www.archdaily.com/1186440/photography-studio-as-local-infrastructure-archtank",
+              "kind": "article",
               "status": "working",
               "checked": "2026-10-30"
             }
           ],
-          "foundVia": "Dezeen"
+          "foundVia": "ArchDaily"
         },
         {
           "id": "jewel-streets-nyc",
           "title": "Jewel Streets Neighborhood Plan",
           "themes": [
+            "community",
             "landscape",
             "housing"
           ],
@@ -1334,6 +1672,543 @@
             }
           ],
           "foundVia": "Urban Omnibus"
+        },
+        {
+          "id": "gando-primary-school",
+          "title": "Gando Primary School, with extension, library and teachers’ housing",
+          "themes": [
+            "community"
+          ],
+          "location": "Gando, Burkina Faso",
+          "year": "School 2001, completed; teachers’ housing 2004, completed; extension 2006–2008, completed; library from 2010, under construction",
+          "designers": "Francis Kéré / Kéré Architecture, with the Community of Gando and Kéré Foundation e.V.",
+          "scale": "School 520 sqm; teachers’ housing 440 sqm; extension 380 sqm; library 640 sqm",
+          "coordinates": {
+            "lat": 11.8483,
+            "lng": -0.4906,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — gando primary school",
+              "url": "https://www.kerearchitecture.com/work/building/gando-primary-school-3",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            },
+            {
+              "label": "Kéré Architecture — gando teachers housing",
+              "url": "https://www.kerearchitecture.com/work/building/gando-teachers-housing",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            },
+            {
+              "label": "Kéré Architecture — gando primary school extension",
+              "url": "https://www.kerearchitecture.com/work/building/gando-primary-school-extension",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            },
+            {
+              "label": "Kéré Architecture — gando primary school library",
+              "url": "https://www.kerearchitecture.com/work/building/gando-primary-school-library",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture",
+          "sourceNote": "Listed as four separate pages on the Kéré site; grouped here as one project."
+        },
+        {
+          "id": "naaba-belem-goumma-secondary-school",
+          "title": "Naaba Belem Goumma Secondary School",
+          "themes": [
+            "community"
+          ],
+          "location": "Gando, Burkina Faso",
+          "year": "From 2011, under construction",
+          "designers": "Kéré Architecture, with Kéré Foundation e.V.",
+          "scale": "4,800 sqm, including landscaping",
+          "coordinates": {
+            "lat": 11.8483,
+            "lng": -0.4906,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — naaba belem goumma secondary school",
+              "url": "https://www.kerearchitecture.com/work/building/naaba-belem-goumma-secondary-school",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "dano-secondary-school",
+          "title": "Dano Secondary School",
+          "themes": [
+            "community"
+          ],
+          "location": "Dano, Burkina Faso",
+          "year": "2006–2007, completed",
+          "designers": "Kéré Architecture",
+          "scale": "370 sqm",
+          "coordinates": {
+            "lat": 11.1436,
+            "lng": -3.0638,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — dano secondary school",
+              "url": "https://www.kerearchitecture.com/work/building/dano-secondary-school",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "lycee-schorge",
+          "title": "Lycée Schorge",
+          "themes": [
+            "community"
+          ],
+          "location": "Koudougou, Burkina Faso",
+          "year": "2014–2016, completed",
+          "designers": "Kéré Architecture",
+          "scale": "1,660 sqm built area",
+          "coordinates": {
+            "lat": 12.2515,
+            "lng": -2.3652,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — lycee schorge",
+              "url": "https://www.kerearchitecture.com/work/building/lycee-schorge",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "burkina-institute-of-technology",
+          "title": "Burkina Institute of Technology (BIT)",
+          "themes": [
+            "community"
+          ],
+          "location": "Koudougou, Burkina Faso",
+          "year": "2020, completed",
+          "designers": "Kéré Architecture",
+          "scale": "1,000 sqm",
+          "coordinates": {
+            "lat": 12.2515,
+            "lng": -2.3652,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — burkina institute of technology bit",
+              "url": "https://www.kerearchitecture.com/work/building/burkina-institute-of-technology-bit",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "benga-riverside-school",
+          "title": "Benga Riverside School",
+          "themes": [
+            "community"
+          ],
+          "location": "Tete, Mozambique",
+          "year": "2017–2018, completed; secondary school in planning",
+          "designers": "Kéré Architecture",
+          "scale": "900 sqm",
+          "coordinates": {
+            "lat": -15.5205,
+            "lng": 32.7683,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — benga riverside school",
+              "url": "https://www.kerearchitecture.com/work/building/benga-riverside-school",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "kamwokya-community-centre",
+          "title": "Kamwokya Community Centre",
+          "themes": [
+            "community",
+            "public-space"
+          ],
+          "location": "Kampala, Uganda",
+          "year": "2016–2022, completed",
+          "designers": "Kéré Architecture",
+          "scale": "1,600 sqm",
+          "coordinates": {
+            "lat": 0.3177,
+            "lng": 32.5814,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — kamwokya community centre",
+              "url": "https://www.kerearchitecture.com/work/building/kamwokya-community-centre",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "leo-surgical-clinic",
+          "title": "Léo Surgical Clinic and Health Centre, with doctors’ housing",
+          "themes": [
+            "community"
+          ],
+          "location": "Léo, Burkina Faso",
+          "year": "Clinic 2014, completed; doctors’ housing 2016–2018, completed",
+          "designers": "Kéré Architecture",
+          "scale": "Clinic 1,660 sqm; doctors’ housing 950 sqm",
+          "coordinates": {
+            "lat": 11.1814,
+            "lng": -2.1174,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — leo surgical clinic and health centre",
+              "url": "https://www.kerearchitecture.com/work/building/leo-surgical-clinic-and-health-centre",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            },
+            {
+              "label": "Kéré Architecture — leo doctors housing",
+              "url": "https://www.kerearchitecture.com/work/building/leo-doctors-housing",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture",
+          "sourceNote": "Listed as two separate pages on the Kéré site; grouped here as one project."
+        },
+        {
+          "id": "centre-for-health-and-social-welfare",
+          "title": "Centre for Health and Social Welfare",
+          "themes": [
+            "community"
+          ],
+          "location": "Laongo, Burkina Faso",
+          "year": "2012–2014, completed",
+          "designers": "Kéré Architecture",
+          "scale": "1,340 sqm",
+          "coordinates": {
+            "lat": 12.5175,
+            "lng": -1.2767,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — centre for health and social welfare",
+              "url": "https://www.kerearchitecture.com/work/building/centre-for-health-and-social-welfare",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "ineza-clinic",
+          "title": "Ineza Clinic",
+          "themes": [
+            "community"
+          ],
+          "location": "Bubanza, Burundi",
+          "year": "Under construction; dates not stated",
+          "designers": "Kéré Architecture",
+          "scale": "Not stated",
+          "coordinates": {
+            "lat": -3.1155,
+            "lng": 29.4013,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — ineza clinic",
+              "url": "https://www.kerearchitecture.com/work/building/ineza-clinic",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "noomdo-orphanage",
+          "title": "Noomdo Orphanage",
+          "themes": [
+            "community"
+          ],
+          "location": "Koudougou, Boulkiemdé, Burkina Faso",
+          "year": "2013–2016, completed",
+          "designers": "Kéré Architecture",
+          "scale": "4,000 sqm",
+          "coordinates": {
+            "lat": 12.2515,
+            "lng": -2.3652,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — noomdo orphanage",
+              "url": "https://www.kerearchitecture.com/work/building/noomdo-orphanage",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "naume-childrens-foundation",
+          "title": "Naume Children’s Foundation",
+          "themes": [
+            "community"
+          ],
+          "location": "Outside Gulu, northern Uganda",
+          "year": "From 2017, under construction",
+          "designers": "Kéré Architecture",
+          "scale": "20-hectare site",
+          "coordinates": {
+            "lat": 3.0347,
+            "lng": 32.3802,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — naume childrens foundation",
+              "url": "https://www.kerearchitecture.com/work/building/naume-childrens-foundation",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "obama-legacy-campus",
+          "title": "Mama Sarah Obama Legacy Campus",
+          "themes": [
+            "community"
+          ],
+          "location": "Kogelo, Kenya",
+          "year": "2014, concept",
+          "designers": "Kéré Architecture",
+          "scale": "9.6 hectares",
+          "coordinates": {
+            "lat": 0.3548,
+            "lng": 34.1551,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — obama legacy campus",
+              "url": "https://www.kerearchitecture.com/work/building/obama-legacy-campus",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "skf-rtl-children-learning-centre",
+          "title": "SKF-RTL Children Learning Centre",
+          "themes": [
+            "community"
+          ],
+          "location": "Nyang’oma Kogelo, Kenya",
+          "year": "2016–2020, completed",
+          "designers": "Kéré Architecture",
+          "scale": "550 sqm",
+          "coordinates": {
+            "lat": 0.3548,
+            "lng": 34.1551,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — skf rtl children learning centre",
+              "url": "https://www.kerearchitecture.com/work/building/skf-rtl-children-learning-centre",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "startup-lions-campus",
+          "title": "Startup Lions Campus",
+          "themes": [
+            "community"
+          ],
+          "location": "Turkana County, Kenya (banks of Lake Turkana)",
+          "year": "2019–2021, completed",
+          "designers": "Kéré Architecture",
+          "scale": "1,416 sqm",
+          "coordinates": {
+            "lat": 3.1865,
+            "lng": 35.3031,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — startup lions campus",
+              "url": "https://www.kerearchitecture.com/work/building/startup-lions-campus",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "freie-waldorfschule-weilheim",
+          "title": "Freie Waldorfschule Weilheim",
+          "themes": [
+            "community"
+          ],
+          "location": "Weilheim, Bavaria, Germany",
+          "year": "From 2017, ongoing",
+          "designers": "Kéré Architecture",
+          "scale": "About 4,200 sqm net room area",
+          "coordinates": {
+            "lat": 47.8395,
+            "lng": 11.1416,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — freie waldorfschule weilheim",
+              "url": "https://www.kerearchitecture.com/work/building/freie-waldorfschule-weilheim",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "kinderoase-an-der-tum",
+          "title": "Kinderoase an der TUM",
+          "themes": [
+            "community"
+          ],
+          "location": "Munich, Germany (Technical University of Munich campus)",
+          "year": "Completed; dates not stated",
+          "designers": "Francis Kéré, Kéré Architecture, with HK Architekten, Hermann Kaufmann + Partner ZT GmbH",
+          "scale": "420 sqm",
+          "coordinates": {
+            "lat": 48.1371,
+            "lng": 11.5754,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — kinderoase an der tum",
+              "url": "https://www.kerearchitecture.com/work/building/kinderoase-an-der-tum",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        },
+        {
+          "id": "opera-village-burkina-faso",
+          "title": "Opera Village",
+          "themes": [
+            "community",
+            "public-space"
+          ],
+          "location": "Laongo, Burkina Faso",
+          "year": "From 2010, under construction",
+          "designers": "Francis Kéré / Kéré Architecture, with Christoph Schlingensief",
+          "scale": "14,230 sqm",
+          "coordinates": {
+            "lat": 12.5175,
+            "lng": -1.2767,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — opera village burkina faso",
+              "url": "https://www.kerearchitecture.com/work/building/opera-village-burkina-faso",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
+        }
+      ]
+    },
+    {
+      "id": "landscape",
+      "label": "Landscape & water",
+      "count": 6,
+      "projects": [
+        {
+          "id": "observatory-toon",
+          "title": "Observatory, Landscapes of Waste",
+          "themes": [
+            "landscape",
+            "reuse"
+          ],
+          "location": "Oono Associates recycling complex, Toon, Ehime Prefecture, Shikoku, Japan",
+          "year": "2026 (Setouchi Art and Industry 2026, 3–31 October)",
+          "designers": "Ryue Nishizawa (observatory); Kazuyo Sejima (supervision); Shingo Masuda + Katsuhisa Otsubo (plaza and bus stop); Suzuko Yamada (bus and visitor wear)",
+          "scale": "Cone 33 m in diameter and 4 m high, overlooking a landfill basin",
+          "coordinates": null,
+          "links": [
+            {
+              "label": "Dezeen — project article",
+              "url": "https://www.dezeen.com/2026/10/28/ryue-nishizawa-viewpoint-setouchi-art-industry/",
+              "kind": "article",
+              "status": "working",
+              "checked": "2026-10-30"
+            },
+            {
+              "label": "Setouchi Art and Industry — festival website",
+              "url": "https://www.sai-art.jp/en",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-10-30"
+            }
+          ],
+          "foundVia": "Dezeen"
         },
         {
           "id": "madrid-rio",
@@ -1409,7 +2284,8 @@
           "id": "rwanda-institute-conservation-agriculture",
           "title": "Rwanda Institute for Conservation Agriculture (RICA)",
           "themes": [
-            "landscape"
+            "landscape",
+            "community"
           ],
           "location": "Bugesera District, Rwanda",
           "year": "Opened around 2022; archive dates 2015–2022",
@@ -1473,13 +2349,40 @@
             "public space",
             "waterfront"
           ]
+        },
+        {
+          "id": "national-park-of-mali",
+          "title": "National Park of Mali",
+          "themes": [
+            "landscape",
+            "public-space"
+          ],
+          "location": "Bamako, Mali",
+          "year": "2010, completed",
+          "designers": "Kéré Architecture",
+          "scale": "103-hectare park; 3,000 sqm of new buildings",
+          "coordinates": {
+            "lat": 12.6493,
+            "lng": -8.0003,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — national park of mali",
+              "url": "https://www.kerearchitecture.com/work/building/national-park-of-mali",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
         }
       ]
     },
     {
       "id": "reuse",
       "label": "Adaptive reuse",
-      "count": 5,
+      "count": 6,
       "projects": [
         {
           "id": "ms-collection-arouca",
@@ -1639,13 +2542,40 @@
             "place making",
             "redevelopment"
           ]
+        },
+        {
+          "id": "oxford-barracks-revitalisation",
+          "title": "Oxford Barracks Revitalisation",
+          "themes": [
+            "reuse",
+            "community"
+          ],
+          "location": "Münster, Germany",
+          "year": "2017, concept (winning competition entry)",
+          "designers": "Kéré Architecture",
+          "scale": "1,615 sqm",
+          "coordinates": {
+            "lat": 51.9625,
+            "lng": 7.6252,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — oxford barracks revitalisation",
+              "url": "https://www.kerearchitecture.com/work/building/oxford-barracks-revitalisation",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
         }
       ]
     },
     {
       "id": "regional",
       "label": "Regional planning",
-      "count": 7,
+      "count": 8,
       "projects": [
         {
           "id": "monte-carasso",
@@ -1879,11 +2809,39 @@
             "working class",
             "historic"
           ]
+        },
+        {
+          "id": "niamey-nyala-masterplan",
+          "title": "Niamey Nyala Masterplan",
+          "themes": [
+            "regional",
+            "public-space",
+            "landscape"
+          ],
+          "location": "Niamey, Niger",
+          "year": "From 2017, concept",
+          "designers": "Kéré Architecture",
+          "scale": "About 250,000 sqm",
+          "coordinates": {
+            "lat": 13.5248,
+            "lng": 2.1098,
+            "source": "OpenStreetMap. It marks the town or city, not the exact site."
+          },
+          "links": [
+            {
+              "label": "Kéré Architecture — niamey nyala masterplan",
+              "url": "https://www.kerearchitecture.com/work/building/niamey-nyala-masterplan",
+              "kind": "primary",
+              "status": "working",
+              "checked": "2026-11-04"
+            }
+          ],
+          "foundVia": "Kéré Architecture"
         }
       ]
     }
   ],
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "alreadyInCasebook": {
     "note": "Projects found in a source that are already in the Casebook. They are not listed again. Links are kept so their facts can be checked.",
     "projects": [

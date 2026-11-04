@@ -96,7 +96,8 @@
       "placement": "Placed at the site. Position from OpenStreetMap.",
       "themes": [
         "housing",
-        "mobility"
+        "mobility",
+        "community"
       ],
       "brief": "A former barracks rebuilt as a car-reduced district of resident-led building groups, tram access and Passivhaus-standard homes.",
       "links": [
@@ -163,7 +164,8 @@
       "placement": "Placed at Santo Domingo Savio, one station on the network. Position from OpenStreetMap.",
       "themes": [
         "mobility",
-        "public-space"
+        "public-space",
+        "community"
       ],
       "brief": "Cable-car lines linking hillside informal neighbourhoods to the metro, paired with library-parks and public works at each station.",
       "links": [
@@ -296,7 +298,8 @@
       "placement": "Placed at the site. Position from OpenStreetMap.",
       "themes": [
         "housing",
-        "landscape"
+        "landscape",
+        "community"
       ],
       "brief": "A long, colourful perimeter block shelters a low-rise estate designed together with the residents, with an on-site architect's office.",
       "links": [
@@ -550,6 +553,7 @@
       "approx": true,
       "placement": "Placed at the city centre, approximate. Position from OpenStreetMap.",
       "themes": [
+        "community",
         "public-space"
       ],
       "brief": "A flood-damaged neighbourhood photo studio rebuilt as a small civic space with a café, observatory and shop.",
@@ -921,6 +925,7 @@
       "approx": false,
       "placement": "Placed at the site. Position from OpenStreetMap.",
       "themes": [
+        "community",
         "landscape",
         "housing"
       ],
@@ -1011,7 +1016,8 @@
       "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
       "themes": [
         "housing",
-        "public-space"
+        "public-space",
+        "community"
       ],
       "brief": "Siza's low-income housing on 27 hectares outside Évora, part of Portugal's social housing movement after the 1974 revolution.",
       "links": [
@@ -1047,6 +1053,7 @@
       "approx": true,
       "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
       "themes": [
+        "community",
         "mobility",
         "housing"
       ],
@@ -1156,6 +1163,7 @@
       "approx": true,
       "placement": "Placed at the city centre, approximate. Position from the Harvard archive.",
       "themes": [
+        "community",
         "housing"
       ],
       "brief": "Rio's shift from clearing favelas to upgrading them, with sanitation, streets and underground infrastructure.",
@@ -1704,8 +1712,9 @@
       "approx": false,
       "placement": "Placed at the site. Position from the Harvard archive.",
       "themes": [
-        "housing",
-        "public-space"
+        "community",
+        "public-space",
+        "housing"
       ],
       "brief": "A planned community conceived in 1928 to rethink suburban life in response to automobile-centric growth.",
       "links": [
@@ -2358,7 +2367,8 @@
       "approx": false,
       "placement": "Placed at the site. Position from the Harvard archive.",
       "themes": [
-        "landscape"
+        "landscape",
+        "community"
       ],
       "brief": "A conservation agriculture campus on 1,400 hectares of savannah by Lake Kilimbi, with 20,000 m² of buildings.",
       "links": [
