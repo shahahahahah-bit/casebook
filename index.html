@@ -100,13 +100,15 @@
     text-align: left;
     pointer-events: none;
     line-height: 1.15;
+    opacity: var(--name-fade, 0);
+    transition: opacity .7s ease;
   }
   .pt .t { display: block; font-size: 12.5px; font-weight: 400; color: var(--ink); text-shadow: 0 1px 6px var(--ground), 0 0 2px var(--ground); }
   .pt .m { display: block; font-family: var(--font); font-size: 9.5px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; text-shadow: 0 0 4px var(--ground); }
   .pt .m b { color: var(--c); font-weight: 400; }
-  .pt.nolabel .lb { visibility: hidden; }
+  .pt.nolabel .lb { visibility: hidden; opacity: 0; }
   .pt:hover .sq, .pt:focus-visible .sq, .pt.sel .sq { transform: scale(1.5); box-shadow: 0 0 0 4px rgba(12,34,23,.9), 0 0 0 5px var(--c); }
-  .pt:hover .lb, .pt:focus-visible .lb, .pt.sel .lb { visibility: visible; z-index: 2; }
+  .pt:hover .lb, .pt:focus-visible .lb, .pt.sel .lb { visibility: visible; opacity: 1; transition-duration: .15s; z-index: 2; }
   .pt:hover, .pt:focus-visible, .pt.sel { z-index: 5; outline: none; }
   .pt.dim { opacity: .14; }
   .pt.dim .lb { visibility: hidden; }
@@ -754,7 +756,11 @@
     const r = el.getBoundingClientRect();
     return { x: r.left, y: r.top, w: r.width, h: r.height };
   });
+  // Names stay hidden through the first zoom step, then fade in gradually as you keep zooming.
+  const NAMES_START = 1.8, NAMES_FULL = 5;
   function cullLabels() {
+    const fade = (view.zoom / view.minZoom - NAMES_START) / (NAMES_FULL - NAMES_START);
+    field.style.setProperty("--name-fade", Math.max(0, Math.min(1, fade)).toFixed(2));
     // No project names on the starting view; they appear once you zoom in.
     if (view.zoom <= view.minZoom * 1.001) { els.forEach(el => el.classList.add("nolabel")); return; }
     const vw = innerWidth, vh = innerHeight, placed = chromeRects();
