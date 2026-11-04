@@ -23,13 +23,13 @@
     --glass: rgba(14, 38, 26, 0.86);
     --accent: #f3e7c2;
     --danger: #ff9a86;
-    --mobility: #63c7ff;
-    --housing: #ff8562;
-    --public-space: #ffd36b;
-    --community: #5fe0c8;
-    --landscape: #b9ef6e;
-    --reuse: #d59dff;
-    --regional: #ff9fcd;
+    --mobility: #495c58;
+    --housing: #7f4655;
+    --public-space: #e0757f;
+    --community: #a0b266;
+    --landscape: #64895e;
+    --reuse: #563a50;
+    --regional: #342528;
     /* Gotham is a licensed font: it shows where available, otherwise Montserrat. */
     --font: "Gotham", "Montserrat", "Helvetica Neue", Arial, sans-serif;
     --ease: cubic-bezier(.2, .7, .2, 1);
@@ -171,7 +171,7 @@
     pointer-events: none;
   }
   .cat-legend[hidden] { display: none; }
-  .cat-legend span { display: inline-flex; align-items: center; gap: 6px; color: var(--c); white-space: nowrap; }
+  .cat-legend span { color: var(--c); white-space: nowrap; }
   .axis-card {
     padding: 12px 14px 12px;
     display: grid; gap: 10px;
@@ -1524,7 +1524,7 @@
   }
 
   // ---------- Start ----------
-  $("#legend").innerHTML = THEME_ORDER.map(t => `<span style="--c:${col(t)}">${shape(t)}${esc(THEMES[t])}</span>`).join("");
+  $("#legend").innerHTML = THEME_ORDER.map(t => `<span style="--c:${col(t)}">${esc(THEMES[t])}</span>`).join("");
   async function start() {
     try {
       const r = await fetch("data/casebook.json", { cache: "no-cache" });
