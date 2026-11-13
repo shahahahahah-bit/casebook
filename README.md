@@ -4,7 +4,7 @@ A field of case studies in urbanism and architecture, on a dark green ground.
 
 Each square is one place. You can arrange the field three ways:
 
-- **Place**: where each project is in the world, by latitude and longitude, with no map underneath
+- **Place**: where each project is in the world, by latitude and longitude, over real ground heights, sea, rivers and lakes
 - **Theme**: gathered by main theme
 - **Year**: along a timeline, with recent years given more room
 
@@ -16,6 +16,8 @@ Colours show each project's main theme, and soft shapes gather nearby projects t
 |---|---|
 | `index.html` | The site: layout, styles and code |
 | `data/casebook.json` | Every case study on the field: facts, position, stage, photo and sources |
+| `data/elevation.bin` | World ground and sea-floor heights at half-degree spacing (NOAA ETOPO1, public domain), drawn as contour lines |
+| `data/water.json` | Coastlines, rivers and lakes, simplified (Natural Earth 1:50m, public domain) |
 | `data/skipped.json` | Posts the daily check decided not to add, with the reason (filled once daily updates start) |
 | `casestudies.json` | The original research file for the 14 projects found in October 2026, with every link checked |
 
