@@ -71,10 +71,8 @@
   .terr { fill-opacity: .11; stroke-opacity: .32; stroke-width: 1; }
   .contour { fill: none; stroke: rgba(235, 242, 232, .1); stroke-width: 1; vector-effect: non-scaling-stroke; }
   .contour.major { stroke: rgba(235, 242, 232, .22); }
-  .sea { fill: #7ebad6; fill-opacity: .13; }
-  .coast { fill: none; stroke: #7ebad6; stroke-opacity: .55; stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-  .lake { fill: #7ebad6; fill-opacity: .28; stroke: #7ebad6; stroke-opacity: .5; stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .river { fill: none; stroke: #7ebad6; stroke-opacity: .5; stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+  .contour.sea { stroke: rgba(126, 186, 214, .13); }
+  .contour.sea.major { stroke: rgba(126, 186, 214, .28); }
   .tick { stroke: var(--line-2); stroke-width: 1; }
   .guide-label { fill: var(--ink-3); font-family: var(--font); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; }
   .big-label { font-family: var(--font); font-weight: 400; font-size: 34px; fill: var(--ink); opacity: .1; }
@@ -425,7 +423,7 @@
 </head>
 <body>
 <div id="field" tabindex="0" aria-label="Case study field. Drag to move, scroll or pinch to zoom.">
-  <svg id="deco" aria-hidden="true"><g id="pan"><g id="water"></g><g id="contours"></g><g id="guides"></g><g id="terr"></g></g></svg>
+  <svg id="deco" aria-hidden="true"><g id="pan"><g id="contours"></g><g id="guides"></g><g id="terr"></g></g></svg>
   <div id="pts"></div>
 </div>
 <div class="loading" id="loading">Laying out the field…</div>
@@ -844,37 +842,58 @@
   // Contour lines: isolines of a smooth imaginary terrain that fills the screen in every view.
   // Zooming in adds finer lines between the existing ones, as on a topographic map.
   const CONTOUR_BASE = .1;
-  const contourG = $("#contours"), waterG = $("#water");
+  const contourG = $("#contours");
   let contourGen = null;
-  // Place view: real ground and water. Elevation is NOAA ETOPO1 at half-degree spacing, in metres;
-  // land, rivers and lakes are Natural Earth. Theme and Year keep the imaginary terrain.
-  let elevation = null;
-  const ELEV_W = 721, ELEV_H = 361;
-  function elevationAt(lng, lat) {
-    if (lng < -180 || lng > 180 || lat < -90 || lat > 90) return NaN;
-    const c = (lng + 180) * 2, r = (90 - lat) * 2;
+  // Place view: real topography (NOAA ETOPO1, half-degree spacing, metres), drawn in the same
+  // style and density as the imaginary terrain. Heights below sea level are drawn in water blue.
+  // Theme and Year keep the imaginary terrain.
+  // Zoomed out, the ground is smoothed so its hills keep the size of the imaginary ones on screen;
+  // each zoom step halves the smoothing and doubles the lines, as on a topographic map.
+  let elevation = null, topo = [];
+  const ELEV_W = 721, ELEV_H = 361, TOPO_BLUR = [12, 6, 3, 1.5, 0], TOPO_LINES = 8;
+  function smoothed(src, r) {
+    if (!r) return Float32Array.from(src);
+    let a = Float32Array.from(src), b = new Float32Array(a.length);
+    const w = ELEV_W, h = ELEV_H, k = Math.max(1, Math.round(r));
+    // Three box blurs approximate a Gaussian; columns wrap around the date line.
+    for (let pass = 0; pass < 3; pass++) {
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        let sum = 0;
+        for (let d = -k; d <= k; d++) sum += a[y * w + ((x + d) % w + w) % w];
+        b[y * w + x] = sum / (2 * k + 1);
+      }
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        let sum = 0;
+        for (let d = -k; d <= k; d++) sum += b[Math.min(h - 1, Math.max(0, y + d)) * w + x];
+        a[y * w + x] = sum / (2 * k + 1);
+      }
+    }
+    return a;
+  }
+  function prepareTopo(raw) {
+    elevation = raw;
+    topo = TOPO_BLUR.map(r => {
+      const grid = smoothed(raw, r);
+      // Land and sea floor are ranked separately, so the land, where the projects are, gets half the lines.
+      return { grid, land: Float32Array.from(grid.filter(h => h >= 0)).sort(), sea: Float32Array.from(grid.filter(h => h < 0)).sort() };
+    });
+  }
+  function elevationAt(lng, lat, grid) {
+    // Beyond the poles the ground is mirrored, and longitude wraps, so lines fill the whole field.
+    if (lat > 90) lat = 180 - lat; else if (lat < -90) lat = -180 - lat;
+    lat = Math.max(-90, Math.min(90, lat));
+    const c = ((lng + 180) % 360 + 360) % 360 * 2, r = (90 - lat) * 2;
     const i = Math.min(Math.floor(c), ELEV_W - 2), j = Math.min(Math.floor(r), ELEV_H - 2), u = c - i, v = r - j;
-    const at = (a, b) => elevation[b * ELEV_W + a];
+    const at = (a, b) => grid[b * ELEV_W + a];
     return (at(i, j) * (1 - u) + at(i + 1, j) * u) * (1 - v) + (at(i, j + 1) * (1 - u) + at(i + 1, j + 1) * u) * v;
   }
-  // Land heights drawn at each zoom step, in metres.
-  function landLevels(tier) {
-    const set = [200, 500, 1000, 2000, 3000, 4000, 5000];
-    if (tier >= 1) set.push(250, 1500, 2500, 3500, 4500);
-    if (tier >= 2) for (let l = 100; l <= 3000; l += 100) set.push(l);
-    return [...new Set(set)].sort((a, b) => a - b);
-  }
-  function buildWater(w) {
-    const pt = (a, i) => `${((a[i] + 180) * K).toFixed(1)} ${((90 - a[i + 1]) * K).toFixed(1)}`;
-    const line = (a) => { let d = "M" + pt(a, 0); for (let i = 2; i < a.length; i += 2) d += "L" + pt(a, i); return d; };
-    // The sea is the whole world minus the land; the land's edge is drawn as the coastline.
-    const coast = w.land.map(a => line(a) + "Z").join("");
-    waterG.innerHTML = `<path class="sea" fill-rule="evenodd" d="M0 0H${360 * K}V${180 * K}H0Z${coast}"/><path class="coast" d="${coast}"/>` +
-      `<path class="lake" d="${w.lakes.map(a => line(a) + "Z").join("")}"/><path class="river" d="${w.rivers.map(line).join("")}"/>`;
-  }
-  function placeWater() {
-    waterG.style.display = view.layout === "location" && elevation ? "" : "none";
-    waterG.setAttribute("transform", `scale(${view.zoom})`);
+  // Lines sit at evenly spaced shares of the world's heights rather than every so many metres,
+  // so plains and sea floors get lines too and the field reads evenly, like the imaginary terrain.
+  function topoLevels(tier) {
+    const n = TOPO_LINES * 2 ** tier, out = [];
+    for (const rank of [topo[tier].sea, topo[tier].land])
+      for (let k = 1; k < n; k++) out.push({ h: rank[Math.floor(k / n * rank.length)], major: k % (5 * 2 ** tier) === 0 });
+    return out;
   }
   function lattice(x, y, o) {
     let h = Math.imul(x, 374761393) + Math.imul(y, 668265263) + Math.imul(o + 1, 2147483647) | 0;
@@ -897,42 +916,41 @@
     const rect = { x0: -view.x - vw * .5, y0: -view.y - vh * .5, x1: -view.x + vw * 1.5, y1: -view.y + vh * 1.5 };
     const nx = Math.ceil((rect.x1 - rect.x0) / cell), ny = Math.ceil((rect.y1 - rect.y0) / cell);
     // Hills keep the same size on screen at each view's starting zoom.
-    const real = view.layout === "location" && elevation;
+    const real = view.layout === "location" && topo.length > 0;
+    const level = Math.max(0, Math.min(4, Math.floor(Math.log2(z / view.minZoom + 1e-6))));
+    const grid = real ? topo[level].grid : null;
     const wave = 460 / view.minZoom, field = new Float32Array((nx + 1) * (ny + 1));
     for (let j = 0, n = 0; j <= ny; j++) for (let i = 0; i <= nx; i++, n++) {
       const wx = (rect.x0 + i * cell) / z, wy = (rect.y0 + j * cell) / z;
-      field[n] = real ? elevationAt(wx / K - 180, 90 - wy / K) : terrain(wx / wave, wy / wave);
+      field[n] = real ? elevationAt(wx / K - 180, 90 - wy / K, grid) : terrain(wx / wave, wy / wave);
     }
-    const level = Math.max(0, Math.min(4, Math.floor(Math.log2(z / view.minZoom + 1e-6))));
     const step = CONTOUR_BASE / 2 ** level, every = 5 * 2 ** level;
-    const heights = real ? landLevels(level) : null;
-    const fine = [], major = [];
+    const heights = real ? topoLevels(level) : null;
+    const fine = [], major = [], seaFine = [], seaMajor = [];
     const cross = (a, b, h) => (h - a) / (b - a);
     for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
       const n = j * (nx + 1) + i, a = field[n], b = field[n + 1], c = field[n + nx + 2], d = field[n + nx + 1];
-      if (real && (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d))) continue;
       const lo = Math.min(a, b, c, d), hi = Math.max(a, b, c, d);
-      const hs = real ? heights.filter(h => h > lo && h <= hi) : [];
-      if (!real) for (let k = Math.ceil(lo / step); k * step <= hi; k++) hs.push(k * step);
-      for (const h of hs) {
+      const hs = real ? heights.filter(l => l.h > lo && l.h <= hi) : [];
+      if (!real) for (let k = Math.ceil(lo / step); k * step <= hi; k++) hs.push({ h: k * step, major: k % every === 0 });
+      for (const { h, major: isMajor } of hs) {
         const x = rect.x0 + i * cell, y = rect.y0 + j * cell, pts = [];
         if ((a < h) !== (b < h)) pts.push(x + cross(a, b, h) * cell, y);
         if ((b < h) !== (c < h)) pts.push(x + cell, y + cross(b, c, h) * cell);
         if ((d < h) !== (c < h)) pts.push(x + cross(d, c, h) * cell, y + cell);
         if ((a < h) !== (d < h)) pts.push(x, y + cross(a, d, h) * cell);
-        const out = real ? (h % 1000 === 0 ? major : fine) : Math.round(h / step) % every === 0 ? major : fine;
+        const out = real && h < 0 ? (isMajor ? seaMajor : seaFine) : isMajor ? major : fine;
         for (let p = 0; p + 3 < pts.length; p += 4) out.push(`M${pts[p].toFixed(1)} ${pts[p + 1].toFixed(1)}L${pts[p + 2].toFixed(1)} ${pts[p + 3].toFixed(1)}`);
       }
     }
     contourG.removeAttribute("transform");
-    contourG.innerHTML = `<path class="contour" d="${fine.join("")}"/><path class="contour major" d="${major.join("")}"/>`;
+    contourG.innerHTML = `<path class="contour" d="${fine.join("")}"/><path class="contour major" d="${major.join("")}"/>` +
+      (real ? `<path class="contour sea" d="${seaFine.join("")}"/><path class="contour sea major" d="${seaMajor.join("")}"/>` : "");
     contourGen = { z, ...rect, real };
-    placeWater();
   }
   function keepContours() {
     if (!contourGen) return;
-    placeWater();
-    if (contourGen.real !== (view.layout === "location" && !!elevation)) { drawContours(); return; }
+    if (contourGen.real !== (view.layout === "location" && topo.length > 0)) { drawContours(); return; }
     if (contourGen.z !== view.zoom) { contourG.setAttribute("transform", `scale(${view.zoom / contourGen.z})`); return; }
     if (-view.x < contourGen.x0 || -view.y < contourGen.y0 || -view.x + innerWidth > contourGen.x1 || -view.y + innerHeight > contourGen.y1) drawContours();
   }
@@ -973,8 +991,7 @@
       const regions = {};
       items.forEach(it => { if (it.lat == null) return; const p = pos.get(it.id); (regions[it.region] ||= []).push(p); });
       Object.entries(regions).forEach(([r, ps]) => {
-        // With the real map underneath, the continents speak for themselves.
-        if (r === "Unknown" || K * z < 3 || elevation) return;
+        if (r === "Unknown" || K * z < 3) return;
         const x = ps.reduce((s, p) => s + p.x, 0) / ps.length, y = ps.reduce((s, p) => s + p.y, 0) / ps.length;
         g += `<text class="big-label" x="${x}" y="${y + 10}" text-anchor="middle">${esc(r)}</text>`;
       });
@@ -1385,7 +1402,7 @@
     $("#about-body").innerHTML = `
       <p><strong>Casebook</strong> is a field of case studies in urbanism and architecture. Each square is one place.</p>
       <h3>Arranging the field</h3>
-      <p><strong>Place</strong> puts every square where it is in the world, using latitude and longitude. The lines underneath are real ground heights from NOAA, with the sea, rivers and lakes in blue from Natural Earth. Squares that would overlap are nudged apart slightly. <strong>Theme</strong> gathers them by main theme. <strong>Year</strong> lays them along a timeline, with recent years given more room.</p>
+      <p><strong>Place</strong> puts every square where it is in the world, using latitude and longitude. The lines underneath are the real shape of the ground and sea floor, from NOAA elevation data; the blue lines are below sea level. Squares that would overlap are nudged apart slightly. <strong>Theme</strong> gathers them by main theme. <strong>Year</strong> lays them along a timeline, with recent years given more room.</p>
       <p>Positions come from OpenStreetMap. Where a source names the exact site or address, the square sits there. Otherwise it sits at the city centre and is marked as approximate.</p>
       <h3>Colours</h3>
       <div class="legend">${THEME_ORDER.map(t => `<span class="tag" style="--c:${col(t)}">${shape(t)}${esc(THEMES[t])}</span>`).join("")}</div>
@@ -1579,9 +1596,9 @@
       return;
     }
     try { const s = await fetch("data/skipped.json", { cache: "no-cache" }); if (s.ok) skipped = await s.json(); } catch (e) {}
-    // Ground and water arrive after the field is up, so a slow connection doesn't hold it back.
-    Promise.all([fetch("data/elevation.bin").then(r => r.arrayBuffer()), fetch("data/water.json").then(r => r.json())])
-      .then(([b, w]) => { elevation = new Int16Array(b); buildWater(w); drawContours(); })
+    // Topography arrives after the field is up, so a slow connection doesn't hold it back.
+    fetch("data/elevation.bin").then(r => r.arrayBuffer())
+      .then(b => { prepareTopo(new Int16Array(b)); drawContours(); })
       .catch(() => {});
     loadOverlay(); migrateV1();
     rebuild();
